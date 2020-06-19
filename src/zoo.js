@@ -15,10 +15,6 @@ const { animals } = data;
 
 const { employees } = data;
 
-const { hours } = data;
-
-const { prices } = data;
-
 function animalsByIds(...ids) {
   const animalWithId = [];
   animals.forEach((animal, index) => {
