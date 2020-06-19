@@ -20,11 +20,11 @@ Ao receber mais de um id, retorna os animais que têm um desses ids */
 function animalsByIds(...ids) {
   if (!ids.length) return [];
   const arraySaida = [];
-  ids.forEach( (cadaId) => data.animals.find( (cadaAnimal) => {
+  ids.forEach(cadaId => data.animals.find(cadaAnimal => {
     if (cadaAnimal.id === cadaId) {
       arraySaida.push(cadaAnimal);
-    };
-}));
+    }
+  }));
   return arraySaida;
 }
 
