@@ -28,7 +28,7 @@ function employeeByName(employeeName) {
   const funcionario = employees.find(
     nomeFuncionario =>
       nomeFuncionario.firstName === employeeName ||
-      nomeFuncionario.lastName === employeeName);
+      nomeFuncionario.lastName === employeeName;
   );
   return funcionario || {};
 }
