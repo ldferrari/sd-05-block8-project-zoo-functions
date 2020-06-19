@@ -14,9 +14,8 @@ const { animals } = require('./data');
 
 function animalsByIds(...ids) {
   const list = [];
-  let filterAnimals =
-    ids.forEach(loop => list.push(...animals.filter(animalID => animalID.id === loop)));
-  return list
+  ids.forEach(loop => list.push(...animals.filter(animalID => animalID.id === loop)));
+  return list;
 }
 
 function animalsOlderThan(animal, age) {
