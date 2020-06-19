@@ -11,7 +11,6 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 const { animals } = require('./data');
-console.log(animals.length)
 
 function animalsByIds(...ids) {
   /*let filter=[]
@@ -21,7 +20,8 @@ function animalsByIds(...ids) {
    filter = ids.forEach(index => animals.filter(element => element.id === index)).reduce((acc, value) => acc + value)
     return filter
   }
-}*/
+  }*/
+}
 
 function animalsOlderThan(animal, age1) {
   const newArray = animals.filter(element => element.name === animal);
