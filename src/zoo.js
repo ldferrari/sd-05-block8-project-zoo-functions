@@ -9,14 +9,14 @@ eslint no-unused-vars: [
 ]
 */
 
-const data = require('./data');
-const { employees } = require('./data');
+const data = require("./data");
+const { employees } = require("./data");
 
 function animalsByIds(...ids) {
   // seu código aqui
   const animais = [];
-  ids.forEach(item =>
-    animais.push(...data.animals.filter(animal => animal.id === item))
+  ids.forEach((item) =>
+    animais.push(...data.animals.filter((animal) => animal.id === item))
   );
   return animais;
 }
@@ -31,7 +31,7 @@ function employeeByName(employeeName) {
     ({ lastName, firstName }) =>
       lastName === employeeName || firstName === employeeName
   );
-  return empregado ? empregado : {};
+  return empregado || {};
 }
 
 function createEmployee(personalInfo, associatedWith) {
@@ -42,7 +42,7 @@ function createEmployee(personalInfo, associatedWith) {
 }
 function isManager(id) {
   // seu código aqui
-  const team = data.employees.filter((empregad) =>
+  const team = data.employees.filter(empregad =>
     empregad.managers.some((item) => item === id)
   );
   return team.length > 0 ? true : false;
