@@ -16,7 +16,7 @@ const { animals, employees } = data;
 function animalsByIds(...ids) {
   // seu código aqui
   const filteredAnimals = [];
-  const filteringAnimals = animal => animal.id ===idx;
+  const filteringAnimals = animal => animal.id === idx;
   ids.forEach(idx =>
     filteredAnimals.push(...animals.filter(filteringAnimals))
   )
