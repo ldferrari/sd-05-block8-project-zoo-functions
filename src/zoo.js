@@ -13,11 +13,11 @@ const data = require('./data');
 const { animals } = require('./data');
 
 function animalsByIds(...ids) {
-  //Tratamento caso seja vazio.
+  // Tratamento caso seja vazio.
   const vetAux = [];
-  //Tratamento para 1 ou 2 posições.
-  const [pos1,pos2] = ids;
-  if (ids == false) {
+  // Tratamento para 1 ou 2 posições.
+  const [pos1, pos2] = ids;
+  if (ids === false) {
     return vetAux;
   }
   const animalsReturn = animals.filter(element => element.id === pos1
