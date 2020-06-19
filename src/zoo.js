@@ -1,18 +1,24 @@
 /*
 eslint no-unused-vars: [
-  "error",
+  'error',
   {
-    "args": "none",
-    "vars": "local",
-    "varsIgnorePattern": "data"
+    'args': 'none',
+    'vars': 'local',
+    'varsIgnorePattern': 'data'
   }
 ]
 */
 
 const data = require('./data');
+const { animals } = require('./data');
 
-function animalsByIds(ids) {
-  // seu código aqui
+function animalsByIds(...ids) {
+  if (!ids) return [];
+
+  const [id1, id2] = ids;
+  const arr = animals.filter(animal => animal.id === id1 || animal.id === id2);
+
+  return arr;
 }
 
 function animalsOlderThan(animal, age) {
