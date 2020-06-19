@@ -10,32 +10,44 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
+const { employees } = require('./data');
 
 function animalsByIds(a, b) {
-  const arrayFiltered = data.animals.filter(selected => selected.id === a || selected.id === b)
-  return arrayFiltered
+  const arrayFiltered = data.animals.filter(selected => selected.id === a || selected.id === b);
+  return arrayFiltered;
 }
 
 function animalsOlderThan(animal, age) {
   const animalsFilter = data.animals.filter(selected => selected.name === animal);
-  const isOlder = animalsFilter[0].residents.every(animal => animal.age >= age)
+  const isOlder = animalsFilter[0].residents.every(element => element.age >= age)
   return isOlder;
 }
 
 function employeeByName(employeeName) {
-  // seu código aqui
+  const employees = data.employees.filter(employee => employee.firstName === employeeName || employee.lastName === employeeName);
+  return (employees[0] !== undefined) ? employees[0] : {};
 }
 
 function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
+  const employee = {...personalInfo, ...associatedWith}
+ return employee;
 }
+
 
 function isManager(id) {
-  // seu código aqui
+  const isManager = data.employees.some(manager => manager.managers.includes(id) === true);
+  return isManager;
 }
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-  // seu código aqui
+function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
+  const employee = {
+    id,
+    firstName,
+    lastName,
+    managers,
+    responsibleFor,
+  }
+ data.employees.push(employee)
 }
 
 function animalCount(species) {
