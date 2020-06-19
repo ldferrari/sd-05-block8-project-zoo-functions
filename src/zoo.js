@@ -16,7 +16,7 @@ const { animals, employees, prices } = data;
 function animalsByIds(...ids) {
   const animalsById = [];
   ids.forEach(id =>
-    animalsById.push(...animals.filter(animal => animal.id === id))
+    animalsById.push(...animals.filter(animal => animal.id === id)),
   );
   return animalsById;
 }
@@ -41,7 +41,7 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   return employees.some(
-    (employee) => id === employee.managers.find((item) => item === id)
+    employee => id === employee.managers.find(item => item === id),
   );
 }
 
@@ -50,7 +50,7 @@ function addEmployee(
   firstName,
   lastName,
   managers = [],
-  responsibleFor = []
+  responsibleFor = [],
 ) {
   return employees.push({ id, firstName, lastName, managers, responsibleFor });
 }
@@ -61,11 +61,17 @@ function animalCount(species) {
     return lista;
   };
   return species
-    ? animals.find((animal) => animal.name === species).residents.length
+    ? animals.find(animal => animal.name === species).residents.length
     : animals.reduce(listaCompleta, {});
 }
 
-function entryCalculator(entrants) {}
+//   const entrants = { 'Adult': 2, 'Child': 3, 'Senior': 1 };
+function entryCalculator(entrants) {
+  if (entrants === undefined || Object.entries(entrants).length === 0) return 0;
+  const totalPrice = (total, priceByAge) =>
+    total + prices[priceByAge] * entrants[priceByAge];
+  return Object.keys(prices).reduce(totalPrice, 0);
+}
 
 function animalMap(options) {
   // seu código aqui
