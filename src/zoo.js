@@ -14,9 +14,9 @@ const data = require('./data');
 function animalsByIds(...ids) {
   // seu código aqui
   const animalId = [];
-  data.animals.forEach((name, index) => {
-    if (name.id === ids[index]) {
-      animalId.push(name);
+  data.animals.forEach((animal, index) => {
+    if (animal.id === ids[index]) {
+      animalId.push(animal);
     }
   });
   return animalId;
@@ -24,10 +24,7 @@ function animalsByIds(...ids) {
 
 function animalsOlderThan(animal, age) {
   // seu código aqui
-  return data.animals.map(animal => animal.residents.age);
 }
-
-console.log(animalsOlderThan('lion', 10));
 
 function employeeByName(employeeName) {
   // seu código aqui
