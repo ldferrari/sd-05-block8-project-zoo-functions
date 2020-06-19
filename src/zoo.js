@@ -32,7 +32,6 @@ function employeeByName(employeeName) {
   return funcionario || {};
 }
 
-//Cria um novo colaborador a partir de objetos contendo informações pessoais, gerentes e animais gerenciados
 function createEmployee(personalInfo, associatedWith) {
   const { id, firstName, lastName } = personalInfo;
   const { managers, responsibleFor } = associatedWith;
