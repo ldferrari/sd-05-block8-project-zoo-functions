@@ -100,10 +100,24 @@ function entryCalculator(entrants) {
   result += entrants.Child * data.prices.Child;
   return result;
 }
-console.log(entryCalculator({}));
+
 function animalMap(options) {
-  // seu código aqui
+  if (options === undefined) {
+    let result = {};
+    let optionsMap = ['NE', 'NW', 'SE', 'SW'];
+    optionsMap.forEach(element => {
+      let animalsList = [];
+      data.animals.forEach(animal => {
+        if (animal.location === element && includeNames = true) {
+          animalsList.push(animal.name);
+        }
+      });
+      result = {...result, [element]: animalsList};
+    });
+    return result;
+  }
 }
+animalMap();
 
 function schedule(dayName) {
   // seu código aqui
