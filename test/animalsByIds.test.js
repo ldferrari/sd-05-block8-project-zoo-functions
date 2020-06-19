@@ -6,10 +6,6 @@ describe('animalsByIds', () => {
     let actual, expected;
 
     // sem parâmetros, retorna um array vazio
-    function animalsByIds(...id) {
-      if (!id);
-      return [];
-    }
     actual = zoo.animalsByIds();
     expected = [];
 
