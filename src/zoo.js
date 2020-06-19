@@ -11,7 +11,7 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const { animals,employees } = data;
+const { animals,employees,prices } = data;
 
 function animalsByIds(...ids) {
   // seu código aqui
@@ -37,11 +37,9 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   // seu código aqui
-  let valor=false
-  employees.forEach(el=>el.managers.forEach(ell=>ell==id?valor= true:false
-  ));
+  let valor=false;
+  employees.forEach(el=>el.managers.forEach(ell=>ell==id?valor= true:false));
   return  valor;
-  
 }
 
 function addEmployee(id, firstName, lastName, managers=[], responsibleFor=[]) {
@@ -53,9 +51,26 @@ function addEmployee(id, firstName, lastName, managers=[], responsibleFor=[]) {
 
 function animalCount(species) {
   // seu código aqui
+  const retorno={}
+  if(species==undefined){
+   return animals.map(el=>{
+      const name =el.name;
+      const quant=el.residents.length
+      retorno[name]=quant;
+      return retorno
+    })
+  }
+  return retorno[species]=animals.find(el=>el.name==species).residents.length
+
 }
 
-function entryCalculator(entrants) {
+function entryCalculator(...entrants) {
+  if (entrants.length==0)   return 0;
+  
+  if(Object.keys(entrants[0]).length==0) return 0;
+
+  const {Adult=0,Child=0,Senior=0}=entrants[0]
+  return Adult*prices.Adult+Child*prices.Child+Senior*prices.Senior;
   // seu código aqui
 }
 
