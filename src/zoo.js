@@ -19,9 +19,10 @@ function animalsByIds(...ids) {
   return testArray;
 }
 
-/*Ao passar o nome de uma espécie e uma idade, 
-testa se todos os animais desta espécie possuem a idade mínima especificada*/
-function animalsOlderThan(animal, age) {}
+function animalsOlderThan(animalName, age) {
+  const especieAnimal = animals.find(animal => animal.name === animalName);
+  return especieAnimal.residents.every(nameAnimal => nameAnimal.age > age);
+}
 
 function employeeByName(employeeName) {
   // seu código aqui
