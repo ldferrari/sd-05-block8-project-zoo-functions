@@ -67,6 +67,10 @@ function animalCount(species) {
 
 function entryCalculator(entrants) {
   // seu código aqui
+  if (!entrants || Object.entries(entrants).length === 0) return 0;
+  const { prices } = data;
+  const amount = Object.keys(prices).reduce((acc, entType) => acc + (prices[entType] * entrants[entType]), 0);
+  return amount;
 }
 
 function animalMap(options) {
