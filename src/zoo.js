@@ -65,8 +65,7 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 
 function animalCount(species) {
   const animalsTotal = {};
-  animals.forEach(({ name, residents }) => animalsTotal[name] = residents.length);
-  console.log(animalsTotal)
+  animals.forEach(({ name, residents }) => (animalsTotal[name] = residents.length));
   return (species == null) ? animalsTotal : animalsTotal[species];
 }
 
