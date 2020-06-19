@@ -16,8 +16,8 @@ const { animals, employees } = data;
 function animalsByIds(...ids) {
   // seu código aqui
   const filteredAnimals = [];
-  ids.forEach((idx) =>
-    filteredAnimals.push(animals.find((animal) => animal.id === idx))
+  ids.forEach(idx =>
+    filteredAnimals.push(animals.find(animal => animal.id === idx)),
   );
   return filteredAnimals;
 }
@@ -32,7 +32,7 @@ function employeeByName(employeeName) {
   // seu código aqui
   const employee = employees.find(
     ({ firstName, lastName }) =>
-      firstName === employeeName || lastName === employeeName
+      firstName === employeeName || lastName === employeeName,
   );
   return employee || {};
 }
@@ -44,8 +44,8 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   // seu código aqui
-  const team = employees.filter((employee) =>
-    employee.managers.some((item) => item === id)
+  const team = employees.filter(employee =>
+    employee.managers.some(item => item === id),
   );
   if (!team.length > 0) return false;
   return true;
@@ -77,9 +77,10 @@ function entryCalculator(entrants) {
   // seu código aqui
   if (!entrants || Object.entries(entrants).length === 0) return 0;
   const { prices } = data;
+  // prettier-ignore
   const amount = Object.keys(prices).reduce(
-    (acc, entType) => acc + prices[entType] * entrants[entType],
-    0
+    (acc, entType) => acc + (prices[entType] * entrants[entType]),
+    0,
   );
   return amount;
 }
