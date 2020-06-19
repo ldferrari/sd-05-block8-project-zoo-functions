@@ -11,40 +11,107 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-function animalsByIds(ids) {
-  // seu código aqui
+function animalsByIds(...ids) {
+  const result = [];
+  if(ids.length === 0) return result;
+  const {animals} = data;
+  animals.forEach(animal => {
+    ids.forEach(id => {
+      if(id === animal.id) result.push(animal);
+    });
+  });
+  return result;
 }
 
 function animalsOlderThan(animal, age) {
-  // seu código aqui
+  const {animals} = data;
+  return animals.filter(({ name }) => name === animal)[0]
+  .residents
+  .every(({ age : idade }) => idade >= age);
 }
 
 function employeeByName(employeeName) {
-  // seu código aqui
+  const result = [];
+  if(!employeeName) return result;
+  const {employees} = data;
+  return employees.filter(({firstName, lastName}) => {
+    return firstName === employeeName || lastName === employeeName;
+  })[0];
 }
 
 function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
+  return {...personalInfo, ...associatedWith};
 }
 
 function isManager(id) {
-  // seu código aqui
+  const {employees} = data;
+  return employees.some(({managers}) => managers.indexOf(id) !== -1);
 }
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-  // seu código aqui
+function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
+  const {employees} = data;
+  employees.push({id, firstName, lastName, managers, responsibleFor});
 }
 
 function animalCount(species) {
-  // seu código aqui
+  const {animals} = data;
+  const result = {};
+
+  if(species) {
+    return animals.find(({name}) => name === species).residents.length;
+  } 
+
+  animals.map(({name, residents}) => [name, residents.length])
+  .forEach(({0 : name, 1 : length}) => {
+    result[name] = length;
+  });
+  return result;
 }
 
-function entryCalculator(entrants) {
-  // seu código aqui
+function entryCalculator(entrants = {}) {
+  if(Object.entries(entrants).length === 0) return 0;
+  const {prices} = data;
+  let total = 0;
+  Object.entries(prices).forEach(({0 : key, 1 : price}) => {
+    total += entrants[key] * price;
+  })
+  return total;
 }
 
-function animalMap(options) {
-  // seu código aqui
+function animalMap(options = {}) {
+  const {animals} = data;
+  const result = {};
+  if (options.hasOwnProperty('sex') && options.includeNames) {
+    animals.forEach(({residents}, i) => {
+      animals[i].residents = residents.filter(({sex}) => sex === options.sex);
+    });
+    
+  }
+  animals.forEach(({location, name, residents}) => {
+    if (options.hasOwnProperty('includeNames') && options.includeNames) {
+      const animal = {};
+
+      animal[name] = residents.map(({name}) => name);
+
+      if (!Array.isArray(result[location])) {
+        result[location] = [animal];
+      } else { 
+        result[location].push(animal);
+      }
+      if (options.hasOwnProperty('sorted') && options.sorted) {
+        result[location].forEach(anim => {
+          if(anim[name]) anim[name] = anim[name].sort();
+        });
+      }
+    } else {
+      if (!Array.isArray(result[location])) {
+        result[location] = [name];
+      } else {
+        result[location].push(name);
+      }
+    }
+  });
+  return result;
 }
 
 function schedule(dayName) {
