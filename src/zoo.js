@@ -63,7 +63,14 @@ function createEmployee(personalInfo, associatedWith) {
 }
 
 function isManager(id) {
-  // seu código aqui
+  const managers = data.employees.map((element) => element.managers);
+  let result = false;
+  managers.forEach(element => {
+    if (result === false) {
+      result = element.some(manager => manager === id);
+    }
+  });
+  return result;
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
