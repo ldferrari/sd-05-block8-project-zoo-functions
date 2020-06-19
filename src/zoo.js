@@ -18,13 +18,13 @@ function animalsByIds(id1, ...restIds) {
   if (id1 === undefined) {
     return ([]);
   }
-  const find = []
+  const find = [];
 
-  for (i = 0; i < ids.length; i += 1){
-  let encontrar = anyId.find((anyId, (enc => ids[i] === enc.id)));
-  find.push(encontrar);
+  for (let i = 0; i < ids.length; i += 1) {
+    const encontrar = anyId.find((anyId, (enc => ids[i] === enc.id)));
+    find.push(encontrar);
   }
-return (find);
+  return (find);
 }
 
 
