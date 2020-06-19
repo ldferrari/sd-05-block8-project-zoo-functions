@@ -15,6 +15,9 @@ const { animals, employees, hours: visitingDays } = data;
 
 function animalsByIds(ids) {
   // seu código aqui
+  const filteredAnimals = [];
+  ids.forEach(idx => filteredAnimals.push(...animals.filter(animal => animal.id === idx)));
+  return filteredAnimals;
 }
 
 function animalsOlderThan(animal, age) {
