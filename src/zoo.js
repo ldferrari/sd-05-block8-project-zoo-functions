@@ -58,14 +58,14 @@ function employeeByName(employeeName) {
 }
 
 function createEmployee(personalInfo, associatedWith) {
-  const newEmployee = {...personalInfo, ...associatedWith};
-  return newEmployee;  
+  const newEmployee = { ...personalInfo, ...associatedWith };
+  return newEmployee;
 }
 
 function isManager(id) {
-  const managers = data.employees.map((element) => element.managers);
+  const managers = data.employees.map(element => element.managers);
   let result = false;
-  managers.forEach(element => {
+  managers.forEach((element) => {
     if (result === false) {
       result = element.some(manager => manager === id);
     }
