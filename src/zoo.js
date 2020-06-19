@@ -13,6 +13,12 @@ const data = require('./data');
 
 const { animals } = data;
 
+const { employees } = data;
+
+const { hours } = data;
+
+const { prices } = data;
+
 function animalsByIds(...ids) {
   const animalWithId = [];
   animals.forEach((animal, index) => {
@@ -29,7 +35,10 @@ function animalsOlderThan(animal, age) {
 }
 
 function employeeByName(employeeName) {
-  // seu código aqui
+  return (employeeName == null) ?
+  {} :
+  employees.filter(({ firstName, lastName }) =>
+  (firstName === employeeName || lastName === employeeName))[0];
 }
 
 function createEmployee(personalInfo, associatedWith) {
