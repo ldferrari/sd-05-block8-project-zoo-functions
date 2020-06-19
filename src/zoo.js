@@ -40,7 +40,7 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   // seu código aqui
-  const team = employees.filter(employee => employee.managers.some(item => item === id))
+  const team = employees.filter(employee => employee.managers.some(item => item === id));
   return team.length > 0? true: false;
 }
 
