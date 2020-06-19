@@ -21,14 +21,11 @@ function animalsOlderThan(animal, age) {
   return isOlder;
 }
 
-/*Implemente a função employeeByName:
-Sem parâmetros, retorna um objeto vazio
-Quando provido o primeiro nome do funcionário, retorna o objeto do funcionário
-Quando provido o último nome do funcionário, retorna o objeto do funcionário
-*/
 function employeeByName(employeeName) {
   if (!employeeName) return {};
-  return employees.find(employeeData => employeeData.firstName === employeeName || employeeData.lastName === employeeName);
+  return employees.find
+  (employeeData => employeeData.firstName === employeeName 
+    || employeeData.lastName === employeeName);
 }
 
 function createEmployee(personalInfo, associatedWith) {
