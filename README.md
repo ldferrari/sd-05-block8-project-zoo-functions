@@ -52,9 +52,16 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 ### Correção automatizada
 
-Você irá perceber que, ao realizar novos `commits` no seu _Pull Request_, eles serão automaticamente analisados pelo _CodeClimate_ e pelo TravisCI_. Se atente para os comentários do _CodeClimate_ que irão conter dicas valiosas de como deixar seu código melhor! Você pode também explorar o _TravisCI_ para obter informações sobre quais _assertions_ ainda precisa adereçar em seu projeto.
+Você irá perceber que, ao realizar novos `commits` no seu _Pull Request_, eles serão automaticamente analisados pelo _CodeClimate_ e pelo _TravisCI_.
+
+Se atente para os comentários do _CodeClimate_ que irão conter **dicas valiosas** de como deixar seu código melhor! Você pode também explorar o _TravisCI_ para obter informações sobre quais _assertions_ ainda precisa adereçar em seu projeto.
 
 ---
+
+### Data de Entrega
+
+O projeto tem até a seguinte data: `26/06/2020 - 14:00h`. Para ser entregue a avaliação final.
+
 
 ## O que deverá ser desenvolvido
 
@@ -62,7 +69,7 @@ Você irá perceber que, ao realizar novos `commits` no seu _Pull Request_, eles
 
 ## Requisitos do projeto
 
-Vocẽ deverá implementar as funções que estão no `src/zoo.js` para passarem em cada um dos testes. O teste `test/animalsByIds.test.js`, por exemplo, testa a função `addEmployee`, que já está criada dentro do `src/zoo.js`, embora ainda não contenha lógica alguma. Para ver o que cada função precisa retornar basta ver o `assert` de cada um dos testes.
+Vocẽ deverá implementar as funções que estão no `src/zoo.js` para passarem em cada um dos testes. O teste `test/animalsByIds.test.js`, por exemplo, testa a função `animalsByIds`, que já está criada dentro do `src/zoo.js`, embora ainda não contenha lógica alguma. Para ver o que cada função precisa retornar basta ver o `assert` de cada um dos testes.
 
 Utilize as novas funcionalidades do ES6 como arrow functions, template literals, spread operator, parâmetro rest, object destructuring, entre as outras. Utilize também as _High Order Functions_.
 
@@ -148,7 +155,7 @@ Antes de começar analise o arquivo `src/data.js`, para ver os dados que serão 
 
 ### DEPOIS DE TERMINAR O DESENVOLVIMENTO (OPCIONAL)
 
-Para **"entregar"** seu projeto, siga os passos a seguir:
+Para disponibilizar seu projeto para [**Code Review**](https://course.betrybe.com/real-life-engineer/code-review/), siga os passos a seguir
 
 * Vá até a página **DO SEU** _Pull Request_, adicione a label de _"code-review"_ e marque seus colegas
   * No menu à direita, clique no _link_ **"Labels"** e escolha a _label_ **code-review**
