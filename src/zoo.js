@@ -15,9 +15,9 @@ const { animals, employees, prices } = data;
 
 function animalsByIds(...ids) {
   const animalsById = [];
-  for (id of ids) {
-    animalsById.push(...animals.filter((animal) => animal.id === id));
-  }
+  ids.forEach((id) =>
+    animalsById.push(...animals.filter((animal) => animal.id === id))
+  );
   return animalsById;
 }
 
@@ -61,33 +61,31 @@ function animalCount(species) {
     return lista;
   };
   return species
-    ? animals.find((animal) => (animal.name === species)).residents.length
+    ? animals.find((animal) => animal.name === species).residents.length
     : animals.reduce(listaCompleta, {});
 }
 
-function entryCalculator(entrants) {
-  
+function entryCalculator(entrants) {}
+
+function animalMap(options) {
+  // seu código aqui
 }
 
-// function animalMap(options) {
-//   // seu código aqui
-// }
+function schedule(dayName) {
+  // seu código aqui
+}
 
-// function schedule(dayName) {
-//   // seu código aqui
-// }
+function oldestFromFirstSpecies(id) {
+  // seu código aqui
+}
 
-// function oldestFromFirstSpecies(id) {
-//   // seu código aqui
-// }
+function increasePrices(percentage) {
+  // seu código aqui
+}
 
-// function increasePrices(percentage) {
-//   // seu código aqui
-// }
-
-// function employeeCoverage(idOrName) {
-//   // seu código aqui
-// }
+function employeeCoverage(idOrName) {
+  // seu código aqui
+}
 
 module.exports = {
   entryCalculator,
