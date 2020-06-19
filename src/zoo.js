@@ -82,7 +82,7 @@ function animalCount(species) {
   if (species === undefined) {
     let objAnimal = {};
     data.animals.forEach((element) => {
-      objAnimal = { ...objAnimal, [ element.name ]:element.residents.length };
+      objAnimal = { ...objAnimal, [element.name]: element.residents.length };
     });
     return objAnimal;
   }
@@ -91,7 +91,14 @@ function animalCount(species) {
 }
 
 function entryCalculator(entrants) {
-  // seu código aqui
+  if (entrants === undefined || entrants === {}) {
+    return 0;
+  }
+  let result = 0;
+  result = entrants['Adult'] * data.prices['Adult'];
+  result += entrants['Senior'] * data.prices['Senior'];
+  result += entrants['Child'] * data.prices['Child'];
+  return result;
 }
 
 function animalMap(options) {
