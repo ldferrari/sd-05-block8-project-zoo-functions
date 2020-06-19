@@ -37,6 +37,10 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   // seu código aqui
+  let valor=false
+  employees.forEach(el=>el.managers.forEach(ell=>ell==id?valor= true:false
+  ));
+  return  valor;
   
 }
 
