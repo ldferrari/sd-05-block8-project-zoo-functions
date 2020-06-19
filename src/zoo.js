@@ -15,10 +15,10 @@ const { animals } = require('./data');
 function animalsByIds(ids) {
 }
 
-// Ao passar o nome de uma espécie e uma idade, testa se todos os animais desta espécie possuem a idade mínima especificada
 function animalsOlderThan(animal, age) {
-  const whichAnimal = animals.find(animalData => animalData.name === animal).residents.every(animalData => animalData.age >= age);
-  return whichAnimal;
+  const whichAnimal = animals.find(animalData => animalData.name === animal);
+  const isOlder = whichAnimal.residents.every(animalData => animalData.age >= age);
+  return isOlder;
 }
 
 function employeeByName(employeeName) {
