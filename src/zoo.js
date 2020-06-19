@@ -74,7 +74,7 @@ function animalCount(species) {
 function entryCalculator(entrants = 0) {
   const { Adult = 0, Senior = 0, Child = 0 } = entrants;
   return (entrants === {}) ? 0 :
-  (Adult * prices.Adult + Senior * prices.Senior + Child * prices.Child);
+  ((Adult * prices.Adult) + (Senior * prices.Senior) + (Child * prices.Child));
 }
 
 function animalMap(options) {
