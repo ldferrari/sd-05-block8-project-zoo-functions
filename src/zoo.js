@@ -11,6 +11,16 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
+function searchObjAnimal(animalName) {
+  const objAnimal = data.animals.find((element) => {
+    if (element.name === animal) {
+      return element;
+    }
+    return null;
+  });
+  return objAnimal;
+}
+
 function animalsByIds(...ids) {
   const array = [];
   ids.forEach((id) => {
@@ -45,9 +55,15 @@ function animalsOlderThan(animal, age) {
 }
 
 function employeeByName(employeeName) {
-  /*const objEmployees = data.employees.find((element) => {
-
-  });*/
+  if (employeeName === undefined) {
+    return {};
+  }
+  const objEmployees = data.employees.find((element) => {
+    if (element.firstName === employeeName || element.lastName === employeeName) {
+      return element;
+    }
+  });
+  return objEmployees;
 }
 
 function createEmployee(personalInfo, associatedWith) {
