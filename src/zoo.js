@@ -26,7 +26,11 @@ function animalsByIds(...ids) {
 }
 
 function animalsOlderThan(animal, age) {
-  // seu código aqui
+  // Cria uma constante e procura pelo nome do animal e armazena o seus dados.
+  const searchAnimal = animals.find(aux => aux.name === animal);
+  // Pega o animal armazenado e checka se a idade de todos os residents é maior ou igual.
+  const checkAge = searchAnimal.residents.every(aux2 => aux2.age >= age);
+  return checkAge;
 }
 
 function employeeByName(employeeName) {
