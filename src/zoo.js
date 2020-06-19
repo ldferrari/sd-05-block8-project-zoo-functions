@@ -47,20 +47,20 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
     managers,
     responsibleFor,
   };
-  data.employees.push(obj)
-};
+  data.employees.push(obj);
+}
 
 function animalCount(species) {
   const animalsCount = {};
+  const animalD = data.animals
   if (species === undefined) {
-    for (let index of data.animals) {
-    animalsCount[index.name] = index.residents.length;
+    for (let i = 0 ; i < data.animals.length; i += 1) {
+      animalsCount[animalD[i].name] = animalD[i].residents.length;
     };
     return animalsCount;
-  } else {
-    const test = data.animals.filter(selected => selected.name === species);
-    return test[0].residents.length;
-};
+  } 
+  const test = data.animals.filter(selected => selected.name === species);
+  return test[0].residents.length;
 }
 
 function entryCalculator(entrants) {
