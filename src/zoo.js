@@ -39,7 +39,7 @@ function createEmployee(personalInfo, associatedWith) {
 }
 
 function isManager(id) {
-  const verficaGerente = employees.some(gerente => 
+  const verficaGerente = employees.some(gerente =>
   gerente.managers.find(idGerente => idGerente === id));
   return verficaGerente;
 }
