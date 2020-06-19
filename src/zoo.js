@@ -10,10 +10,11 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
-const { animals, employees } = data;
+
+const { animals, employees, prices } = data;
 
 function animalsByIds(...ids) {
-  let animalsById = [];
+  const animalsById = [];
   for (id of ids) {
     animalsById.push(...animals.filter((animal) => animal.id === id));
   }
@@ -44,37 +45,49 @@ function isManager(id) {
   );
 }
 
-function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
-return employees.push(({id,firstName,lastName,managers,responsibleFor}))
+function addEmployee(
+  id,
+  firstName,
+  lastName,
+  managers = [],
+  responsibleFor = []
+) {
+  return employees.push({ id, firstName, lastName, managers, responsibleFor });
 }
 
 function animalCount(species) {
-  // seu código aqui
+  const listaCompleta = (lista, { name, residents }) => {
+    lista[name] = residents.length;
+    return lista;
+  };
+  return species
+    ? animals.find((animal) => (animal.name === species)).residents.length
+    : animals.reduce(listaCompleta, {});
 }
 
 function entryCalculator(entrants) {
-  // seu código aqui
+  
 }
 
-function animalMap(options) {
-  // seu código aqui
-}
+// function animalMap(options) {
+//   // seu código aqui
+// }
 
-function schedule(dayName) {
-  // seu código aqui
-}
+// function schedule(dayName) {
+//   // seu código aqui
+// }
 
-function oldestFromFirstSpecies(id) {
-  // seu código aqui
-}
+// function oldestFromFirstSpecies(id) {
+//   // seu código aqui
+// }
 
-function increasePrices(percentage) {
-  // seu código aqui
-}
+// function increasePrices(percentage) {
+//   // seu código aqui
+// }
 
-function employeeCoverage(idOrName) {
-  // seu código aqui
-}
+// function employeeCoverage(idOrName) {
+//   // seu código aqui
+// }
 
 module.exports = {
   entryCalculator,
