@@ -10,9 +10,19 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
+const { animals } = require('./data');
 
-function animalsByIds(ids) {
-  // seu código aqui
+function animalsByIds(...ids) {
+  //Tratamento caso seja vazio.
+  const vetAux = [];
+  //Tratamento para 1 ou 2 posições.
+  const [pos1,pos2] = ids;
+  if (ids == false) {
+    return vetAux;
+  }
+  const animalsReturn = animals.filter(element => element.id === pos1
+    || element.id === pos2);
+  return animalsReturn;
 }
 
 function animalsOlderThan(animal, age) {
