@@ -18,7 +18,6 @@ function animalsByIds(...ids) {
       if (element.id === id) {
         return element;
       }
-      return;
     });
     return array.push(objAnimal);
   });
@@ -26,7 +25,7 @@ function animalsByIds(...ids) {
 }
 
 function animalsOlderThan(animal, age) {
-  // seu código aqui
+  
 }
 
 function employeeByName(employeeName) {
