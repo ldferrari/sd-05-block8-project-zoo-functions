@@ -13,7 +13,7 @@ const data = require('./data');
 
 const { animals, employees, hours: visitingDays } = data;
 
-function animalsByIds(ids) {
+function animalsByIds(...ids) {
   // seu código aqui
   const filteredAnimals = [];
   ids.forEach(idx => filteredAnimals.push(...animals.filter(animal => animal.id === idx)));
@@ -22,6 +22,8 @@ function animalsByIds(ids) {
 
 function animalsOlderThan(animal, age) {
   // seu código aqui
+  const { residents } = animals.find(({ name }) => name == animal);
+  return residents.every(({ age: resAge }) => resAge >= age);
 }
 
 function employeeByName(employeeName) {
