@@ -8,11 +8,16 @@ eslint no-unused-vars: [
   }
 ]
 */
-
+//
 const data = require('./data');
 
-function animalsByIds(ids) {
-  // seu código aqui
+function animalsByIds(...ids) {
+// sem parâmetros, retorna um array vazio
+// com um único id, retorna os animais com este id
+// com mais de um id, retorna os animais que têm um desses ids
+  const animal = [];
+  ids.forEach(id => animal.push(id === undefined ? '' : data.animals.find(encontra => encontra.id === id)));
+  return animal;
 }
 
 function animalsOlderThan(animal, age) {
