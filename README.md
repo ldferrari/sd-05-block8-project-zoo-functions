@@ -58,9 +58,13 @@ Se atente para os comentários do _CodeClimate_ que irão conter **dicas valiosa
 
 ---
 
-### Data de Entrega
+### Entrega
 
-O projeto tem até a seguinte data: `26/06/2020 - 14:00h`. Para ser entregue a avaliação final.
+ - Projeto Individual.
+
+ - Serão dois dias de projeto.
+
+ - O projeto tem até a seguinte data: `26/06/2020 - 14:00h`. Para ser entregue a avaliação final.
 
 
 ## O que deverá ser desenvolvido
