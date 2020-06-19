@@ -25,10 +25,18 @@ function animalsByIds(...ids) {
   return arraySaida;
 }
 
+/* implemente a função animalsOlderThan:
+Ao passar o nome de uma espécie e uma idade, testa se
+todos os animais desta espécie possuem a idade mínima especificada */
 
 function animalsOlderThan(animal, age) {
   // seu código aqui
+  const saida = animals.find(cadaAnimal => cadaAnimal.name === animal).residents.every(elemento => elemento.age > age);
+
+  return saida;
 }
+
+console.log(animalsOlderThan('penguins', 10));
 
 function employeeByName(employeeName) {
   // seu código aqui
