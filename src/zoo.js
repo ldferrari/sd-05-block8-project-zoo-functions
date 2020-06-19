@@ -9,14 +9,16 @@ eslint no-unused-vars: [
 ]
 */
 
-const data = require('./data');
+const data = require("./data");
 
 const { animals, employees, hours: visitingDays } = data;
 
 function animalsByIds(...ids) {
   // seu código aqui
   const filteredAnimals = [];
-  ids.forEach(idx => filteredAnimals.push(...animals.filter(animal => animal.id === idx)));
+  ids.forEach((idx) =>
+    filteredAnimals.push(...animals.filter((animal) => animal.id === idx))
+  );
   return filteredAnimals;
 }
 
@@ -28,9 +30,11 @@ function animalsOlderThan(animal, age) {
 
 function employeeByName(employeeName) {
   // seu código aqui
-  const employee = employees.find(({ firstName, lastName }) => firstName === employeeName
-    || lastName === employeeName);
-  return employee? employee: {};
+  const employee = employees.find(
+    ({ firstName, lastName }) =>
+      firstName === employeeName || lastName === employeeName
+  );
+  return employee ? employee : {};
 }
 
 function createEmployee(personalInfo, associatedWith) {
@@ -40,7 +44,9 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   // seu código aqui
-  const team = employees.filter(employee => employee.managers.some(item => item === id));
+  const team = employees.filter((employee) =>
+    employee.managers.some((item) => item === id)
+  );
   return team.length;
 }
 
@@ -52,25 +58,28 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
     lastName,
     managers,
     responsibleFor,
-  }
+  };
   employees.push(newEmployee);
 }
 
 function animalCount(species) {
   // seu código aqui
-  const countResident = animals.find(({ name }) => name === species );
-  const countAllResidents = animals.reduce((acc, {residents, name}) => {
-                                acc[name] = residents.length;
-                                return acc;
-                              }, {});
-  return species? countResident.residents.length : countAllResidents;
+  const countResident = animals.find(({ name }) => name === species);
+  const countAllResidents = animals.reduce((acc, { residents, name }) => {
+    acc[name] = residents.length;
+    return acc;
+  }, {});
+  return species ? countResident.residents.length : countAllResidents;
 }
 
 function entryCalculator(entrants) {
   // seu código aqui
   if (!entrants || Object.entries(entrants).length === 0) return 0;
   const { prices } = data;
-  const amount = Object.keys(prices).reduce((acc, entType) => acc + (prices[entType] * entrants[entType]), 0);
+  const amount = Object.keys(prices).reduce(
+    (acc, entType) => acc + prices[entType] * entrants[entType],
+    0
+  );
   return amount;
 }
 
