@@ -52,13 +52,13 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 
 function animalCount(species) {
   const animalsCount = {};
-  const animalD = data.animals
+  const animalD = data.animals;
   if (species === undefined) {
-    for (let i = 0 ; i < data.animals.length; i += 1) {
+    for (let i = 0; i < data.animals.length; i += 1) {
       animalsCount[animalD[i].name] = animalD[i].residents.length;
-    };
+    }
     return animalsCount;
-  } 
+  }
   const test = data.animals.filter(selected => selected.name === species);
   return test[0].residents.length;
 }
