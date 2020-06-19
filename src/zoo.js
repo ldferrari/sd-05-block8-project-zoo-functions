@@ -46,9 +46,9 @@ function isManager(id) {
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
   const newEmployee = {
-    id, 
+    id,
     firstName,
-    lastName, 
+    lastName,
     managers,
     responsibleFor,
   }
