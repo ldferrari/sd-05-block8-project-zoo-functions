@@ -20,8 +20,7 @@ function animalsByIds(...ids) {
   */
   // seu código aqui
   const idsAnimals = [];
-  ids.forEach(item => idsAnimals.push(animals.find(animal => animal.id === item)
-  ));
+  ids.forEach(item => idsAnimals.push(animals.find(animal => animal.id === item)));
   return idsAnimals;
 }
 
