@@ -64,15 +64,15 @@ function animalCount(species) {
 }
 
 function entryCalculator(entrants) { 
+  let totalPrice = 0;
+  if (entrants === undefined || entrants === {}) return totalPrice;
   const adultPrice = data.prices.Adult;
   const seniorPrice = data.prices.Senior;
   const childPrice = data.prices.Child;
-  let totalPrice = 0;
-  if (entrants !== undefined && entrants!== {}) {   
-    if(entrants.Adult !== undefined)  totalPrice += entrants.Adult*adultPrice;
-    if(entrants.Senior !== undefined)  totalPrice += entrants.Senior*seniorPrice;
-    if(entrants.Child !== undefined)  totalPrice += entrants.Child*childPrice;
-  }
+  if(entrants.Adult !== undefined)  totalPrice += entrants.Adult*adultPrice;
+  if(entrants.Senior !== undefined)  totalPrice += entrants.Senior*seniorPrice;
+  if(entrants.Child !== undefined)  totalPrice += entrants.Child*childPrice;
+  
   return totalPrice;
 }
 
