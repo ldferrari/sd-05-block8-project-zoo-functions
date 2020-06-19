@@ -45,10 +45,10 @@ Quando provido o último nome do funcionário, retorna o objeto do funcionário 
 function employeeByName(employeeName) {
   // seu código aqui
   if (!employeeName) return {};
-  const saida = employees.find(employee => employee.firstName === employeeName || employee.lastName === employeeName);
+  const saida = employees.find(employee => employee.firstName === employeeName ||
+   employee.lastName === employeeName);
   return saida;
 }
-console.log(employeeByName(''));
 
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
