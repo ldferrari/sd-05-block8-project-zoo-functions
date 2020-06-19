@@ -45,7 +45,7 @@ function createEmployee(personalInfo, associatedWith) {
 function isManager(id) {
   // seu código aqui
   const team = employees.filter(employee =>
-    employee.managers.some(item => item === id);
+    employee.managers.some(item => item === id)
   );
   return team.length;
 }
