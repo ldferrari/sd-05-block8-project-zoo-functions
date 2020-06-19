@@ -37,10 +37,14 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   // seu código aqui
+  
 }
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
+function addEmployee(id, firstName, lastName, managers=[], responsibleFor=[]) {
   // seu código aqui
+  const employee={id:id,firstName:firstName,lastName:lastName,managers:managers,responsibleFor:responsibleFor};
+  employees.push(employee)
+  return employee;
 }
 
 function animalCount(species) {
