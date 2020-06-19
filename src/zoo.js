@@ -11,14 +11,14 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-function searchObjAnimal(animalName) {
-  const objAnimal = data.animals.find((element) => {
-    if (element.name === animal) {
+function searchObjAnimal(variavel, valor) {
+  const objeto = data.animals.find((element) => {
+    if (element[variavel] === valor) {
       return element;
     }
     return null;
   });
-  return objAnimal;
+  return objeto;
 }
 
 function animalsByIds(...ids) {
@@ -62,6 +62,7 @@ function employeeByName(employeeName) {
     if (element.firstName === employeeName || element.lastName === employeeName) {
       return element;
     }
+    return null;
   });
   return objEmployees;
 }
