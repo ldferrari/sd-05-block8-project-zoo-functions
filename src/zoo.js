@@ -21,15 +21,20 @@ function animalsByIds(...ids) {
   return animaux;
 }
 
-function animalsOlderThan(animalName, age) {
+function animalsOlderThan(animal, age) {
   // seu código aqui
-  const findSpecies = animals.find((animal) => animal.name == animalName);
+  const findSpecies = animals.find((anim) => anim.name == animal);
   const checkAge = findSpecies.residents.every((res) => res.age >= age);
   return checkAge;
 }
 
 function employeeByName(employeeName) {
   // seu código aqui
+  const isStaff = data.employees.find(
+    (person) =>
+      employeeName == person.firstName || employeeName == person.lastName
+  );
+  return isStaff;
 }
 
 function createEmployee(personalInfo, associatedWith) {
