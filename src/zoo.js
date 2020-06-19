@@ -9,16 +9,16 @@ eslint no-unused-vars: [
 ]
 */
 
-const data = require('./data');
+const data = require("./data");
 
 const { animals, employees } = data;
 
 function animalsByIds(...ids) {
   // seu código aqui
   const filteredAnimals = [];
-  ids.forEach(idx =>
-    filteredAnimals.push(...animals.filter(animal => animal.id === idx))
-  )
+  ids.forEach((idx) =>
+    filteredAnimals.push(animals.find((animal) => animal.id === idx))
+  );
   return filteredAnimals;
 }
 
@@ -30,7 +30,7 @@ function animalsOlderThan(animal, age) {
 
 function employeeByName(employeeName) {
   // seu código aqui
-  if (!employeeName) return ({});
+  if (!employeeName) return {};
   const employee = employees.find(
     ({ firstName, lastName }) =>
       firstName === employeeName || lastName === employeeName
@@ -45,10 +45,11 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   // seu código aqui
-  const team = employees.filter(employee =>
-    employee.managers.some(item => item === id)
+  const team = employees.filter((employee) =>
+    employee.managers.some((item) => item === id)
   );
-  return team.length;
+  if (!team.length > 0) return false;
+  return true;
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
@@ -78,7 +79,7 @@ function entryCalculator(entrants) {
   if (!entrants || Object.entries(entrants).length === 0) return 0;
   const { prices } = data;
   const amount = Object.keys(prices).reduce(
-    (acc, entType) => acc + (prices[entType] * entrants[entType]),
+    (acc, entType) => acc + prices[entType] * entrants[entType],
     0
   );
   return amount;
