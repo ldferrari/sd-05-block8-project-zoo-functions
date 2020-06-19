@@ -12,12 +12,12 @@ eslint no-unused-vars: [
 const data = require('./data');
 
 function animalsByIds(a, b) {
-  let arrFiltered = data.animals.filter( selected => selected.id === a || selected.id ===b)
+  let arrFiltered = data.animals.filter( selected => selected.id === a || selected.id === b)
   return arrFiltered
 }
 
 function animalsOlderThan(animal, age) {
-  let test = data.animals.every( selected => selected.name === animal && selected.residents.age === age)
+  let test = data.animals.filter( selected => selected.name === animal)[0].residents.every( animaL => animaL.age >= age)
   return test
 }
 
