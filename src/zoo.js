@@ -17,8 +17,8 @@ function animalsByIds(...ids) {
   // seu código aqui
   const filteredAnimals = [];
   ids.forEach(idx =>
-    filteredAnimals.push(...animals.filter(animal => animal.id === idx));
-  );
+    filteredAnimals.push(...animals.filter(animal => animal.id === idx))
+  )
   return filteredAnimals;
 }
 
