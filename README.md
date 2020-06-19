@@ -136,8 +136,6 @@ Antes de começar analise o arquivo `src/data.js`, para ver os dados que serão 
 
 ### DURANTE O DESENVOLVIMENTO
 
-* ⚠ **LEMBRE-SE DE CRIAR TODOS OS ARQUIVOS DENTRO DA PASTA COM O SEU NOME** ⚠
-
 * ⚠ **PULL REQUESTS COM ISSUES NO CODE CLIMATE NÃO SERÃO AVALIADAS, ATENTE-SE PARA RESOLVÊ-LAS ANTES DE FINALIZAR O DESENVOLVIMENTO!** ⚠
 
 * Faça `commits` das alterações que você fizer no código regularmente
