@@ -36,7 +36,7 @@ function employeeByName(employeeName) {
     ({ firstName, lastName }) =>
       firstName === employeeName || lastName === employeeName
   );
-  return employeeName;
+  return employee;
 }
 
 function createEmployee(personalInfo, associatedWith) {
