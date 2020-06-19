@@ -63,8 +63,17 @@ function animalCount(species) {
   return test[0].residents.length;
 }
 
-function entryCalculator(entrants) {
-  // seu código aqui
+function entryCalculator(entrants) { 
+  const adultPrice = data.prices.Adult;
+  const seniorPrice = data.prices.Senior;
+  const childPrice = data.prices.Child;
+  let totalPrice = 0;
+  if (entrants !== undefined && entrants!== {}) {   
+    if(entrants.Adult !== undefined)  totalPrice += entrants.Adult*adultPrice;
+    if(entrants.Senior !== undefined)  totalPrice += entrants.Senior*seniorPrice;
+    if(entrants.Child !== undefined)  totalPrice += entrants.Child*childPrice;
+  }
+  return totalPrice;
 }
 
 function animalMap(options) {
