@@ -9,27 +9,27 @@ eslint no-unused-vars: [
 ]
 */
 
-const data = require("./data");
-const { employees } = require("./data");
+const data = require('./data');
+const { employees } = require('./data');
 
 function animalsByIds(...ids) {
   // seu código aqui
   const animais = [];
-  ids.forEach((item) =>
-    animais.push(...data.animals.filter((animal) => animal.id === item))
+  ids.forEach(item =>
+    animais.push(...data.animals.filter(animal => animal.id === item)),
   );
   return animais;
 }
 function animalsOlderThan(animal, age) {
   // seu código aqui
-  const { residents } = data.animals.find(({ name }) => name == animal);
+  const { residents } = data.animals.find(({ name }) => name === animal);
   return residents.every(({ age: res }) => res >= age);
 }
 function employeeByName(employeeName) {
   // seu código aqui
   const empregado = data.employees.find(
     ({ lastName, firstName }) =>
-      lastName === employeeName || firstName === employeeName
+      lastName === employeeName || firstName === employeeName,
   );
   return empregado || {};
 }
@@ -43,9 +43,9 @@ function createEmployee(personalInfo, associatedWith) {
 function isManager(id) {
   // seu código aqui
   const team = data.employees.filter(empregad =>
-    empregad.managers.some((item) => item === id)
+    empregad.managers.some(item => item === id),
   );
-  return team.length > 0 ? true : false;
+  return team.length > 0;
 }
 
 function addEmployee(
@@ -53,7 +53,7 @@ function addEmployee(
   firstName,
   lastName,
   managers = [],
-  responsibleFor = []
+  responsibleFor = [],
 ) {
   // seu código aqui
   const novoEmpregado = { id, firstName, lastName, managers, responsibleFor };
@@ -74,8 +74,8 @@ function entryCalculator(entrants) {
   // seu código aqui
   if (!entrants || Object.entries(entrants).length === 0) return 0;
   const soma = Object.keys(data.prices).reduce(
-    (acc, precos) => acc + data.prices[precos] * entrants[precos],
-    0
+    (acc, precos) => acc + (data.prices[precos] * entrants[precos]),
+    0,
   );
   console.log(soma);
   return soma;
