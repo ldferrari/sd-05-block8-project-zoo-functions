@@ -10,13 +10,15 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
+const { animals } = require('./data');
 
 function animalsByIds(ids) {
-  // seu código aqui
 }
 
+// Ao passar o nome de uma espécie e uma idade, testa se todos os animais desta espécie possuem a idade mínima especificada
 function animalsOlderThan(animal, age) {
-  // seu código aqui
+  const whichAnimal = animals.find(animalData => animalData.name === animal).residents.every(animalData => animalData.age >= age);
+  return whichAnimal;
 }
 
 function employeeByName(employeeName) {
