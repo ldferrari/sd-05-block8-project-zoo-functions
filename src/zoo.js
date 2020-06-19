@@ -45,7 +45,8 @@ function employeeByName(employeeName) {
 }
 
 function createEmployee(personalInfo, associatedWith) {
-  return { ...personalInfo, ...associatedWith };
+  const ret = { ...personalInfo, ...associatedWith };
+  return ret;
   // seu código aqui
 }
 
