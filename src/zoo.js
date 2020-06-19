@@ -39,11 +39,13 @@ function createEmployee(personalInfo, associatedWith) {
 }
 
 function isManager(id) {
-  
+  return employees.some(
+    (employee) => id === employee.managers.find((item) => item === id)
+  );
 }
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-  // seu código aqui
+function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
+return employees.push(({id,firstName,lastName,managers,responsibleFor}))
 }
 
 function animalCount(species) {
