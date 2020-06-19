@@ -18,6 +18,7 @@ function animalsByIds(...ids) {
       if (element.id === id) {
         return element;
       }
+      return null;
     });
     return array.push(objAnimal);
   });
@@ -25,7 +26,23 @@ function animalsByIds(...ids) {
 }
 
 function animalsOlderThan(animal, age) {
-  
+  const objAnimals = data.animals.find((element) => {
+    if (element.name === animal) {
+      return element;
+    }
+    return null;
+  });
+  const residents = objAnimals.residents;
+  console.log(residents);
+  let result = true;
+  residents.forEach((element) => {
+    if (element.age < age) {
+      result = false;
+    } else {
+      result = true;
+    }
+  });
+  return result;
 }
 
 function employeeByName(employeeName) {
