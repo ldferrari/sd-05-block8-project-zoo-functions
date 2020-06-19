@@ -49,8 +49,10 @@ function isManager(id) {
     .find(numeros => numeros === id) === id);
 }
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
+function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
   // seu código aqui
+  const empregado = {id, firstName, lastName, managers, responsibleFor};
+  employees.push(empregado);
 }
 
 function animalCount(species) {
