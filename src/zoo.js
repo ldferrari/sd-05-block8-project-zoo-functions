@@ -78,7 +78,7 @@ function entryCalculator(entrants) {
   const { prices } = data;
   const amount = Object.keys(prices).reduce(
     (acc, entType) => acc + (prices[entType] * entrants[entType]),
-    0;
+    0
   );
   return amount;
 }
