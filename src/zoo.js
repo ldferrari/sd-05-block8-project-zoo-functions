@@ -167,6 +167,35 @@ function increasePrices(percentage) {
 
 function employeeCoverage(idOrName) {
   // seu código aqui
+  let resp={}
+  if(idOrName==undefined){
+    employees.forEach(el=>{
+      const fullName=`${el.firstName} ${el.lastName}`
+      Object.assign(resp,listOfAnimals(fullName,el))
+    })
+    return resp
+  }/*
+  if(/.{8}-.{4}-.{4}-.{4}-.{12}/.test(idOrName)){
+    const el=employees.find(el=>el.id==idOrName);
+    const fullName=`${el.firstName} ${el.lastName}`
+    return listOfAnimals(fullName,el);
+  }*/
+  let el
+  const options=['firstName','lastName','id']  
+  let index=0;
+  while(el==undefined){
+   el= employees.find(el=>el[options[index]]==idOrName);
+    index++;
+  }
+    const fullName=`${el.firstName} ${el.lastName}`
+    return listOfAnimals(fullName,el);
+}
+  employeeCoverage('Stephanie')
+function listOfAnimals(keysToUse,el){
+  const resp={}
+    resp[keysToUse]=[];
+    el.responsibleFor.forEach(ell=>resp[keysToUse].push(animals.find(an=>an.id==ell).name))
+  return resp
 }
 
 module.exports = {
