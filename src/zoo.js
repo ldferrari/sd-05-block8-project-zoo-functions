@@ -152,12 +152,18 @@ function oldestFromFirstSpecies(id) {
   })
   return [olderAnimal.name,olderAnimal.sex,olderAnimal.age];
 }
-oldestFromFirstSpecies('9e7d4524-363c-416a-8759-8aa7e50c0992');
-//oldestFromFirstSpecies('4b40a139-d4dc-4f09-822d-ec25e819a5ad');
+
 
 function increasePrices(percentage) {
   // seu código aqui
+  const newPrice=prices;
+  let {Adult,Child,Senior}=newPrice;
+  prices.Adult= Math.round(Adult*(1+percentage/100)*100)/100
+  prices.Child=Math.round(Child*(1+percentage/100)*100)/100
+  prices.Senior=Math.round(Senior*(1+percentage/100)*100)/100
+  return prices
 }
+
 
 function employeeCoverage(idOrName) {
   // seu código aqui
