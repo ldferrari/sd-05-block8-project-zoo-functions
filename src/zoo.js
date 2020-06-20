@@ -71,15 +71,7 @@ function animalCount(species) {
     return list;
   };
   return species ? findByName.residents.length : animals.reduce(all, {});
-} 
-
-//   const quantidade = data.animals.find(({ name }) => name === species);
-//   const todas = data.animals.reduce((acc, { name, residents }) => {
-//     acc[name] = residents.length;
-//     return acc;
-//   }, {});
-//   return species ? quantidade.residents.length : todas;
-// }
+}
 
 function entryCalculator(entrants) {
   // seu código aqui
