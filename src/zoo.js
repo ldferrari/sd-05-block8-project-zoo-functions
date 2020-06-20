@@ -76,7 +76,6 @@ function animalCount(species) {
 function entryCalculator(entrants) {
   // seu código aqui
   if (!entrants || Object.entries(entrants).length === 0) return 0;
-  const { prices } = data;
   // prettier-ignore
   const amount = Object.keys(prices).reduce(
     (acc, entType) => acc + (prices[entType] * entrants[entType]),
