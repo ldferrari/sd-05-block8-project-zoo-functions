@@ -64,12 +64,10 @@ function animalCount(species) {
       const name = el.name;
       const quant = el.residents.length;
       retorno[name] = quant;
-      
     });
     return retorno;
   }
   return animals.find(el => el.name === species).residents.length;
-   
 }
 /* console.log(animalCount());
 console.log(animalCount('lions'));
