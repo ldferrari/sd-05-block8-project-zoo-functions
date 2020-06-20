@@ -101,23 +101,46 @@ function entryCalculator(entrants) {
   return result;
 }
 
-function animalMap(options) {
-  if (options === undefined) {
-    let result = {};
-    let optionsMap = ['NE', 'NW', 'SE', 'SW'];
-    optionsMap.forEach(element => {
-      let animalsList = [];
-      data.animals.forEach(animal => {
-        if (animal.location === element && includeNames = true) {
-          animalsList.push(animal.name);
-        }
-      });
-      result = {...result, [element]: animalsList};
-    });
-    return result;
+function getResidentsNames(nameAnimal, sex = undefined) {
+  let getObj = searchObjAnimal('name', nameAnimal);
+  let arrayResidents = [];
+  if (sex !== undefined) { 
+    getObj = getObj.residents;
+    const objFiltered = getObj.filter(element => element.sex === sex);
+    arrayResidents = objFiltered.map(element => element.name);
+  } else {
+    arrayResidents = getObj.residents.map(element => element.name);
   }
+  
+  return arrayResidents;
 }
-animalMap();
+
+function animalMap(options) {
+  (options === undefined) ? options = {} : options;
+  const {includeNames = false, sorted = false, sex = undefined} = options;
+  let result = {};
+  let optionsMap = ['NE', 'NW', 'SE', 'SW'];
+  optionsMap.forEach(element => {
+    let animalsList = [];
+    data.animals.forEach(animal => {
+      if (animal.location === element && includeNames === false) {
+        animalsList.push(animal.name);
+        result = {...result, [element]: animalsList};
+      }
+      if (animal.location === element && includeNames === true) {
+        let listNames = getResidentsNames(animal.name, sex);
+        if (sorted === true) {
+          listNames.sort();
+        }
+        animalsList[animal.name] = [...listNames];
+        result = {...result, [element]: {...animalsList}};
+      }
+    });
+    
+  });
+  return result;
+}
+console.log(animalMap({ includeNames: true, sorted: true}));
 
 function schedule(dayName) {
   // seu código aqui
