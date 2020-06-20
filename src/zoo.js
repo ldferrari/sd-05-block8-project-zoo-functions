@@ -74,12 +74,102 @@ function entryCalculator(entrants) {
   if (!entrants || Object.keys(entrants).length === 0) return 0;
 
   const { Adult, Child, Senior } = entrants;
+ 
+  // TODO
+  const { Adult : Aprice, Child : Cprice, Senior : Sprice } = prices;
 
-  return (Adult * prices.Adult) + (Child * prices.Child) + (Senior * prices.Senior);
+  return (Adult * Aprice) + (Child * Cprice) + (Senior * Sprice);
 }
 
 function animalMap(options) {
-  // seu código aqui
+  const NEAnimals = animals.filter(a => a.location === 'NE').map(neAnim => neAnim.name);
+  const NWAnimals =  animals.filter(a => a.location === 'NW').map(neAnim => neAnim.name);
+  const SEAnimals =  animals.filter(a => a.location === 'SE').map(neAnim => neAnim.name);
+  const SWAnimals =  animals.filter(a => a.location === 'SW').map(neAnim => neAnim.name);
+
+  if (!options) {
+    return {
+      NE: NEAnimals,
+      NW: NWAnimals,
+      SE: SEAnimals,
+      SW: SWAnimals,
+    };
+  }
+
+  const { includeNames = false} = options;
+
+  if (includeNames) {
+    //Extracting lion and giraffe from NEANIMALS array
+    // [lionsVAR, giraffesVAR] = NEAnimals;
+
+    // Constructing NE animmal with residents object
+    let lionsNames = [];   
+    // Do array of lions residents
+    animals.filter((a) => a.location === "NE").forEach((eIsLion) => {
+        if (eIsLion.name === 'lions') {
+          lionsNames = eIsLion.residents;
+        }
+      });
+    //Extracting residents name
+    [lion1, lion2, lion3, lion4] = lionsNames;
+    const { name: lion1name } = lion1;
+    const { name: lion2name } = lion2;
+    const { name: lion3name } = lion3;
+    const { name: lion4name } = lion4;
+
+    // ANCHOR Constructing NE animmal with residents object
+    let giraffesNames = [];   
+    // Do array of lions residents
+    animals.filter((a) => a.location === "NE").forEach((eIsGIF) => {
+        if (eIsGIF.name === 'giraffes') {
+          giraffesNames = eIsGIF.residents;
+        }
+      });
+    //Extracting residents name
+    [gif1, gif2, gif3, gif4, gif5, gif6] = giraffesNames;
+    const { name: gif1name } = gif1;
+    const { name: gif2name } = gif2;
+    const { name: gif3name } = gif3;
+    const { name: gif4name } = gif4;
+    const { name: gif5name } = gif5;
+    const { name: gif6name } = gif6;
+
+    // FIXME NW area 
+
+    // Constructing penguins
+
+
+    // ANCHOR Returns everything
+    return {
+      NE: [
+        {lions: [lion1name, lion2name, lion3name, lion4name]},
+        {giraffes: [gif1name, gif2name, gif3name, gif4name, gif5name, gif6name]},
+      ],
+      
+      NW: [
+        { tigers: [] },
+        { bears: [] },
+        { elephants: [] }
+      ],
+      // SE: [
+      //   { penguins: ['Joe', 'Tad', 'Keri', 'Nicholas'] },
+      //   { otters: ['Neville', 'Lloyd', 'Mercedes', 'Margherita'] }
+      // ],
+      // SW: [
+      //   { frogs: ['Cathey', 'Annice'] },
+      //   { snakes: ['Paulette', 'Bill'] }
+      // ]
+
+    };
+  }
+
+
+
+
+// Com opções especificadas, retorna nomes de animais
+// Com opções especificadas, retorna nomes de animais ordenados
+// Com opções especificadas, retorna somente nomes de animais macho/fêmea
+// Só retorna informações específicas de gênero se includeNames for setado
 }
 
 function schedule(dayName) {
