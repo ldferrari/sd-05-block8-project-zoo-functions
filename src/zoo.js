@@ -12,8 +12,8 @@ eslint no-unused-vars: [
 const data = require('./data');
 
 const { animals } = data;
+const { employees } = data;
 
-// const { employees } = data;
 // const { hours } = data;
 // const { prices } = data;
 
@@ -55,8 +55,24 @@ const minimunAge = animals.filter(specieName => {
 */
 }
 
+/*
+Sem parâmetros, retorna um objeto vazio
+Quando provido o primeiro nome do funcionário, retorna o objeto do funcionário
+Quando provido o último nome do funcionário, retorna o objeto do funcionário
+SE o parametro for o firstName OU o lastName do objeto em employees, retorna o objeto
+SENÃO retorna um objeto{} vazio.
+_________________BABY-STEPS_____________________
+1º SE employeeName não for passado, retorna um objeto{} vazio.
+2º Crie uma const que será retornada como objeto{}
+3º Tenho que acessar o value do first 'OU' last Name do objeto dentro do array employees
+usando find, some, every?
+*/
 function employeeByName(employeeName) {
-  // seu código aqui
+  if (!employeeName) return {};
+  const objEmployee = employees.find(name => // ache um key dentro de employees
+    (name.firstName === employeeName || name.lastName === employeeName));
+    // acesse o Value daquele Key
+  return objEmployee; // retorna o objeto{}
 }
 
 function createEmployee(personalInfo, associatedWith) {
