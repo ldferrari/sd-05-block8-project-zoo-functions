@@ -75,8 +75,20 @@ function employeeByName(employeeName) {
   return objEmployee; // retorna o objeto{}
 }
 
+/*
+Cria um novo colaborador a partir de objetos contendo informações
+pessoais = personalInfo e
+associatedWith = gerentes e animais gerenciados.
+Ou seja, crie um novo objeto. default deve funcionar!
+_________________BABY-STEPS_____________________
+1º desestruturo o objeto em id, firstName e lastName assossiando à personalInfo
+2º desestruturo o objeto em managers e responsibleFor assossiando à associatedWith
+3º retorno os parametros passados em um só objeto{}
+*/
 function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
+  const { id, firstName, lastName } = personalInfo;
+  const { managers, responsibleFor } = associatedWith;
+  return { id, firstName, lastName, managers, responsibleFor };
 }
 
 function isManager(id) {
