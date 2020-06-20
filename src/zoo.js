@@ -43,7 +43,7 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   // seu código aqui
-  const managerOrNot = employees.some((person) =>
+  const managerOrNot = employees.some(person =>
     person.managers.find(ids => ids === id));
   return managerOrNot;
 }
@@ -108,7 +108,7 @@ function schedule(dayName) {
     if (day === dayName) {
       ifDay = { dayName: `Open from ${day.open} until ${day.close}pm` };
     }
-    });
+  });
   return ifDay;
   // // 2. preparar retorno para todo dia quando n tiver dayName
   // let allDays = {};
