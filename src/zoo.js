@@ -161,33 +161,52 @@ function animalMap(options) {
       console.log(tigersNames)
       console.log(bearsNames)
 
-      // FIXME SE area 
+      // SE area 
 
-    // Constructing NW animals
-    let tigersNames = [];
-    let bearsNames = [];
-    let elephantsNames = [];
+    // Constructing SE animals
+    let penguinsNames = [];
+    let otterNames = [];
+    
   
-    animals.filter((a) => a.location === "NW").forEach((eIsAnimal) => {
-      if (eIsAnimal.name === 'tigers') {
+    animals.filter((a) => a.location === "SE").forEach((eIsAnimal) => {
+      if (eIsAnimal.name === 'penguins') {
         eIsAnimal.residents.forEach((rrr) => {
-          tigersNames.push(Object.values(rrr)[0])
+          penguinsNames.push(Object.values(rrr)[0])
         });
       }
-      if (eIsAnimal.name === 'bears') {         
+      if (eIsAnimal.name === 'otters') {         
         eIsAnimal.residents.forEach((rrr) => {
-          bearsNames.push(Object.values(rrr)[0])
+          otterNames.push(Object.values(rrr)[0])
         })
-      }
-      if (eIsAnimal.name === 'elephants') {         
-        eIsAnimal.residents.forEach((rrr) => {
-          elephantsNames.push(Object.values(rrr)[0])
-        })
-      }
+      }    
     });
 
-    console.log(tigersNames)
-    console.log(bearsNames)
+    console.log(penguinsNames)
+    console.log(otterNames)
+
+      // SE area 
+
+    // Constructing SW animals
+    let frogNames = [];
+    let snakesNames = [];
+    
+  
+    animals.filter((a) => a.location === "SW").forEach((eIsAnimal) => {
+      if (eIsAnimal.name === 'frogs') {
+        eIsAnimal.residents.forEach((rrr) => {
+          frogNames.push(Object.values(rrr)[0])
+        });
+      }
+      if (eIsAnimal.name === 'snakes') {         
+        eIsAnimal.residents.forEach((rrr) => {
+          snakesNames.push(Object.values(rrr)[0])
+        })
+      }    
+    });
+
+    console.log(frogNames)
+    console.log(snakesNames)
+
 
 
       
@@ -203,14 +222,14 @@ function animalMap(options) {
         { bears: bearsNames },
         { elephants: elephantsNames }
       ],
-      // SE: [
-      //   { penguins: ['Joe', 'Tad', 'Keri', 'Nicholas'] },
-      //   { otters: ['Neville', 'Lloyd', 'Mercedes', 'Margherita'] }
-      // ],
-      // SW: [
-      //   { frogs: ['Cathey', 'Annice'] },
-      //   { snakes: ['Paulette', 'Bill'] }
-      // ]
+      SE: [
+       { penguins: penguinsNames },
+       { otters: otterNames }
+       ],
+      SW: [
+       { frogs: frogNames },
+       { snakes: snakesNames }
+      ]
 
     };
   }
