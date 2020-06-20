@@ -55,14 +55,31 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
     firstName,
     lastName,
     managers,
-    responsibleFor
-  }
+    responsibleFor,
+  };
   employees.push(newStaff);
 }
 
 function animalCount(species) {
   // seu código aqui
-}
+  // preparar retorno de num de residentes quando param species é name
+  // preparar retorno de objeto acumulando species quando n tem param species
+  // condicionar o retorno de um ou outro dependendo da existência de param species
+  const findByName = animals.find(animal => animal.name === species);
+  const all = (list, { name, residents }) => {
+    list[name] = residents.length;
+    return list;
+  };
+  return species ? findByName.residents.length : animals.reduce(all, {});
+} 
+
+//   const quantidade = data.animals.find(({ name }) => name === species);
+//   const todas = data.animals.reduce((acc, { name, residents }) => {
+//     acc[name] = residents.length;
+//     return acc;
+//   }, {});
+//   return species ? quantidade.residents.length : todas;
+// }
 
 function entryCalculator(entrants) {
   // seu código aqui
