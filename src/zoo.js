@@ -102,7 +102,6 @@ function animalMap(options) {
     });
     return saida;
   }
-*/
   const { includeNames = false, sorted = false, sex = "" } = options;
   if (includeNames===true) {
     zoneArr.forEach(a => (saida[a] = []));
@@ -124,7 +123,7 @@ function animalMap(options) {
 
   return saida;
 }
-
+*/
 function schedule(dayName) {
   // seu código aqui
 
