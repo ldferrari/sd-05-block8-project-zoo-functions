@@ -11,7 +11,7 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const { animals, employees, prices } = data;
+const { animals, employees, prices, hours } = data;
 
 function animalsByIds(...ids) {
   const animalsById = [];
@@ -68,17 +68,38 @@ function animalCount(species) {
 //   const entrants = { 'Adult': 2, 'Child': 3, 'Senior': 1 };
 function entryCalculator(entrants) {
   if (entrants === undefined || Object.entries(entrants).length === 0) return 0;
+  // prettier-ignore
   const totalPrice = (total, priceByAge) =>
-    total + prices[priceByAge] * entrants[priceByAge];
+    total + (prices[priceByAge] * entrants[priceByAge]);
   return Object.keys(prices).reduce(totalPrice, 0);
 }
 
 function animalMap(options) {
-  // seu código aqui
+  'oi';
 }
+// prettier-ignore
+const setSchedule = () =>
+  Object.keys(hours).forEach((dayValue) => {
+    if (hours[dayValue].open > 0) {
+      hours[dayValue] = `Open from ${hours[dayValue].open}am until ${
+        hours[dayValue].close - 12
+      }pm`;
+    } else hours[dayValue] = 'CLOSED';
+    return hours[dayValue];
+  });
 
 function schedule(dayName) {
-  // seu código aqui
+  if (hours.Monday !== 'CLOSED') {
+    setSchedule();
+  }
+  if (!dayName) return hours;
+  let day = {};
+  const selectedDay = Object.keys(hours);
+  // prettier-ignore
+  selectedDay.forEach((days) => {
+    if (days === dayName) day = { [dayName]: hours[dayName] };
+  });
+  return day;
 }
 
 function oldestFromFirstSpecies(id) {
