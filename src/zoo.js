@@ -74,9 +74,35 @@ function entryCalculator(entrants) {
   return Object.keys(prices).reduce(totalPrice, 0);
 }
 
-function animalMap(options) {
-  'oi';
-}
+const animalsName = (nameOfAnimal, sorted, sex) => {
+  const obj = {};
+  obj[nameOfAnimal] = animals.find(
+    element => element.name === nameOfAnimal,
+  ).residents;
+  if (sex) {
+    obj[nameOfAnimal] = obj[nameOfAnimal].filter(
+      resident => resident.sex === sex,
+    );
+  }
+  obj[nameOfAnimal] = obj[nameOfAnimal].map(({ name }) => name);
+  if (sorted) obj[nameOfAnimal].sort();
+  return obj;
+};
+
+const animalMap = (options = {}) => {
+  const { includeNames, sex, sorted } = options;
+  const mappedAnimal = animals.reduce((animal, { name, location }) => {
+    if (!animal[location]) animal[location] = [];
+    if (includeNames) {
+      animal[location].push(animalsName(name, sorted, sex));
+    } else {
+      animal[location].push(name);
+    }
+    return animal;
+  }, {});
+  return mappedAnimal;
+};
+
 // prettier-ignore
 const setSchedule = () =>
   Object.keys(hours).forEach((dayValue) => {
@@ -167,8 +193,6 @@ function employeeCoverage(idOrName) {
   });
   return allEmployeeObj;
 }
-
-console.log(employeeCoverage());
 
 module.exports = {
   entryCalculator,
