@@ -43,7 +43,7 @@ function employeeByName(employeeName) {
     }
   });
   return obj;
-};
+}
 
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
@@ -99,4 +99,4 @@ module.exports = {
   oldestFromFirstSpecies,
   increasePrices,
   createEmployee,
-}
+};
