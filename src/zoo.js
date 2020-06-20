@@ -91,7 +91,6 @@ function animalMap(options) {
 
 function schedule(dayName) {
   // seu código aqui
-
 }
 
 function oldestFromFirstSpecies(id) {
@@ -100,7 +99,7 @@ function oldestFromFirstSpecies(id) {
 function increasePrices(percentage) {
   // seu código aqui
   function increase(entryType) {
-    let newValue = prices[entryType] + ( prices[entryType] * (percentage / 100));
+    let newValue = prices[entryType] + prices[entryType] * (percentage / 100);
     newValue = Math.round((newValue + Number.EPSILON) * 100) / 100;
     newValue = Number(newValue);
     prices[entryType] = newValue;
