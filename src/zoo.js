@@ -128,11 +128,25 @@ function schedule(dayName) {
 }
 
 function oldestFromFirstSpecies(id) {
-  // seu código aqui
+  const {employees} = data;
+  const {animals} = data;
+
+  const animId = employees.filter(({id : ident}) => ident === id)[0]
+  .responsibleFor[0];
+  
+  const result = animals.filter(({id : ident}) => ident === animId)[0]
+  .residents
+  .sort((a, b) => b.age - a.age)[0];
+
+  return Object.values(result);  
 }
 
 function increasePrices(percentage) {
-  // seu código aqui
+  const {prices} = data;
+  Object.keys(prices).forEach((key) => {
+    prices[key] *= (percentage/100)+1;
+    prices[key] = (Math.floor(Number((prices[key])*100)+1)/100).toFixed(2);
+  })
 }
 
 function employeeCoverage(idOrName) {
