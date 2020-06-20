@@ -107,15 +107,29 @@ const findOldestAnimal = (old, older) => (old.age > older.age ? old : older);
 function oldestFromFirstSpecies(id) {
   const selectedEmployee = employees.find(employee => employee.id === id);
   const specieId = selectedEmployee.responsibleFor[0];
-  const selectedAnimal = animals.find(animal => animal.id === specieId).residents;
+  const selectedAnimal = animals.find(animal => animal.id === specieId)
+    .residents;
   const oldestAnimal = selectedAnimal.reduce(findOldestAnimal);
   const result = [];
   Object.values(oldestAnimal).forEach(key => result.push(key));
   return result;
 }
 
+function roundNum(num, length) {
+  // prettier-ignore
+  const number = Math.round(num * (10 ** length)) / (10 ** length);
+  return number;
+}
+
 function increasePrices(percentage) {
-  // seu código aqui
+  // prettier-ignore
+  return Object.keys(prices).forEach(
+    key =>
+      (prices[key] = roundNum(
+        prices[key] + (prices[key] * (percentage / 100)),
+        2,
+      )),
+  );
 }
 
 function employeeCoverage(idOrName) {
