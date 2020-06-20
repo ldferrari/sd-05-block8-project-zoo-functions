@@ -135,6 +135,7 @@ function entryCalculator(entrants) {
 //           });
 //         }
 //       });
+
 //     const tigersNames = [];
 //     const bearsNames = [];
 //     const elephantsNames = [];
@@ -292,9 +293,9 @@ function entryCalculator(entrants) {
 //   return mappedAnimal;
 // };
 
-function animalMap(options){
-
-};
+function animalMap(options) {
+  // code here
+}
 
 function schedule(dayName) {
   // seu código aqui
