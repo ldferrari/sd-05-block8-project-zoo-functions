@@ -298,11 +298,35 @@ function animalMap(options) {
 }
 
 function schedule(dayName) {
-  // seu código aqui
+// Sem parâmetros, retorna um cronograma legível para humanos
+// Se um único dia for passado, retorna somente este dia em um formato legível para humanos
 }
 
+// EXAMPLE
+
+// function longestNamedBook() {
+//   return books.reduce((biggestBook, currentBook) => {
+//     if (currentBook.name.length > biggestBook.name.length) {
+//       return currentBook;
+//     }
+//     return biggestBook;
+//   });
+// }
+
+const findOldest = (old, oldest) => {
+  if (old.age < oldest.age) {
+    return oldest;
+  }
+  return old;
+};
+
 function oldestFromFirstSpecies(id) {
-  // seu código aqui
+  const animalID = employees.find(e => e.id === id).responsibleFor[0];
+  const animalFoundObj = animals.find(e => e.id === animalID);
+  const olderAnimal = animalFoundObj.residents.reduce(findOldest);
+  const { name, sex, age } = olderAnimal;
+
+  return [name, sex, age];
 }
 
 function increasePrices(percentage) {
