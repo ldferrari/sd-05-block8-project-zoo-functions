@@ -194,13 +194,12 @@ function employeeCoverage(idOrName) {
   }
   let elemnt;
   const options = ['firstName', 'lastName', 'id'];
-  let index = 0;
-  while (elemnt === undefined) {
-    elemnt = employees.find((el) => {
-      return el[options[index]] === idOrName;
-    });
-    index += 1;
-  }
+  if(elemnt === undefined)
+    elemnt = employees.find(el => el[options[0]] === idOrName);
+  if(elemnt === undefined)
+    elemnt = employees.find(el => el[options[1]] === idOrName);
+  if(elemnt === undefined)
+    elemnt = employees.find(el => el[options[2]] === idOrName);
   const fullName = `${elemnt.firstName} ${elemnt.lastName}`;
   return listOfAnimals(fullName, elemnt);
 }
