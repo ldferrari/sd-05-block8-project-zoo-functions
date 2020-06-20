@@ -34,7 +34,7 @@ function employeeByName(employeeName) {
   const result = [];
   if (!employeeName) return result;
   const { employees } = data;
-  return employees.filter(( { firstName, lastName } ) => {
+  return employees.filter(({ firstName, lastName }) => {
     return firstName === employeeName || lastName === employeeName;
   })[0];
 }
@@ -50,7 +50,7 @@ function isManager(id) {
 
 function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
   const { employees } = data;
-  employees.push({id, firstName, lastName, managers, responsibleFor});
+  employees.push({id, firstName, lastName, managers, responsibleFor });
 }
 
 function animalCount(species) {
@@ -60,7 +60,7 @@ function animalCount(species) {
   if (species) return animals.find(({ name }) => name === species).residents.length;
 
   animals.map(({ name, residents }) => [name, residents.length])
-  .forEach(({ 0 : name, 1 : length }) => {
+  .forEach(({ 0: name, 1: length }) => {
     result[name] = length;
   });
   return result;
@@ -70,28 +70,29 @@ function entryCalculator(entrants = {}) {
   if (Object.entries(entrants).length === 0) return 0;
   const { prices } = data;
   let total = 0;
-  Object.entries(prices).forEach(({ 0 : key, 1 : price }) => {
+  Object.entries(prices).forEach(({ 0: key, 1: price }) => {
     total += entrants[key] * price;
-  })
+  });
   return total;
 }
 
 function animalMap(options = {}) {
   const { animals } = data;
   const result = {};
-  if (options.hasOwnProperty('sex') && options.includeNames)
+  if (Object.prototype.hasOwnProperty.call(options, 'sex') && options.includeNames) {
     animals.forEach(({ residents }, i) => animals[i].residents = residents.filter(({ sex }) => sex === options.sex));
-
-  animals.forEach(({location, name, residents}) => {
-    if (options.hasOwnProperty('includeNames') && options.includeNames) {
+  }
+  animals.forEach(({ location, name, residents }) => {
+    if (Object.prototype.hasOwnProperty.call(options, 'includedNames') && options.includeNames) {
       const animal = {};
-      animal[name] = residents.map(({ name }) => name);
+      animal[name] = residents.map(({ name: rName }) => rName);
       if (!Array.isArray(result[location])) result[location] = [];
       result[location].push(animal);
-      if (options.hasOwnProperty('sorted') && options.sorted)
-        result[location].forEach(anim => {
+      if (options.hasOwnProperty('sorted') && options.sorted) {
+        result[location].forEach((anim) => {
           if (anim[name]) anim[name] = anim[name].sort();
         });
+      }
     } else {
       if (!Array.isArray(result[location])) result[location] = [];
       result[location].push(name);
@@ -104,7 +105,7 @@ function schedule(dayName) {
   const { hours } = data;
   const result = {};
 
-  Object.entries(hours).forEach(({ 0 : key, 1 : value }) => {
+  Object.entries(hours).forEach(({ 0: key, 1: value }) => {
     const { open, close } = value;
     if (dayName && dayName === key || !dayName) {
       result[key] = (open === 0 && close === 0) ? 'CLOSED' : `Open from ${open}am until ${close - 12}pm`;
@@ -117,10 +118,10 @@ function oldestFromFirstSpecies(id) {
   const { employees } = data;
   const { animals } = data;
 
-  const animId = employees.filter(({ id : ident }) => ident === id)[0]
+  const animId = employees.filter(({ id: ident }) => ident === id)[0]
   .responsibleFor[0];
-  
-  const result = animals.filter(({ id : ident }) => ident === animId)[0]
+
+  const result = animals.filter(({ id: ident }) => ident === animId)[0]
   .residents
   .sort((a, b) => b.age - a.age)[0];
 
@@ -143,10 +144,10 @@ function employeeCoverage(idOrName) {
   if (idOrName) employees = employees.filter(({ id, firstName, lastName }) => {
     return (id === idOrName || firstName === idOrName || lastName === idOrName);
   });
-  
-  employees.forEach(({firstName, lastName, responsibleFor}) => {
-    result[`${ firstName } ${ lastName }`] = responsibleFor.map(id => {
-      return animals.filter(({ id : animId }) => animId === id)[0].name;
+
+  employees.forEach(({ firstName, lastName, responsibleFor }) => {
+    result[`${firstName} ${lastName}`] = responsibleFor.map(id => {
+      return animals.filter(({id: animId }) => animId === id)[0].name;
     });
   });
   return result;
