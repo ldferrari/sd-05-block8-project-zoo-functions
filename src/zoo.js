@@ -51,7 +51,9 @@ function createEmployee(personalInfo, associatedWith) {
 }
 
 function isManager(id) {
-  // seu código aqui
+const verifyEach = employees.map(element => element.managers.includes(id));
+const veryfy = verifyEach.some(element => element === true);
+return veryfy;
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
