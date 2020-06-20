@@ -174,12 +174,7 @@ function employeeCoverage(idOrName) {
       Object.assign(resp,listOfAnimals(fullName,el))
     })
     return resp
-  }/*
-  if(/.{8}-.{4}-.{4}-.{4}-.{12}/.test(idOrName)){
-    const el=employees.find(el=>el.id==idOrName);
-    const fullName=`${el.firstName} ${el.lastName}`
-    return listOfAnimals(fullName,el);
-  }*/
+  }
   let el
   const options=['firstName','lastName','id']  
   let index=0;
