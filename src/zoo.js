@@ -15,8 +15,8 @@ function animalsByIds(...ids) {
   const result = [];
   if(ids.length === 0) return result;
   const {animals} = data;
-  animals.forEach(animal => {
-    ids.forEach(id => {
+  animals.forEach((animal) => {
+    ids.forEach((id) => {
       if(id === animal.id) result.push(animal);
     });
   });
@@ -144,13 +144,26 @@ function oldestFromFirstSpecies(id) {
 function increasePrices(percentage) {
   const {prices} = data;
   Object.keys(prices).forEach((key) => {
-    prices[key] *= (percentage/100)+1;
-    prices[key] = (Math.floor(Number((prices[key])*100)+1)/100).toFixed(2);
+    prices[key] *= (percentage / 100) + 1;
+    prices[key] = (Math.floor(Number((prices[key]) * 100) + 1) / 100).toFixed(2);
   })
 }
 
 function employeeCoverage(idOrName) {
-  // seu código aqui
+  let {employees} = data;
+  const {animals} = data;
+  const result = {};
+
+  if(idOrName) employees = employees.filter(({id, firstName, lastName}) => {
+    return (id === idOrName || firstName === idOrName || lastName === idOrName);
+  })
+  
+  employees.forEach(({firstName, lastName, responsibleFor}) => {
+    result[`${firstName} ${lastName}`] = responsibleFor.map(id => {
+      return animals.filter(({id : animId}) => animId === id)[0].name;
+    }) 
+  });
+  return result;
 }
 
 module.exports = {
