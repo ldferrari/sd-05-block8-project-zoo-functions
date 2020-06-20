@@ -75,7 +75,9 @@ function animalCount(species) {
   // seu código aqui
   if (species === undefined) {
     const objetoSaida = {};
-    animals.forEach(animal => objetoSaida[animal.name] = animal.residents.length);
+    const vetorNomes = animals.map(animal => animal.name);
+    const vetorQuantidade = animals.map(animal => animal.residents.length);
+    vetorNomes.forEach((item, indice) => objetoSaida[item] = vetorQuantidade[indice]);
     return objetoSaida;
   }
   const quantidade = animals.find(animal => animal.name === species).residents.length;
