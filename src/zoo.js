@@ -29,8 +29,30 @@ function animalsByIds(...parametro) {
   return animalsArray;
 }
 
+/*
+Ao passar o nome de uma espécie e uma idade,
+testa se todos os animais desta espécie possuem a idade mínima especificada
+_________________BABY-STEPS_____________________
+fazer uma const pra receber true ou false.
+achar e retornar o nome da 'espécie' e
+SE a age for a mínima para todos dentro do residents[], retorna true ou false.
+*/
 function animalsOlderThan(animal, age) {
-  // seu código aqui
+  const minimunAge = animals.find(specieName =>
+    specieName.name === animal).residents.every(animalAge =>
+      animalAge.age >= age);
+  return minimunAge;
+/*
+______________1º-RACIOCINIO_______________
+const minimunAge = animals.filter(specieName => {
+  if (specieName === animal) {
+    return // retorna true SE 'age' for a mínima (<=)
+              para todos os animais da espécie declarada em 'animal'
+  }
+  return // retorna false SE pelo menos uma 'age' NÃO for a mínima (<=)
+            para todos os animais da espécie declarada em 'animal'
+})
+*/
 }
 
 function employeeByName(employeeName) {
