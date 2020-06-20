@@ -77,20 +77,20 @@ function entryCalculator(entrants = {}) {
 function animalMap(options = {}) {
   const { animals } = data;
   const result = {};
-  if (options.hasOwnProperty('sex') && options.includeNames) {
+  if (Object.prototype.hasOwnProperty.call(options, 'sex') && options.includeNames) {
     animals.forEach(({ residents }, i) => {
       animals[i].residents = residents.filter(({ sex }) => sex === options.sex);
     });
   }
   animals.forEach(({ location, name, residents }) => {
-    if (options.hasOwnProperty('includeNames') && options.includeNames) {
+    if (Object.prototype.hasOwnProperty.call(options, 'includeNames') && options.includeNames) {
       const animal = {};
       animal[name] = residents.map(({ name: nome }) => nome);
 
       if (!Array.isArray(result[location])) result[location] = [];
       result[location].push(animal);
 
-      if (options.hasOwnProperty('sorted') && options.sorted) {
+      if (Object.prototype.hasOwnProperty.call(options, 'sorted') && options.sorted) {
         result[location].forEach((anim) => {
           if (anim[name]) anim[name] = anim[name].sort();
         });
