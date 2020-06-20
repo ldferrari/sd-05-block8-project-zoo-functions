@@ -31,7 +31,7 @@ function animalsOlderThan(animal, age1) {
 }
 
 function employeeByName(employeeName = {}) {
-  let obj = {}
+  let obj = {};
   employees.forEach((element) => {
     if (element.firstName === employeeName) {
       obj = element;
