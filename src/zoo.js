@@ -132,9 +132,43 @@ function increasePrices(percentage) {
   );
 }
 
+// prettier-ignore
+const arrayPush = (param) => {
+  const array = [];
+  param.responsibleFor.forEach(employId =>
+    array.push(animals.find(animal => animal.id === employId).name),
+  );
+  return array;
+};
+
+// prettier-ignore
+const singleEmployee = (id) => {
+  const selectedEmployee = employees.find(
+    employee =>
+      id === employee.id ||
+      id === employee.lastName ||
+      id === employee.firstName,
+  );
+  const selectedEmployeeName = `${selectedEmployee.firstName} ${selectedEmployee.lastName}`;
+  const animalsArray = arrayPush(selectedEmployee);
+  return { [selectedEmployeeName]: animalsArray };
+};
+
 function employeeCoverage(idOrName) {
-  // seu código aqui
+  if (idOrName) {
+    return singleEmployee(idOrName);
+  }
+  const allEmployeeObj = {};
+  // prettier-ignore
+  employees.forEach((employee) => {
+    const allEmployeeArr = arrayPush(employee);
+    const employeeName = `${employee.firstName} ${employee.lastName}`;
+    allEmployeeObj[employeeName] = allEmployeeArr;
+  });
+  return allEmployeeObj;
 }
+
+console.log(employeeCoverage());
 
 module.exports = {
   entryCalculator,
