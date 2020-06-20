@@ -9,29 +9,31 @@ eslint no-unused-vars: [
 ]
 */
 
-const data = require('./data');
-const { animals, employees, prices } = require('./data');
+const data = require("./data");
+const { animals, employees, prices, hours } = require("./data");
 
 function animalsByIds(...ids) {
   // seu código aqui
   const animaux = [];
-  ids.forEach(idArgument =>
-    animaux.push(...animals.filter(animal => animal.id === idArgument)));
+  ids.forEach((idArgument) =>
+    animaux.push(...animals.filter((animal) => animal.id === idArgument))
+  );
   return animaux;
 }
 
 function animalsOlderThan(animal, age) {
   // seu código aqui
-  const findSpecies = animals.find(anim => anim.name === animal);
-  const checkAge = findSpecies.residents.every(res => res.age >= age);
+  const findSpecies = animals.find((anim) => anim.name === animal);
+  const checkAge = findSpecies.residents.every((res) => res.age >= age);
   return checkAge;
 }
 
 function employeeByName(employeeName) {
   // seu código aqui
   const isStaff = employees.find(
-    person =>
-      person.firstName === employeeName || person.lastName === employeeName);
+    (person) =>
+      person.firstName === employeeName || person.lastName === employeeName
+  );
   return isStaff || {};
 }
 
@@ -44,11 +46,19 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   // seu código aqui
-  const managerOrNot = employees.some(person => person.managers.find(ids => ids === id));
+  const managerOrNot = employees.some((person) =>
+    person.managers.find((ids) => ids === id)
+  );
   return managerOrNot;
 }
 
-function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
+function addEmployee(
+  id,
+  firstName,
+  lastName,
+  managers = [],
+  responsibleFor = []
+) {
   // seu código aqui
   const newStaff = {
     id,
@@ -65,7 +75,7 @@ function animalCount(species) {
   // preparar retorno de num de residentes quando param species é name
   // preparar retorno de objeto acumulando species quando n tem param species
   // condicionar o retorno de um ou outro dependendo da existência de param species
-  const findByName = animals.find(animal => animal.name === species);
+  const findByName = animals.find((animal) => animal.name === species);
   const all = (list, { name, residents }) => {
     list[name] = residents.length;
     return list;
@@ -82,9 +92,10 @@ function entryCalculator(entrants) {
   // nos outros casos, tem que retornar quantidade*preço para cada idade
   // sabendo que quantidade tà no entrants e preço no prices
   // os dois são objetos, os dois com mesmas chaves de idades
-  const accPrice = (total, eachAge) =>
-  total + (prices[eachAge] * entrants[eachAge]);
-  return Object.keys(prices).reduce(accPrice, 0);
+  const accPrice = (base, eachAge) =>
+  base + entrants[eachAge] * prices[eachAge];
+  const arrayPrices = Object.keys(prices);
+  return arrayPrices.reduce(accPrice, 0);
   // precisa do segundo param 0 para determinar que é number
 }
 
@@ -94,6 +105,23 @@ function animalMap(options) {
 
 function schedule(dayName) {
   // seu código aqui
+  // 1. preparar retorno para cada dia quando tiver um dayName
+    const eachDayWithinObject = Object.keys(hours);
+    let ifDay = {};
+    eachDayWithinObject.forEach((day) => {
+      if (day === dayName) {
+        ifDay = { dayName : `Open from ${day.open} until ${day.close}pm` }
+      }
+  });
+  return ifDay;
+  // // 2. preparar retorno para todo dia quando n tiver dayName
+  // let allDays = {};
+  // cuidado monday, if dayName = monday, valor da propriedade é 'CLOSED'
+  // if other day, adicionar valor com template literals
+  // template string retornado serà `Open from ${dayName.open} until ${datName.close}pm`
+  // vai ter que criar nova propriedade a cada dia dentro do objeto allDays retornado
+  // // 3. condicionar retorno final
+  // return dayName ? ifDay : allDays;
 }
 
 function oldestFromFirstSpecies(id) {
