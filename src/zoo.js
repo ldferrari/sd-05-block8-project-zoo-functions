@@ -34,7 +34,9 @@ function employeeByName(employeeName) {
   const result = [];
   if (!employeeName) return result;
   const { employees } = data;
-  return employees.filter(({ firstName, lastName }) => (firstName === employeeName || lastName === employeeName))[0];
+  return employees.filter(({ firstName, lastName }) => (
+    firstName === employeeName || lastName === employeeName
+  ))[0];
 }
 
 function createEmployee(personalInfo, associatedWith) {
@@ -142,11 +144,13 @@ function employeeCoverage(idOrName) {
   const result = {};
 
   if (idOrName) {
-    employees = employees.filter(({ id, firstName, lastName }) => (id === idOrName || firstName === idOrName || lastName === idOrName));
+    employees = employees.filter(({ id, firstName, lastName }) => (
+      id === idOrName || firstName === idOrName || lastName === idOrName
+    ));
   }
 
   employees.forEach(({ firstName, lastName, responsibleFor }) => (
-    result[`${firstName} ${lastName}`] = responsibleFor.map((id) => (
+    result[`${firstName} ${lastName}`] = responsibleFor.map(id => (
       animals.filter(({ id: animId }) => (animId === id))[0].name
     ))
   ));
