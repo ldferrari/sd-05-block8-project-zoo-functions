@@ -11,7 +11,7 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const { animals, employees } = data;
+const { animals, employees, prices } = data;
 
 function animalsByIds(...ids) {
   // seu código aqui
@@ -91,14 +91,21 @@ function animalMap(options) {
 
 function schedule(dayName) {
   // seu código aqui
+
 }
 
 function oldestFromFirstSpecies(id) {
   // seu código aqui
 }
-
 function increasePrices(percentage) {
   // seu código aqui
+  function increase(entryType) {
+    let newValue = prices[entryType] + ( prices[entryType] * (percentage / 100));
+    newValue = Math.round((newValue + Number.EPSILON) * 100) / 100;
+    newValue = Number(newValue);
+    prices[entryType] = newValue;
+  }
+  Object.keys(prices).forEach(item => increase(item));
 }
 
 function employeeCoverage(idOrName) {
