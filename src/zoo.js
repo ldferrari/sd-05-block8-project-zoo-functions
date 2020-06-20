@@ -61,7 +61,8 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   // seu código aqui
-  const saida = employees.some(employee => employee.managers.some(cadaElementoManagers => cadaElementoManagers === id));
+  const saida = employees.some(employee =>
+    employee.managers.some(cadaElementoManagers => cadaElementoManagers === id));
   return saida;
 }
 
