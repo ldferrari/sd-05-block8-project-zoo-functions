@@ -31,19 +31,19 @@ function animalsOlderThan(animal, age1) {
 }
 
 function employeeByName(employeeName) {
-  let obj ={};
+  let obj = {};
   if (employeeName === undefined) {
-  return obj;
+    return obj;
   }
-  employees.forEach(element => {
+  employees.forEach((element) => {
     if (element.firstName === employeeName) {
       obj = element;
-    } else if (element.lastName === employeeName){
+    } else if (element.lastName === employeeName) {
       obj = element;
     }
   });
   return obj;
-}
+};
 
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
