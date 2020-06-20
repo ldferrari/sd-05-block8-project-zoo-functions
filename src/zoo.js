@@ -86,7 +86,12 @@ function entryCalculator(...entrants) {
 }
 function animalMap(options) {
   //  your code here
-  return 0;
+  if (options===undefined){
+
+    return
+  } else{
+    return
+  } 
 }
 
 /*
