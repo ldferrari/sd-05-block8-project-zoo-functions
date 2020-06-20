@@ -60,15 +60,20 @@ function animalCount(species) {
   // seu código aqui
   const retorno = {};
   if (species === undefined) {
-    return animals.map((el) => {
+    animals.forEach((el) => {
       const name = el.name;
       const quant = el.residents.length;
       retorno[name] = quant;
-      return retorno;
+      
     });
+    return retorno;
   }
-  return (retorno[species] = animals.find(el => el.name === species).residents.length);
+  return animals.find(el => el.name === species).residents.length;
+   
 }
+/* console.log(animalCount());
+console.log(animalCount('lions'));
+console.log(animalCount('snakes')); */
 
 function entryCalculator(...entrants) {
   if (entrants.length === 0) return 0;
@@ -83,6 +88,7 @@ function animalMap(options) {
   //  your code here
   return 0;
 }
+
 /*
 function animalMap(options) {
   // seu código aqui
