@@ -96,42 +96,28 @@ function animalMap(options) {
     };
   }
 
-  const { includeNames = false} = options;
+  const { includeNames = false, sorted = false} = options;
 
   if (includeNames) {
-    // ANCHOR Construir os animais das outras regioes estao mais automatizados que NE
-
+    
     // Constructing NE animmal with residents object
     let lionsNames = [];   
-    // Do array of lions residents
-    animals.filter((a) => a.location === "NE").forEach((eIsLion) => {
-        if (eIsLion.name === 'lions') {
-          lionsNames = eIsLion.residents;
-        }
-      });
-    //Extracting residents name
-    [lion1, lion2, lion3, lion4] = lionsNames;
-    const { name: lion1name } = lion1;
-    const { name: lion2name } = lion2;
-    const { name: lion3name } = lion3;
-    const { name: lion4name } = lion4;
-
-    // ANCHOR Constructing NE animmal with residents object
-    let tigersNamesgiraffesNames = [];   
-    // Do array of lions residents
-    animals.filter((a) => a.location === "NE").forEach((eIsGIF) => {
-        if (eIsGIF.name === 'giraffes') {
-          giraffesNames = eIsGIF.residents;
-        }
-      });
-    //Extracting residents name
-    [gif1, gif2, gif3, gif4, gif5, gif6] = giraffesNames;
-    const { name: gif1name } = gif1;
-    const { name: gif2name } = gif2;
-    const { name: gif3name } = gif3;
-    const { name: gif4name } = gif4;
-    const { name: gif5name } = gif5;
-    const { name: gif6name } = gif6;
+    let giraffesNames = []
+    // Do array of lions and giraffes residents
+    animals.filter((a) => a.location === "NE").forEach((eIsAnimal) => {
+      if (eIsAnimal.name === 'lions') {
+        eIsAnimal.residents.forEach((rrr) => {
+          lionsNames.push(Object.values(rrr)[0])
+        });
+      }
+      if (eIsAnimal.name === 'giraffes') {         
+        eIsAnimal.residents.forEach((rrr) => {
+          giraffesNames.push(Object.values(rrr)[0])
+        })
+      }
+      
+    });
+   
 
     // NW area 
 
@@ -207,33 +193,62 @@ function animalMap(options) {
     console.log(frogNames)
     console.log(snakesNames)
 
-
-
       
     // ANCHOR Returns everything
-    return {
-      NE: [
-        {lions: [lion1name, lion2name, lion3name, lion4name]},
-        {giraffes: [gif1name, gif2name, gif3name, gif4name, gif5name, gif6name]},
-      ],
-      
-      NW: [
-        { tigers: tigersNames },
-        { bears: bearsNames },
-        { elephants: elephantsNames }
-      ],
-      SE: [
-       { penguins: penguinsNames },
-       { otters: otterNames }
-       ],
-      SW: [
-       { frogs: frogNames },
-       { snakes: snakesNames }
-      ]
+    if(!sorted) {
+      return {
+        NE: [
+          {lions: lionsNames},
+          {giraffes: giraffesNames},
+        ],
+        
+        NW: [
+          { tigers: tigersNames },
+          { bears: bearsNames },
+          { elephants: elephantsNames }
+        ],
+        SE: [
+         { penguins: penguinsNames },
+         { otters: otterNames }
+         ],
+        SW: [
+         { frogs: frogNames },
+         { snakes: snakesNames }
+        ]
+  
+      };
+    }
 
-    };
+    if(sorted) {
+      return {
+        NE: [
+          {lions: lionsNames.sort()},
+          {giraffes: giraffesNames.sort()},
+        ],
+        
+        NW: [
+          { tigers: tigersNames.sort() },
+          { bears: bearsNames.sort() },
+          { elephants: elephantsNames.sort() }
+        ],
+        SE: [
+         { penguins: penguinsNames.sort() },
+         { otters: otterNames.sort() }
+         ],
+        SW: [
+         { frogs: frogNames.sort() },
+         { snakes: snakesNames.sort() }
+        ]
+  
+      };
+    }
+
+    
   }
 
+  // if (includeNames && sorted) {
+  //   
+  // }
 
 
 
