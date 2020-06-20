@@ -10,7 +10,7 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
-const { animals, employees } = require('./data');
+const { animals, employees, prices } = require('./data');
 
 function animalsByIds(...ids) {
   // seu código aqui
@@ -75,6 +75,16 @@ function animalCount(species) {
 
 function entryCalculator(entrants) {
   // seu código aqui
+  // condicionar para retornar 0 se entrants n existir ou for um objeto vazio
+  if (entrants === undefined || Object.entries(entrants).length === 0) {
+    return 0;
+  }
+  // nos outros casos, tem que retornar quantidade*preço para cada idade
+  // sabendo que quantidade tà no entrants e preço no prices, os dois são objetos
+  const accPrice = (total, eachAge) =>
+  total + (prices[eachAge] * entrants[eachAge]);
+  return Object.keys(prices).reduce(accPrice, 0);
+  // precisa do segundo param 0 no reduce para determinar que é number, caso contrario entende que é string
 }
 
 function animalMap(options) {
