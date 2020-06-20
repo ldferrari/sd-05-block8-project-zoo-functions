@@ -44,7 +44,6 @@ function isManager(id) {
   return verficaGerente;
 }
 
-// Adiciona um funcionário no fim da lista
 function addEmployee(
   id,
   firstName,
