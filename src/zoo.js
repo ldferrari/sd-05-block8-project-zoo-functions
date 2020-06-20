@@ -11,7 +11,7 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const { animals,employees,prices } = data;
+const { animals,employees,prices,hours } = data;
 
 function animalsByIds(...ids) {
   // seu código aqui
@@ -76,12 +76,70 @@ function entryCalculator(...entrants) {
 
 function animalMap(options) {
   // seu código aqui
+  const zones={}
+  const saida={}
+  animals.forEach(el=>zones[el.location]=1)
+  const zoneArr = Object.keys(zones);
+  
+  
+
+  if (options==undefined||(
+    (options.includeNames==false&&options.sorted==false&&options.sex=='')||
+    (options.includeNames==false&&options.sorted==false&&options.sex!=''))
+    ) {
+    zoneArr.forEach(a=>saida[a]=[])
+    zoneArr.forEach(el=>{ animals.filter(ell=>ell.location==el).forEach(a=>saida[el].push(a.name)) })
+    return saida
+  }
+  
+  const { includeNames=false,sorted=false,sex=''}=options
+  if (includeNames==true) {
+    zoneArr.forEach(a=>saida[a]=[]);
+    zoneArr.forEach(el=>{ animals.filter(ell=>ell.location==el)
+            .forEach(a=>{
+              const animal={};
+              if(sex!=''){
+                animal[a.name]=a.residents
+                .filter(aniSex=>aniSex.sex==sex)
+                .map(aniName=>aniName.name);
+              }
+              else{
+                animal[a.name]=a.residents.map(aniName=>aniName.name);
+              }
+              //animal[a.name]=a.residents.map(aniName=>aniName.name);
+              const inst={}
+              inst[a.name]=animal[a.name]
+              saida[el].push(inst)
+            })
+    })
+  }
+
+  return saida;
 }
+
 
 function schedule(dayName) {
   // seu código aqui
+  
+    const hoursArr=Object.keys(hours)
+    const workingHours={};
+    hoursArr.forEach(dday=>{
+      const el = hours[dday];
+      if(el.open==el.close){
+        workingHours[dday]='CLOSED';
+        }
+      else{
+        workingHours[dday]= `Open from ${el.open}am until ${el.close>12?el.close-12:el.close}${el.close>12?'pm':'am'}`;
+      }
+    })
+  if(dayName==undefined){
+    return workingHours;
+  }
+  const onlyMonday={}
+  onlyMonday[dayName]=workingHours[dayName]
+  return onlyMonday;
 }
-
+//schedule()
 function oldestFromFirstSpecies(id) {
   // seu código aqui
 }
