@@ -38,8 +38,6 @@ function employeeByName(employeeName) {
   ))[0];
 }
 
-console.log(employeeByName('Emery'))
-
 function createEmployee(personalInfo, associatedWith) {
   return { ...personalInfo, ...associatedWith };
 }
