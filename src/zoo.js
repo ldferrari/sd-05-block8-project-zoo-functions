@@ -99,8 +99,7 @@ function animalMap(options) {
   const { includeNames = false} = options;
 
   if (includeNames) {
-    //Extracting lion and giraffe from NEANIMALS array
-    // [lionsVAR, giraffesVAR] = NEAnimals;
+    // ANCHOR Construir os animais das outras regioes estao mais automatizados que NE
 
     // Constructing NE animmal with residents object
     let lionsNames = [];   
@@ -118,7 +117,7 @@ function animalMap(options) {
     const { name: lion4name } = lion4;
 
     // ANCHOR Constructing NE animmal with residents object
-    let giraffesNames = [];   
+    let tigersNamesgiraffesNames = [];   
     // Do array of lions residents
     animals.filter((a) => a.location === "NE").forEach((eIsGIF) => {
         if (eIsGIF.name === 'giraffes') {
@@ -134,11 +133,64 @@ function animalMap(options) {
     const { name: gif5name } = gif5;
     const { name: gif6name } = gif6;
 
-    // FIXME NW area 
+    // NW area 
 
-    // Constructing penguins
+    // Constructing NW animals
+      let tigersNames = [];
+      let bearsNames = [];
+      let elephantsNames = [];
+    
+      animals.filter((a) => a.location === "NW").forEach((eIsAnimal) => {
+        if (eIsAnimal.name === 'tigers') {
+          eIsAnimal.residents.forEach((rrr) => {
+            tigersNames.push(Object.values(rrr)[0])
+          });
+        }
+        if (eIsAnimal.name === 'bears') {         
+          eIsAnimal.residents.forEach((rrr) => {
+            bearsNames.push(Object.values(rrr)[0])
+          })
+        }
+        if (eIsAnimal.name === 'elephants') {         
+          eIsAnimal.residents.forEach((rrr) => {
+            elephantsNames.push(Object.values(rrr)[0])
+          })
+        }
+      });
+
+      console.log(tigersNames)
+      console.log(bearsNames)
+
+      // FIXME SE area 
+
+    // Constructing NW animals
+    let tigersNames = [];
+    let bearsNames = [];
+    let elephantsNames = [];
+  
+    animals.filter((a) => a.location === "NW").forEach((eIsAnimal) => {
+      if (eIsAnimal.name === 'tigers') {
+        eIsAnimal.residents.forEach((rrr) => {
+          tigersNames.push(Object.values(rrr)[0])
+        });
+      }
+      if (eIsAnimal.name === 'bears') {         
+        eIsAnimal.residents.forEach((rrr) => {
+          bearsNames.push(Object.values(rrr)[0])
+        })
+      }
+      if (eIsAnimal.name === 'elephants') {         
+        eIsAnimal.residents.forEach((rrr) => {
+          elephantsNames.push(Object.values(rrr)[0])
+        })
+      }
+    });
+
+    console.log(tigersNames)
+    console.log(bearsNames)
 
 
+      
     // ANCHOR Returns everything
     return {
       NE: [
@@ -147,9 +199,9 @@ function animalMap(options) {
       ],
       
       NW: [
-        { tigers: [] },
-        { bears: [] },
-        { elephants: [] }
+        { tigers: tigersNames },
+        { bears: bearsNames },
+        { elephants: elephantsNames }
       ],
       // SE: [
       //   { penguins: ['Joe', 'Tad', 'Keri', 'Nicholas'] },
