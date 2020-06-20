@@ -84,28 +84,26 @@ function entryCalculator(entrants) {
 // Para usar dentro de animalMap ()
 
 const NEAnimals = animals
-.filter((a) => a.location === 'NE')
-.map((neAnim) => neAnim.name);
+  .filter((a) => a.location === 'NE')
+  .map((neAnim) => neAnim.name);
 const NWAnimals = animals
-.filter((a) => a.location === 'NW')
-.map((neAnim) => neAnim.name);
+  .filter((a) => a.location === 'NW')
+  .map((neAnim) => neAnim.name);
 const SEAnimals = animals
-.filter((a) => a.location === 'SE')
-.map((neAnim) => neAnim.name);
+  .filter((a) => a.location === 'SE')
+  .map((neAnim) => neAnim.name);
 const SWAnimals = animals
-.filter((a) => a.location === 'SW')
-.map((neAnim) => neAnim.name);
+  .filter((a) => a.location === 'SW')
+  .map((neAnim) => neAnim.name);
 
 const defaultMAP = {
   NE: NEAnimals,
   NW: NWAnimals,
   SE: SEAnimals,
   SW: SWAnimals,
-}
+};
 
 function animalMap(options) {
- 
-
   if (!options) return defaultMAP;
 
   const { includeNames = false, sorted = false, sex } = options;
@@ -115,180 +113,156 @@ function animalMap(options) {
     let lionsNames = [];
     let giraffesNames = [];
     // Do array of lions and giraffes residents
-     // ANCHOR
-     lionsNames = [];
-     giraffesNames = [];
-     
-     // FIXME Mudar aqui pra por la
-     animals
-   .filter((a) => a.location === 'NE')
-   .forEach((eIsAnimal) => {
-     if (eIsAnimal.name === 'lions') {
-       eIsAnimal.residents.forEach((rrr) => {
-         if (sex === 'female') {
-           if (Object.values(rrr)[1] === 'female') {
-             lionsNames.push(Object.values(rrr)[0]);
-           }           
-         }
-         if (!sex) lionsNames.push(Object.values(rrr)[0]);
-           
-       });
-     }
-     if (eIsAnimal.name === 'giraffes') {
-       eIsAnimal.residents.forEach(rrr => {
-         if (sex === 'female') {
-           if (Object.values(rrr)[1] === 'female') {
-             giraffesNames.push(Object.values(rrr)[0]);
-           }
-         }
-         if (!sex) giraffesNames.push(Object.values(rrr)[0]);
-         
-       });
-     }
-   });
-//
+    // ANCHOR
+    lionsNames = [];
+    giraffesNames = [];
 
+    // FIXME Mudar aqui pra por la
+    animals
+      .filter((a) => a.location === 'NE')
+      .forEach((eIsAnimal) => {
+        if (eIsAnimal.name === 'lions') {
+          eIsAnimal.residents.forEach((rrr) => {
+            if (sex === 'female') {
+              if (Object.values(rrr)[1] === 'female') {
+                lionsNames.push(Object.values(rrr)[0]);
+              }
+            }
+            if (!sex) lionsNames.push(Object.values(rrr)[0]);
+          });
+        }
+        if (eIsAnimal.name === 'giraffes') {
+          eIsAnimal.residents.forEach((rrr) => {
+            if (sex === 'female') {
+              if (Object.values(rrr)[1] === 'female') {
+                giraffesNames.push(Object.values(rrr)[0]);
+              }
+            }
+            if (!sex) giraffesNames.push(Object.values(rrr)[0]);
+          });
+        }
+      });
+    //
 
-     // NW area
+    // NW area
 
-     // Constructing NW animals
-     let tigersNames = [];
-     let bearsNames = [];
-     let elephantsNames = [];
+    // Constructing NW animals
+    let tigersNames = [];
+    let bearsNames = [];
+    let elephantsNames = [];
 
-     animals
-       .filter((a) => a.location === 'NW')
-       .forEach((eIsAnimal) => {
-         if (eIsAnimal.name === 'tigers') {
-           eIsAnimal.residents.forEach((rrr) => {
-             if (sex === 'female') {
-               if (Object.values(rrr)[1] === 'female') {
-                 tigersNames.push(Object.values(rrr)[0]);
-               }
-               
-             }
-             if (!sex) tigersNames.push(Object.values(rrr)[0]);
-               
-           });
-         }
-         if (eIsAnimal.name === 'bears') {
-           eIsAnimal.residents.forEach((rrr) => {
-             if (sex === 'female') {
-               if (Object.values(rrr)[1] === 'female') {
-                 bearsNames.push(Object.values(rrr)[0]);
-               }
-               
-             }
-             if (!sex)  bearsNames.push(Object.values(rrr)[0]);
-               
-           });
-         }
-         if (eIsAnimal.name === 'elephants') {
-           eIsAnimal.residents.forEach((rrr) => {
-             if (sex === 'female') {
-               if (Object.values(rrr)[1] === 'female') {
-                 elephantsNames.push(Object.values(rrr)[0]);
-               }
-               
-             }
-             if (!sex)  elephantsNames.push(Object.values(rrr)[0]);
-               
-           });
-         }
-       });
+    animals
+      .filter((a) => a.location === 'NW')
+      .forEach((eIsAnimal) => {
+        if (eIsAnimal.name === 'tigers') {
+          eIsAnimal.residents.forEach((rrr) => {
+            if (sex === 'female') {
+              if (Object.values(rrr)[1] === 'female') {
+                tigersNames.push(Object.values(rrr)[0]);
+              }
+            }
+            if (!sex) tigersNames.push(Object.values(rrr)[0]);
+          });
+        }
+        if (eIsAnimal.name === 'bears') {
+          eIsAnimal.residents.forEach((rrr) => {
+            if (sex === 'female') {
+              if (Object.values(rrr)[1] === 'female') {
+                bearsNames.push(Object.values(rrr)[0]);
+              }
+            }
+            if (!sex) bearsNames.push(Object.values(rrr)[0]);
+          });
+        }
+        if (eIsAnimal.name === 'elephants') {
+          eIsAnimal.residents.forEach((rrr) => {
+            if (sex === 'female') {
+              if (Object.values(rrr)[1] === 'female') {
+                elephantsNames.push(Object.values(rrr)[0]);
+              }
+            }
+            if (!sex) elephantsNames.push(Object.values(rrr)[0]);
+          });
+        }
+      });
 
-     // SE area
+    // SE area
 
-     // Constructing SE animals
-     let penguinsNames = [];
-     let otterNames = [];
+    // Constructing SE animals
+    let penguinsNames = [];
+    let otterNames = [];
 
-     animals
-       .filter((a) => a.location === 'SE')
-       .forEach((eIsAnimal) => {
-         if (eIsAnimal.name === 'penguins') {
-           eIsAnimal.residents.forEach((rrr) => {
-             if (sex === 'female') {
-               if (Object.values(rrr)[1] === 'female') {
-                 penguinsNames.push(Object.values(rrr)[0]);
-               }
-               
-             }
-             if (!sex) penguinsNames.push(Object.values(rrr)[0]);
-               
-           });
-         }
-         if (eIsAnimal.name === 'otters') {
-           eIsAnimal.residents.forEach((rrr) => {
-             if (sex === 'female') {
-               if (Object.values(rrr)[1] === 'female') {
-                 otterNames.push(Object.values(rrr)[0]);
-               }
-               
-             }
-             if (!sex)  otterNames.push(Object.values(rrr)[0]);
-               
-           });
-         }
-       });
+    animals
+      .filter((a) => a.location === 'SE')
+      .forEach((eIsAnimal) => {
+        if (eIsAnimal.name === 'penguins') {
+          eIsAnimal.residents.forEach((rrr) => {
+            if (sex === 'female') {
+              if (Object.values(rrr)[1] === 'female') {
+                penguinsNames.push(Object.values(rrr)[0]);
+              }
+            }
+            if (!sex) penguinsNames.push(Object.values(rrr)[0]);
+          });
+        }
+        if (eIsAnimal.name === 'otters') {
+          eIsAnimal.residents.forEach((rrr) => {
+            if (sex === 'female') {
+              if (Object.values(rrr)[1] === 'female') {
+                otterNames.push(Object.values(rrr)[0]);
+              }
+            }
+            if (!sex) otterNames.push(Object.values(rrr)[0]);
+          });
+        }
+      });
 
-     // SE area
+    // SE area
 
-     // Constructing SW animals
-     let frogNames = [];
-     let snakesNames = [];
+    // Constructing SW animals
+    let frogNames = [];
+    let snakesNames = [];
 
-     animals
-       .filter((a) => a.location === 'SW')
-       .forEach((eIsAnimal) => {
-         if (eIsAnimal.name === 'frogs') {
-           eIsAnimal.residents.forEach((rrr) => {
-             if (sex === 'female') {
-               if (Object.values(rrr)[1] === 'female') {
-                 frogNames.push(Object.values(rrr)[0]);
-               }
-               
-             }
-             if (!sex)  frogNames.push(Object.values(rrr)[0]);
-               
-           });
-         }
-         if (eIsAnimal.name === 'snakes') {
-           eIsAnimal.residents.forEach((rrr) => {
-             if (sex === 'female') {
-               if (Object.values(rrr)[1] === 'female') {
-                 snakesNames.push(Object.values(rrr)[0]);
-               }
-               
-             }
-             if (!sex)  snakesNames.push(Object.values(rrr)[0]);
-               
-           });
-         }
-       });
+    animals
+      .filter((a) => a.location === 'SW')
+      .forEach((eIsAnimal) => {
+        if (eIsAnimal.name === 'frogs') {
+          eIsAnimal.residents.forEach((rrr) => {
+            if (sex === 'female') {
+              if (Object.values(rrr)[1] === 'female') {
+                frogNames.push(Object.values(rrr)[0]);
+              }
+            }
+            if (!sex) frogNames.push(Object.values(rrr)[0]);
+          });
+        }
+        if (eIsAnimal.name === 'snakes') {
+          eIsAnimal.residents.forEach((rrr) => {
+            if (sex === 'female') {
+              if (Object.values(rrr)[1] === 'female') {
+                snakesNames.push(Object.values(rrr)[0]);
+              }
+            }
+            if (!sex) snakesNames.push(Object.values(rrr)[0]);
+          });
+        }
+      });
 
     if (!sex && sorted) {
-
       return {
-        NE: [
-          { lions: lionsNames.sort() },
-          { giraffes: giraffesNames.sort() },
-        ],
+        NE: [{ lions: lionsNames.sort() }, { giraffes: giraffesNames.sort() }],
 
         NW: [
           { tigers: tigersNames.sort() },
           { bears: bearsNames.sort() },
           { elephants: elephantsNames.sort() },
         ],
-        SE: [
-          { penguins: penguinsNames.sort() },
-          { otters: otterNames.sort() },
-        ],
+        SE: [{ penguins: penguinsNames.sort() }, { otters: otterNames.sort() }],
         SW: [{ frogs: frogNames.sort() }, { snakes: snakesNames.sort() }],
-      };      
+      };
     }
 
-    if ((sex === 'female' || !sorted)) {
+    if (sex === 'female' || !sorted) {
       return {
         NE: [{ lions: lionsNames }, { giraffes: giraffesNames }],
 
@@ -301,11 +275,9 @@ function animalMap(options) {
         SW: [{ frogs: frogNames }, { snakes: snakesNames }],
       };
     }
-
   }
 
   if (sex === 'female') return defaultMAP;
-
 }
 
 function schedule(dayName) {
