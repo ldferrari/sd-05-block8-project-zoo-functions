@@ -329,8 +329,22 @@ function oldestFromFirstSpecies(id) {
   return [name, sex, age];
 }
 
+
+function roundNum(num, length) {
+  const number = Math.round(num * (10 ** length)) / (10 ** length);
+  return number;
+}
+
 function increasePrices(percentage) {
-  // seu código aqui
+  const { Adult: Aprice, Child: Cprice, Senior: Sprice } = prices;
+
+  const newPrices = {
+    Adult: roundNum(Aprice + (Aprice * (percentage / 100)), 2),
+    Senior: roundNum(Sprice + (Sprice * (percentage / 100)), 2),
+    Child: roundNum(Cprice + (Cprice * (percentage / 100)), 2),
+  };
+
+  Object.assign(prices, newPrices);
 }
 
 function employeeCoverage(idOrName) {
