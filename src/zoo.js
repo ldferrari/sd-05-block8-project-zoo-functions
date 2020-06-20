@@ -84,15 +84,16 @@ function entryCalculator(...entrants) {
 }
 function animalMap(options) {
   //  your code here
-  const zones = {};
+  /* const zones = {};
   const saida = {};
   animals.forEach((el) => (zones[el.location] = 1));
   const zoneArr = Object.keys(zones);
   if (options === undefined) {
     return 0;
   } else {
-    return 0;
-  } 
+    return 1;
+  }  */
+  return 0;
 }
 
 /*
