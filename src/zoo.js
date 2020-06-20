@@ -26,8 +26,8 @@ function animalsOlderThan(animal, age) {
 function employeeByName(employeeName) {
   // seu código aqui
   if (employeeName === undefined) return {};
-  const resp1=employees.find(el => el.firstName === employeeName);
-  const resp2=employees.find(el => el.lastName === employeeName)
+  const resp1 = employees.find(el => el.firstName === employeeName);
+  const resp2 = employees.find(el => el.lastName === employeeName);
   return (resp1 || resp2);
 }
 
@@ -43,7 +43,7 @@ function isManager(id) {
   return valor;
 }
 
-function addEmployee(id, firstName, lastName,managers = [], responsibleFor = []) {
+function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
   // seu código aqui
   const employee = {
     id,
@@ -115,7 +115,8 @@ function animalMap(options) {
       animals.filter(ell => ell.location === el).forEach(a => {
         const animal = {};
         if (sex != '') {
-          animal[a.name] = a.residents.filter(aniSex => aniSex.sex === sex).map(aniName => aniName.name);
+          animal[a.name] = a.residents.filter(aniSex => aniSex.sex === sex)
+          .map(aniName => aniName.name);
           } else {
             animal[a.name] = a.residents.map(aniName => aniName.name);
           }
@@ -166,7 +167,7 @@ function increasePrices(percentage) {
   // seu código aqui
   const newPrice = prices;
   const { Adult, Child, Senior } = newPrice;
-  percentage=percentage/100;
+  percentage /= 100;
   percentage += 1;
   prices.Adult = Math.round(Adult * percentage * 100) / 100;
   prices.Child = Math.round(Child * percentage * 100) / 100;
@@ -185,7 +186,7 @@ function employeeCoverage(idOrName) {
   // seu código aqui
   const resp = {};
   if (idOrName === undefined) {
-    employees.forEach(el => {
+    employees.forEach((el) => {
       const fullName = `${el.firstName} ${el.lastName}`;
       Object.assign(resp, listOfAnimals(fullName, el));
     });
@@ -195,10 +196,10 @@ function employeeCoverage(idOrName) {
   const options = ['firstName', 'lastName', 'id'];
   let index = 0;
   while (elemnt === undefined) {
-    elemnt = employees.find(el =>{
+    elemnt = employees.find((el) => {
       return el[options[index]] === idOrName;
     });
-    index=index+1;
+    index += 1;
   }
   const fullName = `${elemnt.firstName} ${elemnt.lastName}`;
   return listOfAnimals(fullName, elemnt);
