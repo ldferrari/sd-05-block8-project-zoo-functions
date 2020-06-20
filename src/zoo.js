@@ -61,6 +61,12 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   // seu código aqui
+  const novoArray = []
+  const condicao = employees.forEach(employee =>
+    novoArray.push((employee.managers.some(
+      cadaElementoManagers => cadaElementoManagers === id))));
+  const saida = novoArray.some(elemento => elemento === true);
+  return saida;
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
