@@ -24,7 +24,7 @@ function animalsByIds(...ids) {
 }
 
 function animalsOlderThan(animal, age) {
-  const {animals} = data;
+  const { animals } = data;
   return animals.filter(({ name }) => name === animal)[0]
   .residents
   .every(({ age: idade }) => idade >= age);
@@ -33,7 +33,7 @@ function animalsOlderThan(animal, age) {
 function employeeByName(employeeName) {
   const result = [];
   if (!employeeName) return result;
-  const {employees} = data;
+  const { employees } = data;
   return employees.filter(({ firstName, lastName }) => {
     return firstName === employeeName || lastName === employeeName;
   })[0];
@@ -127,7 +127,7 @@ function oldestFromFirstSpecies(id) {
   .residents
   .sort((a, b) => b.age - a.age)[0];
 
-  return Object.values(result); 
+  return Object.values(result);
 }
 
 function increasePrices(percentage) {
@@ -143,9 +143,11 @@ function employeeCoverage(idOrName) {
   const { animals } = data;
   const result = {};
 
-  if (idOrName) employees = employees.filter(({ id, firstName, lastName }) => {
-    return (id === idOrName || firstName === idOrName || lastName === idOrName);
-  });
+  if (idOrName) {
+    employees = employees.filter(({ id, firstName, lastName }) => {
+      return (id === idOrName || firstName === idOrName || lastName === idOrName);
+    });
+  }
 
   employees.forEach(({ firstName, lastName, responsibleFor }) => {
     result[`${firstName} ${lastName}`] = responsibleFor.map((id) => {
