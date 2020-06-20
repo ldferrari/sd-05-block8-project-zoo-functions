@@ -15,18 +15,20 @@ const { animals, employees, prices, hours } = data;
 
 function animalsByIds(...ids) {
   // seu código aqui
-  if (ids.length  ===  0) return [];
-  return animals.filter((animal) => ids.find(id => animal.id  ===  id));
+  if (ids.length === 0) return [];
+  return animals.filter(animal => ids.find(id => animal.id === id));
 }
 
 function animalsOlderThan(animal, age) {
   // seu código aqui
-  return animals.find(el => el.name  ===  animal).residents.every(ell => ell.age >= age);
+  return animals.find(el => el.name === animal).residents.every(ell => ell.age >= age);
 }
 function employeeByName(employeeName) {
   // seu código aqui
   if (employeeName === undefined) return {};
-  return (employees.find(el => el.firstName === employeeName) || employees.find(el => el.lastName === employeeName));
+  const resp1=employees.find(el => el.firstName === employeeName);
+  const resp2=employees.find(el => el.lastName === employeeName)
+  return (resp1 || resp2);
 }
 
 function createEmployee(personalInfo, associatedWith) {
@@ -41,14 +43,14 @@ function isManager(id) {
   return valor;
 }
 
-function addEmployee(id,firstName,lastName,managers = [],responsibleFor = []) {
+function addEmployee(id, firstName, lastName,managers = [], responsibleFor = []) {
   // seu código aqui
   const employee = {
-    id: id,
-    firstName: firstName,
-    lastName: lastName,
-    managers: managers,
-    responsibleFor: responsibleFor,
+    id,
+    firstName,
+    lastName,
+    managers,
+    responsibleFor,
   };
   employees.push(employee);
   return employee;
@@ -58,7 +60,7 @@ function animalCount(species) {
   // seu código aqui
   const retorno = {};
   if (species === undefined) {
-    return animals.map(el => {
+    return animals.map((el) => {
       const name = el.name;
       const quant = el.residents.length;
       retorno[name] = quant;
@@ -74,11 +76,11 @@ function entryCalculator(...entrants) {
   if (Object.keys(entrants[0]).length === 0) return 0;
 
   const { Adult = 0, Child = 0, Senior = 0 } = entrants[0];
-  return Adult * prices.Adult + Child * prices.Child + Senior * prices.Senior;
-  // seu código aqui
+  return (Adult * prices.Adult) + (Child * prices.Child) + (Senior * prices.Senior);
+  //  seu código aqui
 }
 function animalMap(options) {
-  //your code here
+  //  your code here
   return 0;
 }
 /*
@@ -133,7 +135,7 @@ function schedule(dayName) {
 
   const hoursArr = Object.keys(hours);
   const workingHours = {};
-  hoursArr.forEach(dday => {
+  hoursArr.forEach((dday) => {
     const el = hours[dday];
     if (el.open === el.close) {
       workingHours[dday] = 'CLOSED';
@@ -151,22 +153,24 @@ function schedule(dayName) {
 
 function oldestFromFirstSpecies(id) {
   // seu código aqui
-  const idAnimal = employees.find((el) => el.id === id).responsibleFor[0];
+  const idAnimal = employees.find(el => el.id === id).responsibleFor[0];
   let olderAnimal = {};
-  animals.find((el) => el.id === idAnimal).residents.forEach((el) => {
-      if (Object.keys(olderAnimal).length === 0) olderAnimal = el;
-      if (olderAnimal.age < el.age) olderAnimal = el;
-    });
+  animals.find(el => el.id === idAnimal).residents.forEach((el) => {
+    if (Object.keys(olderAnimal).length === 0) olderAnimal = el;
+    if (olderAnimal.age < el.age) olderAnimal = el;
+  });
   return [olderAnimal.name, olderAnimal.sex, olderAnimal.age];
 }
 
 function increasePrices(percentage) {
   // seu código aqui
   const newPrice = prices;
-  let { Adult, Child, Senior } = newPrice;
-  prices.Adult = Math.round(Adult * (1 + percentage / 100) * 100) / 100;
-  prices.Child = Math.round(Child * (1 + percentage / 100) * 100) / 100;
-  prices.Senior = Math.round(Senior * (1 + percentage / 100) * 100) / 100;
+  const { Adult, Child, Senior } = newPrice;
+  percentage=percentage/100;
+  percentage += 1;
+  prices.Adult = Math.round(Adult * percentage * 100) / 100;
+  prices.Child = Math.round(Child * percentage * 100) / 100;
+  prices.Senior = Math.round(Senior * percentage * 100) / 100;
   return prices;
 }
 
@@ -179,7 +183,7 @@ function listOfAnimals(keysToUse, el) {
 
 function employeeCoverage(idOrName) {
   // seu código aqui
-  let resp = {};
+  const resp = {};
   if (idOrName === undefined) {
     employees.forEach(el => {
       const fullName = `${el.firstName} ${el.lastName}`;
