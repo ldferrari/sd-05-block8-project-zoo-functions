@@ -80,11 +80,12 @@ function entryCalculator(entrants) {
     return 0;
   }
   // nos outros casos, tem que retornar quantidade*preço para cada idade
-  // sabendo que quantidade tà no entrants e preço no prices, os dois são objetos
+  // sabendo que quantidade tà no entrants e preço no prices
+  // os dois são objetos, os dois com mesmas chaves de idades
   const accPrice = (total, eachAge) =>
   total + (prices[eachAge] * entrants[eachAge]);
   return Object.keys(prices).reduce(accPrice, 0);
-  // precisa do segundo param 0 no reduce para determinar que é number, caso contrario entende que é string
+  // precisa do segundo param 0 para determinar que é number
 }
 
 function animalMap(options) {
