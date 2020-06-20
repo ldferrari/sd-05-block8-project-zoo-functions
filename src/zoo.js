@@ -71,9 +71,7 @@ function schedule(dayName) {
     if (day[1].open === day[1].close) {
       obj[day[0]] = 'CLOSED';
     } else {
-      obj[day[0]] = `Open from ${day[1].open}am until ${
-        day[1].close - 12
-      }pm`;
+      obj[day[0]] = `Open from ${day[1].open}am until ${day[1].close - 12}pm`;
     }
     return obj;
   }, {});
@@ -81,7 +79,7 @@ function schedule(dayName) {
   if (!dayName) return cronograma;
 
   const singleDay = {};
-  singleDay[dayName] = schedule[dayName];
+  singleDay[dayName] = cronograma[dayName];
 
   return singleDay;
 }
@@ -98,7 +96,7 @@ function oldestFromFirstSpecies(id) {
 function increasePrices(percentage) {
   return Object.keys(prices).forEach((key) => {
     prices[key] =
-      Math.round(((prices[key] * (percentage + 100)) / 100) * 100) / 100;
+      Math.round(((prices[key] + (prices[key] * (percentage / 100))) * 100)) / 100;
   });
 }
 
