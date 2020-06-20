@@ -31,6 +31,7 @@ function animalsOlderThan(animal, age1) {
 }
 
 function employeeByName(employeeName = {}) {
+  let obj = {}
   employees.forEach((element) => {
     if (element.firstName === employeeName) {
       obj = element;
@@ -59,11 +60,10 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
     lastName,
     managers,
     responsibleFor,
-  }
+  };
   employees.push(newEMployee);
   return employees;
 }
-//addEmployee('39800c14-4b76-454a-858d-2f8d168146a7', 'John', 'Doe');
 
 function animalCount(species) {
   // seu código aqui
