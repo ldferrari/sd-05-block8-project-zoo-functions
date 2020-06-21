@@ -130,7 +130,7 @@ function oldestFromFirstSpecies(id) {
   const [{ residents }] = animalsByIds(firstSpeciesId);
   console.log(residents[0]);
   const speciesInterns = residents.reduce((acc, animal) =>
-    {if (animal.age > acc.age) animal}, residents[0]
+    animal.age > acc.age? animal : acc, residents[0]
   );
   const { name, sex, age } = speciesInterns;
   return [name, sex, age];
