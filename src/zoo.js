@@ -24,14 +24,12 @@ function animalsByIds(...ids) {
 
 function animalsOlderThan(animal, age) {
   // seu código aqui
-  const filtro = data.animals.filter(({name}) => name === animal)[0].residents;
-  filtro.every(({age: idade}) => idade >= age);
 }
-
-console.log(animalsOlderThan('lion', 20));
 
 function employeeByName(employeeName) {
   // seu código aqui
+  if (employeeName === undefined) return {};
+  return data.employees.map(nome => nome === firstName || nome === lastName);
 }
 
 function createEmployee(personalInfo, associatedWith) {
