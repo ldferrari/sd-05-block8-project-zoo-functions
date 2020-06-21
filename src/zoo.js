@@ -98,7 +98,8 @@ function oldestFromFirstSpecies(id) {
 function increasePrices(percentage) {
   // seu código aqui
   function increase(entryType) {
-    let newValue = prices[entryType] + prices[entryType] * (percentage / 100);
+    let newValue = prices[entryType] * (percentage / 100);
+    newValue += prices[entryType];
     newValue = Math.round((newValue + Number.EPSILON) * 100) / 100;
     newValue = Number(newValue);
     prices[entryType] = newValue;
