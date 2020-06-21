@@ -11,7 +11,7 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const { animals, employees, prices } = data;
+const { animals, employees, prices, hours } = data;
 
 function animalsByIds(...ids) {
   return ids.map(id => animals.find(animal => animal.id === id));
@@ -20,11 +20,13 @@ function animalsByIds(...ids) {
 function animalsOlderThan(animal, age) {
   const beastName = animals.find(beast => beast.name === animal);
   const beastAge = beastName.residents.every(beast => beast.age > age);
+
   return beastAge;
 }
 
 function employeeByName(employeeName) {
   if (!employeeName) return {};
+
   return employees.find(employee =>
     (employee.firstName === employeeName || employee.lastName === employeeName));
 }
@@ -35,6 +37,7 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   const manager = employees.some(person => person.managers.includes(id) === true);
+
   return manager;
 }
 
@@ -57,14 +60,17 @@ function animalCount(species) {
     return allAnimals;
   }
   const animalCounter = animals.filter(animal => animal.name === species);
+
   return animalCounter[0].residents.length;
 }
 
 function entryCalculator(entrants) {
   if (!entrants || Object.entries(entrants).length === 0) return 0;
-  const revenue = Object.keys(prices)
-    .reduce((price, ticket) => price + (prices[ticket] * entrants[ticket]), 0);
-  return revenue;
+
+  const pricing = Object.keys(prices);
+  const revenue = (price, ticket) => price + (prices[ticket] * entrants[ticket]);
+
+  return pricing.reduce(revenue, 0);
 }
 
 function animalMap(options) {
@@ -72,8 +78,21 @@ function animalMap(options) {
 }
 
 function schedule(dayName) {
-  // seu código aqui
+  const workWeek = Object.keys(hours);
+  const workDay = {};
+
+  workWeek.forEach((day) => {
+    if (day === 'Monday') workDay[day] = 'CLOSED';
+    else workDay[day] = `Open from ${hours[day].open}am until ${hours[day].close - 12}pm`;
+  });
+
+  if (!dayName) {
+    return workDay;
+  }
+
+  return ({ [dayName]: workDay[dayName] });
 }
+
 function oldestFromFirstSpecies(id) {
   // seu código aqui
 }
