@@ -46,7 +46,7 @@ function createEmployee(personalInfo, associatedWith) {
 // gerentes e animais gerenciados
   const newEmployee = {};// data.employees;
   const { id, firstName, lastName } = personalInfo;
-  const { managers, responsibleFor } = associatedWith;
+  const { managers: managers, responsibleFor: responsibleFor} = associatedWith;
   newEmployee.id = id;
   newEmployee.firstName = firstName;
   newEmployee.lastName = lastName;
@@ -61,13 +61,11 @@ const infoPessoais = {
   lastName: 'Alves Ferreira'
 }
 const atribuicao = {
-  managers: ['fdb2543b-5662-46a7-badc-93d960fdc0a8','9e7d4524-363c-416a-8759-8aa7e50c0992'],
-  responsibleFor: [
-    '01422318-ca2d-46b8-b66c-3e9e188244ed',
-    '533bebf3-6bbe-41d8-9cdf-46f7d13b62ae']
+  managers: [],
+  responsibleFor: []
 }
-const novoempregado = createEmployee(infoPessoais, atribuicao);
-console.log(novoempregado);*/
+//const novoempregado = createEmployee(infoPessoais, atribuicao);
+//console.log(novoempregado);*/
 //------------------------------------------------------------------
 function isManager(id) {
 // testa se o id passado é de um gerente
@@ -78,8 +76,33 @@ function isManager(id) {
 // console.log(isManager('c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1'))
 //------------------------------------------------------------------
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-  // seu código aqui
+// adiciona um funcionário no fim da lista
+  (managers === undefined)? managers = []: 0;
+  (responsibleFor === undefined)? responsibleFor = []: 0;
+  const empregado = createEmployee({id, firstName, lastName}, {managers, responsibleFor});
+  return data.employees.push(empregado)
 }
+/*
+addEmployee('39800c14-4b76-454a-858d-2f8d168146a7', 'John', 'Doe', [
+  '546fe3d4-2d81-4bb4-83a7-92d5b7048d17',
+  'a67a36ee-3765-4c74-8e0f-13f881f6588a',
+],
+[
+  'ee6139bf-b526-4653-9e1e-1ca128d0ad2e',
+  '210fcd23-aa7b-4975-91b7-0230ebb27b99',
+]);
+const penultimo = data.employees[8]
+console.log(penultimo.firstName)
+addEmployee('55800c14-4b76-454a-858d-2f8d168146a7', 'Elisangelo', 'Alves Ferreira', [
+],
+[
+]);
+const ultimo = data.employees[9];
+console.log(ultimo.firstName)
+// console.log(data.employees)
+ultimo.responsibleFor = ['fdb2543b-5662-46a7-badc-93d960fdc0a8','9e7d4524-363c-416a-8759-8aa7e50c0992','0e7b460e-acf4-4e17-bcb3-ee472265db83'];
+// console.log(ultimo)
+console.log(addEmployee()) */
 //------------------------------------------------------------------
 function animalCount(species) {
   // seu código aqui
