@@ -24,7 +24,11 @@ function animalsByIds(...ids) {
 
 function animalsOlderThan(animal, age) {
   // seu código aqui
+  return data.animals.filter(eachAnimal => 
+  eachAnimal.name === animal).every(ani => ani.residents.age > age);
 }
+
+console.log(animalsOlderThan('lion', 20));
 
 function employeeByName(employeeName) {
   // seu código aqui
