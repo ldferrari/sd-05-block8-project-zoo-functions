@@ -85,19 +85,18 @@ function entryCalculator(entrants) {
     return 0;
   } else if (Object.entries(entrants).length === 0) {
     return 0;
-  };
-  const total =[];
-  const {Adult, Child, Senior} = entrants;
+  }
+  const total = [];
+  const { Adult, Child, Senior } = entrants;
   const pricesarray = [prices];
-  pricesarray.forEach(element => {
-    total.push((element.Adult * Adult), 
-    (element.Child * Child), 
-    (element.Senior * Senior));
-  });
+  pricesarray.forEach(element => ({
+    total.push((element.Adult * Adult),
+    (element.Child * Child),
+    (element.Senior * Senior))
+  }));
   const result = total.reduce((acc, index) => acc + index);
   return result;
 }
-entryCalculator({})
 
 function animalMap(options) {
   // seu código aqui
