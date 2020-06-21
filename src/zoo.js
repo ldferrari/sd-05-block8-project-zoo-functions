@@ -66,7 +66,6 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 
 function animalCount(species) {
   // seu código aqui
-  if (species === undefined) return
 }
 
 console.log(animalCount());
@@ -74,9 +73,6 @@ console.log(animalCount());
 function entryCalculator(entrants = {}) {
   // seu código aqui
   if (Object.entries(entrants).length === 0) return 0;
-  let totalPrice = 0;
-
-
 }
 
 console.log(entryCalculator({}));
