@@ -91,8 +91,18 @@ function createEmployee(personalInfo, associatedWith) {
   return { id, firstName, lastName, managers, responsibleFor };
 }
 
+/*
+Testa se o id passado é de um gerente
+_________________BABY-STEPS____________________
+1º criar uma const de saída (isId)
+2º acessar o employees
+3º acessar pelo menos um id dentro da key managers
+4º testar true ou false para pelo menos 1 id em managers
+5º retornar a saída (isId)
+*/
 function isManager(id) {
-  // seu código aqui
+  const isId = employees.some(key => key.managers.some(eachId => eachId === id));
+  return isId;
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
