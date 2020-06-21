@@ -33,7 +33,7 @@ function employeeByName(employeeName) {
     return {};
   }
   return employees.find(emp => emp.firstName === employeeName || emp.lastName === employeeName);
-};
+}
 
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
