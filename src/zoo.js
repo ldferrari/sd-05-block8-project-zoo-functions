@@ -64,7 +64,7 @@ function entryCalculator(entrants) {
   // seu código aqui
   if (entrants === undefined || Object.entries(entrants).length === 0) return 0;
   const { Adult, Senior, Child } = prices;
-  const { 'Adult':adultQ, 'Senior':seniorQ, 'Child':childQ } = entrants;
+  const { Adult:adultQ, Child:childQ, Senior:seniorQ } = entrants;
   return (Adult * adultQ) + (Senior * seniorQ) + (Child * childQ);
 }
 
