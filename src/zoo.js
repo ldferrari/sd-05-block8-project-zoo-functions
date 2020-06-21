@@ -132,7 +132,7 @@ function employeeCoverage(idOrName) {
   } else {
     staff.push(...employees);
   }
-  return animalsByEmployee = staff.reduce(
+  return staff.reduce(
     (acc, { firstName, lastName, responsibleFor }) => {
       acc[`${firstName} ${lastName}`] = getAnimalName(responsibleFor);
       return acc;
