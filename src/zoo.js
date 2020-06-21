@@ -54,20 +54,15 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
   const empregado = { id, firstName, lastName, managers, responsibleFor };
   employees.push(empregado);
 }
-// console.log(animals.filter(bichos => bichos.name === 'lions'));
-// console.log(animals[1].residents.length)
 
-// Sem parâmetros, returna animais e suas quantidades
-// Com o nome de uma espécie de animal, retorna somente a quantidade
 function animalCount(species) {
   // seu código aqui
   const bicho = animals.find(bichos => bichos.name === species);
- //  depois faz bicho.res.length
 
-  const bichostudo = animals.reduce((acc, { residents, name } ) =>
-   // acc.push( `${bichinhos.name}: ${bichinhos.residents.length}`), []);
-    { acc[name] = residents.length;
-      return acc}, {});
+  const bichostudo = animals.reduce((acc, { residents, name }) => {
+    acc[name] = residents.length;
+    return acc
+    }, {};);
 
   return species ? bicho.residents.length : bichostudo;
 }
