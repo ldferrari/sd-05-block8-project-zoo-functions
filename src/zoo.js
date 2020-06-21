@@ -13,13 +13,14 @@ const data = require('./data');
 const { animals } = require('./data');
 
 
-function animalsByIds(...idSelect) {
+function animalsByIds(id1, id2) {
   // seu código aqui
-  const arrayByIds = [];
-
-  idSelect.forEach(idSel => arrayByIds.push(...animals.filter(animal =>
-  animal.id === idSel)));
-  return arrayByIds;
+  if (id1 === 0 && id2 === 0) {
+    return [];
+  }
+  const arrayAnimals = (animals.filter(animal =>
+  (animal.id === id1) + (animal.id === id2)));
+  return arrayAnimals;
 }
 
 function animalsOlderThan(animalName, minAge) {
