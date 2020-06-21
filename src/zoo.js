@@ -94,6 +94,7 @@ function entryCalculator(entrants) {
     (element.Child * Child), 
     (element.Senior * Senior));
   });
+  const result = total.reduce((acc, index) => acc + index);
   return result;
 }
 entryCalculator({})
