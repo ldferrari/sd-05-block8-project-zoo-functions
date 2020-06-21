@@ -106,7 +106,7 @@ function schedule(dayName) {
   const daysParsed = {};
   if (dayName) {
     Object.entries(hours)
-      .filter(day => day[0] == dayName)
+      .filter(day => day[0] === dayName)
       .forEach(
         ([day, { open, close }]) =>
           (daysParsed[day] = parseTimeVisit(open, close)),
@@ -120,7 +120,6 @@ function schedule(dayName) {
   return daysParsed;
 }
 
-console.log(schedule())
 function oldestFromFirstSpecies(id) {
   // seu código aqui
 }
