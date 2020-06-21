@@ -105,8 +105,23 @@ function isManager(id) {
   return isId;
 }
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-  // seu código aqui
+/*
+Adiciona um funcionário no fim da lista
+_________________BABY-STEPS____________________
+1º criar uma const de saída (lastEmployee)
+2º nesse objeto {}, usar um destructuring para add os parâmetros
+3º atribuir aos 2 last param um array[]
+4º add ao fim de employees a minha saída (lastEmployee) com .push
+*/
+function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
+  const lastEmployee = {
+    id,
+    firstName,
+    lastName,
+    managers,
+    responsibleFor,
+  };
+  employees.push(lastEmployee);
 }
 
 function animalCount(species) {
