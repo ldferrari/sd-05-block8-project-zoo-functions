@@ -89,11 +89,11 @@ function entryCalculator(entrants) {
   const total = [];
   const { Adult, Child, Senior } = entrants;
   const pricesarray = [prices];
-  pricesarray.forEach(element => ({
+  pricesarray.forEach(element => {(
     total.push((element.Adult * Adult),
     (element.Child * Child),
     (element.Senior * Senior))
-  }));
+  )});
   const result = total.reduce((acc, index) => acc + index);
   return result;
 }
