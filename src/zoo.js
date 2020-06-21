@@ -72,7 +72,7 @@ console.log(animalCount());
 
 function entryCalculator(entrants = {}) {
   // seu código aqui
-  if (Object.entries(entrants).length === 0) return 0;
+  // if (Object.entries(entrants).length === 0) return 0;
 }
 
 console.log(entryCalculator({}));
