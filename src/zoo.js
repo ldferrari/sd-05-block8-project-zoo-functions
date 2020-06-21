@@ -61,8 +61,8 @@ function animalCount(species) {
 
   const bichostudo = animals.reduce((acc, { residents, name }) => {
     acc[name] = residents.length;
-    return acc
-    }, {});
+    return acc;
+  }, {});
 
   return species ? bicho.residents.length : bichostudo;
 }
@@ -71,12 +71,12 @@ function entryCalculator(entrants) {
   // seu código aqui
   if (entrants === undefined || Object.entries(entrants).length === 0) {
     return 0;
-  };
+  }
   const total = Object.keys(prices).reduce(
-    ( acc, tipo ) => acc + (prices[tipo] * entrants[tipo]), 0);
-    
+    (acc, tipo) => acc + (prices[tipo] * entrants[tipo]), 0);
+
   return total;
-};
+}
 
 function animalMap(options) {
   // seu código aqui
