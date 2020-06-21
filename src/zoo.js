@@ -119,9 +119,7 @@ function employeeById(employeeId) {
 
 function getAnimalName(animalId) {
   const names = [];
-  animalId.forEach(animal => {
-    names.push(animalsByIds(animal)[0].name);
-  });
+  animalId.forEach(animal => names.push(animalsByIds(animal)[0].name));
   return names;
 }
 
@@ -134,14 +132,13 @@ function employeeCoverage(idOrName) {
   } else {
     staff.push(...employees);
   }
-  let animalsByEmployee = staff.reduce(
+  return animalsByEmployee = staff.reduce(
     (acc, { firstName, lastName, responsibleFor }) => {
       acc[`${firstName} ${lastName}`] = getAnimalName(responsibleFor);
       return acc;
     },
     {},
   );
-  return animalsByEmployee;
 }
 
 module.exports = {
