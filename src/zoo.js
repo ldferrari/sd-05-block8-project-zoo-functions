@@ -46,7 +46,7 @@ function createEmployee(personalInfo, associatedWith) {
 // gerentes e animais gerenciados
   const newEmployee = {};// data.employees;
   const { id, firstName, lastName } = personalInfo;
-  const { managers: managers, responsibleFor: responsibleFor} = associatedWith;
+  const { managers, responsibleFor } = associatedWith;
   newEmployee.id = id;
   newEmployee.firstName = firstName;
   newEmployee.lastName = lastName;
@@ -77,10 +77,10 @@ function isManager(id) {
 //------------------------------------------------------------------
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
 // adiciona um funcionário no fim da lista
-  (managers === undefined)? managers = []: 0;
-  (responsibleFor === undefined)? responsibleFor = []: 0;
-  const empregado = createEmployee({id, firstName, lastName}, {managers, responsibleFor});
-  return data.employees.push(empregado)
+  if (managers === undefined) managers = [];
+  if (responsibleFor === undefined) responsibleFor = [];
+  const empregado = createEmployee({ id, firstName, lastName }, { managers, responsibleFor });
+  return data.employees.push(empregado);
 }
 /*
 addEmployee('39800c14-4b76-454a-858d-2f8d168146a7', 'John', 'Doe', [
@@ -99,10 +99,12 @@ addEmployee('55800c14-4b76-454a-858d-2f8d168146a7', 'Elisangelo', 'Alves Ferreir
 ]);
 const ultimo = data.employees[9];
 console.log(ultimo.firstName)
-// console.log(data.employees)
-ultimo.responsibleFor = ['fdb2543b-5662-46a7-badc-93d960fdc0a8','9e7d4524-363c-416a-8759-8aa7e50c0992','0e7b460e-acf4-4e17-bcb3-ee472265db83'];
-// console.log(ultimo)
-console.log(addEmployee()) */
+console.log(data.employees)
+ultimo.responsibleFor = ['fdb2543b-5662-46a7-badc-93d960fdc0a8',
+'9e7d4524-363c-416a-8759-8aa7e50c0992','0e7b460e-acf4-4e17-bcb3-ee472265db83'];
+console.log(ultimo)
+console.log(addEmployee())
+*/
 //------------------------------------------------------------------
 function animalCount(species) {
   // seu código aqui
