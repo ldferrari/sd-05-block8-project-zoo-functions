@@ -16,7 +16,7 @@ function animalsByIds(...ids) {
 // com um único id, retorna os animais com este id
 // com mais de um id, retorna os animais que têm um desses ids
   const animal = [];
-  ids.forEach(id => animal.push(id === undefined ? '' : data.animals.find(encontra => encontra.id === id)));
+  ids.forEach(id => animal.push(id === undefined ? '' : data.animals.find(animals => animals.id === id)));
   return animal;
 }
 // console.log(animalsByIds('01422318-ca2d-46b8-b66c-3e9e188244ed'))
@@ -80,7 +80,7 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   if (managers === undefined) managers = [];
   if (responsibleFor === undefined) responsibleFor = [];
   const empregado = createEmployee({ id, firstName, lastName }, { managers, responsibleFor });
-  return data.employees.push(empregado);
+  data.employees.push(empregado);
 }
 /*
 addEmployee('39800c14-4b76-454a-858d-2f8d168146a7', 'John', 'Doe', [
@@ -107,8 +107,20 @@ console.log(addEmployee())
 */
 //------------------------------------------------------------------
 function animalCount(species) {
-  // seu código aqui
+// sem parâmetros, retorna animais e suas quantidades
+// com o nome de uma espécie de animal, retorna somente a quantidade
+  if (species === undefined) {
+    const relatorio = {};
+    data.animals.forEach(animal => (relatorio[`${animal.name}`] = animal.residents.length));
+    return relatorio;
+  }
+  const especie = data.animals.filter(animal => animal.name === species)
+  .reduce(function (valorAcumulador, animais) {
+    return (valorAcumulador = animais.residents);
+  }, 0);
+  return especie.length;
 }
+// console.log(animalCount())
 //------------------------------------------------------------------
 function entryCalculator(entrants) {
   // seu código aqui
