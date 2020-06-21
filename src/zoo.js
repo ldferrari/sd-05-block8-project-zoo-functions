@@ -64,21 +64,22 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
   data.employees.push(newEmployee);
 }
 
-function animalCount(species) { 
+function animalCount(species) {
   // seu código aqui
   if (species === undefined) return
 }
 
 console.log(animalCount());
 
-function entryCalculator(entrants) {
+function entryCalculator(entrants = {}) {
   // seu código aqui
-  if (entrants.length === 0) return 0;
+  if (Object.entries(entrants).length === 0) return 0;
   let totalPrice = 0;
-  entrants.forEach(({ Adult, Senior, Child }) => )
+
+
 }
 
-console.log(entryCalculator([]));
+console.log(entryCalculator({}));
 
 function animalMap(options) {
   // seu código aqui
