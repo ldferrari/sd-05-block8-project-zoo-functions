@@ -329,7 +329,7 @@ function oldestFromFirstSpecies(id) {
   return [name, sex, age];
 }
 
-
+// Função distribúida pelos alunos para resolver o BUG do número.
 function roundNum(num, length) {
   const number = Math.round(num * (10 ** length)) / (10 ** length);
   return number;
@@ -348,8 +348,38 @@ function increasePrices(percentage) {
 }
 
 function employeeCoverage(idOrName) {
-  // seu código aqui
+//   Sem parâmetros, retorna uma lista de funcionários e os animais pelos quais eles são responsáveis
+  const obj = {}; 
+
+  employees.forEach ((employee) => {
+     
+     let animalsUnderResponse = []
+     animals.forEach((animal) => {
+
+      employee.responsibleFor.forEach((animalID) => {
+        if(animal.id === animalID ) animalsUnderResponse.push(animal.name);
+      })
+
+      //  if(e.id === i.responsibleFor[0]) animalsUnderResponse.push(e.name);
+      //  if(e.id === i.responsibleFor[1]) animalsUnderResponse.push(e.name);
+      //  if(e.id === i.responsibleFor[2]) animalsUnderResponse.push(e.name);
+      //  if(e.id === i.responsibleFor[3]) animalsUnderResponse.push(e.name);
+      //  if(e.id === i.responsibleFor[4]) animalsUnderResponse.push(e.name);
+      //  if(e.id === i.responsibleFor[5]) animalsUnderResponse.push(e.name);
+      //  if(e.id === i.responsibleFor[6]) animalsUnderResponse.push(e.name);
+      //  if(e.id === i.responsibleFor[7]) animalsUnderResponse.push(e.name);       
+
+     })
+
+     obj[`${employee.firstName} ${employee.lastName}`] = animalsUnderResponse; })
+     
+
+  return obj;
 }
+
+// Com o id de um funcionário, retorna os animais pelos quais o funcionário é responsável
+// Com o primeiro nome de um funcionário, retorna os animais pelos quais o funcionário é responsável
+// Com o último nome de um um funcionário, retorna os animais pelos quais o funcionário é responsável
 
 module.exports = {
   entryCalculator,
