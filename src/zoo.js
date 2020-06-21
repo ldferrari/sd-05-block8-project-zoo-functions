@@ -28,6 +28,10 @@ function animalsOlderThan(animal, age) {
   return residents.every(({ age: resAge }) => resAge >= age);
 }
 
+function employeeById(employeeId) {
+  return employees.find(({ id }) => id === employeeId);
+}
+
 function employeeByName(employeeName) {
   // seu código aqui
   const employee = employees.find(
@@ -147,10 +151,6 @@ function isUUID(anId) {
   const uuidV4Regex = /^[A-F\d]{8}-[A-F\d]{4}-4[A-F\d]{3}-[89AB][A-F\d]{3}-[A-F\d]{12}$/i;
   const isValidV4UUID = uuid => uuidV4Regex.test(uuid);
   return isValidV4UUID(anId);
-}
-
-function employeeById(employeeId) {
-  return employees.find(({ id }) => id === employeeId);
 }
 
 function getAnimalName(animalId) {
