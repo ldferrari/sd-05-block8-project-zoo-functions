@@ -13,11 +13,7 @@ const data = require('./data');
 
 const { animals, employees, prices, hours } = data;
 
-const animalsByIds = (...ids) => {
-  const animalsById = [];
-  ids.forEach(id => animalsById.push(...animals.filter(animal => animal.id === id)));
-  return animalsById;
-};
+const animalsByIds = (...ids) => ids.map(id => animals.find(animal => animal.id === id));
 
 const animalsOlderThan = (animalName, age) => animals
     .find(animal => animal.name === animalName)
