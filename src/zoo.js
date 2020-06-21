@@ -51,7 +51,13 @@ function isManager(id) {
   return true;
 }
 
-function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
+function addEmployee(
+  id,
+  firstName,
+  lastName,
+  managers = [],
+  responsibleFor = [],
+) {
   // seu código aqui
   const newEmployee = {
     id,
@@ -88,10 +94,33 @@ function animalMap(options) {
   // seu código aqui
 }
 
-function schedule(dayName) {
-  // seu código aqui
+function parseTimeVisit(open, close) {
+  if (open === 0 || close === 0) {
+    return 'CLOSED';
+  }
+  return `Open from ${open}am until ${close - 12}pm`;
 }
 
+function schedule(dayName) {
+  const { hours } = data;
+  const daysParsed = {};
+  if (dayName) {
+    Object.entries(hours)
+      .filter(day => day[0] == dayName)
+      .forEach(
+        ([day, { open, close }]) =>
+          (daysParsed[day] = parseTimeVisit(open, close)),
+      );
+  } else {
+    Object.entries(hours).forEach(
+      ([day, { open, close }]) =>
+        (daysParsed[day] = parseTimeVisit(open, close)),
+    );
+  }
+  return daysParsed;
+}
+
+console.log(schedule())
 function oldestFromFirstSpecies(id) {
   // seu código aqui
 }
@@ -132,13 +161,10 @@ function employeeCoverage(idOrName) {
   } else {
     staff.push(...employees);
   }
-  return staff.reduce(
-    (acc, { firstName, lastName, responsibleFor }) => {
-      acc[`${firstName} ${lastName}`] = getAnimalName(responsibleFor);
-      return acc;
-    },
-    {},
-  );
+  return staff.reduce((acc, { firstName, lastName, responsibleFor }) => {
+    acc[`${firstName} ${lastName}`] = getAnimalName(responsibleFor);
+    return acc;
+  }, {});
 }
 
 module.exports = {
