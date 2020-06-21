@@ -74,24 +74,13 @@ const animalMap = (options = {}) => {
   return mappedAnimal;
 };
 
-const setSchedule = () => Object.keys(hours).forEach((dayValue) => {
-  if (hours[dayValue].open > 0) {
-    hours[dayValue] = `Open from ${hours[dayValue].open}am until ${hours[dayValue].close - 12}pm`;
-  } else hours[dayValue] = 'CLOSED';
-  return hours[dayValue];
-});
-
 const schedule = (dayName) => {
-  if (hours.Monday !== 'CLOSED') {
-    setSchedule();
-  }
-  if (!dayName) return hours;
-  let day = {};
-  const selectedDay = Object.keys(hours);
-  selectedDay.forEach((days) => {
-    if (days === dayName) day = { [dayName]: hours[dayName] };
+  const humanReadableSchedule = {};
+  Object.keys(hours).forEach((day) => {
+    if (day === 'Monday') humanReadableSchedule[day] = 'CLOSED';
+    else humanReadableSchedule[day] = `Open from ${hours[day].open}am until ${hours[day].close - 12}pm`;
   });
-  return day;
+  return dayName ? { [dayName]: humanReadableSchedule[dayName] } : humanReadableSchedule;
 };
 
 const findOldestAnimal = (old, older) => (old.age > older.age ? old : older);
