@@ -98,7 +98,7 @@ function oldestFromFirstSpecies(id) {
 function increasePrices(percentage) {
   // seu código aqui
   function increase(entryType) {
-    let newValue = prices[entryType] + (prices[entryType] * (percentage / 100));
+    let newValue = prices[entryType] + prices[entryType] * (percentage / 100);
     newValue = Math.round((newValue + Number.EPSILON) * 100) / 100;
     newValue = Number(newValue);
     prices[entryType] = newValue;
@@ -106,8 +106,41 @@ function increasePrices(percentage) {
   Object.keys(prices).forEach(item => increase(item));
 }
 
+function isUUID(anId) {
+  const uuidV4Regex = /^[A-F\d]{8}-[A-F\d]{4}-4[A-F\d]{3}-[89AB][A-F\d]{3}-[A-F\d]{12}$/i;
+  const isValidV4UUID = uuid => uuidV4Regex.test(uuid);
+  return isValidV4UUID(anId);
+}
+
+function employeeById(employeeId) {
+  return employees.find(({ id }) => id === employeeId);
+}
+
+function getAnimalName(animalId) {
+  const names = [];
+  animalId.forEach(animal => {
+    names.push(animalsByIds(animal)[0].name);
+  });
+  return names;
+}
+
 function employeeCoverage(idOrName) {
-  // seu código aqui
+  const staff = [];
+  if (idOrName && isUUID(idOrName)) {
+    staff.push(employeeById(idOrName));
+  } else if (idOrName) {
+    staff.push(employeeByName(idOrName));
+  } else {
+    staff.push(...employees);
+  }
+  let animalsByEmployee = staff.reduce(
+    (acc, { firstName, lastName, responsibleFor }) => {
+      acc[`${firstName} ${lastName}`] = getAnimalName(responsibleFor);
+      return acc;
+    },
+    {},
+  );
+  return animalsByEmployee;
 }
 
 module.exports = {
