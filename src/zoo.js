@@ -118,28 +118,27 @@ function getResidentsNames(nameAnimal, sex = undefined, sorted = false) {
 }
 
 function animalMap(options) {
-  (options === undefined) ? options = {} : options;
-  const {includeNames = false, sorted = false, sex = undefined} = options;
-  let result = {'NE': [], 'NW': [], 'SE': [], 'SW': []};
-  let optionsMap = ['NE', 'NW', 'SE', 'SW'];
-  optionsMap.forEach(position => {
-    let animalsList = [];
-    data.animals.forEach(animal => {
-      //retorna a opção com includeNames undefined or false
+  options === undefined ? options = {} : options;
+  const { includeNames = false, sorted = false, sex = undefined } = options;
+  let result = { NE: [], NW: [], SE: [], SW: [] };
+  const optionsMap = ['NE', 'NW', 'SE', 'SW'];
+  optionsMap.forEach((position) => {
+    const animalsList = [];
+    data.animals.forEach((animal) => {
+      //  retorna a opção com includeNames undefined or false
       if (animal.location === position && includeNames === false) {
         animalsList.push(animal.name);
-        result = {...result, [position]: animalsList};
+        result = { ...result, [position]: animalsList };
       }
-      //retorna a opção com includeNames === true
+      //  retorna a opção com includeNames === true
       if (animal.location === position && includeNames === true) {
-        let listNames = getResidentsNames(animal.name, sex, sorted);
-        result[position].push({[animal.name]:[...listNames]});       
+        const listNames = getResidentsNames(animal.name, sex, sorted);
+        result[position].push({ [ animal.name ]:[ ...listNames ] });
       }
-    });  
+    });
   });
   return result;
 }
-console.log(animalMap({includeNames: true, sorted: true}));
 
 function schedule(dayName) {
   const daysWeek = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'];
@@ -180,14 +179,16 @@ function increasePrices(percentage) {
 function employeeCoverage(idOrName) {
   let employeesList = {};
   let employeeInfo = [];
-  data.employees.forEach((element) => {
-    const animalsNames = element.responsibleFor.map(element => data.animals.find(animal => animal.id === element).name);
-    employeesList = { ...employeesList, [`${element.firstName} ${element.lastName}`]: [...animalsNames]};
-    employeeInfo = [ ...employeeInfo, [ element.id, element.firstName, element.lastName ] ];
+  data.employees.forEach((employee) => {
+    const animalsNames = employee.responsibleFor.map(animalsResponsive => {
+      return data.animals.find(animal => animal.id === animalsResponsive).name;
+    });
+    employeesList = { ...employeesList, [`${employee.firstName} ${employee.lastName}`]: [...animalsNames] };
+    employeeInfo = [...employeeInfo, [employee.id, employee.firstName, employee.lastName]];
   });
   if (idOrName !== undefined) {
     const selected = employeeInfo.find(employee => employee.includes(idOrName));
-    return { [`${selected[1]} ${selected[2]}`]: employeesList[[`${selected[1]} ${selected[2]}`]]};
+    return { [`${selected[1]} ${selected[2]}`]: employeesList[[`${selected[1]} ${selected[2]}`]] };
   }
   return employeesList;
 }
