@@ -237,17 +237,17 @@ function employeeCoverage(idOrName) {
     const allEmployees = employees.reduce((accumulator, employee) => {
       const animalsNames = employee.responsibleFor.map(animalID =>
         animals.find(element => animalID === element.id).name);
-      accumulator [`${employee.firstName} ${employee.lastName}`] = animalsNames;
+      accumulator[`${employee.firstName} ${employee.lastName}`] = animalsNames;
       return accumulator;
-    }, {})
+    }, {});
     return allEmployees;
+  } else if (idOrName) {
+    const filteredEmployee = employees.filter(emp => ( // abreviei employee para emp por causa do CC
+      emp.id === idOrName || emp.firstName === idOrName || emp.lastName === idOrName
+    ));
+    return filteredEmployee;
   }
-  let filteredEmployee = employees;
-    if (idOrName) {
-      filteredEmployee = employees.filter(emp => ( // abreviei employee para emp por causa do CC
-        emp.id === idOrName || emp.firstName === idOrName || emp.lastName === idOrName
-      ));
-    }
+  return 'undefined';
 }
 
 module.exports = {
