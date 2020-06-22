@@ -42,12 +42,17 @@ function employeeByName(employeeName) {
   */
   // seu código aqui
   if (employeeName === undefined) {
-  return {};
+    return {};
   }
-  return employees.find(employee => employee.firstName === employeeName || employee.lastName === employeeName);
+  return employees.find(employee => employee.firstName === employeeName ||
+  employee.lastName === employeeName);
 }
 
 function createEmployee(personalInfo, associatedWith) {
+  /*
+  Cria um novo colaborador a partir de objetos
+  contendo informações pessoais, gerentes e animais gerenciados
+  */
   // seu código aqui
 }
 
