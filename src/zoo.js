@@ -16,7 +16,7 @@ const { animals, employees } = require('./data');
 function animalsByIds(...ids) {
   const result = ids;
   if (result.length === 1) {
-    return animals.filter(elemento=> elemento.id === result[0]);
+    return animals.filter(elemento => elemento.id === result[0]);
   } else if (result.length >= 2) {
     return animals.filter(
       elemento => elemento.id === result[0] || elemento.id === result[1]);
@@ -34,7 +34,8 @@ function employeeByName(employeeName) {
   if (employeeName === undefined) {
     return {};
   }
-  return employees.find(elemento => elemento.firstName === employeeName || elemento.lastName === employeeName);
+  return employees.find(elemento => 
+    elemento.firstName === employeeName || elemento.lastName === employeeName);
 }
 /*
 function createEmployee(personalInfo, associatedWith) {
