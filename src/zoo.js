@@ -215,7 +215,14 @@ _________________BABY-STEPS____________________
 
 */
 function increasePrices(percentage) {
-
+  function increase(entryType) {
+    let newValue = prices[entryType] * (percentage / 100);
+    newValue += prices[entryType];
+    newValue = Math.round((newValue + Number.EPSILON) * 100) / 100;
+    newValue = Number(newValue);
+    prices[entryType] = newValue;
+  }
+  Object.keys(prices).forEach(item => increase(item));
 }
 
 /*
