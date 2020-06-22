@@ -28,7 +28,7 @@ function employeeByName(employeeName) {
   const funcionario = employees.find(
     nomeFuncionario =>
       nomeFuncionario.firstName === employeeName ||
-      nomeFuncionario.lastName === employeeName
+      nomeFuncionario.lastName === employeeName;
   );
   return funcionario || {};
 }
@@ -51,7 +51,7 @@ function addEmployee(
   firstName,
   lastName,
   managers = [],
-  responsibleFor = []
+  responsibleFor = [];
 ) {
   return employees.push({ id, firstName, lastName, managers, responsibleFor });
 }
@@ -60,7 +60,7 @@ function animalCount(species) {
   const countSpecies = {};
   animals.forEach(animal => {
     countSpecies[animal.name] = animal.residents.length;
-  });
+  )};
 
   return species
     ? animals.find(nomeAnimal => nomeAnimal.name === species).residents.length
