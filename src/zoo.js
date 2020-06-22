@@ -107,7 +107,6 @@ function animalMap(options) {
     }, {});
   }
 }
-
 function schedule(dayName) {
   const arrayOfKeys = Object.keys(hours);
   const humanSchedule = {};
@@ -120,17 +119,28 @@ function schedule(dayName) {
       }
     });
     return humanSchedule;
+  } else if (dayName !== 'Monday') {
+    return { [dayName]: `Open from ${hours[dayName].open}am until ${hours[dayName].close - 12}pm` };
   }
-  if (dayName === 'Monday') {
-    humanSchedule[dayName] = 'CLOSED';
-  } else {
-    humanSchedule[dayName] = `Open from ${hours[dayName].open}am until ${hours[dayName].close - 12}pm`;
-  }
-  return humanSchedule;
+  return { Monday: 'CLOSED' };
 }
 
 function oldestFromFirstSpecies(id) {
-  // seu código aqui
+  const animal = [];
+  employees.filter(employe => employe.id === id)
+  .forEach(keys => animal.push(...keys.responsibleFor));
+  const firstAnimal = animals.find(animaln => animaln.id === animal[0]);
+  const animalFound = [];
+  let age = 0;
+  let animalsn = {};
+  firstAnimal.residents.forEach((animalb) => {
+    if (animalb.age > age) {
+      age = animalb.age;
+      animalsn = animalb;
+    }
+  });
+  animalFound.push(animalsn.name, animalsn.sex, animalsn.age);
+  return animalFound;
 }
 
 function increasePrices(percentage) {
