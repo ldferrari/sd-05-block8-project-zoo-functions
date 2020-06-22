@@ -93,7 +93,7 @@ NE: [
 */
 
 function animalMap(options) {
-/*
+
   const regions = {};
   // create object with regions
   animals.forEach(
@@ -131,7 +131,6 @@ function animalMap(options) {
     });
   }
   return regions;
-*/
 }
 
 // animalMap({includeNames: true, sorted: true})
