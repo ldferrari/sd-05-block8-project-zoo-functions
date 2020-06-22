@@ -181,8 +181,7 @@ function employeeCoverage(idOrName) {
   let employee = employees;
   if (idOrName) {
     employee = employees.filter(({ id, firstName, lastName }) =>
-    (id === idOrName || firstName === idOrName ||lastName === idOrName)
-    );
+    (id === idOrName || firstName === idOrName || lastName === idOrName));
   }
   employee.forEach(({ firstName, lastName, responsibleFor }) => {
     animalsPerPerson = [];
