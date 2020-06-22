@@ -145,11 +145,24 @@ function animalMap(options) {
   });
   return result;
 }
-console.log(animalMap({ includeNames: true, sorted: true}));
+//console.log(animalMap({ includeNames: true, sorted: true}));
 
 function schedule(dayName) {
-  // seu código aqui
+  if (dayName === undefined) {
+    const daysWeek = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'];
+    let scheduleInform = {'Tuesday': '', 'Wednesday': '', 'Thursday': '', 'Friday': '', 'Saturday': '', 'Sunday': '', 'Monday': ''};
+    daysWeek.forEach((day) => {
+      if (data.hours[day].open !== 0 && data.hours[day].close !== 0) {
+        scheduleInform[day] = `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`;
+      } else {
+        scheduleInform[day] = 'CLOSED';
+      }
+      
+    });
+    return scheduleInform;
+  }
 }
+console.log(schedule());
 
 function oldestFromFirstSpecies(id) {
   // seu código aqui
