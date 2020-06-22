@@ -82,12 +82,10 @@ const findOldestAnimal = (old, older) => (old.age > older.age ? old : older);
 
 const oldestFromFirstSpecies = (id) => {
   const selectedEmployee = employees.find(employee => employee.id === id);
-  const specieId = selectedEmployee.responsibleFor[0];
-  const selectedAnimal = animals.find(animal => animal.id === specieId).residents;
+  const selectedAnimal = animals.find(animal =>
+    animal.id === selectedEmployee.responsibleFor[0]).residents;
   const oldestAnimal = selectedAnimal.reduce(findOldestAnimal);
-  const result = [];
-  Object.values(oldestAnimal).forEach(key => result.push(key));
-  return result;
+  return Object.values(oldestAnimal).map(key => key);
 };
 
 const roundNum = (num, length) => {
@@ -111,11 +109,8 @@ const employeeCoverage = (idOrName) => {
     employee =>
       idOrName === employee.id || idOrName === employee.lastName || idOrName === employee.firstName,
   );
-  return {
-    [`${selectedEmployee.firstName} ${selectedEmployee.lastName}`]: coverage[
-      `${selectedEmployee.firstName} ${selectedEmployee.lastName}`
-    ],
-  };
+  const employeeName = `${selectedEmployee.firstName} ${selectedEmployee.lastName}`;
+  return { [employeeName]: coverage[employeeName] };
 };
 
 module.exports = {
