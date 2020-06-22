@@ -25,7 +25,7 @@ function animalsByIds(...ids) {
   const array = [];
   ids.forEach((id) => {
     const objAnimal = searchObjAnimal('id', id);
-    return array.push(objAnimal);
+    array.push(objAnimal);
   });
   return array;
 }
@@ -117,10 +117,7 @@ function getResidentsNames(nameAnimal, sex = undefined, sorted = false) {
   return arrayResidents;
 }
 
-function animalMap(options) {
-  if (options === undefined) {
-    options = {};
-  }
+function animalMap(options = {}) {
   const { includeNames = false, sorted = false, sex = undefined } = options;
   let result = { NE: [], NW: [], SE: [], SW: [] };
   const optionsMap = ['NE', 'NW', 'SE', 'SW'];
@@ -158,7 +155,6 @@ function schedule(dayName) {
   const oneDaySchedule = { [dayName]: scheduleInform[dayName] };
   return oneDaySchedule;
 }
-console.log(schedule());
 
 function oldestFromFirstSpecies(id) {
   const getSpecieID = data.employees.find(element => element.id === id).responsibleFor[0];
