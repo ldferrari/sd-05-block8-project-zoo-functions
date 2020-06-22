@@ -17,6 +17,8 @@ const { employees } = data;
 
 const { prices } = data;
 
+const { hours } = data;
+
 function animalsByIds(...ids) {
   const animalWithId = [];
   animals.forEach((animal, index) => {
@@ -77,12 +79,77 @@ function entryCalculator(entrants = 0) {
   ((Adult * prices.Adult) + (Senior * prices.Senior) + (Child * prices.Child));
 }
 
+/*
+Sem parâmetros, retorna animais categorizados por localização
+Com opções especificadas, retorna nomes de animais
+Com opções especificadas, retorna nomes de animais ordenados
+Com opções especificadas, retorna somente nomes de animais macho/fêmea
+Só retorna informações específicas de gênero se includeNames for setado
+
+NE: [
+        { lions: ['Zena', 'Maxwell', 'Faustino', 'Dee'] },
+        { giraffes: ['Gracia', 'Antone', 'Vicky', 'Clay', 'Arron', 'Bernard'] }
+      ],
+*/
+
 function animalMap(options) {
-  // seu código aqui
+/*  
+  const regions = {};
+  // create object with regions
+  animals.forEach(
+    ({ location }) =>
+    {
+      return (regions[location] = []);
+    }
+  );
+  
+  if (options !== undefined) {
+    const { includeNames = false, sorted = false } = options;
+    // add species to the object
+  Object.keys(regions).forEach(region => {
+    animals.forEach(({ name, location, residents }) => {
+      if (location === region) {
+        if (includeNames === true && sorted === false) {
+          regions[location].push({ [name]: residents.map(( {name} ) => name) });
+        } else if (includeNames === true && sorted === true) {
+          regions[location].push({ [name]: residents.map(( {name} ) => name) });
+          regions[location].forEach((animal, index) => {
+            if (regions[location][index][name] !== undefined) {
+              regions[location][index][name].sort();
+            }
+          });
+        } 
+      }
+    });
+  });
+  } else {
+    Object.keys(regions).forEach(region => {
+      animals.forEach(({ name, location, residents }) => {
+        if (location === region) {
+          return regions[location].push(name);
+        }
+      });
+    });
+  }
+  return regions;
+*/
 }
 
+// animalMap({includeNames: true, sorted: true})
+// console.log(animalMap({includeNames: true, sorted: true}));
+
 function schedule(dayName) {
-  // seu código aqui
+  const readByHuman = {};
+  const weekDays = Object.keys(hours);
+  const workHours = Object.values(hours);
+  workHours.forEach(hour => {
+    (hour.close > 12) ?
+    (hour.close = (hour.close - 12))
+    : hour});
+  weekDays.forEach((day, index) => {
+    (day === 'Monday') ? readByHuman[day] = 'CLOSED':
+    readByHuman[day] = `Open from ${workHours[index].open}am until ${workHours[index].close}pm`;});
+  return (dayName == null) ? readByHuman : { [dayName]: readByHuman[dayName] };
 }
 
 function oldestFromFirstSpecies(id) {
