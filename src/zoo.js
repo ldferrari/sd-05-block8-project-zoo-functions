@@ -59,13 +59,13 @@ function addEmployee(
 function animalCount(species) {
   const countSpecies = {};
   animals.forEach(animal => {
-    countSpecies[animal.name] = animal.residents.length
+    countSpecies[animal.name] = animal.residents.length;
   });
 
   return species
     ? animals.find(nomeAnimal => nomeAnimal.name === species).residents.length
-    : countSpecies
-  }
+    : countSpecies;
+}
 
 // Returna 0 se nenhum argumento for passado
 // Retorna 0 se um objeto vazio for passado
@@ -75,8 +75,9 @@ function entryCalculator(entrants) {
     return 0;
   }
 
-  const { Adult, Senior, Child} = entrants;
-  const calculoEntradas = (prices.Adult * Adult) + (prices.Senior * Senior) + (prices.Child * Child);
+  const { Adult, Senior, Child } = entrants;
+  const calculoEntradas =
+    prices.Adult * Adult + prices.Senior * Senior + prices.Child * Child;
   return calculoEntradas;
 }
 
