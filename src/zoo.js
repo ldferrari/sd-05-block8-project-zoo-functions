@@ -199,7 +199,14 @@ _________________BABY-STEPS____________________
 
 */
 function oldestFromFirstSpecies(id) {
-
+  const findOldestAnimal = (old, older) => (old.age > older.age ? old : older);
+  const employeeID = employees.find(employee => employee.id === id);
+  const responsibleID = employeeID.responsibleFor[0];
+  const animalID = animals.find(animal => animal.id === responsibleID).residents;
+  const oldestAnimal = animalID.reduce(findOldestAnimal);
+  const result = [];
+  Object.values(oldestAnimal).forEach(key => result.push(key));
+  return result;
 }
 
 /*
@@ -219,16 +226,21 @@ Com o último nome de um um funcionário, retorna os animais pelos quais o funci
 _________________BABY-STEPS____________________
 */
 function employeeCoverage(idOrName) {
-//   if (!idOrName) {
-//     const allEmployees = employees.reduce((accumulator, employee) => {
-//       const animalsNames = employee.responsibleFor.map(animalID =>
-//         animals.find(element => animalID === element.id).name);
-//       accumulator [`${employee.firstName} ${employee.lastName}`] = animalsNames;
-//       return accumulator;
-//     }, {})
-//     return allEmployees;
-//   }
-//   return
+  // if (!idOrName) {
+  //   const allEmployees = employees.reduce((accumulator, employee) => {
+  //     const animalsNames = employee.responsibleFor.map(animalID =>
+  //       animals.find(element => animalID === element.id).name);
+  //     accumulator [`${employee.firstName} ${employee.lastName}`] = animalsNames;
+  //     return accumulator;
+  //   }, {})
+  //   return allEmployees;
+  // }
+  // let filteredEmployee = employees;
+  //   if (idOrName) {
+  //     filteredEmployee = employees.filter(emp => ( // abreviei employee para emp por causa do CC
+  //       emp.id === idOrName || emp.firstName === idOrName || emp.lastName === idOrName
+  //     ));
+  //   }
 }
 
 module.exports = {
