@@ -12,21 +12,19 @@ eslint no-unused-vars: [
 const data = require('./data');
 
 function animalsByIds(a, b) {
-  const arrFiltered = data.animals.filter(
-    (selected) => selected.id === a || selected.id === b
-  );
+  const arrFiltered = data.animals.filter(selected => selected.id === a || selected.id === b);
   return arrFiltered;
 }
 
 function animalsOlderThan(animal, age) {
-  const test = data.animals.filter((selected) => selected.name === animal);
-  const isOlder = test[0].residents.every((animaL) => animaL.age >= age);
+  const test = data.animals.filter(selected => selected.name === animal);
+  const isOlder = test[0].residents.every(animaL => animaL.age >= age);
   return isOlder;
 }
 
 function employeeByName(name) {
   const info = data.employees;
-  const arr = info.filter((a) => a.firstName === name || a.lastName === name);
+  const arr = info.filter(a => a.firstName === name || a.lastName === name);
   return arr[0] !== undefined ? arr[0] : {};
 }
 
@@ -36,7 +34,7 @@ function createEmployee(personalInfo, associatedWith) {
 }
 
 function isManager(id) {
-  const test = data.employees.some((a) => a.managers.includes(id) === true);
+  const test = data.employees.some(a => a.managers.includes(id) === true);
   return test;
 }
 
@@ -66,7 +64,7 @@ function animalCount(species) {
     }
     return animalsCount;
   }
-  const test = data.animals.filter((selected) => selected.name === species);
+  const test = data.animals.filter(selected => selected.name === species);
   return test[0].residents.length;
 }
 
@@ -88,18 +86,17 @@ function animalMap(
 ) {
   const obj = { NE: [], NW: [], SE: [], SW: [] };
   for (let region in obj) {
-    let eachRegion = data.animals.filter(
-      (animal) => animal.location === region
+    let eachRegion = data.animals.filter(animal => animal.location === region
     );
     if (options.includeNames !== true)
-      obj[region] = eachRegion.map((animal) => animal.name);
+      obj[region] = eachRegion.map(animal => animal.name);
     if (options.includeNames === true)
-      eachRegion.forEach((animal) => {
+      eachRegion.forEach(animal => {
         let generalAnimal = animal.name;
-        let names = animal.residents.map((nomes) => nomes.name);
+        let names = animal.residents.map(nomes => nomes.name);
         if (options.sex === 'female') {
-          let femeas = animal.residents.filter((sexo) => sexo.sex === 'female');
-          names = femeas.map((nome) => nome.name);
+          let femeas = animal.residents.filter(sexo => sexo.sex === 'female');
+          names = femeas.map(nome => nome.name);
         }
 
         if (options.sorted === true) names.sort();
