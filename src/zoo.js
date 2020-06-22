@@ -13,9 +13,9 @@ const data = require('./data');
 
 const { animals } = data;
 const { employees } = data;
+const { prices } = data;
 
 // const { hours } = data;
-// const { prices } = data;
 
 // console.log(employees);
 /*
@@ -124,12 +124,40 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
   employees.push(lastEmployee);
 }
 
+/*
+Sem parâmetros, returna animais e suas quantidades
+Com o nome de uma espécie de animal, retorna somente a quantidade
+_________________BABY-STEPS____________________
+1º criar uma const obj{} onde vou atribuir o 'name': qnt(value) quando sem paran
+2º Se não receber paran,
+2º SE receber specie, return o residents.name(value): popularity(value)
+*/
 function animalCount(species) {
-  // seu código aqui
+  const objNoParan = {};
+  if (!species) {
+    animals.forEach((animal) => {
+      objNoParan[animal.name] = animal.residents.length;
+    });
+    return objNoParan;
+  }
+  const arrQnt = animals.find(animal => animal.name === species).residents.length;
+  return arrQnt;
 }
 
+/*
+Returna 0 se nenhum argumento for passado
+Retorna 0 se um objeto vazio for passado
+Retorna o preço total a ser cobrado dado o número de adultos, crianças e idosos
+_________________BABY-STEPS____________________
+1º
+*/
 function entryCalculator(entrants) {
-  // seu código aqui
+  if (!entrants || Object.entries(entrants).length === 0) {
+    return 0;
+  }
+  const allPrices = Object.keys(prices).reduce((accumulator, valor) =>
+  accumulator + (prices[valor] * entrants[valor]), 0);
+  return allPrices;
 }
 
 function animalMap(options) {
