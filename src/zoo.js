@@ -55,6 +55,7 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
   return employees.push(newEmployee);
 }
 
+
 function animalCount(species) {
   // seu código aqui
 }
