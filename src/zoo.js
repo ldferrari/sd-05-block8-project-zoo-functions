@@ -233,21 +233,21 @@ Com o último nome de um um funcionário, retorna os animais pelos quais o funci
 _________________BABY-STEPS____________________
 */
 function employeeCoverage(idOrName) {
-  // if (!idOrName) {
-  //   const allEmployees = employees.reduce((accumulator, employee) => {
-  //     const animalsNames = employee.responsibleFor.map(animalID =>
-  //       animals.find(element => animalID === element.id).name);
-  //     accumulator [`${employee.firstName} ${employee.lastName}`] = animalsNames;
-  //     return accumulator;
-  //   }, {})
-  //   return allEmployees;
-  // }
-  // let filteredEmployee = employees;
-  //   if (idOrName) {
-  //     filteredEmployee = employees.filter(emp => ( // abreviei employee para emp por causa do CC
-  //       emp.id === idOrName || emp.firstName === idOrName || emp.lastName === idOrName
-  //     ));
-  //   }
+  if (!idOrName) {
+    const allEmployees = employees.reduce((accumulator, employee) => {
+      const animalsNames = employee.responsibleFor.map(animalID =>
+        animals.find(element => animalID === element.id).name);
+      accumulator [`${employee.firstName} ${employee.lastName}`] = animalsNames;
+      return accumulator;
+    }, {})
+    return allEmployees;
+  }
+  let filteredEmployee = employees;
+    if (idOrName) {
+      filteredEmployee = employees.filter(emp => ( // abreviei employee para emp por causa do CC
+        emp.id === idOrName || emp.firstName === idOrName || emp.lastName === idOrName
+      ));
+    }
 }
 
 module.exports = {
