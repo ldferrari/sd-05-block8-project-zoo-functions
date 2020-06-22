@@ -143,8 +143,8 @@ function animalMap(options) {
 }
 
 function schedule(dayName) {
-  const daysWeek = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'];
-  const scheduleInform = data.hours;
+  const scheduleInform = {Tuesday: '', Wednesday: '', Thursday: '', Friday: '', Saturday: '', Sunday: '', Monday: ''};
+  const daysWeek = Object.keys(scheduleInform);
   daysWeek.forEach((day) => {
     if (data.hours[day].open !== 0 && data.hours[day].close !== 0) {
       scheduleInform[day] = `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`;
@@ -158,6 +158,7 @@ function schedule(dayName) {
   const oneDaySchedule = { [dayName]: scheduleInform[dayName] };
   return oneDaySchedule;
 }
+console.log(schedule());
 
 function oldestFromFirstSpecies(id) {
   const getSpecieID = data.employees.find(element => element.id === id).responsibleFor[0];
