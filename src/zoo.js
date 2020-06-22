@@ -1,10 +1,10 @@
 /*
 eslint no-unused-vars: [
-  "error",
+  'error',
   {
-    "args": "none",
-    "vars": "local",
-    "varsIgnorePattern": "data"
+    'args': 'none',
+    'vars': 'local',
+    'varsIgnorePattern': 'data'
   }
 ]
 */
@@ -12,21 +12,22 @@ eslint no-unused-vars: [
 const data = require('./data');
 
 function animalsByIds(a, b) {
-  const arrFiltered = data.animals.filter(selected => selected.id === a || selected.id === b);
+  const arrFiltered = data.animals.filter(
+    (selected) => selected.id === a || selected.id === b
+  );
   return arrFiltered;
 }
 
 function animalsOlderThan(animal, age) {
-  const test = data.animals
-    .filter(selected => selected.name === animal);
-  const isOlder = test[0].residents.every(animaL => animaL.age >= age);
+  const test = data.animals.filter((selected) => selected.name === animal);
+  const isOlder = test[0].residents.every((animaL) => animaL.age >= age);
   return isOlder;
 }
 
 function employeeByName(name) {
   const info = data.employees;
-  const arr = info.filter(a => a.firstName === name || a.lastName === name);
-  return (arr[0] !== undefined) ? arr[0] : {};
+  const arr = info.filter((a) => a.firstName === name || a.lastName === name);
+  return arr[0] !== undefined ? arr[0] : {};
 }
 
 function createEmployee(personalInfo, associatedWith) {
@@ -35,11 +36,17 @@ function createEmployee(personalInfo, associatedWith) {
 }
 
 function isManager(id) {
-  const test = data.employees.some(a => a.managers.includes(id) === true);
+  const test = data.employees.some((a) => a.managers.includes(id) === true);
   return test;
 }
 
-function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
+function addEmployee(
+  id,
+  firstName,
+  lastName,
+  managers = [],
+  responsibleFor = []
+) {
   const obj = {
     id,
     firstName,
@@ -59,60 +66,65 @@ function animalCount(species) {
     }
     return animalsCount;
   }
-  const test = data.animals.filter(selected => selected.name === species);
+  const test = data.animals.filter((selected) => selected.name === species);
   return test[0].residents.length;
 }
 
-function entryCalculator(entrants) { 
+function entryCalculator(entrants) {
   let totalPrice = 0;
   if (entrants === undefined || entrants === {}) return totalPrice;
   const adultPrice = data.prices.Adult;
   const seniorPrice = data.prices.Senior;
   const childPrice = data.prices.Child;
-  if(entrants.Adult !== undefined)  totalPrice += entrants.Adult*adultPrice;
-  if(entrants.Senior !== undefined)  totalPrice += entrants.Senior*seniorPrice;
-  if(entrants.Child !== undefined)  totalPrice += entrants.Child*childPrice;
-  
+  if (entrants.Adult !== undefined) totalPrice += entrants.Adult * adultPrice;
+  if (entrants.Senior !== undefined)
+    totalPrice += entrants.Senior * seniorPrice;
+  if (entrants.Child !== undefined) totalPrice += entrants.Child * childPrice;
   return totalPrice;
 }
 
-function animalMap(options = { includeNames: false, sorted:false, sex: ['male', 'female'] }) {
-  
-  const obj = {NE: [], NW: [], SE: [], SW: []}
+function animalMap(
+  options = { includeNames: false, sorted: false, sex: ['male', 'female'] }
+) {
+  const obj = { NE: [], NW: [], SE: [], SW: [] };
   for (let region in obj) {
-    let eachRegion = data.animals.filter( animal => animal.location === region)
-    if(options.includeNames !== true)
-    obj[region] = eachRegion.map( animal => animal.name)
-    if(options.includeNames === true)
-    eachRegion.forEach( animal => {
-    let generalAnimal = animal.name
-    let names =  animal.residents.map( nomes => nomes.name)
-    if(options.sex === 'female') {
-      let femeas = animal.residents.filter( sexo => sexo.sex === 'female')
-      names = femeas.map(nome => nome.name)
-    }
-    
-    if (options.sorted === true) names.sort()
-    obj[region].push({[generalAnimal]:names})
-  })
-  
+    let eachRegion = data.animals.filter(
+      (animal) => animal.location === region
+    );
+    if (options.includeNames !== true)
+      obj[region] = eachRegion.map((animal) => animal.name);
+    if (options.includeNames === true)
+      eachRegion.forEach((animal) => {
+        let generalAnimal = animal.name;
+        let names = animal.residents.map((nomes) => nomes.name);
+        if (options.sex === 'female') {
+          let femeas = animal.residents.filter((sexo) => sexo.sex === 'female');
+          names = femeas.map((nome) => nome.name);
+        }
+
+        if (options.sorted === true) names.sort();
+        obj[region].push({ [generalAnimal]: names });
+      });
   }
-  
-   return obj
+
+  return obj;
 }
 
 function schedule(dayName) {
-  let schedule = {}
+  let schedule = {};
   for (let day in data.hours) {
-  if(day === 'Monday'){
-    schedule[day] = `CLOSED`
-  } else {
-  schedule[day] = `Open from ${data.hours[day].open}am until ${data.hours[day].close-12}pm`
+    if (day === 'Monday') {
+      schedule[day] = `CLOSED`;
+    } else {
+      schedule[day] = `Open from ${data.hours[day].open}am until ${
+        data.hours[day].close - 12
+      }pm`;
+    }
   }
-  }
-  return schedule
+  if (dayName !== undefined) return { [dayName]: schedule[dayName] };
+  return schedule;
 }
-console.log(schedule())
+
 function oldestFromFirstSpecies(id) {
   // seu código aqui
 }
