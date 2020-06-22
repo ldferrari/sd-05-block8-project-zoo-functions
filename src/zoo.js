@@ -141,17 +141,17 @@ function oldestFromFirstSpecies(id) {
 }
 
 function increasePrices(percentage) {
-  const adult = data.prices.Adult
-  const senior = data.prices.Senior
-  const child = data.prices.Child
-  data.prices.Adult = ((Math.ceil((adult+(adult*percentage/100))*100))/100)
-  data.prices.Senior = ((Math.ceil((senior+(senior*percentage/100))*100))/100)
-  data.prices.Child = ((Math.ceil((child+(child*percentage/100))*100))/100)
-  return data.prices
+  const adult = data.prices.Adult;
+  const senior = data.prices.Senior;
+  const child = data.prices.Child;
+  data.prices.Adult = ((Math.ceil((adult + (adult * (percentage / 100))) * 100)) / 100);
+  data.prices.Senior = ((Math.ceil((senior + (senior * (percentage / 100))) * 100)) / 100);
+  data.prices.Child = ((Math.ceil((child + (child * (percentage / 100))) * 100)) / 100);
+  return data.prices;
 }
 
 function employeeCoverage(idOrName) {
-  
+
 }
 
 module.exports = {
