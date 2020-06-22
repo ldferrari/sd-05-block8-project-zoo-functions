@@ -96,21 +96,22 @@ function animalMap(options) {
   // seu código aqui
 }
 
-function setSchedule (open, close) {
+function setSchedule(open, close) {
   if (open === 0 && close === 0) {
     return 'CLOSED';
-  } else {
-    return `Open from ${open}am until ${close - 12}pm`;
   }
+  return `Open from ${open}am until ${close - 12}pm`;
 }
 
+// 1. Sem parâmetros, retorna um cronograma legível para humanos
+// 2. Se um único dia for passado, retorna somente este dia em um
+// formato legível para humanos
+
 function schedule(dayName) {
-  // 1. Sem parâmetros, retorna um cronograma legível para humanos
-  // 2. Se um único dia for passado, retorna somente este dia em um
-  // formato legível para humanos
   const rotina = {};
   if (dayName === undefined) {
-    Object.keys(hours).forEach(day => rotina[day] = setSchedule(hours[day].open, hours[day].close));
+    Object.keys(hours).forEach(
+      day => (rotina[day] = setSchedule(hours[day].open, hours[day].close)));
   } else {
     rotina[dayName] = setSchedule(hours[dayName].open, hours[dayName].close);
   }
