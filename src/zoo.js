@@ -92,16 +92,22 @@ function schedule(dayName) {
 
   return dayName ? { [dayName]: agenda[dayName] } : agenda;
 }
-
-// const agenda = {};
-// Object.keys(hours).forEach((dia) => {
-//   if(dia === 'Monday') agenda[dia] = 'CLOSED';
-//   else agenda[dia] = `open from ${hours[dia].open}am until ${hours[dia].close}pm`;
-// });
-// console.log(agenda)
+// const bicho = animals.find( bicho => bicho.id === '0938aa23-f153-4937-9f88-4858b24d6bce')
+// console.log(bicho.residents)
 
 function oldestFromFirstSpecies(id) {
   // seu código aqui
+  const firstbicho = employees.find( caras => caras.id === id).responsibleFor[0];
+  
+  const residentes = animals.find( bicho => bicho.id === firstbicho).residents;
+
+  const velho = residentes.sort(function (a, b) {
+    return b.age - a.age;
+  })[0];
+
+  const { name, sex, age } = velho;
+
+  return [name, sex, age];
 }
 
 function increasePrices(percentage) {
