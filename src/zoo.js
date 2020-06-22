@@ -104,18 +104,17 @@ function entryCalculator(entrants) {
 function getResidentsNames(nameAnimal, sex = undefined) {
   let getObj = searchObjAnimal('name', nameAnimal);
   let arrayResidents = [];
-  if (sex !== undefined) { 
+  if (sex !== undefined) {
     getObj = getObj.residents;
     const objFiltered = getObj.filter(element => element.sex === sex);
     arrayResidents = objFiltered.map(element => element.name);
   } else {
     arrayResidents = getObj.residents.map(element => element.name);
   }
-  
   return arrayResidents;
 }
 
-function animalMap(options) {
+/*function animalMap(options) {
   (options === undefined) ? options = {} : options;
   const {includeNames = false, sorted = false, sex = undefined} = options;
   let result = {};
@@ -144,36 +143,34 @@ function animalMap(options) {
     
   });
   return result;
-}
+}*/
 //console.log(animalMap({ includeNames: true, sorted: true}));
 
 function schedule(dayName) {
   const daysWeek = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'];
-  let scheduleInform = data.hours;
+  const scheduleInform = data.hours;
   daysWeek.forEach((day) => {
     if (data.hours[day].open !== 0 && data.hours[day].close !== 0) {
       scheduleInform[day] = `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`;
     } else {
       scheduleInform[day] = 'CLOSED';
-    } 
+    }
   });
   if (dayName === undefined) {
     return scheduleInform;
-  } else {
-    const oneDaySchedule = {[dayName]: scheduleInform[dayName]};
-    return oneDaySchedule;
-  }  
+  }
+  const oneDaySchedule = { [dayName]: scheduleInform[dayName] };
+  return oneDaySchedule;
 }
 
 function oldestFromFirstSpecies(id) {
   const getSpecieID = data.employees.find(element => element.id === id).responsibleFor[0];
   const getSpecieObj = data.animals.find(element => element.id === getSpecieID);
-  const sortResidents = getSpecieObj.residents.sort(function(a, b){return b.age - a.age});
+  const sortResidents = getSpecieObj.residents.sort(function (a, b){ return b.age - a.age; });
   const oldestResident = sortResidents[0];
-  const {name, sex, age} = oldestResident;
+  const { name, sex, age } = oldestResident;
   return ([name, sex, age]);
 }
-oldestFromFirstSpecies('fdb2543b-5662-46a7-badc-93d960fdc0a8');
 
 function increasePrices(percentage) {
   // seu código aqui
