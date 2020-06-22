@@ -104,7 +104,7 @@ function schedule(dayName) {
   // 1. preparar retorno para cada dia com forEach e template string, inclusive monday closed
   // 2. preparar retorno condicionado segundo se tiver dayName param ou não
   const allDays = Object.keys(hours);
-  let eachDay = {};
+  const eachDay = {};
   allDays.forEach((day) => {
     if (day !== 'Monday') {
       eachDay[day] = `Open from ${hours[day].open}am until ${hours[day].close - 12}pm`;
