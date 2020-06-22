@@ -127,18 +127,17 @@ function schedule(dayName) {
 function oldestFromFirstSpecies(id) {
   const animalID = data.employees.filter(employee => employee.id === id)[0].responsibleFor[0];
   const animalResidents = data.animals.filter(animal => animal.id === animalID)[0].residents;
-  let oldestAge = animalResidents[0].age;
+  const oldestAge = animalResidents[0].age;
   let oldest = [];
   animalResidents.forEach((age) => {
-    
     if (age.age >= oldestAge) {
-      oldest = []; 
+      oldest = [];
       oldest.push(age.name);
       oldest.push(age.sex);
       oldest.push(age.age);
     }
   });
-  return oldest
+  return oldest;
 }
 
 function increasePrices(percentage) {
