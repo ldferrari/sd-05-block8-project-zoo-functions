@@ -9,42 +9,33 @@ eslint no-unused-vars: [
 ]
 */
 
-const data = require("./data");
+const data = require('./data');
 
-const { animals, employees } = require("./data");
+const { animals, employees } = require('./data');
 
 function animalsByIds(...ids) {
   const result = ids;
   if (result.length === 1) {
-    return animals.filter((elemento) => elemento.id === result[0]);
+    return animals.filter(elemento=> elemento.id === result[0]);
   } else if (result.length >= 2) {
     return animals.filter(
-      (elemento) => elemento.id === result[0] || elemento.id === result[1]
-    );
+      elemento => elemento.id === result[0] || elemento.id === result[1]);
   }
   return result;
 }
 
 function animalsOlderThan(animal, age) {
   return animals
-    .find((elemento) => elemento.name === animal)
-    .residents.every((elemento) => elemento.age >= age);
+    .find(elemento => elemento.name === animal)
+    .residents.every(elemento => elemento.age >= age);
 }
-
-//Sem parâmetros, retorna um objeto vazio
-//Quando provido o primeiro nome do funcionário, retorna o objeto do funcionário
-//Quando provido o último nome do funcionário, retorna o objeto do funcionário
 
 function employeeByName(employeeName) {
   if (employeeName === undefined) {
     return {};
   }
-  return employees.find(
-    (elemento) =>
-      elemento.firstName === employeeName || elemento.lastName === employeeName
-  );
+  return employees.find(elemento => elemento.firstName === employeeName || elemento.lastName === employeeName);
 }
-//console.log(employeeByName("Emery"));
 /*
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
