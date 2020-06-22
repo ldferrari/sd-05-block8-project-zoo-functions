@@ -43,8 +43,10 @@ function createEmployee(personalInfo, associatedWith) {
 // console.log(createEmployee('asdas', 'asdasd'));
 function isManager(id) {
   // seu código aqui
+  const gerente = id => employees.some(cargo => cargo.managers.find(ids => ids === id));
+  return gerente;
 }
-
+// console.log(isManager('Nigel'))
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
 }
