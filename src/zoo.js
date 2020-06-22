@@ -101,7 +101,7 @@ function entryCalculator(entrants) {
   return result;
 }
 
-function getResidentsNames(nameAnimal, sex = undefined) {
+function getResidentsNames(nameAnimal, sex = undefined, sorted = false) {
   let getObj = searchObjAnimal('name', nameAnimal);
   let arrayResidents = [];
   if (sex !== undefined) {
@@ -111,40 +111,35 @@ function getResidentsNames(nameAnimal, sex = undefined) {
   } else {
     arrayResidents = getObj.residents.map(element => element.name);
   }
+  if (sorted === true) {
+    arrayResidents.sort();
+  }
   return arrayResidents;
 }
 
 function animalMap(options) {
   (options === undefined) ? options = {} : options;
   const {includeNames = false, sorted = false, sex = undefined} = options;
-  let result = {};
+  let result = {'NE': [], 'NW': [], 'SE': [], 'SW': []};
   let optionsMap = ['NE', 'NW', 'SE', 'SW'];
-  optionsMap.forEach(element => {
+  optionsMap.forEach(position => {
     let animalsList = [];
-    let arrayAnimais = [];
     data.animals.forEach(animal => {
-      if (animal.location === element && includeNames === false) {
+      //retorna a opção com includeNames undefined or false
+      if (animal.location === position && includeNames === false) {
         animalsList.push(animal.name);
-        result = {...result, [element]: animalsList};
+        result = {...result, [position]: animalsList};
       }
-      if (animal.location === element && includeNames === true) {
-        let listNames = getResidentsNames(animal.name, sex);
-        if (sorted === true) {
-          listNames.sort();
-        }
-        let objetoAnimal = {[animal.name]: [...listNames]};
-        arrayAnimais.push(objetoAnimal);
+      //retorna a opção com includeNames === true
+      if (animal.location === position && includeNames === true) {
+        let listNames = getResidentsNames(animal.name, sex, sorted);
+        result[position].push({[animal.name]:[...listNames]});       
       }
-    });
-    console.log(arrayAnimais);
-    element = {element:[]};
-    element.push(arrayAnimais)
-    result = {...result, element};
-    
+    });  
   });
   return result;
 }
-//console.log(animalMap({ includeNames: true, sorted: true}));
+console.log(animalMap({includeNames: true, sorted: true}));
 
 function schedule(dayName) {
   const daysWeek = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'];
@@ -196,7 +191,6 @@ function employeeCoverage(idOrName) {
   }
   return employeesList;
 }
-console.log(employeeCoverage('Burl'));
 
 module.exports = {
   entryCalculator,
