@@ -17,7 +17,7 @@ function animalsByIds(...ids) {
   const enimal = [];
   ids.forEach(identidade =>
     enimal.push(...animals.filter(animal => animal.id === identidade)));
-    return enimal;
+  return enimal;
 }
 
 function animalsOlderThan(animal, age) {
