@@ -85,7 +85,7 @@ function entryCalculator(entrants) {
 function animalMap(options = { includeNames: false, sorted: false, sex: ['male', 'female'] }) {
   const obj = { NE: [], NW: [], SE: [], SW: [] };
   const allRegions = Object.keys(obj);
-  allRegions.forEach(region => {
+  allRegions.forEach((region) => {
     const eachRegion = data.animals.filter(animal => animal.location === region);
     if (options.includeNames !== true) {
       obj[region] = eachRegion.map(animal => animal.name);
@@ -103,15 +103,15 @@ function animalMap(options = { includeNames: false, sorted: false, sex: ['male',
         obj[region].push({ [generalAnimal]: names });
       });
     }
-  })
+  });
 
   return obj;
 }
-console.log(animalMap())
+
 function schedule(dayName) {
   const scheduled = {};
   const allSchedule = Object.keys(data.hours);
-  allSchedule.forEach(day => {
+  allSchedule.forEach((day) => {
     if (day === 'Monday') {
       scheduled[day] = 'CLOSED';
     } else {
@@ -119,7 +119,7 @@ function schedule(dayName) {
         data.hours[day].close - 12
       }pm`;
     }
-  })
+  });
   if (dayName !== undefined) return { [dayName]: scheduled[dayName] };
   return scheduled;
 }
