@@ -65,8 +65,7 @@ function animalCount(species) {
     data.animals.forEach(animal => resultado[animal.name] = animal.residents.length);
     return resultado;
   }
-  resultado = data.animals.find(animal => animal.name === species).residents.length;
-  return resultado;
+  return data.animals.find(animal => animal.name === species).residents.length;
 }
 
 console.log(animalCount('bears'));
