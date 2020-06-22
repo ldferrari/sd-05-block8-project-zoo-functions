@@ -160,7 +160,10 @@ function employeeCoverage(id) {
       employee.responsibleFor.forEach(animalR => position.push(findAnimal(animalR).name));
     });
   } else {
-    const resultado = data.employees.find(a => a.firstName === id || a.lastName === id || a.id === id);
+    const resultado = data.employees.find(a => {
+      if (a.firstName === id || a.lastName === id || a.id === id) 
+      return a;
+    });
     obj[`${resultado.firstName} ${resultado.lastName}`] = [];
     const position = obj[`${resultado.firstName} ${resultado.lastName}`];
     resultado.responsibleFor.forEach(animalRT => position.push(findAnimal(animalRT).name));
