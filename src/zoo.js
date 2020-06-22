@@ -13,13 +13,13 @@ const data = require('./data');
 
 function animalsByIds(...ids) {
   // seu código aqui
-  const {animals} = data
+  const { animals } = data;
   const animalsArray = [];
-  ids.forEach((objId) => 
-  animalsArray.push(animals.find((animal) =>
+  ids.forEach(objId=>
+  animalsArray.push(animals.find(animal=>
   animal.id === objId)));
-  return animalsArray
-}console.log(animalsByIds('0938aa23-f153-4937-9f88-4858b24d6bce'))
+  return animalsArray;
+}console.log(animalsByIds('0938aa23-f153-4937-9f88-4858b24d6bce'));
 
 function animalsOlderThan(animal, age) {
   // seu código aqui
