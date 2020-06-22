@@ -31,9 +31,9 @@ function employeeByName(employeeName) {
   // seu código aqui
   const funcionarios = employees.find(ser => ser.firstName === employeeName ||
     ser.lastName === employeeName);
-  return funcionarios || {};  
+  return funcionarios || {};
 }
-// console.log(employeeByName('Nelson'))
+// console.log(employeeByName('Nelson'));
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
 }
