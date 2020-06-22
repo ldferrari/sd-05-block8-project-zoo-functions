@@ -77,7 +77,15 @@ function entryCalculator(entrants = {}) {
 
 function animalMap(options) {
   // seu código aqui
+  if (options === undefined) {
+    const resultado = {};
+    data.animals.forEach(animal => (resultado[animal.location] = []));
+    data.animals.forEach(animal => (resultado[animal.location].push(animal.name)));
+    return resultado;
+  }
 }
+
+console.log(animalMap());
 
 function schedule(dayName) {
   // seu código aqui
