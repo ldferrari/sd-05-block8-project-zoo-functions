@@ -176,26 +176,26 @@ function increasePrices(percentage) {
 }
 
 function employeeCoverage(idOrName) {
-    const personAnimal = {};
-    let animalsPerPerson = [];
-    let employee = employees;
-    if (idOrName) {
-      employee = employees.filter(({ id, firstName, lastName }) => {
-        return (id === idOrName || firstName === idOrName || lastName === idOrName);
+  const personAnimal = {};
+  let animalsPerPerson = [];
+  let employee = employees;
+  if (idOrName) {
+    employee = employees.filter(({ id, firstName, lastName }) =>
+    (id === idOrName || firstName === idOrName ||lastName === idOrName)
+    );
+  }
+  employee.forEach(({ firstName, lastName, responsibleFor }) => {
+    animalsPerPerson = [];
+    responsibleFor.forEach((animalId) => {
+      animals.forEach((animal) => {
+        if (animal.id === animalId) {
+          animalsPerPerson.push(animal.name);
+        }
       });
-    }
-    employee.forEach(({ firstName, lastName, responsibleFor }) => {
-      animalsPerPerson = [];
-      responsibleFor.forEach(animalId => {
-        animals.forEach(animal => {
-          if (animal.id == animalId) {
-            animalsPerPerson.push(animal.name);
-          }
-        });
-      });
-      personAnimal[`${firstName} ${lastName}`] = animalsPerPerson;
     });
-    return personAnimal;
+    personAnimal[`${firstName} ${lastName}`] = animalsPerPerson;
+  });
+  return personAnimal;
 }
 
 module.exports = {
