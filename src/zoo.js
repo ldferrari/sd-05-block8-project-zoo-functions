@@ -60,7 +60,11 @@ function createEmployee(personalInfo, associatedWith) {
 }
 
 function isManager(id) {
+  // Testa se o id passado é de um gerente
   // seu código aqui
+  const testIfManager = employees.some(employee =>
+    employee.managers.find(manager => manager === id));
+    return testIfManager;
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
