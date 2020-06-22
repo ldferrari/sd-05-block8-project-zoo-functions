@@ -112,19 +112,19 @@ function schedule(dayName) {
   const arrayOfKeys = Object.keys(hours);
   const humanSchedule = {};
   if (dayName === undefined) {
-    arrayOfKeys.forEach(key => {
+    arrayOfKeys.forEach((key) => {
       if (key === 'Monday') {
-        humanSchedule[key] = 'CLOSED'
+        humanSchedule[key] = 'CLOSED';
       } else {
-        humanSchedule[key] = `Open from ${hours[key].open}am until ${hours[key].close - 12}pm`
+        humanSchedule[key] = `Open from ${hours[key].open}am until ${hours[key].close - 12}pm`;
       }
-    })
+    });
     return humanSchedule;
-  } 
+  }
   if (dayName === 'Monday') {
-    humanSchedule[dayName] = 'CLOSED'
+    humanSchedule[dayName] = 'CLOSED';
   } else {
-  humanSchedule[dayName] = `Open from ${hours[dayName].open}am until ${hours[dayName].close - 12}pm`
+    humanSchedule[dayName] = `Open from ${hours[dayName].open}am until ${hours[dayName].close - 12}pm`;
   }
   return humanSchedule;
 }
