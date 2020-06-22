@@ -86,8 +86,8 @@ function schedule(dayName) {
   // seu código aqui
   const agenda = {};
   Object.keys(hours).forEach((dia) => {
-  if (dia === 'Monday') agenda[dia] = 'CLOSED';
-  else agenda[dia] = `Open from ${hours[dia].open}am until ${hours[dia].close - 12}pm`;
+    if (dia === 'Monday') agenda[dia] = 'CLOSED';
+    else agenda[dia] = `Open from ${hours[dia].open}am until ${hours[dia].close - 12}pm`;
   });
 
   return dayName ? { [dayName]: agenda[dayName] } : agenda;
