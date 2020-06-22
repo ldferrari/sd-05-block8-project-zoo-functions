@@ -153,11 +153,12 @@ function increasePrices(percentage) {
 function employeeCoverage(id) {
   const obj = {};
   const findAnimal = idN => data.animals.find(animal => animal.id === idN);
-  const finder = i => {
+  const finder = (i) => {
+    let tester = i
     if (i.firstName === id || i.lastName === id || i.id === id) {
-      return i
-    };
-  }
+      return tester;
+    }
+  };
   if (id === undefined) {
     data.employees.forEach((employee) => {
       obj[`${employee.firstName} ${employee.lastName}`] = [];
@@ -165,7 +166,7 @@ function employeeCoverage(id) {
       employee.responsibleFor.forEach(animalR => position.push(findAnimal(animalR).name));
     });
   } else {
-    const resultado = data.employees.find((a) => finder(a));
+    const resultado = data.employees.find(a => finder(a));
     obj[`${resultado.firstName} ${resultado.lastName}`] = [];
     const position = obj[`${resultado.firstName} ${resultado.lastName}`];
     resultado.responsibleFor.forEach(animalRT => position.push(findAnimal(animalRT).name));
