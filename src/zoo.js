@@ -35,7 +35,7 @@ function employeeByName(employeeName) {
     return {};
   }
   const emplByName = employees.find(employee =>
-  (employee.firstName = employeeName) || (employee.lastName = employeeName));
+  (employee.firstName === employeeName) || (employee.lastName === employeeName));
   return emplByName;
 }
 
@@ -73,6 +73,15 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 
 function animalCount(species) {
   // seu código aqui
+
+  const allSpecies = animals.reduce(((lista, { name, residents }) => {
+    lista[name] = residents.length;
+    return lista;
+  }), {});
+
+  const oneEspecie = animals.find(animal => animal.name === species);
+
+  return species ? oneEspecie.residents.length : allSpecies;
 }
 
 function entryCalculator(entrants) {
