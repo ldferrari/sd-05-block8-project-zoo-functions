@@ -99,34 +99,23 @@ const increasePrices = percentage => Object.keys(prices).forEach(
     key => (prices[key] = roundNum(prices[key] + (prices[key] * (percentage / 100)), 2)),
   );
 
-const arrayPush = (param) => {
-  const array = [];
-  param.responsibleFor.forEach(employId =>
-    array.push(animals.find(animal => animal.id === employId).name),
-  );
-  return array;
-};
-
-const singleEmployee = (id) => {
-  const selectedEmployee = employees.find(
-    employee => id === employee.id || id === employee.lastName || id === employee.firstName,
-  );
-  const selectedEmployeeName = `${selectedEmployee.firstName} ${selectedEmployee.lastName}`;
-  const animalsArray = arrayPush(selectedEmployee);
-  return { [selectedEmployeeName]: animalsArray };
-};
-
 const employeeCoverage = (idOrName) => {
-  if (idOrName) {
-    return singleEmployee(idOrName);
-  }
-  const allEmployeeObj = {};
+  const coverage = {};
   employees.forEach((employee) => {
-    const allEmployeeArr = arrayPush(employee);
-    const employeeName = `${employee.firstName} ${employee.lastName}`;
-    allEmployeeObj[employeeName] = allEmployeeArr;
+    coverage[`${employee.firstName} ${employee.lastName}`] = employee.responsibleFor.map(
+      employId => animals.find(animal => animal.id === employId).name,
+    );
   });
-  return allEmployeeObj;
+  if (!idOrName) return coverage;
+  const selectedEmployee = employees.find(
+    employee =>
+      idOrName === employee.id || idOrName === employee.lastName || idOrName === employee.firstName,
+  );
+  return {
+    [`${selectedEmployee.firstName} ${selectedEmployee.lastName}`]: coverage[
+      `${selectedEmployee.firstName} ${selectedEmployee.lastName}`
+    ],
+  };
 };
 
 module.exports = {
