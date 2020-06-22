@@ -116,8 +116,13 @@ function oldestFromFirstSpecies(id) {
 }
 
 function increasePrices(percentage) {
-
+const eachPublicArray = Object.keys(prices);
+const increase = eachPublicArray.forEach(public =>
+  prices[public] += ((prices[public]) * (percentage / 100)));
+  return prices;
 }
+console.log(increasePrices(50));
+
 
 function employeeCoverage(idOrName) {
   // seu código aqui
