@@ -125,11 +125,11 @@ function oldestFromFirstSpecies(id) {
   const idFirstManagedSpecies = employees.find(person => id === person.id).responsibleFor[0];
   // 2. armazenar o array de residentes dessa espécie
   const findSpecies = animals.find(animal => idFirstManagedSpecies === animal.id).residents;
-  // 3. achar a idade mais alta e retornar animal preciso correspondente
-  const olderAnimals = findSpecies.sort(function (a,b){
+  // 3. ordenar por idade decrescente de animais
+  const olderAnimals = findSpecies.sort(function (a, b) {
     return b.age - a.age;
-    });
-  // 4. transformar esse objeto em array que é o retorno final desejado
+  });
+  // 4. transformar o objeto do animal mais velho em array que é o retorno final desejado
   const { name, sex, age } = olderAnimals[0];
   return [name, sex, age];
 }
