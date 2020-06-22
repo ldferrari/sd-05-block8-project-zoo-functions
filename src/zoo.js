@@ -84,13 +84,14 @@ function entryCalculator(entrants) {
 
 function animalMap(options = { includeNames: false, sorted: false, sex: ['male', 'female'] }) {
   const obj = { NE: [], NW: [], SE: [], SW: [] };
-  for (const region in obj) {
+  const allRegions = Object.keys(obj);
+  allRegions.forEach(region => {
     const eachRegion = data.animals.filter(animal => animal.location === region);
     if (options.includeNames !== true) {
       obj[region] = eachRegion.map(animal => animal.name);
     }
     if (options.includeNames === true) {
-      eachRegion.forEach(animal => {
+      eachRegion.forEach((animal) => {
         const generalAnimal = animal.name;
         let names = animal.residents.map(nomes => nomes.name);
         if (options.sex === 'female') {
@@ -100,26 +101,27 @@ function animalMap(options = { includeNames: false, sorted: false, sex: ['male',
 
         if (options.sorted === true) names.sort();
         obj[region].push({ [generalAnimal]: names });
-      })
-    };
-  }
+      });
+    }
+  })
 
   return obj;
 }
-
+console.log(animalMap())
 function schedule(dayName) {
-  const schedule = {};
-  for (const day in data.hours) {
+  const scheduled = {};
+  const allSchedule = Object.keys(data.hours);
+  allSchedule.forEach(day => {
     if (day === 'Monday') {
-      schedule[day] = 'CLOSED';
+      scheduled[day] = 'CLOSED';
     } else {
-      schedule[day] = `Open from ${data.hours[day].open}am until ${
+      scheduled[day] = `Open from ${data.hours[day].open}am until ${
         data.hours[day].close - 12
       }pm`;
     }
-  }
-  if (dayName !== undefined) return { [dayName]: schedule[dayName] };
-  return schedule;
+  })
+  if (dayName !== undefined) return { [dayName]: scheduled[dayName] };
+  return scheduled;
 }
 
 function oldestFromFirstSpecies(id) {
