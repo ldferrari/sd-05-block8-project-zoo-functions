@@ -19,7 +19,7 @@ const animalsOlderThan = (animalName, age) => animals
     .find(animal => animal.name === animalName)
     .residents.every(animal => animal.age > age);
 
-const employeeByName = empName => (empName === undefined
+const employeeByName = empName => (!empName
     ? {}
     : employees.find(employee => employee.firstName === empName || employee.lastName === empName));
 
@@ -39,7 +39,7 @@ const animalCount = (species) => {
 };
 
 const entryCalculator = (entrants) => {
-  if (entrants === undefined || Object.entries(entrants).length === 0) return 0;
+  if (!entrants || Object.entries(entrants).length === 0) return 0;
   const totalPrice = (total, priceByAge) => total + (prices[priceByAge] * entrants[priceByAge]);
   return Object.keys(prices).reduce(totalPrice, 0);
 };
