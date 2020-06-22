@@ -231,7 +231,6 @@ Com o id de um funcionário, retorna os animais pelos quais o funcionário é re
 Com o primeiro nome de um funcionário, retorna os animais pelos quais o funcionário é responsável
 Com o último nome de um um funcionário, retorna os animais pelos quais o funcionário é responsável
 _________________BABY-STEPS____________________
-*/
 function employeeCoverage(idOrName) {
   if (!idOrName) {
     const allEmployees = employees.reduce((accumulator, employee) => {
@@ -248,6 +247,24 @@ function employeeCoverage(idOrName) {
     return filteredEmployee;
   }
   return 'undefined';
+}
+*/
+function employeeCoverage(idOrName) {
+  const specieDoEmploy = {};
+  employees.forEach((employee) => {
+    specieDoEmploy[`${employee.firstName} ${employee.lastName}`] = employee.responsibleFor.map(
+      employId => animals.find(animal => animal.id === employId).name,
+    );
+  });
+  if (!idOrName) return specieDoEmploy;
+  const allEmpAnimals = employees.find(employee =>
+    idOrName === employee.id || idOrName === employee.lastName || idOrName === employee.firstName,
+  );
+  return {
+    [`${allEmpAnimals.firstName} ${allEmpAnimals.lastName}`]: specieDoEmploy[
+      `${allEmpAnimals.firstName} ${allEmpAnimals.lastName}`
+    ],
+  };
 }
 
 module.exports = {
