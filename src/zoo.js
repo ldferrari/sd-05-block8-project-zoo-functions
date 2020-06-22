@@ -68,8 +68,6 @@ function animalCount(species) {
   return data.animals.find(animal => animal.name === species).residents.length;
 }
 
-console.log(animalCount());
-
 function entryCalculator(entrants = {}) {
   // seu código aqui
   if (Object.entries(entrants).length === 0) return 0;
