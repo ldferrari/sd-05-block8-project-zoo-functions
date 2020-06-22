@@ -59,9 +59,11 @@ const animalMap = (options = {}) => {
   const { includeNames, sex, sorted } = options;
   const mappedAnimal = animals.reduce((animal, { name, location }) => {
     if (!animal[location]) animal[location] = [];
-    (includeNames
-      ? animal[location].push(animalsName(name, sorted, sex))
-      : animal[location].push(name));
+    if (includeNames) {
+      animal[location].push(animalsName(name, sorted, sex));
+    } else {
+      animal[location].push(name);
+    }
     return animal;
   }, {});
   return mappedAnimal;
