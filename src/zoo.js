@@ -329,7 +329,7 @@ function oldestFromFirstSpecies(id) {
   return [name, sex, age];
 }
 
-// Função distribúida pelos alunos para resolver o BUG do número.
+// Função distribúida pelos alunos para resolver o problema do número.
 function roundNum(num, length) {
   const number = Math.round(num * (10 ** length)) / (10 ** length);
   return number;
@@ -347,39 +347,39 @@ function increasePrices(percentage) {
   Object.assign(prices, newPrices);
 }
 
+// ANCHOR employeeCoverage Functions
+
+const findAnimalsUnderResponse = (funcionario) => {
+  const animalsUnderResponseInterno = [];
+
+  funcionario.responsibleFor.forEach((animalID) => {
+    animalsUnderResponseInterno.push((animals.find(animal => animal.id === animalID).name));
+  });
+  return animalsUnderResponseInterno;
+};
+
+
+//  Main call
+
+
 function employeeCoverage(idOrName) {
-//   Sem parâmetros, retorna uma lista de funcionários e os animais pelos quais eles são responsáveis
-  const obj = {}; 
+  const obj = {};
+  let filteredEmployees = employees;
 
-  employees.forEach ((employee) => {
-     
-     let animalsUnderResponse = []
-     animals.forEach((animal) => {
+  if (idOrName) {
+    filteredEmployees = employees.filter(emp => (
+      emp.id === idOrName || emp.firstName === idOrName || emp.lastName === idOrName
+    ));
+  }
 
-      employee.responsibleFor.forEach((animalID) => {
-        if(animal.id === animalID ) animalsUnderResponse.push(animal.name);
-      })
-
-      //  if(e.id === i.responsibleFor[0]) animalsUnderResponse.push(e.name);
-      //  if(e.id === i.responsibleFor[1]) animalsUnderResponse.push(e.name);
-      //  if(e.id === i.responsibleFor[2]) animalsUnderResponse.push(e.name);
-      //  if(e.id === i.responsibleFor[3]) animalsUnderResponse.push(e.name);
-      //  if(e.id === i.responsibleFor[4]) animalsUnderResponse.push(e.name);
-      //  if(e.id === i.responsibleFor[5]) animalsUnderResponse.push(e.name);
-      //  if(e.id === i.responsibleFor[6]) animalsUnderResponse.push(e.name);
-      //  if(e.id === i.responsibleFor[7]) animalsUnderResponse.push(e.name);       
-
-     })
-
-     obj[`${employee.firstName} ${employee.lastName}`] = animalsUnderResponse; })
-     
+  filteredEmployees.forEach((employee) => {
+    const animalsUnderResponseOfFiltEmployess = findAnimalsUnderResponse(employee);
+    obj[`${employee.firstName} ${employee.lastName}`] = animalsUnderResponseOfFiltEmployess;
+  });
 
   return obj;
 }
 
-// Com o id de um funcionário, retorna os animais pelos quais o funcionário é responsável
-// Com o primeiro nome de um funcionário, retorna os animais pelos quais o funcionário é responsável
-// Com o último nome de um um funcionário, retorna os animais pelos quais o funcionário é responsável
 
 module.exports = {
   entryCalculator,
