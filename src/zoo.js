@@ -115,9 +115,7 @@ function animalCount(species) {
     return relatorio;
   }
   const especie = data.animals.filter(animal => animal.name === species)
-  .reduce(function (valorAcumulador, animais) {
-    return (valorAcumulador = animais.residents);
-  }, 0);
+  .reduce((valorAcumulador, animais) => (valorAcumulador = animais.residents), 0);
   return especie.length;
 }
 // console.log(animalCount())
@@ -131,8 +129,27 @@ function animalMap(options) {
 }
 //------------------------------------------------------------------
 function schedule(dayName) {
-  // seu código aqui
+// sem parâmetros, retorna um cronograma legível para humanos
+// se um único dia for passado, retorna somente este dia em um formato
+// legível para humanos
+  if (dayName !== undefined) {
+    const { open, close } = data.hours[dayName];
+    return (dayName === 'Monday') ? { [dayName]: 'CLOSED' } : { [dayName]: `Open from ${open}am until ${close - 12}pm` };
+  }
+  const DIAS = (Object.keys(data.hours));
+// const {horario} = (data.hours)
+  const contador = {};
+  DIAS.forEach(function (dias) {
+    const { open: abre, close: fecha } = data.hours[dias];
+// console.log(contador[dias] = `Open from ${abre}am until ${fecha -12}pm`);
+    contador[dias] = (dias === 'Monday') ? 'CLOSED' : `Open from ${abre}am until ${fecha - 12}pm`;
+// (contador[dias] = `Open from ${abre}am until ${fecha}pm`)
+// console.log(dias)
+// console.log('-------------------------');
+  });
+  return contador;
 }
+console.log((schedule('Tuesday')));
 //------------------------------------------------------------------
 function oldestFromFirstSpecies(id) {
   // seu código aqui
