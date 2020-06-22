@@ -82,7 +82,7 @@ function entryCalculator(entrants) {
   return totalPrice;
 }
 
-function animalMap(options = { includeNames: false, sorted: false, sex: ['male', 'female']}) {
+function animalMap(options = { includeNames: false, sorted: false, sex: ['male', 'female'] }) {
   const obj = { NE: [], NW: [], SE: [], SW: [] };
   for (const region in obj) {
     const eachRegion = data.animals.filter(animal => animal.location === region);
@@ -91,26 +91,27 @@ function animalMap(options = { includeNames: false, sorted: false, sex: ['male',
     }
     if (options.includeNames === true) {
       eachRegion.forEach(animal => {
-        let generalAnimal = animal.name;
+        const generalAnimal = animal.name;
         let names = animal.residents.map(nomes => nomes.name);
         if (options.sex === 'female') {
-          let femeas = animal.residents.filter(sexo => sexo.sex === 'female');
+          const femeas = animal.residents.filter(sexo => sexo.sex === 'female');
           names = femeas.map(nome => nome.name);
         }
 
         if (options.sorted === true) names.sort();
         obj[region].push({ [generalAnimal]: names });
-      })}
+      })
+    };
   }
 
   return obj;
 }
 
 function schedule(dayName) {
-  let schedule = {};
-  for (let day in data.hours) {
+  const schedule = {};
+  for (const day in data.hours) {
     if (day === 'Monday') {
-      schedule[day] = `CLOSED`;
+      schedule[day] = 'CLOSED';
     } else {
       schedule[day] = `Open from ${data.hours[day].open}am until ${
         data.hours[day].close - 12
