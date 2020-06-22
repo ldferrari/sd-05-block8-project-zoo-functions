@@ -60,7 +60,7 @@ function animalCount(species) {
   const countSpecies = {};
   animals.forEach(animal => {
     countSpecies[animal.name] = animal.residents.length;
-  
+
   return species
     ? animals.find(nomeAnimal => nomeAnimal.name === species).residents.length
     : countSpecies;
