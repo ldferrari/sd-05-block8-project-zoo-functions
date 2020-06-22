@@ -43,7 +43,7 @@ function addEmployee(
   firstName,
   lastName,
   managers = [],
-  responsibleFor = []
+  responsibleFor = [],
 ) {
   const obj = {
     id,
@@ -75,22 +75,21 @@ function entryCalculator(entrants) {
   const seniorPrice = data.prices.Senior;
   const childPrice = data.prices.Child;
   if (entrants.Adult !== undefined) totalPrice += entrants.Adult * adultPrice;
-  if (entrants.Senior !== undefined)
+  if (entrants.Senior !== undefined) {
     totalPrice += entrants.Senior * seniorPrice;
+  }
   if (entrants.Child !== undefined) totalPrice += entrants.Child * childPrice;
   return totalPrice;
 }
 
-function animalMap(
-  options = { includeNames: false, sorted: false, sex: ['male', 'female'] }
-) {
+function animalMap(options = { includeNames: false, sorted: false, sex: ['male', 'female']}) {
   const obj = { NE: [], NW: [], SE: [], SW: [] };
-  for (let region in obj) {
-    let eachRegion = data.animals.filter(animal => animal.location === region
-    );
-    if (options.includeNames !== true)
+  for (const region in obj) {
+    const eachRegion = data.animals.filter(animal => animal.location === region);
+    if (options.includeNames !== true) {
       obj[region] = eachRegion.map(animal => animal.name);
-    if (options.includeNames === true)
+    }
+    if (options.includeNames === true) {
       eachRegion.forEach(animal => {
         let generalAnimal = animal.name;
         let names = animal.residents.map(nomes => nomes.name);
@@ -101,7 +100,7 @@ function animalMap(
 
         if (options.sorted === true) names.sort();
         obj[region].push({ [generalAnimal]: names });
-      });
+      })}
   }
 
   return obj;
