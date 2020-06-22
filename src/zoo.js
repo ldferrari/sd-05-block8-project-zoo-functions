@@ -10,6 +10,7 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
+const { animals, employees } = require('./data');
 
 function animalsByIds(a, b) {
   const arrayFiltered = data.animals.filter(selected => selected.id === a || selected.id === b);
@@ -23,7 +24,8 @@ function animalsOlderThan(animal, age) {
 }
 
 function employeeByName(employeeName) {
-  const employees = data.employees.filter(employee => employee.firstName === employeeName || employee.lastName === employeeName);
+  const employees = data.employees.filter(
+    employee => employee.firstName === employeeName || employee.lastName === employeeName);
   return employees[0] !== undefined ? employees[0] : {};
 }
 
@@ -36,13 +38,7 @@ function isManager(id) {
   return isManagers;
 }
 
-function addEmployee(
-  id,
-  firstName,
-  lastName,
-  managers = [],
-  responsibleFor = []
-) {
+function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
   const employee = {
     id,
     firstName,
@@ -83,8 +79,7 @@ function entryCalculator(entrants) {
 }
 
 function animalMap(
-  options = { includeNames: false, sorted: false, sex: ['male', 'female'] }
-) {
+  options = { includeNames: false, sorted: false, sex: ['male', 'female'] }) {
   const obj = { NE: [], NW: [], SE: [], SW: [] };
   const allRegion = Object.keys(obj);
   allRegion.forEach((region) => {
@@ -126,7 +121,22 @@ function schedule(dayName) {
 }
 
 function oldestFromFirstSpecies(id) {
-  // seu código aqui
+const employeeList = data.employees;
+ const animalId = employeeList.filter(employee => employee.id === id)[0].responsibleFor[0];
+ const animalList = data.animals.filter(animal => animal.id === animalId)[0].residents;
+ const older = animalList[0].age;
+ let mostOlder = [];
+
+ animalList.forEach((element) => {
+   if(element.age > older ) {
+     mostOlder = [];
+     mostOlder.push(element.name);
+     mostOlder.push(element.sex);
+     mostOlder.push(element.age);
+   }
+ });
+
+ return mostOlder;
 }
 
 function increasePrices(percentage) {
