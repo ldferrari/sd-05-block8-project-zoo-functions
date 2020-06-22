@@ -62,7 +62,7 @@ function animalCount(species) {
     countSpecies[animal.name] = animal.residents.length;
   }
 
-  return species
+  ,return species
     ? animals.find(nomeAnimal => nomeAnimal.name === species).residents.length
     : countSpecies;
 }
