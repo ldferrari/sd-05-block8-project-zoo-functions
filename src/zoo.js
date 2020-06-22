@@ -151,21 +151,21 @@ function increasePrices(percentage) {
 }
 
 function employeeCoverage(idOrName) {
-  const obj = {}
-  const findAnimal = id => data.animals.find(animal => animal.id === id)
+  const obj = {};
+  const findAnimal = id => data.animals.find(animal => animal.id === id);
   if (idOrName === undefined) {
     data.employees.forEach((employee) => {
-    obj[`${employee.firstName} ${employee.lastName}`] = []
-    let position = obj[`${employee.firstName} ${employee.lastName}`]
-    employee.responsibleFor.forEach(animalR => position.push(findAnimal(animalR).name))
-  })
+      obj[`${employee.firstName} ${employee.lastName}`] = [];
+      const position = obj[`${employee.firstName} ${employee.lastName}`];
+      employee.responsibleFor.forEach(animalR => position.push(findAnimal(animalR).name));
+    });
   } else {
-    const resultado = data.employees.find(employee => employee.firstName === idOrName || employee.lastName === idOrName || employee.id === idOrName)
-    obj[`${resultado.firstName} ${resultado.lastName}`] = []
-    let position = obj[`${resultado.firstName} ${resultado.lastName}`]
-    resultado.responsibleFor.forEach(animalRT => position.push(findAnimal(animalRT).name))
+    const resultado = data.employees.find(a => a.firstName === idOrName || a.lastName === idOrName || a.id === idOrName);
+    obj[`${resultado.firstName} ${resultado.lastName}`] = [];
+    const position = obj[`${resultado.firstName} ${resultado.lastName}`];
+    resultado.responsibleFor.forEach(animalRT => position.push(findAnimal(animalRT).name));
   }
-  return obj
+  return obj;
 }
 
 employeeCoverage('Stephanie');
