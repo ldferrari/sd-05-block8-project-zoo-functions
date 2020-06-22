@@ -118,7 +118,9 @@ function getResidentsNames(nameAnimal, sex = undefined, sorted = false) {
 }
 
 function animalMap(options) {
-  options === undefined ? options = {} : options;
+  if (options === undefined) {
+    options = {}
+  }
   const { includeNames = false, sorted = false, sex = undefined } = options;
   let result = { NE: [], NW: [], SE: [], SW: [] };
   const optionsMap = ['NE', 'NW', 'SE', 'SW'];
@@ -133,7 +135,7 @@ function animalMap(options) {
       //  retorna a opção com includeNames === true
       if (animal.location === position && includeNames === true) {
         const listNames = getResidentsNames(animal.name, sex, sorted);
-        result[position].push({ [ animal.name ]:[ ...listNames ] });
+        result[position].push({ [animal.name]: [...listNames] });
       }
     });
   });
@@ -180,7 +182,7 @@ function employeeCoverage(idOrName) {
   let employeesList = {};
   let employeeInfo = [];
   data.employees.forEach((employee) => {
-    const animalsNames = employee.responsibleFor.map(animalsResponsive => {
+    const animalsNames = employee.responsibleFor.map((animalsResponsive) => {
       return data.animals.find(animal => animal.id === animalsResponsive).name;
     });
     employeesList = { ...employeesList, [`${employee.firstName} ${employee.lastName}`]: [...animalsNames] };
