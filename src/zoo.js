@@ -13,17 +13,16 @@ const data = require('./data');
 
 function animalsByIds(...ids) {
   // seu código aqui
-  //Caso receba nenhum parâmetro, necessário retornar um array vazio
-  //Ao receber como parâmetro um único id, retorna os animais com este id
-  //Ao receber mais de um id, retorna os animais que têm um desses ids
   if (ids.length === 0) {
     return [];
   }
   const recebeAnimais = data.animals;
-  const  armazenaDados = [];
+  const armazenaDados = [];
   recebeAnimais.forEach((animals) => {
     ids.forEach((id) => {
-      if (animals.id === id) armazenaDados.push (animals);
+      if (animals.id === id) {
+        armazenaDados.push(animals);
+      }
     });
   });
   return armazenaDados;
