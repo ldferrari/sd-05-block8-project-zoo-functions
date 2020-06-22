@@ -41,11 +41,12 @@ function employeeByName(employeeName) {
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
 }
-
+*/
 function isManager(id) {
-  // seu código aqui
+  return employees.some(elemento => elemento.managers[0] === id);
 }
-
+console.log(isManager('c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1'));
+/*
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
 }
@@ -85,8 +86,8 @@ module.exports = {
   animalsByIds,
   employeeByName,
   /*  employeeCoverage,
-  addEmployee,
-  isManager,*/
+  addEmployee,*/
+  isManager,
   animalsOlderThan,
   /* oldestFromFirstSpecies,
   increasePrices,
