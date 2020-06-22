@@ -103,20 +103,32 @@ function animalMap(options) {
     }
   );
   if (options !== undefined) {
-    const { includeNames = false, sorted = false } = options;
+    const { includeNames = false, sorted = false, sex } = options;
     // add species to the object
   Object.keys(regions).forEach(region => {
     animals.forEach(({ name, location, residents }) => {
       if (location === region) {
-        if (includeNames === true && sorted === false) {
+        if (includeNames && !sorted && !sex) {
           regions[location].push({ [name]: residents.map(( {name} ) => name) });
-        } else if (includeNames === true && sorted === true) {
+        } 
+        if (includeNames && sorted) {
           regions[location].push({ [name]: residents.map(( {name} ) => name) });
           regions[location].forEach((animal, index) => {
             if (regions[location][index][name] !== undefined) {
               regions[location][index][name].sort();
             }
           });
+        }
+        if (includeNames && (sex === 'male' || sex === 'female')) {
+          regions[location].push({ [name]: residents.filter(resident => resident.sex === sex).map(( {name} ) => name) });
+        }
+        if (!includeNames && (sex === 'male' || sex === 'female')) {
+          residents = residents.filter(resident => resident.sex === sex).map(( {name} ) => name);
+          console.log(name);
+          console.log(residents);
+          if (residents != []) {
+            regions[location].push(name);
+          }
         }
       }
     });
@@ -134,7 +146,7 @@ function animalMap(options) {
 }
 
 // animalMap({includeNames: true, sorted: true})
-// console.log(animalMap({includeNames: true, sorted: true}));
+console.log(animalMap({sex: 'female'}));
 
 function schedule(dayName) {
   const readByHuman = {};
