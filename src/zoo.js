@@ -13,7 +13,7 @@ const data = require('./data');
 const { animals, employees, prices } = require('./data');
 
 function animalsByIds(...ids) {
-  const filter= [];
+  const filter = [];
   if (ids.length === 0) {
     return filter;
   }
@@ -89,7 +89,7 @@ function entryCalculator(entrants) {
   pricesarray.forEach((element) => {
     total.push((element.Adult * Adult),
     (element.Child * Child),
-    (element.Senior * Senior))
+    (element.Senior * Senior));
   });
   const result = total.reduce((acc, index) => acc + index);
   return result;
@@ -109,7 +109,6 @@ function animalMap(options) {
 }
 
 function schedule(dayName) {
-  
 }
 
 function oldestFromFirstSpecies(id) {
