@@ -66,8 +66,10 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 }
 
 function animalCount(species) {
+  // Tratamento caso a função seja chamada sem parâmetros
   const aCount = {};
   if (species === undefined) {
+    // Recebe o nome e a quantidade daquele anima e armazena no objeto animal count
     animals.forEach((element) => {
       const count = element.residents.length;
       const name = element.name;
@@ -75,11 +77,20 @@ function animalCount(species) {
     });
     return aCount;
   }
+  // Procura pelo nome do animal passado no parâmetro e retorna o número de animais
   return animals.find(aux => aux.name === species).residents.length;
 }
 
-function entryCalculator(entrants) {
-  // seu código aqui
+function entryCalculator(...entrants) {
+  // Testa se a entrada é vazia ou se é um objeto vazio e retorna 0
+  if (entrants.length === 0 || Object.keys(entrants[0]).length === 0) {
+    return 0;
+  }
+  // Joga os valores dos parametros para um array e depois multiplica com o valor de cada entrada.
+  const eVet = Object.values(entrants[0]);
+  const total = (eVet[0] * data.prices.Adult) + (eVet[1] * data.prices.Child) +
+  (eVet[2] * data.prices.Senior);
+  return total;
 }
 
 function animalMap(options) {
