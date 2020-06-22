@@ -55,6 +55,8 @@ function createEmployee(personalInfo, associatedWith) {
   contendo informações pessoais, gerentes e animais gerenciados
   */
   // seu código aqui
+  const newEmployee = {...personalInfo, ...associatedWith};
+  return newEmployee;
 }
 
 function isManager(id) {
