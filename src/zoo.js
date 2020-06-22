@@ -125,6 +125,20 @@ function increasePrices(percentage) {
 
 function employeeCoverage(idOrName) {
   // seu código aqui
+  const resultado = {};
+
+  if (idOrName) {
+    employees = employees.filter(({ id, firstName, lastName }) => (
+      id === idOrName || firstName === idOrName || lastName === idOrName
+    ));
+  }
+
+  employees.forEach(({ firstName, lastName, responsibleFor }) => (
+    result[`${firstName} ${lastName}`] = responsibleFor.map(id => (
+      animals.filter(({ id: enimalId }) => (enimalId === id))[0].name
+    ))
+  ));
+  return resultado;
 }
 
 module.exports = {
