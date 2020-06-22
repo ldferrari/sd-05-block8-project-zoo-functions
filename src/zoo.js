@@ -10,6 +10,7 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
+const { prices } = require('./data');
 
 function animalsByIds(...ids) {
   // seu código aqui
@@ -28,8 +29,6 @@ function animalsOlderThan(animal, age) {
   .residents.every(({ age: idade }) => idade > age);
 }
 
-console.log(animalsOlderThan('lions', 10));
-
 function employeeByName(employeeName) {
   // seu código aqui
   if (employeeName === undefined) return {};
@@ -37,8 +36,6 @@ function employeeByName(employeeName) {
     firstName === employeeName || lastName === employeeName
   ))[0];
 }
-
-console.log(employeeByName('Nigel'));
 
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
@@ -49,8 +46,6 @@ function isManager(id) {
   // seu código aqui
   return Object.values(data.employees).some(({ managers }) => managers[0] === id);
 }
-
-console.log(isManager('0e7b460e-acf4-4e17-bcb3-ee472265db83'));
 
 function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
   // seu código aqui
@@ -66,16 +61,19 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 
 function animalCount(species) {
   // seu código aqui
+  // return data.animals.forEach(animal => animal.name === species ? animal.residents.length : 'erro');
 }
 
-console.log(animalCount());
+// console.log(animalCount('lions'));
 
 function entryCalculator(entrants = {}) {
   // seu código aqui
-  // if (Object.entries(entrants).length === 0) return 0;
+  if (Object.entries(entrants).length === 0) return 0;
+  return Object.keys(data.prices).reduce((result, idade) => 
+    result + (entrants[idade] * data.prices[idade]), 0);
 }
 
-console.log(entryCalculator({}));
+console.log(entryCalculator({'Adult': 2, 'Senior': 1, 'Child': 1}));
 
 function animalMap(options) {
   // seu código aqui
