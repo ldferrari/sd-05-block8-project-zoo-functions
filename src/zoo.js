@@ -13,15 +13,13 @@ const data = require('./data');
 const { animals, employees, prices } = require('./data');
 
 function animalsByIds(...ids) {
-  /* let filter=[]
-  if ( ids === undefined){
+  let filter=[]
+  if ( ids.length === 0){
     return filter;
-  } else if (ids) {
-   filter = ids.forEach(index => animals.filter(element => element.id === index))
-   .reduce((acc, value) => acc + value)
-    return filter
-  }
-  } */
+  } else {
+    ids.forEach(id => filter.push(...animals.filter(element => element.id === id)))
+   return filter
+  } 
 }
 
 function animalsOlderThan(animal, age1) {
@@ -89,7 +87,7 @@ function entryCalculator(entrants) {
   const total = [];
   const { Adult, Child, Senior } = entrants;
   const pricesarray = [prices];
-  pricesarray.forEach(element => {(
+  pricesarray.forEach((element) => {(
     total.push((element.Adult * Adult),
     (element.Child * Child),
     (element.Senior * Senior))
@@ -99,9 +97,18 @@ function entryCalculator(entrants) {
 }
 
 function animalMap(options) {
-  // seu código aqui
+  if (options === undefined) {
+    animals.reduce((acc, obj) => {
+      let key = obj.location
+      if (!acc[key]) {
+        acc[key] = []
+      }
+      acc[key].push(obj.name)
+      return acc
+    },{})
+  }
 }
-
+animalMap()
 function schedule(dayName) {
   // seu código aqui
 }
