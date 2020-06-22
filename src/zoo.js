@@ -144,15 +144,15 @@ function oldestFromFirstSpecies(id) {
 }
 
 function increasePrices(percentage) {
-  const newPrices = { Adult: Math.round((49.99 * 100) * (1 + (percentage / 100))).toFixed(2) / 100,
-    Senior: Math.round((24.99 * 100) * (1 + (percentage / 100))).toFixed(2) / 100,
-    Child: Math.round((20.99 * 100) * (1 + (percentage / 100))).toFixed(2) / 100,
-  };
-  return newPrices;
+  const chavesPrices = Object.keys(prices);
+  chavesPrices.forEach((key) => {
+    prices[key] = Math.round((prices[key] * 100) * (1 + (percentage / 100))).toFixed(2) / 100;
+  });
+  return prices;
 }
 
+
 function employeeCoverage(idOrName) {
-  // seu código aqui
 }
 
 module.exports = {
