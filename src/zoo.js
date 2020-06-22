@@ -143,7 +143,7 @@ function animalMap(options) {
 }
 
 function schedule(dayName) {
-  const scheduleInform = {Tuesday: '', Wednesday: '', Thursday: '', Friday: '', Saturday: '', Sunday: '', Monday: ''};
+  const scheduleInform = { Tuesday: '', Wednesday: '', Thursday: '', Friday: '', Saturday: '', Sunday: '', Monday: '' };
   const daysWeek = Object.keys(scheduleInform);
   daysWeek.forEach((day) => {
     if (data.hours[day].open !== 0 && data.hours[day].close !== 0) {
