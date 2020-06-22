@@ -142,12 +142,17 @@ function schedule(dayName) {
   const weekDays = Object.keys(hours);
   const workHours = Object.values(hours);
   workHours.forEach((hour) => {
-    return (hour.close > 12) ?
-    (hour.close -= 12)
-    : hour });
+    if (hour.close > 12) {
+      hour.close -= 12; 
+    }
+  });
   weekDays.forEach((day, index) => {
-    return (day === 'Monday') ? readByHuman[day] = 'CLOSED'
-    : readByHuman[day] = `Open from ${workHours[index].open}am until ${workHours[index].close}pm` });
+    if (day === 'Monday') {
+      readByHuman[day] = 'CLOSED';
+    } else {
+      readByHuman[day] = `Open from ${workHours[index].open}am until ${workHours[index].close}pm`;
+    }
+  });
   return (dayName == null) ? readByHuman : { [dayName]: readByHuman[dayName] };
 }
 
