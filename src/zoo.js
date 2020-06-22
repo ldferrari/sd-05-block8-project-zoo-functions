@@ -26,16 +26,16 @@ function animalsByIds(...ids) {
 
 function animalsOlderThan(animal, age) {
   /*
-  Ao passar o nome de uma espécie e uma idade, testa se todos 
+  Ao passar o nome de uma espécie e uma idade, testa se todos
   os animais desta espécie possuem a idade mínima especificada
   */
   // seu código aqui
   const specieName = animals.find(item => item.name === animal);
-  return specieName.residents.every(elemento => elemento.age > age);  
+  return specieName.residents.every(elemento => elemento.age > age);
 }
 
 function employeeByName(employeeName) {
-  // seu código aqui   
+  // seu código aqui
 }
 
 function createEmployee(personalInfo, associatedWith) {
@@ -93,5 +93,3 @@ module.exports = {
   increasePrices,
   createEmployee,
 };
-
-
