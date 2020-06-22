@@ -64,7 +64,7 @@ function isManager(id) {
   // seu código aqui
   const testIfManager = employees.some(employee =>
     employee.managers.find(manager => manager === id));
-    return testIfManager;
+  return testIfManager;
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
