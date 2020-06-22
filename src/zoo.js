@@ -78,6 +78,7 @@ function animalCount(species) {
   };
   return species ? findByName.residents.length : animals.reduce(all, {});
 }
+// segundo param de reduce pode indicar o tipo de dado, ou o primeiro valor, aqui objeto
 
 function entryCalculator(entrants) {
   // seu código aqui
@@ -120,7 +121,19 @@ function schedule(dayName) {
 
 function oldestFromFirstSpecies(id) {
   // seu código aqui
+  // 1. armazenar o id da primeira espécie de animal gerenciado por funcionário via id dele
+  const idFirstManagedSpecies = employees.find(person => id === person.id).responsibleFor[0];
+  // 2. armazenar o array de residentes dessa espécie
+  const findSpecies = animals.find(animal => idFirstManagedSpecies === animal.id).residents;
+  // 3. achar a idade mais alta e retornar animal preciso correspondente
+  const olderAnimals = findSpecies.sort(function (a,b){
+    return b.age - a.age;
+    });
+  // 4. transformar esse objeto em array que é o retorno final desejado
+  const { name, sex, age } = olderAnimals[0];
+  return [name, sex, age];
 }
+// console.log(oldestFromFirstSpecies('9e7d4524-363c-416a-8759-8aa7e50c0992'));
 
 function increasePrices(percentage) {
   // seu código aqui
