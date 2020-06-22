@@ -97,9 +97,9 @@ function schedule(dayName) {
 
 function oldestFromFirstSpecies(id) {
   // seu código aqui
-  const firstbicho = employees.find( caras => caras.id === id).responsibleFor[0];
-  
-  const residentes = animals.find( bicho => bicho.id === firstbicho).residents;
+  const firstbicho = employees.find(caras => caras.id === id).responsibleFor[0];
+
+  const residentes = animals.find(bicho => bicho.id === firstbicho).residents;
 
   const velho = residentes.sort(function (a, b) {
     return b.age - a.age;
