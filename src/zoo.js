@@ -11,11 +11,7 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const { animals } = data;
-const { employees } = data;
-const { prices } = data;
-
-// const { hours } = data;
+const { animals, employees, hours, prices } = data;
 
 // console.log(employees);
 /*
@@ -160,24 +156,79 @@ function entryCalculator(entrants) {
   return allPrices;
 }
 
+/*
+Sem parâmetros, retorna animais categorizados por localização
+Com opções especificadas, retorna nomes de animais
+Com opções especificadas, retorna nomes de animais ordenados
+Com opções especificadas, retorna somente nomes de animais macho/fêmea
+Só retorna informações específicas de gênero se includeNames for setado
+_________________BABY-STEPS____________________
+
+*/
 function animalMap(options) {
-  // seu código aqui
+
 }
 
+/*
+Sem parâmetros, retorna um cronograma legível para humanos
+Se um único dia for passado, retorna somente este dia em um formato legível para humanos
+_________________BABY-STEPS____________________
+1º criar um return para cada dia quando passar um parâmetro(dayName)
+2º criar um return para todos os dias quando não parâmetro
+*/
 function schedule(dayName) {
-  // seu código aqui
+  const objAllDays = Object.keys(hours);
+  const objCadaDay = {};
+  objAllDays.forEach((day) => {
+    if (day !== 'Monday') {
+      objCadaDay[day] = `Open from ${hours[day].open}am until ${hours[day].close - 12}pm`;
+    } else {
+      objCadaDay[day] = 'CLOSED';
+    }
+  });
+  if (!dayName) {
+    return objCadaDay;
+  }
+  return ({ [dayName]: objCadaDay[dayName] });
 }
 
+/*
+Passado o id de um funcionário, encontra a primeira espécie de animal gerenciado
+pelo funcionário, e retorna um array com nome, sexo e idade do animal mais velho dessa espécie
+_________________BABY-STEPS____________________
+
+*/
 function oldestFromFirstSpecies(id) {
-  // seu código aqui
+
 }
 
+/*
+Ao passar uma porcentagem, incrementa todos os preços, arrendondados em duas casas decimais
+_________________BABY-STEPS____________________
+
+*/
 function increasePrices(percentage) {
-  // seu código aqui
+
 }
 
+/*
+Sem parâmetros, retorna uma lista de funcionários e os animais pelos quais eles são responsáveis
+Com o id de um funcionário, retorna os animais pelos quais o funcionário é responsável
+Com o primeiro nome de um funcionário, retorna os animais pelos quais o funcionário é responsável
+Com o último nome de um um funcionário, retorna os animais pelos quais o funcionário é responsável
+_________________BABY-STEPS____________________
+*/
 function employeeCoverage(idOrName) {
-  // seu código aqui
+//   if (!idOrName) {
+//     const allEmployees = employees.reduce((accumulator, employee) => {
+//       const animalsNames = employee.responsibleFor.map(animalID =>
+//         animals.find(element => animalID === element.id).name);
+//       accumulator [`${employee.firstName} ${employee.lastName}`] = animalsNames;
+//       return accumulator;
+//     }, {})
+//     return allEmployees;
+//   }
+//   return
 }
 
 module.exports = {
