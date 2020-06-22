@@ -82,8 +82,11 @@ function schedule(dayName) {
   const workDay = {};
 
   workWeek.forEach((day) => {
-    if (day === 'Monday') workDay[day] = 'CLOSED';
-    else workDay[day] = `Open from ${hours[day].open}am until ${hours[day].close - 12}pm`;
+    if (day === 'Monday') {
+      workDay[day] = 'CLOSED';
+    } else {
+      workDay[day] = `Open from ${hours[day].open}am until ${hours[day].close - 12}pm`;
+    }
   });
 
   if (!dayName) {
@@ -94,7 +97,17 @@ function schedule(dayName) {
 }
 
 function oldestFromFirstSpecies(id) {
-  // seu código aqui
+  const employeeFirstAnimal = employees.find(employee => employee.id === id).responsibleFor[0];
+  const firstAnimal = animals.find(animal => animal.id === employeeFirstAnimal);
+  const oldestAnimal = firstAnimal.residents.reduce((youngest, oldest) => {
+    if (youngest.age < oldest.age) {
+      return oldest;
+    }
+    return youngest;
+  });
+
+  const { name, sex, age } = oldestAnimal;
+  return [name, sex, age];
 }
 
 function increasePrices(percentage) {
