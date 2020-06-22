@@ -157,7 +157,30 @@ function increasePrices(percentage) {
 }
 
 function employeeCoverage(idOrName) {
-  // seu código aqui
+  const saida = employees.reduce((atual, iterando) => {
+    const nomeCompleto = `${iterando.firstName} ${iterando.lastName}`;
+    atual[nomeCompleto] = [];
+    const auxiliar = iterando.responsibleFor;
+    auxiliar.forEach(item => atual[nomeCompleto].push(
+      animals.find(itemAnimal => itemAnimal.id === item).name));
+    return atual;
+  }, {});
+  if (!idOrName) return saida;
+  const pegaFichaEmpregado = employees.find(empregado => empregado.id === idOrName);
+  if (pegaFichaEmpregado) { //  cobre o caso de entrar com o id direto.
+    const saida2 = {};
+    saida2[`${pegaFichaEmpregado.firstName} ${pegaFichaEmpregado.lastName}`] = saida[`${pegaFichaEmpregado.firstName} ${pegaFichaEmpregado.lastName}`];
+    return saida2;
+  }
+  const pegaNomesSaida = Object.keys(saida); // cobrindo o caso de entrar com nome ou sobrenome.
+  let indice = 0;
+  pegaNomesSaida.forEach((item, index) => {
+    const auxiliar = item.split(' ');
+    if (idOrName === auxiliar[0] || idOrName === auxiliar[1]) indice = index;
+  });
+  const saida3 = {};
+  saida3[pegaNomesSaida[indice]] = saida[pegaNomesSaida[indice]];
+  return saida3;
 }
 
 module.exports = {
