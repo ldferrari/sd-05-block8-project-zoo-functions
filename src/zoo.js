@@ -13,7 +13,7 @@ const data = require('./data');
 
 const anyAnimals = data.animals;
 const employes = data.employees;
-console.log(employes[0]);
+const prices = data.prices;
 
 function animalsByIds(id1, ...restIds) {
   const ids = [id1, ...restIds];
@@ -73,7 +73,9 @@ function animalCount(species) {
 }
 
 function entryCalculator(entrants) {
-  // seu código aqui
+  if (!entrants || Object.entries(entrants).length === 0) return 0;
+  const total = (total, preços) => total + (prices[preços] * entrants[preços]);
+  return (Object.keys(data.prices).reduce(total, 0));
 }
 
 function animalMap(options) {
