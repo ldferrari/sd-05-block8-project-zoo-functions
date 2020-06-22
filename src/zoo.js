@@ -12,25 +12,19 @@ eslint no-unused-vars: [
 const data = require("./data");
 
 const { animals, employees } = require("./data");
-/*
-Caso receba nenhum parâmetro, necessário retornar um array vazio
-Ao receber como parâmetro um único id, retorna os animais com este id
-Ao receber mais de um id, retorna os animais que têm um desses ids
-*/
-
 
 function animalsByIds(...ids) {
-  let result = ids;  
-    /* if(result.length === 1){
-       return animals.find(elemento => elemento.id === '0938aa23-f153-4937-9f88-4858b24d6bce');
-      }else if(result.length === 2){
-        return animals.filter(elemento => elemento.id === '0938aa23-f153-4937-9f88-4858b24d6bce' || elemento.id === '0938aa23-f153-4937-9f88-4858b24d6bce')
-      }*/
+  let result = ids;
+  if (result.length === 1) {
+    return animals.filter((elemento) => elemento.id === result[0]);
+  } else if (result.length >= 2) {
+    return animals.filter(
+      (elemento) => elemento.id === result[0] || elemento.id === result[1]
+    );
+  }
   return result;
 }
- 
-//console.log(animalsByIds());
-/*
+
 function animalsOlderThan(animal, age) {
   // seu código aqui
 }
@@ -59,8 +53,8 @@ function entryCalculator(entrants) {
   // seu código aqui
 }
 
-function animalMap() { 
- // seu código aqui
+function animalMap() {
+  // seu código aqui
 }
 
 function schedule(dayName) {
@@ -78,14 +72,13 @@ function increasePrices(percentage) {
 function employeeCoverage(idOrName) {
   // seu código aqui
 }
-*/
 module.exports = {
- /* entryCalculator,
+  /* entryCalculator,
   schedule,
   animalCount,
   animalMap,*/
   animalsByIds,
- /* employeeByName,
+  /* employeeByName,
   employeeCoverage,
   addEmployee,
   isManager,
@@ -94,4 +87,3 @@ module.exports = {
   increasePrices,
   createEmployee,*/
 };
-
