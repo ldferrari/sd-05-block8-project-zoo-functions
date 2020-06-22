@@ -84,15 +84,14 @@ function animalMap(options) {
 
 function schedule(dayName) {
   // seu código aqui
-const agenda = {};
-Object.keys(hours).forEach((dia) => {
-  if(dia === 'Monday') agenda[dia] = 'CLOSED';
+  const agenda = {};
+  Object.keys(hours).forEach((dia) => {
+  if (dia === 'Monday') agenda[dia] = 'CLOSED';
   else agenda[dia] = `Open from ${hours[dia].open}am until ${hours[dia].close - 12}pm`;
-});
+  });
 
-return dayName ? {[dayName]: agenda[dayName]} : agenda;
- 
-} 
+  return dayName ? { [dayName]: agenda[dayName] } : agenda;
+}
 
 // const agenda = {};
 // Object.keys(hours).forEach((dia) => {
