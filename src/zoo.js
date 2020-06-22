@@ -114,7 +114,7 @@ function getResidentsNames(nameAnimal, sex = undefined) {
   return arrayResidents;
 }
 
-function animalMap(options) {
+/*function animalMap(options) {
   (options === undefined) ? options = {} : options;
   const {includeNames = false, sorted = false, sex = undefined} = options;
   let result = {};
@@ -143,7 +143,7 @@ function animalMap(options) {
     
   });
   return result;
-}
+}*/
 //console.log(animalMap({ includeNames: true, sorted: true}));
 
 function schedule(dayName) {
@@ -183,7 +183,7 @@ function increasePrices(percentage) {
 }
 
 function employeeCoverage(idOrName) {
-  // seu código aqui
+  
 }
 
 module.exports = {
