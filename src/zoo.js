@@ -9,26 +9,25 @@ eslint no-unused-vars: [
 ]
 */
 
-const data = require("./data");
+const data = require('./data');
 
-const { animals } = require("./data");
+const { animals } = require('./data');
 
 function animalsByIds(...ids) {
   const result = ids;
   if (result.length === 1) {
-    return animals.filter((elemento) => elemento.id === result[0]);
+    return animals.filter(elemento => elemento.id === result[0]);
   } else if (result.length >= 2) {
     return animals.filter(
-      (elemento) => elemento.id === result[0] || elemento.id === result[1]
-    );
+      elemento => elemento.id === result[0] || elemento.id === result[1]);
   }
   return result;
 }
 
 function animalsOlderThan(animal, age) {
   return animals
-    .find((elemento) => elemento.name === animal)
-    .residents.every((elemento) => elemento.age >= age);
+    .find(elemento => elemento.name === animal)
+    .residents.every(elemento => elemento.age >= age);
 }
 
 /*
