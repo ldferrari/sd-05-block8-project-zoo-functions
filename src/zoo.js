@@ -59,11 +59,9 @@ const animalMap = (options = {}) => {
   const { includeNames, sex, sorted } = options;
   const mappedAnimal = animals.reduce((animal, { name, location }) => {
     if (!animal[location]) animal[location] = [];
-    if (includeNames) {
-      animal[location].push(animalsName(name, sorted, sex));
-    } else {
-      animal[location].push(name);
-    }
+    (includeNames
+      ? animal[location].push(animalsName(name, sorted, sex))
+      : animal[location].push(name));
     return animal;
   }, {});
   return mappedAnimal;
@@ -88,10 +86,7 @@ const oldestFromFirstSpecies = (id) => {
   return Object.values(oldestAnimal).map(key => key);
 };
 
-const roundNum = (num, length) => {
-  const number = Math.round(num * (10 ** length)) / (10 ** length);
-  return number;
-};
+const roundNum = (num, length) => Math.round(num * (10 ** length)) / (10 ** length);
 
 const increasePrices = percentage => Object.keys(prices).forEach(
     key => (prices[key] = roundNum(prices[key] + (prices[key] * (percentage / 100)), 2)),
