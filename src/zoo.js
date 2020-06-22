@@ -109,12 +109,7 @@ function animalMap(options) {
 }
 
 function schedule(dayName) {
-  if (dayName.length === 0) {
-    const { Tuesday, Wednesday, Thursday }
-    const humanSchedule = {
-
-    }
-  }
+  
 }
 
 function oldestFromFirstSpecies(id) {
