@@ -144,7 +144,7 @@ function oldestFromFirstSpecies(id) {
 }
 
 function increasePrices(percentage) {
-  //const newPrices = {Adult: Math.round 97.49 * percentage};
+  // const newPrices = {Adult: Math.round 97.49 * percentage};
 }
 
 function employeeCoverage(idOrName) {
