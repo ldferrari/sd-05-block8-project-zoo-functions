@@ -59,12 +59,13 @@ function isManager(id) {
   return searchMan;
 }
 
-function addEmployee(id, firstName, lastName, managers=[], responsibleFor=[]) {
-  const addEmp = employees.push({id,firstName,lastName,managers,responsibleFor});
+function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
+  // Recebe os valores dos parâmetros, e adiciona no final da lista
+  // Ps: Não retorna nada.
+  employees.push({ id, firstName, lastName, managers, responsibleFor });
 }
 
 function animalCount(species) {
-  // seu código aqui
 }
 
 function entryCalculator(entrants) {
