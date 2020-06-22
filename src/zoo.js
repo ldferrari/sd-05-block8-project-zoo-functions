@@ -98,7 +98,15 @@ function oldestFromFirstSpecies(id) {
 }
 
 function increasePrices(percentage) {
-  // seu código aqui
+  const { Adult: adultTicket, Senior: seniorTicket, Child: childTicket } = prices;
+
+  const priceIncrease = {
+    Adult: Math.round((adultTicket * 100) * (1 + (percentage / 100))).toFixed(2) / 100,
+    Senior: Math.round((seniorTicket * 100) * (1 + (percentage / 100))).toFixed(2) / 100,
+    Child: Math.round((childTicket * 100) * (1 + (percentage / 100))).toFixed(2) / 100,
+  };
+
+  return Object.assign(prices, priceIncrease);
 }
 
 function employeeCoverage(idOrName) {
