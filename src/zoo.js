@@ -14,9 +14,6 @@ const data = require('./data');
 const { animals } = data;
 const { employees } = data;
 
-console.log(employees.some(employee => 'c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1' === employee.managers.find(item => item === 'c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1')));
-
-
 function animalsByIds(...ids) {
   const animId = [];
 
@@ -53,7 +50,7 @@ function createEmployee(personalInfo, associatedWith) {
 }
 
 function isManager(id) {
-  const myReturn = employees.some(employee => id === employee.managers.find(item => item === id));
+  const myReturn = employees.some(man => id === man.managers.find(item => item === id));
   return myReturn;
   // seu código aqui
 }
