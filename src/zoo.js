@@ -82,7 +82,7 @@ function animalCount(species) {
 function entryCalculator(entrants) {
   // seu código aqui
   // condicionar para retornar 0 se entrants n existir ou for um objeto vazio
-  if (entrants === undefined || Object.entries(entrants).length === 0) {
+  if (entrants === undefined || Object.keys(entrants).length === 0) {
     return 0;
   }
   // nos outros casos, tem que retornar quantidade*preço para cada idade
@@ -101,23 +101,21 @@ function animalMap(options) {
 
 function schedule(dayName) {
   // seu código aqui
-  // 1. preparar retorno para cada dia quando tiver um dayName
-  const eachDayWithinObject = Object.keys(hours);
-  let ifDay = {};
-  eachDayWithinObject.forEach((day) => {
-    if (day === dayName) {
-      ifDay = { dayName: `Open from ${day.open} until ${day.close}pm` };
+  // 1. preparar retorno para cada dia com forEach e template string, inclusive monday closed
+  // 2. preparar retorno condicionado segundo se tiver dayName param ou não
+  const allDays = Object.keys(hours);
+  let eachDay = {};
+  allDays.forEach((day) => {
+    if (day !== 'Monday') {
+      eachDay[day] = `Open from ${hours[day].open}am until ${hours[day].close - 12}pm`;
+    } else {
+      eachDay[day] = 'CLOSED';
     }
   });
-  return ifDay;
-  // // 2. preparar retorno para todo dia quando n tiver dayName
-  // let allDays = {};
-  // cuidado monday, if dayName = monday, valor da propriedade é 'CLOSED'
-  // if other day, adicionar valor com template literals
-  // template string retornado serà `Open from ${dayName.open} until ${datName.close}pm`
-  // vai ter que criar nova propriedade a cada dia dentro do objeto allDays retornado
-  // // 3. condicionar retorno final
-  // return dayName ? ifDay : allDays;
+  if (dayName === undefined) {
+    return eachDay;
+  }
+  return ({ [dayName]: eachDay[dayName] });
 }
 
 function oldestFromFirstSpecies(id) {
