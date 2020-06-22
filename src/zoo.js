@@ -53,7 +53,10 @@ function createEmployee(personalInfo, associatedWith) {
 }
 
 function isManager(id) {
-  // seu código aqui
+  // Procura pelo código do funcionário e procura se esse código esta contido
+  // em algum gerente designado.
+  const searchMan = employees.some(aux => aux.managers.some(manId => manId === id));
+  return searchMan;
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
