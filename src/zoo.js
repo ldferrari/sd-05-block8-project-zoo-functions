@@ -9,8 +9,8 @@ eslint no-unused-vars: [
 ]
 */
 
-const data = require("./data");
-const { prices } = require("./data");
+const data = require('./data');
+const { prices } = require('./data');
 
 function animalsByIds(a, b) {
   const arrayFiltered = data.animals.filter(
@@ -38,7 +38,7 @@ function employeeByName(employeeName) {
 }
 
 function createEmployee(personalInfo, associatedWith) {
-  return (employee = { ...personalInfo, ...associatedWith });
+  return { ...personalInfo, ...associatedWith };
 }
 
 function isManager(id) {
@@ -76,7 +76,7 @@ function animalCount(species) {
     return dataAnimalObj;
   }
 
-  const count = data.animals.filter((element) => element.name === species);
+  const count = data.animals.filter(element => element.name === species);
   return count[0].residents.length;
 }
 
@@ -95,10 +95,11 @@ function entryCalculator(entrants) {
 }
 
 function animalMap(
-  options = { includeNames: false, sorted: false, sex: ["male", "female"] }
+  options = { includeNames: false, sorted: false, sex: ['male', 'female'] }
 ) {
   const obj = { NE: [], NW: [], SE: [], SW: [] };
-  for (let region in obj) {
+  const allRegion = Object.keys(obj);
+  allRegion.forEach((region) => {
     let eachRegion = data.animals.filter(
       animal => animal.location === region
     );
@@ -108,15 +109,15 @@ function animalMap(
       eachRegion.forEach( animal => {
         let generalAnimal = animal.name;
         let names = animal.residents.map( nomes => nomes.name);
-        if (options.sex === "female") {
-          let femeas = animal.residents.filter( sexo => sexo.sex === "female");
+        if (options.sex === 'female') {
+          let femeas = animal.residents.filter( sexo => sexo.sex === 'female');
           names = femeas.map( nome => nome.name);
         }
 
         if (options.sorted === true) names.sort();
         obj[region].push({ [generalAnimal]: names });
       });
-  }
+  });
 
   return obj;
 }
@@ -124,8 +125,8 @@ function animalMap(
 function schedule(dayName) {
   let schedule = {};
   for (let day in data.hours) {
-    if (day === "Monday") {
-      schedule[day] = "CLOSED";
+    if (day === 'Monday') {
+      schedule[day] = 'CLOSED';
     } else {
       schedule[day] = `Open from ${data.hours[day].open}am until ${
         data.hours[day].close - 12
