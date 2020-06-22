@@ -122,7 +122,8 @@ function animalMap(options) {
   let optionsMap = ['NE', 'NW', 'SE', 'SW'];
   optionsMap.forEach(element => {
     let animalsList = [];
-    data.animals.forEach(animal => {
+    let arrayAnimais = [];
+    data.animals.forEach(animal => {    
       if (animal.location === element && includeNames === false) {
         animalsList.push(animal.name);
         result = {...result, [element]: animalsList};
@@ -132,10 +133,14 @@ function animalMap(options) {
         if (sorted === true) {
           listNames.sort();
         }
-        animalsList[animal.name] = [...listNames];
-        result = {...result, [element]: {...animalsList}};
+        let objetoAnimal = {[animal.name]: [...listNames]};
+        arrayAnimais.push(objetoAnimal);
       }
     });
+    console.log(arrayAnimais);
+    element = {element:[]};
+    element.push(arrayAnimais)
+    result = {...result, element};
     
   });
   return result;
