@@ -35,17 +35,21 @@ function animalsOlderThan(animal, age) {
 }
 
 function employeeByName(employeeName) {
+  // Tratamento caso receba com parâmetro vazio.
   const objAux = {};
   if (employeeName === undefined) {
     return objAux;
   }
+  // Procura pelo nome do funcionário ou pelo sobrenome e retorna o seu objeto
+  // Tentei usar o .filter mas ele retorna dentro de um array.
   const searchEmp = employees.find(aux => aux.firstName === employeeName ||
   aux.lastName === employeeName);
   return searchEmp;
 }
 
 function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
+  // Retorna um objeto com as informações do funcionário cadastrado.
+  return { ...personalInfo, ...associatedWith };
 }
 
 function isManager(id) {
