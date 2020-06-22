@@ -9,29 +9,29 @@ eslint no-unused-vars: [
 ]
 */
 
-const data = require('./data');
-const { employees, prices } = require('./data');
+const data = require("./data");
+const { prices } = require("./data");
 
 function animalsByIds(a, b) {
   const arrayFiltered = data.animals.filter(
-    (selected) => selected.id === a || selected.id === b
+    selected => selected.id === a || selected.id === b
   );
   return arrayFiltered;
 }
 
 function animalsOlderThan(animal, age) {
   const animalsFilter = data.animals.filter(
-    (selected) => selected.name === animal
+    selected => selected.name === animal
   );
   const isOlder = animalsFilter[0].residents.every(
-    (element) => element.age >= age
+    element => element.age >= age
   );
   return isOlder;
 }
 
 function employeeByName(employeeName) {
   const employees = data.employees.filter(
-    (employee) =>
+    employee =>
       employee.firstName === employeeName || employee.lastName === employeeName
   );
   return employees[0] !== undefined ? employees[0] : {};
@@ -43,7 +43,7 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   const isManager = data.employees.some(
-    (manager) => manager.managers.includes(id) === true
+    manager => manager.managers.includes(id) === true
   );
   return isManager;
 }
@@ -91,22 +91,22 @@ function entryCalculator(entrants) {
 }
 
 function animalMap(
-  options = { includeNames: false, sorted: false, sex: ['male', 'female'] }
+  options = { includeNames: false, sorted: false, sex: ["male", "female"] }
 ) {
   const obj = { NE: [], NW: [], SE: [], SW: [] };
   for (let region in obj) {
     let eachRegion = data.animals.filter(
-      (animal) => animal.location === region
+      animal => animal.location === region
     );
     if (options.includeNames !== true)
-      obj[region] = eachRegion.map((animal) => animal.name);
+      obj[region] = eachRegion.map( animal => animal.name);
     if (options.includeNames === true)
-      eachRegion.forEach((animal) => {
+      eachRegion.forEach( animal => {
         let generalAnimal = animal.name;
-        let names = animal.residents.map((nomes) => nomes.name);
-        if (options.sex === 'female') {
-          let femeas = animal.residents.filter((sexo) => sexo.sex === 'female');
-          names = femeas.map((nome) => nome.name);
+        let names = animal.residents.map( nomes => nomes.name);
+        if (options.sex === "female") {
+          let femeas = animal.residents.filter( sexo => sexo.sex === "female");
+          names = femeas.map( nome => nome.name);
         }
 
         if (options.sorted === true) names.sort();
@@ -120,8 +120,8 @@ function animalMap(
 function schedule(dayName) {
   let schedule = {};
   for (let day in data.hours) {
-    if (day === 'Monday') {
-      schedule[day] = 'CLOSED';
+    if (day === "Monday") {
+      schedule[day] = "CLOSED";
     } else {
       schedule[day] = `Open from ${data.hours[day].open}am until ${
         data.hours[day].close - 12
@@ -129,7 +129,7 @@ function schedule(dayName) {
     }
   }
 
-  if(dayName !== undefined) return { [dayName] : schedule[dayName] }
+  if (dayName !== undefined) return { [dayName]: schedule[dayName] };
   return schedule;
 }
 
