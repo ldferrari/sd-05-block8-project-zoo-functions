@@ -13,13 +13,12 @@ const data = require('./data');
 const { animals, employees, prices } = require('./data');
 
 function animalsByIds(...ids) {
-  let filter=[]
-  if ( ids.length === 0){
+  const filter= [];
+  if (ids.length === 0) {
     return filter;
-  } else {
-    ids.forEach(id => filter.push(...animals.filter(element => element.id === id)))
-   return filter
-  } 
+  }
+  ids.forEach(id => filter.push(...animals.filter(element => element.id === id)));
+  return filter;
 }
 
 function animalsOlderThan(animal, age1) {
@@ -87,11 +86,11 @@ function entryCalculator(entrants) {
   const total = [];
   const { Adult, Child, Senior } = entrants;
   const pricesarray = [prices];
-  pricesarray.forEach((element) => {(
+  pricesarray.forEach((element) => {
     total.push((element.Adult * Adult),
     (element.Child * Child),
     (element.Senior * Senior))
-  )});
+  });
   const result = total.reduce((acc, index) => acc + index);
   return result;
 }
@@ -99,18 +98,23 @@ function entryCalculator(entrants) {
 function animalMap(options) {
   if (options === undefined) {
     animals.reduce((acc, obj) => {
-      let key = obj.location
+      const key = obj.location;
       if (!acc[key]) {
-        acc[key] = []
+        acc[key] = [];
       }
-      acc[key].push(obj.name)
-      return acc
-    },{})
+      acc[key].push(obj.name);
+      return acc;
+    }, {});
   }
 }
-animalMap()
+
 function schedule(dayName) {
-  // seu código aqui
+  if (dayName.length === 0) {
+    const { Tuesday, Wednesday, Thursday }
+    const humanSchedule = {
+
+    }
+  }
 }
 
 function oldestFromFirstSpecies(id) {
