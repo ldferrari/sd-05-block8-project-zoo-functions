@@ -14,6 +14,7 @@ const data = require('./data');
 const { animals } = data;
 const { employees } = data;
 
+
 function animalsByIds(...ids) {
   const animId = [];
 
@@ -61,8 +62,17 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 }
 
 function animalCount(species) {
-  // seu código aqui
+  const todosOsAnumais = (listagem, { name, residents }) => {
+    listagem[name] = residents.length;
+    console.log(listagem);
+    return listagem;
+  };
+  if (species === undefined) {
+    return animals.reduce(todosOsAnumais, {});
+  }
+  return animals.find(anim => (anim.name === species)).residents.length;
 }
+
 
 function entryCalculator(entrants) {
   // seu código aqui
