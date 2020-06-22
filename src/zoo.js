@@ -81,7 +81,7 @@ function entryCalculator(entrants) {
 
 
 function animalMap(options) {
- // seu código aqui
+  // seu código aqui
 }
 
 function schedule(dayName) {
@@ -91,7 +91,7 @@ function schedule(dayName) {
     else humanReadableSchedule[day] = `Open from ${hour[day].open}am until ${hour[day].close - 12}pm`;
   });
   return dayName ? { [dayName]: humanReadableSchedule[dayName] } : humanReadableSchedule;
-};
+}
 
 function oldestFromFirstSpecies(id) {
   // seu código aqui
