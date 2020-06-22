@@ -76,14 +76,43 @@ function entryCalculator(entrants) {
   return totalPrice;
 }
 
-function animalMap(options) {
-  // seu código aqui
+function animalMap(options = { includeNames: false, sorted:false, sex: ['male', 'female'] }) {
+  
+  const obj = {NE: [], NW: [], SE: [], SW: []}
+  for (let region in obj) {
+    let eachRegion = data.animals.filter( animal => animal.location === region)
+    if(options.includeNames !== true)
+    obj[region] = eachRegion.map( animal => animal.name)
+    if(options.includeNames === true)
+    eachRegion.forEach( animal => {
+    let generalAnimal = animal.name
+    let names =  animal.residents.map( nomes => nomes.name)
+    if(options.sex === 'female') {
+      let femeas = animal.residents.filter( sexo => sexo.sex === 'female')
+      names = femeas.map(nome => nome.name)
+    }
+    
+    if (options.sorted === true) names.sort()
+    obj[region].push({[generalAnimal]:names})
+  })
+  
+  }
+  
+   return obj
 }
 
 function schedule(dayName) {
-  // seu código aqui
+  let schedule = {}
+  for (let day in data.hours) {
+  if(day === 'Monday'){
+    schedule[day] = `CLOSED`
+  } else {
+  schedule[day] = `Open from ${data.hours[day].open}am until ${data.hours[day].close-12}pm`
+  }
+  }
+  return schedule
 }
-
+console.log(schedule())
 function oldestFromFirstSpecies(id) {
   // seu código aqui
 }
