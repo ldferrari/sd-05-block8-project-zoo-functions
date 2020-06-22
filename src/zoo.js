@@ -143,7 +143,7 @@ function schedule(dayName) {
   const workHours = Object.values(hours);
   workHours.forEach((hour) => {
     if (hour.close > 12) {
-      hour.close -= 12; 
+      hour.close -= 12;
     }
   });
   weekDays.forEach((day, index) => {
