@@ -13,7 +13,6 @@ const data = require('./data');
 const { animals, employees, prices, hours } = require('./data');
 
 function animalsByIds(...ids) {
-  // seu código aqui
   const animaux = [];
   ids.forEach(idArgument =>
     animaux.push(...animals.filter(animal => animal.id === idArgument)));
@@ -21,41 +20,30 @@ function animalsByIds(...ids) {
 }
 
 function animalsOlderThan(animal, age) {
-  // seu código aqui
   const findSpecies = animals.find(anim => anim.name === animal);
   const checkAge = findSpecies.residents.every(res => res.age >= age);
   return checkAge;
 }
 
 function employeeByName(employeeName) {
-  // seu código aqui
   const isStaff = employees.find(person =>
       person.firstName === employeeName || person.lastName === employeeName);
   return isStaff || {};
 }
 
 function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
   const { id, firstName, lastName } = personalInfo;
   const { managers, responsibleFor } = associatedWith;
   return { id, firstName, lastName, managers, responsibleFor };
 }
 
 function isManager(id) {
-  // seu código aqui
   const managerOrNot = employees.some(person =>
     person.managers.find(ids => ids === id));
   return managerOrNot;
 }
 
-function addEmployee(
-  id,
-  firstName,
-  lastName,
-  managers = [],
-  responsibleFor = [],
-) {
-  // seu código aqui
+function addEmployee (id, firstName, lastName, managers = [], responsibleFor = []) {
   const newStaff = {
     id,
     firstName,
@@ -67,10 +55,9 @@ function addEmployee(
 }
 
 function animalCount(species) {
-  // seu código aqui
-  // preparar retorno de num de residentes quando param species é name
-  // preparar retorno de objeto acumulando species quando n tem param species
-  // condicionar o retorno de um ou outro dependendo da existência de param species
+  // 1. armazenar num de residentes quando param species é name
+  // 2. armazenar objeto acumulando species
+  // 3. condicionar o retorno de um ou outro dependendo da existência de param species
   const findByName = animals.find(animal => animal.name === species);
   const all = (list, { name, residents }) => {
     list[name] = residents.length;
@@ -78,22 +65,18 @@ function animalCount(species) {
   };
   return species ? findByName.residents.length : animals.reduce(all, {});
 }
-// segundo param de reduce pode indicar o tipo de dado, ou o primeiro valor, aqui objeto
 
 function entryCalculator(entrants) {
-  // seu código aqui
-  // condicionar para retornar 0 se entrants n existir ou for um objeto vazio
+  // 1. condicionar para retornar 0 se entrants n existir ou for um objeto vazio
   if (entrants === undefined || Object.keys(entrants).length === 0) {
     return 0;
   }
-  // nos outros casos, tem que retornar quantidade*preço para cada idade
-  // sabendo que quantidade tà no entrants e preço no prices
-  // os dois são objetos, os dois com mesmas chaves de idades
+  // 2. nos outros casos, tem que retornar quantidade*preço para cada idade
+  // sabendo que entrants price são dois objetos com mesmas chaves
   const accPrice = (base, eachAge) =>
   base + (entrants[eachAge] * prices[eachAge]);
   const arrayPrices = Object.keys(prices);
   return arrayPrices.reduce(accPrice, 0);
-  // precisa do segundo param 0 para determinar que é number
 }
 
 function animalMap(options) {
@@ -101,7 +84,6 @@ function animalMap(options) {
 }
 
 function schedule(dayName) {
-  // seu código aqui
   // 1. preparar retorno para cada dia com forEach e template string, inclusive monday closed
   // 2. preparar retorno condicionado segundo se tiver dayName param ou não
   const allDays = Object.keys(hours);
@@ -120,7 +102,6 @@ function schedule(dayName) {
 }
 
 function oldestFromFirstSpecies(id) {
-  // seu código aqui
   // 1. armazenar o id da primeira espécie de animal gerenciado por funcionário via id dele
   const idFirstManagedSpecies = employees.find(person => id === person.id).responsibleFor[0];
   // 2. armazenar o array de residentes dessa espécie
@@ -133,10 +114,9 @@ function oldestFromFirstSpecies(id) {
   const { name, sex, age } = olderAnimals[0];
   return [name, sex, age];
 }
-// console.log(oldestFromFirstSpecies('9e7d4524-363c-416a-8759-8aa7e50c0992'));
 
 function increasePrices(percentage) {
-  // seu código aqui
+
 }
 
 function employeeCoverage(idOrName) {
