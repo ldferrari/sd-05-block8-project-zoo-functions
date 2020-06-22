@@ -114,7 +114,7 @@ function getResidentsNames(nameAnimal, sex = undefined) {
   return arrayResidents;
 }
 
-/*function animalMap(options) {
+function animalMap(options) {
   (options === undefined) ? options = {} : options;
   const {includeNames = false, sorted = false, sex = undefined} = options;
   let result = {};
@@ -122,7 +122,7 @@ function getResidentsNames(nameAnimal, sex = undefined) {
   optionsMap.forEach(element => {
     let animalsList = [];
     let arrayAnimais = [];
-    data.animals.forEach(animal => {    
+    data.animals.forEach(animal => {
       if (animal.location === element && includeNames === false) {
         animalsList.push(animal.name);
         result = {...result, [element]: animalsList};
@@ -143,7 +143,7 @@ function getResidentsNames(nameAnimal, sex = undefined) {
     
   });
   return result;
-}*/
+}
 //console.log(animalMap({ includeNames: true, sorted: true}));
 
 function schedule(dayName) {
@@ -166,25 +166,37 @@ function schedule(dayName) {
 function oldestFromFirstSpecies(id) {
   const getSpecieID = data.employees.find(element => element.id === id).responsibleFor[0];
   const getSpecieObj = data.animals.find(element => element.id === getSpecieID);
-  const sortResidents = getSpecieObj.residents.sort(function (a, b){ return b.age - a.age; });
+  const sortResidents = getSpecieObj.residents.sort(function (a, b) { return b.age - a.age; });
   const oldestResident = sortResidents[0];
   const { name, sex, age } = oldestResident;
   return ([name, sex, age]);
 }
 
 function increasePrices(percentage) {
-  for(index in data.prices){
+  const objPrices = Object.keys(data.prices);
+  objPrices.forEach((index) => {
     let increament = 0;
-    increament = data.prices[index] * (1+(percentage/100));
+    increament = data.prices[index] * (1 + (percentage / 100));
     increament = Math.round(increament * 100) / 100;
     data.prices[index] = increament;
-
-  }
+  });
 }
 
 function employeeCoverage(idOrName) {
-  
+  let employeesList = {};
+  let employeeInfo = [];
+  data.employees.forEach((element) => {
+    const animalsNames = element.responsibleFor.map(element => data.animals.find(animal => animal.id === element).name);
+    employeesList = { ...employeesList, [`${element.firstName} ${element.lastName}`]: [...animalsNames]};
+    employeeInfo = [ ...employeeInfo, [ element.id, element.firstName, element.lastName ] ];
+  });
+  if (idOrName !== undefined) {
+    const selected = employeeInfo.find(employee => employee.includes(idOrName));
+    return { [`${selected[1]} ${selected[2]}`]: employeesList[[`${selected[1]} ${selected[2]}`]]};
+  }
+  return employeesList;
 }
+console.log(employeeCoverage('Burl'));
 
 module.exports = {
   entryCalculator,
