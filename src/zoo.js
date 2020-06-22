@@ -120,8 +120,7 @@ function getResidentsNames(nameAnimal, sex = undefined, sorted = false) {
 function animalMap(options = {}) {
   const { includeNames = false, sorted = false, sex = undefined } = options;
   let result = { NE: [], NW: [], SE: [], SW: [] };
-  const optionsMap = ['NE', 'NW', 'SE', 'SW'];
-  optionsMap.forEach((position) => {
+  Object.keys(result).forEach((position) => {
     const animalsList = [];
     data.animals.forEach((animal) => {
       //  retorna a opção com includeNames undefined or false
@@ -141,8 +140,7 @@ function animalMap(options = {}) {
 
 function schedule(dayName) {
   const scheduleInform = { Tuesday: '', Wednesday: '', Thursday: '', Friday: '', Saturday: '', Sunday: '', Monday: '' };
-  const daysWeek = Object.keys(scheduleInform);
-  daysWeek.forEach((day) => {
+  Object.keys(scheduleInform).forEach((day) => {
     if (data.hours[day].open !== 0 && data.hours[day].close !== 0) {
       scheduleInform[day] = `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`;
     } else {
