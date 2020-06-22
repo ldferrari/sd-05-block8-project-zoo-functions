@@ -10,7 +10,7 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
-const { animals, employees, prices } = require('./data');
+const { animals, employees, prices, hours } = require('./data');
 
 function animalsByIds(...ids) {
   if (!ids) return [];
@@ -298,20 +298,27 @@ function animalMap(options) {
 }
 
 function schedule(dayName) {
-// Sem parâmetros, retorna um cronograma legível para humanos
-// Se um único dia for passado, retorna somente este dia em um formato legível para humanos
+  let obj = {};
+
+  // Construindo objeto
+
+  Object.entries(hours).forEach((day) => {
+    if (day[1].open === day[1].close) {
+      obj[day[0]] = 'CLOSED';
+    } else {
+      obj[day[0]] = `Open from ${day[1].open}am until ${(((day[1].close + 11) % 12) + 1)}pm`;
+    }
+  });
+
+  // Objeto contruido. Se for especificado dia, objeto tera só dia especificado.
+  if (dayName) {
+    const diaSelecionado = Object.entries(obj).find(e => e[0] === dayName);
+    obj = {};
+    obj[diaSelecionado[0]] = diaSelecionado[1];
+  }
+
+  return obj;
 }
-
-// EXAMPLE
-
-// function longestNamedBook() {
-//   return books.reduce((biggestBook, currentBook) => {
-//     if (currentBook.name.length > biggestBook.name.length) {
-//       return currentBook;
-//     }
-//     return biggestBook;
-//   });
-// }
 
 const findOldest = (old, oldest) => {
   if (old.age < oldest.age) {
@@ -360,8 +367,6 @@ const findAnimalsUnderResponse = (funcionario) => {
 
 
 //  Main call
-
-
 function employeeCoverage(idOrName) {
   const obj = {};
   let filteredEmployees = employees;
