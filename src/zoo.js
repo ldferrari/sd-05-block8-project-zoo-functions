@@ -30,14 +30,13 @@ const isManager = id => employees.some(employ => id === employ.managers.find(ite
 const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) =>
   employees.push({ id, firstName, lastName, managers, responsibleFor });
 
-const listaCompleta = (lista, { name, residents }) => {
-  lista[name] = residents.length;
-  return lista;
-};
-
-const animalCount = species => (species
+const animalCount = (species) => {
+  const animalObj = {};
+  animals.forEach(animal => (animalObj[animal.name] = animal.residents.length));
+  return species
     ? animals.find(animal => animal.name === species).residents.length
-    : animals.reduce(listaCompleta, {}));
+    : animalObj;
+};
 
 const entryCalculator = (entrants) => {
   if (entrants === undefined || Object.entries(entrants).length === 0) return 0;
