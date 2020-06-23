@@ -82,26 +82,11 @@ function entryCalculator(...entrants) {
   return (Adult * prices.Adult) + (Child * prices.Child) + (Senior * prices.Senior);
   //  seu código aqui
 }
-/* 
-function animalMap(options) {
-  //  your code here
-  const zones = {};
-  const saida = {};
-  animals.forEach((el) => (zones[el.location] = 1));
-  const zoneArr = Object.keys(zones);
-  if (options === undefined) {
-    return 0;
-  } else {
-    return 1;
-  } 
-  return 0;
-} */
-
 
 function animalMap(options) {
   // seu código aquiconst zonas = [
-    const zonas = ['NE', 'NW', 'SE', 'SW']
-    const objetoSaida = {};
+  const zonas = ['NE', 'NW', 'SE', 'SW']
+   const objetoSaida = {};
   if (options === undefined){
     zonas.forEach(zona => objetoSaida[zona] = animals.filter(local =>
       local.location === zona).map(objeto => objeto.name))
@@ -113,29 +98,28 @@ function animalMap(options) {
       local.location === zona).map(objeto => {
         const tipo = {};
       if (includeNames === true, sorted === true){
-      tipo [objeto.name] = objeto.residents.map(nome => nome.name).sort();
-      return tipo;  
+        tipo [objeto.name] = objeto.residents.map(nome => nome.name).sort();
+        return tipo;
       }
       tipo [objeto.name] = objeto.residents.map(nome => nome.name);
       return tipo;
     }))
     return objetoSaida;
-  } 
+  }
   if (includeNames === true && sex !== '') {
     zonas.forEach(zona => objetoSaida[zona] = animals.filter(local =>
       local.location === zona).map(objeto => {
         const tipo = {};
-      tipo [objeto.name] = objeto.residents.filter(resdent => resdent.sex === sex).map(nome => nome.name);
-      return tipo;
+        tipo [objeto.name] = objeto.residents.filter(resdent => resdent.sex === sex).map(nome => nome.name);
+        return tipo;
     }))
     return objetoSaida;
   }
   if (includeNames === false && sex !== '') {
     zonas.forEach(zona => objetoSaida[zona] = animals.filter(local =>
       local.location === zona).map(objeto => objeto.name))
-    return objetoSaida;
+      return objetoSaida;
   }
-
 }
 
 function schedule(dayName) {
