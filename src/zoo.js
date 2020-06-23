@@ -97,32 +97,29 @@ function animalMap(options) {
   animals.forEach(({ location }) => { return (regions[location] = []);});
   if (options !== undefined) {
     const { includeNames = false, sorted = false, sex } = options;
-  Object.keys(regions).forEach(region => {
+    Object.keys(regions).forEach((region) => {
     animals.forEach(({ name, location, residents }) => {
-      if (location === region) {
-        if (includeNames && !sorted && !sex) {
-          regions[location].push({ [name]: residents.map(( {name} ) => name) });
-        } 
-        if (includeNames && sorted) {
-          regions[location].push({ [name]: residents.map(( {name} ) => name) });
-          regions[location].forEach((animal, index) => {
-            if (regions[location][index][name] !== undefined) {
-              regions[location][index][name].sort();
+        if (location === region) {
+          if (includeNames && !sex) {
+            regions[location].push({ [name]: residents.map(resident => resident.name) });
+            if (sorted) {
+              regions[location].forEach((animal, index) => {
+                if (regions[location][index][name] !== undefined) {
+                  regions[location][index][name].sort();
+              }
+              });
             }
-          });
-        }
-        if (includeNames && (sex === 'male' || sex === 'female')) {
-          regions[location].push({ [name]: residents.filter(resident => resident.sex === sex).map(( {name} ) => name) });
-        }
-        if (!includeNames && (sex === 'male' || sex === 'female')) {
-          residents = residents.filter(resident => resident.sex === sex).map(( {name} ) => name);
-          if (residents != []) {
-            regions[location].push(name);
+          }
+          if (includeNames && (sex === 'male' || sex === 'female')) {
+            regions[location].push({ [name]: residents.filter(resident =>   resident.sex === sex).map(resident => resident.name) });
+          }
+          if (!includeNames && (sex === 'male' || sex === 'female')) {
+            residents = residents.filter(resident => resident.sex === sex).map(resident => resident.name);
+            if (residents != []) regions[location].push(name);
           }
         }
-      }
+      });
     });
-  });
   } else {
     Object.keys(regions).forEach((region) => {
       animals.forEach(({ name, location }) => {
@@ -135,7 +132,7 @@ function animalMap(options) {
   return regions;
 }
 
-// animalMap({includeNames: true, sorted: true})
+console.log(animalMap({includeNames: true, sorted: false}))
 // console.log(animalMap({sex: 'female'}));
 
 function schedule(dayName) {
