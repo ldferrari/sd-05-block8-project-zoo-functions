@@ -109,7 +109,7 @@ function increasePrices(percentage) {
   const arrend = (num, length) => Math.round(num * (10 ** length)) / (10 ** length)
   let pricesAdjusted = Object.keys(prices);
   pricesAdjusted.forEach(adjust => (prices[adjust] = arrend(prices[adjust] + (prices[adjust] * (percentage / 100)), 2)));
-  return (pricesAdjusted);
+  return(pricesAdjusted);
 }
 
 function employeeCoverage(idOrName) {
