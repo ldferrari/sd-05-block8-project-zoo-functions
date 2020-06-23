@@ -28,7 +28,7 @@ function employeeByName(employeeName) {
   const funcionario = employees.find(
     nomeFuncionario =>
       nomeFuncionario.firstName === employeeName ||
-      nomeFuncionario.lastName === employeeName
+      nomeFuncionario.lastName === employeeName;
   );
   return funcionario || {};
 }
@@ -51,9 +51,7 @@ function addEmployee(
   lastName,
   managers = [],
   responsibleFor = [])
-{
-  return employees.push({ id, firstName, lastName, managers, responsibleFor });
-}
+{return employees.push({ id, firstName, lastName, managers, responsibleFor })};
 
 function animalCount(species) {
   const countSpecies = {};
@@ -110,16 +108,14 @@ function oldestFromFirstSpecies(id) {
   const { name, sex, age } = animalExperiente[0];
   return [name, sex, age];
 }
-// Ao passar uma porcentagem, incrementa todos os preços, arrendondados em duas casas decimais
+
 function increasePrices(percentage) {
   const valorEntrada = Object.keys(prices);
   valorEntrada.forEach((valor) => {
-    prices[valor] = Math.round((prices[valor] * 100) * (1 + (percentage / 100))) / 100 });
-}
-
+    prices[valor] = Math.round((prices[valor] * 100) * (1 + (percentage / 100))) / 100 })};
 
 function employeeCoverage(idOrName) {
-  // seu código aqui
+
 }
 
 module.exports = {
