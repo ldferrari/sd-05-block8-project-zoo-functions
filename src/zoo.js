@@ -173,13 +173,13 @@ function employeeCoverage(idOrName) {
   }
   employees.find((el) => {
     if (el.firstName === idOrName || el.lastName === idOrName || el.id === idOrName) {
-      finder(el);
+      const newobj = finder(el);
+      return newobj;
     }
   });
   return obj;
 }
 
-console.log(employeeCoverage('Stephanie'))
 
 module.exports = {
   entryCalculator,
