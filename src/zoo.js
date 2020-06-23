@@ -99,17 +99,15 @@ function schedule(dayName) {
 function oldestFromFirstSpecies(id) {
   const idFuncionario = employees.find(funcionario => funcionario.id === id).responsibleFor[0];
   const idEspecie = animals.find(animal => animal.id === idFuncionario).residents;
-  const animalExperiente = idEspecie.sort((function(a , b) {
+  const animalExperiente = idEspecie.sort(function(a , b) {
     return b ? (b.age > a.age) : a;
   });
-  
   const { name, sex, age } = animalExperiente[0];
   return [name, sex, age];
 }
 // Ao passar uma porcentagem, incrementa todos os preços, arrendondados em duas casas decimais
 function increasePrices(percentage) {
-
-}
+  const valorEntrada = Object.keys(prices).forEach((valor) => prices[valor] = Math.round((prices[valor] * 100) * (1 + percentage / 100).toFixed(2) / 100))};
 
 function employeeCoverage(idOrName) {
   // seu código aqui
