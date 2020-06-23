@@ -154,11 +154,12 @@ function employeeCoverage(id) {
   const obj = {};
   const findAnimal = idN => data.animals.find(animal => animal.id === idN);
   function finder(i){
-    let tester = i
+    const tester = i;
     if (i.firstName === id || i.lastName === id || i.id === id) {
       return tester;
     }
-  };
+    return 0;
+  }
   if (id === undefined) {
     data.employees.forEach((employee) => {
       obj[`${employee.firstName} ${employee.lastName}`] = [];
