@@ -12,6 +12,7 @@ eslint no-unused-vars: [
 const data = require('./data');
 const { animals } = require('./data');
 const { employees } = require('./data');
+const { prices } = require('./data');
 
 function animalsByIds(...ids) {
   // Tratamento caso seja vazio.
@@ -98,7 +99,6 @@ function animalMap(options) {
 }
 
 function schedule(dayName) {
-  // seu código aqui
 }
 
 function oldestFromFirstSpecies(id) {
@@ -106,9 +106,13 @@ function oldestFromFirstSpecies(id) {
 }
 
 function increasePrices(percentage) {
-  // seu código aqui
+  // Cria uma constante com a porcentagem já traduzida para forma numerica
+  const perc = (percentage / 100) + 1;
+  // Seta no arquivo o novo preço com os devidos arredondamentos
+  data.prices.Adult = Math.round((prices.Adult * perc) * 100) / 100;
+  data.prices.Senior = Math.round((prices.Senior * perc) * 100) / 100;
+  data.prices.Child = Math.round((prices.Child * perc) * 100) / 100;
 }
-
 function employeeCoverage(idOrName) {
   // seu código aqui
 }
