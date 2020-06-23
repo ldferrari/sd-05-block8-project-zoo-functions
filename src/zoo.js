@@ -18,7 +18,7 @@ const animalsByIds = (...ids) => {
     return [];
   }
 
-  const result = animals.filter((elemento) => ids.includes(elemento.id));
+  const result = animals.filter(elemento => ids.includes(elemento.id));
   return result;
 };
 
@@ -91,8 +91,8 @@ function schedule(dayName) {
 }
 
 const oldestFromFirstSpecies = (id) => {
-  const func = employees.find((elemento) => elemento.id === id);
-  const animal = animals.find((elemento) => elemento.id === func.responsibleFor[0]);
+  const func = employees.find(elemento => elemento.id === id);
+  const animal = animals.find(elemento => elemento.id === func.responsibleFor[0]);
   const idade = animal.residents.sort((a, b) => {
     if (a.age < b.age) return 1;
     if (a.age > b.age) return -1;
