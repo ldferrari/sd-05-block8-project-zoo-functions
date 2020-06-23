@@ -175,6 +175,7 @@ function employeeCoverage(idOrName) {
     if (el.firstName === idOrName || el.lastName === idOrName || el.id === idOrName) {
       finder(el);
     }
+    return obj;
   });
   return obj;
 }
