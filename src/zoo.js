@@ -84,10 +84,9 @@ function entryCalculator(...entrants) {
 }
 
 function animalMap(options) {
-  // seu código aquiconst zonas = [
   const zonas = ['NE', 'NW', 'SE', 'SW'];
   const objetoSaida = {};
-  const { includeNames = false, sorted = false, sex = '' } = 
+  const { includeNames = false, sorted = false, sex = '' } =
   options==undefined?{ includeNames: false, sorted: false, sex: '' } : options;
   if (includeNames === true) {
     zonas.forEach(function(zona) {objetoSaida[zona] = animals.filter(local =>
@@ -103,7 +102,6 @@ function animalMap(options) {
           tipo [objeto.name] = objeto.residents.map(nome => nome.name).sort();
           return tipo;
         }
-        
         tipo[objeto.name] = objeto.residents.map(nome => nome.name);
         return tipo;
       })});
@@ -114,7 +112,7 @@ function animalMap(options) {
       local.location === zona).map(objeto => objeto.name)});
     return objetoSaida;
 }
-animalMap();
+
 function schedule(dayName) {
   // seu código aqui
 
