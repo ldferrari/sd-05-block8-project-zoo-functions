@@ -100,14 +100,8 @@ function animalMap(options) {
 
 function animalMap(options) {
   // seu código aquiconst zonas = [
-    const zonas = [
-      'NE',
-      'NW',
-      'SE',
-      'SW',
-    ]
-    
-  let objetoSaida = {};
+    const zonas = ['NE', 'NW', 'SE', 'SW']
+    const objetoSaida = {};
   if (options === undefined){
     zonas.forEach(zona => objetoSaida[zona] = animals.filter(local =>
       local.location === zona).map(objeto => objeto.name))
