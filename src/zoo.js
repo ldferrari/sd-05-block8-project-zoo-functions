@@ -31,11 +31,11 @@ const employeeByName = (employeeName) => {
   if (typeof employeeName === 'undefined') {
     return {};
   }
-  const result = employees.find(nome => {
-    employeeName === nome.firstName || employeeName === nome.lastName;
+  const result = employees.find((nome) => {
+    return employeeName === nome.firstName || employeeName === nome.lastName;
   });
   return result;
-}
+};
 
 const createEmployee = (personalInfo, associatedWith) => {
   const alterado = Object.assign(personalInfo, associatedWith);
