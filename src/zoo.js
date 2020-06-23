@@ -50,7 +50,7 @@ function addEmployee(
   firstName,
   lastName,
   managers = [],
-  responsibleFor = []);
+  responsibleFor = [])
 {
   return employees.push({ id, firstName, lastName, managers, responsibleFor });
 }
@@ -116,6 +116,7 @@ function increasePrices(percentage) {
   valorEntrada.forEach((valor) => {
     prices[valor] = Math.round((prices[valor] * 100) * (1 + (percentage / 100))) / 100 });
 }
+
 
 function employeeCoverage(idOrName) {
   // seu código aqui
