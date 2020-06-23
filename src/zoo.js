@@ -150,9 +150,36 @@ function increasePrices(percentage) {
 
 
 function employeeCoverage(idOrName) {
-  // seu código aqui
+  const employees = data.employees;
+  const animals = data.animals;
+  const obj = {}
+
+  if(!idOrName) {
+    employees.forEach(employee => {
+      obj[`${employee.firstName} ${employee.lastName}`] = [];
+      const responsibles = employee.responsibleFor;
+      responsibles.forEach(responsible => {
+      const group = animals.find(bicho => bicho.id === responsible).name
+      obj[`${employee.firstName} ${employee.lastName}`].push(group);
+      })
+    });
+  } 
+  employees.find(employee => {
+    if(employee.firstName === idOrName 
+      || employee.lastName === idOrName || employee.id === idOrName) {
+      obj[`${employee.firstName} ${employee.lastName}`] = [];
+      const responsibles = employee.responsibleFor;
+      responsibles.forEach(responsible => {
+      const group = animals.find(bicho => bicho.id === responsible).name
+      obj[`${employee.firstName} ${employee.lastName}`].push(group);
+      })
+    }
+  })
+  return obj;
 }
 
+console.log(employeeCoverage('Stephanie'))
+  
 module.exports = {
   entryCalculator,
   schedule,
