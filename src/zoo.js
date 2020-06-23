@@ -77,12 +77,12 @@ function entryCalculator(entrants = {}) {
 }
 
 function animalMap(options) {
-  if (options === undefined) {
-    const resultado = {};
-    data.animals.forEach(animal => (resultado[animal.location] = []));
-    data.animals.forEach(animal => (resultado[animal.location].push(animal.name)));
-    return resultado;
-  }
+  // if (options === undefined) {
+    // const resultado = {};
+    // data.animals.forEach(animal => (resultado[animal.location] = []));
+    // data.animals.forEach(animal => (resultado[animal.location].push(animal.name)));
+    // return resultado;
+  // }
 }
 
 function schedule(dayName) {
@@ -95,17 +95,17 @@ function oldestFromFirstSpecies(id) {
 
 function increasePrices(percentage) {
   Object.keys(prices).forEach(key => {
-    prices[key] = Math.round((prices[key] * 100) * (1 + (percentage / 100))).toFixed(2) / 100;
+    (prices[key] = Math.round((prices[key] * 100) * (1 + (percentage / 100))).toFixed(2) / 100);
   });
   return prices;
 }
 
 function employeeCoverage(idOrName) {
-  if (idOrName === undefined) {
-    const resultado = {};
-    data.employees.forEach(employee => (resultado[`${employee.firstName} ${employee.lastName}`] = []));
-    return resultado;
-  }
+  // if (idOrName === undefined) {
+    // const resultado = {};
+    // data.employees.forEach(employee => (resultado[`${employee.firstName} ${employee.lastName}`] = []));
+    // return resultado;
+  // }
 }
 
 module.exports = {
