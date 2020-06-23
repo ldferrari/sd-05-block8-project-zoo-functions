@@ -93,8 +93,8 @@ function animalMap(options) {
       objetoSaida[zona] = animals.filter(local => local.location === zona).map((objeto) => {
         const tipo = {};
         tipo[objeto.name] = objeto.residents;
-        if (sex !== '') tipo[objeto.name] = tipo[objeto.name].filter(animalSex =>
-          animalSex.sex === sex);
+        if (sex !== '') { tipo[objeto.name] = tipo[objeto.name].filter(animalSex =>
+          animalSex.sex === sex); }
         tipo[objeto.name] = tipo[objeto.name].map(nome => nome.name);
         if (sorted === true) tipo[objeto.name].sort();
         return tipo;
