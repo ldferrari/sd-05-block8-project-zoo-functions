@@ -9,14 +9,14 @@ eslint no-unused-vars: [
 ]
 */
 
-const data = require("./data");
-const { employees, hours } = require("./data");
+const data = require('./data');
+const { employees, hours } = require('./data');
 
 function animalsByIds(...ids) {
   // seu código aqui
   const animais = [];
-  ids.forEach((item) =>
-    animais.push(...data.animals.filter((animal) => animal.id === item))
+  ids.forEach(item =>
+    animais.push(...data.animals.filter(animal => animal.id === item)),
   );
   return animais;
 }
@@ -29,7 +29,7 @@ function employeeByName(employeeName) {
   // seu código aqui
   const empregado = data.employees.find(
     ({ lastName, firstName }) =>
-      lastName === employeeName || firstName === employeeName
+      lastName === employeeName || firstName === employeeName,
   );
   return empregado || {};
 }
@@ -42,8 +42,8 @@ function createEmployee(personalInfo, associatedWith) {
 }
 function isManager(id) {
   // seu código aqui
-  const team = data.employees.filter((empregad) =>
-    empregad.managers.some((item) => item === id)
+  const team = data.employees.filter(empregad =>
+    empregad.managers.some(item => item === id),
   );
   return team.length > 0;
 }
@@ -53,7 +53,7 @@ function addEmployee(
   firstName,
   lastName,
   managers = [],
-  responsibleFor = []
+  responsibleFor = [],
 ) {
   // seu código aqui
   const novoEmpregado = { id, firstName, lastName, managers, responsibleFor };
@@ -74,41 +74,39 @@ function entryCalculator(entrants) {
   // seu código aqui
   if (!entrants || Object.entries(entrants).length === 0) return 0;
   const soma = Object.keys(data.prices).reduce(
-    (acc, precos) => acc + data.prices[precos] * entrants[precos],
-    0
+    (acc, precos) => acc + (data.prices[precos] * entrants[precos]),
+    0,
   );
   return soma;
 }
 
 function animalMap(options) {
-  // seu código aqui
-  const { location, name } = data.animals;
+
 }
 
-//function schedule
 function definirDia(open, closed) {
   if (open === 0 && closed === 0) {
-    return "CLOSED";
-  } else {
-    return `Open from ${open}am until ${closed -12}pm`;
-  }}
+    return 'CLOSED';
+  }
+  return `Open from ${open}am until ${closed - 12}pm`;
+  }
 
   function schedule(dayName) {
     // seu código aqui
-    const rotina = {};
+  const rotina = {};
 
     if (!dayName) {
       Object.keys(hours).forEach(
-        dia => 
+      dia =>
           (rotina[dia] = definirDia(
             data.hours[dia].open,
-            data.hours[dia].close
+            data.hours[dia].close,
           )));
     } else {
       rotina[dayName] = definirDia(
         data.hours[dayName].open,
-        data.hours[dayName].close
-      )}
+        data.hours[dayName].close,
+    )};
     return rotina;
   }
 
@@ -138,4 +136,4 @@ module.exports = {
   oldestFromFirstSpecies,
   increasePrices,
   createEmployee,
-}
+};
