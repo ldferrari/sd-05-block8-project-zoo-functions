@@ -83,20 +83,22 @@ function animalMap(
   const allRegion = Object.keys(obj);
   allRegion.forEach((region) => {
     const eachRegion = data.animals.filter(animal => animal.location === region);
-    if (options.includeNames !== true)
-      obj[region] = eachRegion.map( animal => animal.name);
-    if (options.includeNames === true)
-      eachRegion.forEach( animal => {
+    if (options.includeNames !== true){
+      obj[region] = eachRegion.map(animal => animal.name);
+    } 
+    if (options.includeNames === true){
+      eachRegion.forEach(animal => {
         const generalAnimal = animal.name;
-        let names = animal.residents.map( nomes => nomes.name);
+        let names = animal.residents.map(nomes => nomes.name);
         if (options.sex === 'female') {
-          const femeas = animal.residents.filter( sexo => sexo.sex === 'female');
+          const femeas = animal.residents.filter(sexo => sexo.sex === 'female');
           names = femeas.map(nome => nome.name);
         }
 
-        if (options.sorted === true) {names.sort()};
+        if (options.sorted === true ){ names.sort() }
         obj[region].push({ [generalAnimal]: names });
       });
+    }  
   });
 
   return obj;
@@ -105,7 +107,7 @@ function animalMap(
 function schedule(dayName) {
   const schedules = {};
   const Alldays = Object.keys(data.hours);
-  Alldays.forEach((day)=> {
+  Alldays.forEach((day) => {
     if (day === 'Monday') {
       schedules[day] = 'CLOSED';
     } else {
@@ -120,22 +122,21 @@ function schedule(dayName) {
 }
 
 function oldestFromFirstSpecies(id) {
-const employeeList = data.employees;
- const animalId = employeeList.filter(employee => employee.id === id)[0].responsibleFor[0];
- const animalList = data.animals.filter(animal => animal.id === animalId)[0].residents;
- const older = animalList[0].age;
- let mostOlder = [];
+    const employeeList = data.employees;
+    const animalId = employeeList.filter(employee => employee.id === id)[0].responsibleFor[0];
+    const animalList = data.animals.filter(animal => animal.id === animalId)[0].residents;
+    const older = animalList[0].age;
+    let mostOlder = [];
 
- animalList.forEach((element) => {
-   if(element.age > older ) {
-     mostOlder = [];
-     mostOlder.push(element.name);
-     mostOlder.push(element.sex);
-     mostOlder.push(element.age);
-   }
- });
-
- return mostOlder;
+    animalList.forEach((element) => {
+      if(element.age > older) {
+        mostOlder = [];
+        mostOlder.push(element.name);
+        mostOlder.push(element.sex);
+        mostOlder.push(element.age);
+      }
+    });
+    return mostOlder;
 }
 
 function increasePrices(percentage) {
@@ -152,34 +153,32 @@ function increasePrices(percentage) {
 function employeeCoverage(idOrName) {
   const employees = data.employees;
   const animals = data.animals;
-  const obj = {}
+  const obj = {};
 
-  if(!idOrName) {
+  if (!idOrName) {
     employees.forEach(employee => {
       obj[`${employee.firstName} ${employee.lastName}`] = [];
       const responsibles = employee.responsibleFor;
-      responsibles.forEach(responsible => {
-      const group = animals.find(bicho => bicho.id === responsible).name
-      obj[`${employee.firstName} ${employee.lastName}`].push(group);
-      })
+        responsibles.forEach((responsible) => {
+          const group = animals.find(bicho => bicho.id === responsible).name;
+          obj[`${employee.firstName} ${employee.lastName}`].push(group);
+        });
     });
+    return obj;
   } 
-  employees.find(employee => {
-    if(employee.firstName === idOrName 
-      || employee.lastName === idOrName || employee.id === idOrName) {
+  employees.find(employee =>{
+    if (employee.firstName === idOrName || employee.lastName === idOrName || employee.id === idOrName){
       obj[`${employee.firstName} ${employee.lastName}`] = [];
       const responsibles = employee.responsibleFor;
-      responsibles.forEach(responsible => {
-      const group = animals.find(bicho => bicho.id === responsible).name
+      responsibles.forEach((responsible) => {
+      const group = animals.find(bicho => bicho.id === responsible).name;
       obj[`${employee.firstName} ${employee.lastName}`].push(group);
-      })
-    }
-  })
+      });
+    };
+  });
   return obj;
 }
-
-console.log(employeeCoverage('Stephanie'))
-  
+ 
 module.exports = {
   entryCalculator,
   schedule,
