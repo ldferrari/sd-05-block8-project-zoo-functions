@@ -92,25 +92,21 @@ function animalMap(options) {
     zonas.forEach(function(zona) {objetoSaida[zona] = animals.filter(local =>
       local.location === zona).map((objeto) => {
         const tipo = {};
-        if (sex !== '') {
-          tipo [objeto.name] = objeto.residents.filter(animalSex=>
-            animalSex.sex===sex).map(nome => nome.name);
-            if(sorted==true) tipo[objeto.name].sort()
-          return tipo;
-        }
-        if (sex === '' && sorted === true) {
-          tipo [objeto.name] = objeto.residents.map(nome => nome.name).sort();
-          return tipo;
-        }
-        tipo[objeto.name] = objeto.residents.map(nome => nome.name);
+        tipo[objeto.name] = objeto.residents
+        if (sex !== '') tipo[objeto.name] = tipo[objeto.name].filter(animalSex=>
+          animalSex.sex === sex)
+        tipo[objeto.name] = tipo[objeto.name].map(nome => nome.name);
+            if(sorted === true) tipo[objeto.name].sort();
         return tipo;
-      })});
+      }); 
+    });
     return objetoSaida;
   }
-    zonas.forEach(function(zona) {
-      objetoSaida[zona] = animals.filter(local =>
-      local.location === zona).map(objeto => objeto.name)});
-    return objetoSaida;
+  zonas.forEach(function (zona) {
+    objetoSaida[zona] = animals.filter(local =>
+    local.location === zona).map(objeto => objeto.name);
+  });
+  return objetoSaida;
 }
 
 function schedule(dayName) {
