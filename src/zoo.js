@@ -87,18 +87,21 @@ function animalMap(options) {
   const zonas = ['NE', 'NW', 'SE', 'SW'];
   const objetoSaida = {};
   const { includeNames = false, sorted = false, sex = '' } =
-  options==undefined?{ includeNames: false, sorted: false, sex: '' } : options;
+  options === undefined?{ includeNames: false, sorted: false, sex: '' } : options;
   if (includeNames === true) {
-    zonas.forEach(function(zona) {objetoSaida[zona] = animals.filter(local =>
+    zonas.forEach(function(zona) {
+      objetoSaida[zona] = animals.filter(local =>
       local.location === zona).map((objeto) => {
         const tipo = {};
-        tipo[objeto.name] = objeto.residents
-        if (sex !== '') tipo[objeto.name] = tipo[objeto.name].filter(animalSex=>
-          animalSex.sex === sex)
+        tipo[objeto.name] = objeto.residents;
+        if (sex !== '') tipo[objeto.name] = tipo[objeto.name].filter(animalSex =>
+          animalSex.sex === sex);
         tipo[objeto.name] = tipo[objeto.name].map(nome => nome.name);
-            if(sorted === true) tipo[objeto.name].sort();
+        if(sorted === true) {
+          tipo[objeto.name].sort();
+        }
         return tipo;
-      }); 
+      });
     });
     return objetoSaida;
   }
