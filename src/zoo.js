@@ -14,7 +14,7 @@ const data = require('./data');
 const { animals, employees, prices } = data;
 
 const animalsByIds = (...ids) => {
-  if (typeof ids === undefined) {
+  if (typeof ids === 'undefined') {
     return [];
   }
 
@@ -28,10 +28,12 @@ const animalsOlderThan = (animal, age) => {
 };
 
 const employeeByName = (employeeName) => {
-  if (typeof employeeName === undefined) {
+  if (typeof employeeName === 'undefined') {
     return {};
   }
-  const result = employees.find((nome) => employeeName === nome.firstName || employeeName === nome.lastName);
+  const result = employees.find(nome => {
+    employeeName === nome.firstName || employeeName === nome.lastName;
+  });
   return result;
 }
 
