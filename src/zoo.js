@@ -98,5 +98,5 @@ isManager,
 animalsOlderThan,
 oldestFromFirstSpecies,
 increasePrices,*/
-  createEmployee,
+createEmployee,
 };
