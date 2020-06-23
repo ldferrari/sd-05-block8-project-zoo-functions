@@ -87,12 +87,8 @@ function animalMap(options) {
   // seu código aquiconst zonas = [
   const zonas = ['NE', 'NW', 'SE', 'SW'];
   const objetoSaida = {};
-  if (options === undefined) {
-    zonas.forEach(function (zona) { objetoSaida[zona] = animals.filter(local =>
-      local.location === zona).map(objeto => objeto.name)});
-    return objetoSaida;
-  }
-  const { includeNames = false, sorted = false, sex = '' } = options;
+  const { includeNames = false, sorted = false, sex = '' } = 
+  options==undefined?{ includeNames: false, sorted: false, sex: '' } : options;
   if (includeNames === true) {
     zonas.forEach(function(zona) {objetoSaida[zona] = animals.filter(local =>
       local.location === zona).map((objeto) => {
@@ -113,14 +109,12 @@ function animalMap(options) {
       })});
     return objetoSaida;
   }
-  if (includeNames === false && sex !== '') {
     zonas.forEach(function(zona) {
       objetoSaida[zona] = animals.filter(local =>
       local.location === zona).map(objeto => objeto.name)});
     return objetoSaida;
-  }
 }
-
+animalMap();
 function schedule(dayName) {
   // seu código aqui
 
