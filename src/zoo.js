@@ -98,11 +98,14 @@ function oldestFromFirstSpecies(id) {
   const idFuncionario = employees.find(funcionario => funcionario.id === id).responsibleFor[0];
   const idEspecie = animals.find(animal => animal.id === idFuncionario).residents;
   const animalExperiente = idEspecie.sort(function (a, b) {
-    return b ? b.age > a.age : a;
+    return a ? b.age > a.age : b;
   });
   const { name, sex, age } = animalExperiente[0];
   return [name, sex, age];
 }
+
+console.log(oldestFromFirstSpecies('9e7d4524-363c-416a-8759-8aa7e50c0992'));
+
 // prettier-ignore
 function increasePrices(percentage) {
   const valorEntrada = Object.keys(prices);
