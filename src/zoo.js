@@ -11,7 +11,7 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const { animals, employees /*hours, price*/ } = data; // create variables from data.animals; object destructuring
+const { animals, employees } = data; // object destructuring
 
 function animalsByIds(...ids) {
   const output = [];
@@ -22,31 +22,34 @@ function animalsByIds(...ids) {
 }
 
 function animalsOlderThan(animal, age) {
-  const filteredAnimals = animals.find((findAnimal) => findAnimal.name == animal)
-  const res = filteredAnimals.residents.every((animal) => animal.age >= age)
+  const filteredAnimals = animals.find(findAnimal => findAnimal.name === animal);
+  const res = filteredAnimals.residents.every(otherAnimal => otherAnimal.age >= age);
   return res;
 }
 
 function employeeByName(employeeName) {
-  if(employeeName == undefined) { return {} };
-  const filteredEmployee = employees.find(({ firstName, lastName }) => firstName == employeeName || lastName == employeeName);
+  if (employeeName === undefined) { return {}; }
+  const filteredEmployee = employees.find(({ firstName, lastName }) =>
+  firstName === employeeName || lastName === employeeName);
   return filteredEmployee;
 }
 
 function createEmployee(personalInfo, associatedWith) {
   const { id, firstName, lastName } = personalInfo;
-  const { managers, responsibleFor } = associatedWith; 
-  const newEmployee = { id: id, 
-                        firstName: firstName,
-                        lastName: lastName,
-                        managers: managers,
-                        responsibleFor: responsibleFor,
-                      }
+  const { managers, responsibleFor } = associatedWith;
+  const newEmployee =
+    {
+      id,
+      firstName,
+      lastName,
+      managers,
+      responsibleFor,
+    };
   return newEmployee;
 }
 
 function isManager(id) {
-  const filteredEmployees = employees.filter((employee) => employee.managers.includes(id));
+  const filteredEmployees = employees.filter(employee => employee.managers.includes(id));
   return filteredEmployees.length > 0;
 }
 
