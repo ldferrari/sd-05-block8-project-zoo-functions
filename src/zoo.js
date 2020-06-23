@@ -11,20 +11,22 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 const { employees, hours } = require('./data');
-
+// prettier-ignore
 function animalsByIds(...ids) {
   // seu código aqui
   const animais = [];
-  ids.forEach((item) =>
-    animais.push(...data.animals.filter((animal) => animal.id === item)),
+  ids.forEach(item =>
+    animais.push(...data.animals.filter(animal => animal.id === item)),
   );
   return animais;
 }
+// prettier-ignore
 function animalsOlderThan(animal, age) {
   // seu código aqui
   const { residents } = data.animals.find(({ name }) => name === animal);
   return residents.every(({ age: res }) => res >= age);
 }
+// prettier-ignore
 function employeeByName(employeeName) {
   // seu código aqui
   const empregado = data.employees.find(
@@ -33,21 +35,22 @@ function employeeByName(employeeName) {
   );
   return empregado || {};
 }
-
+// prettier-ignore
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
   const { id, firstName, lastName } = personalInfo;
   const { managers, responsibleFor } = associatedWith;
   return { id, firstName, lastName, managers, responsibleFor };
 }
+// prettier-ignore
 function isManager(id) {
   // seu código aqui
-  const team = data.employees.filter((empregad) =>
-    empregad.managers.some((item) => item === id),
+  const team = data.employees.filter(empregad =>
+    empregad.managers.some(item => item === id),
   );
   return team.length > 0;
 }
-
+// prettier-ignore
 function addEmployee(
   id,
   firstName,
@@ -59,7 +62,7 @@ function addEmployee(
   const novoEmpregado = { id, firstName, lastName, managers, responsibleFor };
   employees.push(novoEmpregado);
 }
-
+// prettier-ignore
 function animalCount(species) {
   // seu código aqui
   const quantidade = data.animals.find(({ name }) => name === species);
@@ -69,12 +72,12 @@ function animalCount(species) {
   }, {});
   return species ? quantidade.residents.length : todas;
 }
-
+// prettier-ignore
 function entryCalculator(entrants) {
   // seu código aqui
   if (!entrants || Object.entries(entrants).length === 0) return 0;
   const soma = Object.keys(data.prices).reduce(
-    (acc, precos) => acc + data.prices[precos] * entrants[precos],
+    (acc, precos) => acc + (data.prices[precos] * entrants[precos]),
     0,
   );
   return soma;
@@ -88,14 +91,14 @@ function definirDia(open, closed) {
   }
   return `Open from ${open}am until ${closed - 12}pm`;
 }
-
+// prettier-ignore
 function schedule(dayName) {
   // seu código aqui
   const rotina = {};
 
   if (!dayName) {
     Object.keys(hours).forEach(
-      (dia) =>
+      dia =>
         (rotina[dia] = definirDia(data.hours[dia].open, data.hours[dia].close)),
     );
   } else {
