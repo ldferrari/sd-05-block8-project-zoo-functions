@@ -9,7 +9,7 @@ eslint no-unused-vars: [
 ]
 */
 
-const data = require('./data');
+const data = require("./data");
 /*
 const { animals, employees } = require('./data');
 
@@ -86,7 +86,7 @@ function employeeCoverage(idOrName) {
   // seu código aqui
 }*/
 module.exports = {
-/*entryCalculator,
+  /*entryCalculator,
 schedule,
  animalCount,
 animalMap,
@@ -97,6 +97,7 @@ addEmployee,
 isManager,
 animalsOlderThan,
 oldestFromFirstSpecies,
-increasePrices,*/
-createEmployee,
+increasePrices,
+*/
+  createEmployee,
 };
