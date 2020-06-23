@@ -18,7 +18,7 @@ const animalsByIds = (...ids) => {
     return [];
   }
 
-  const result = animals.filter(elemento => ids.includes(elemento.id));
+  const result = animals.filter((elemento) => ids.includes(elemento.id));
   return result;
 };
 
@@ -99,14 +99,14 @@ const oldestFromFirstSpecies = (id) => {
     return 0;
   });
   return Object.values(idade[0]);
-}
+};
 
 const increasePrices = (percentage) => {
   Object.keys(prices).reduce((acc, atual) => {
     acc[atual] = Math.round((acc[atual] * (100 + percentage)).toFixed(2)) / 100;
     return acc;
   }, prices);
-}
+};
 
 function employeeCoverage(idOrName) {
   // seu código aqui
