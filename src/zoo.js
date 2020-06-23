@@ -99,50 +99,49 @@ function animalMap(options) {
 
 
 function animalMap(options) {
-  // seu código aqui
-  const zones = {};
-  const saida = {};
-  animals.forEach((el) => (zones[el.location] = 1));
-  const zoneArr = Object.keys(zones);
-
-  if (
-    options === undefined ||
-    (options.includeNames === false &&
-      options.sorted === false &&
-      options.sex === '') ||
-    (options.includeNames === false &&
-      options.sorted === false &&
-      options.sex != '')
-  ) {
-    zoneArr.forEach((a) => (saida[a] = []));
-    zoneArr.forEach((el) => {
-      animals
-        .filter((ell) => ell.location === el)
-        .forEach((a) => saida[el].push(a.name));
-    });
-    return saida;
+  // seu código aquiconst zonas = [
+    const zonas = [
+      'NE',
+      'NW',
+      'SE',
+      'SW',
+    ]
+    
+  let objetoSaida = {};
+  if (options === undefined){
+    zonas.forEach(zona => objetoSaida[zona] = animals.filter(local =>
+      local.location === zona).map(objeto => objeto.name))
+    return objetoSaida
   }
-  const { includeNames = false, sorted = false, sex = '' } = options;
-  if (includeNames === true) {
-    zoneArr.forEach(a => (saida[a] = []));
-    zoneArr.forEach(el => {
-      animals.filter(ell => ell.location === el).forEach(a => {
-        const animal = {};
-        if (sex != '') {
-          animal[a.name] = a.residents.filter(aniSex => aniSex.sex === sex)
-          .map(aniName => aniName.name);
-          } else {
-            animal[a.name] = a.residents.map(aniName => aniName.name);
-          }
-          //animal[a.name]=a.residents.map(aniName=>aniName.name);
-          const inst = {};
-          inst[a.name] = animal[a.name];
-          saida[el].push(inst);
-        });
-    });
+  const {includeNames = false, sorted = false, sex = ''} = options
+  if (includeNames === true && sex === '' ) {
+    zonas.forEach(zona => objetoSaida[zona] = animals.filter(local =>
+      local.location === zona).map(objeto => {
+        const tipo = {};
+      if (includeNames === true, sorted === true){
+      tipo [objeto.name] = objeto.residents.map(nome => nome.name).sort();
+      return tipo;  
+      }
+      tipo [objeto.name] = objeto.residents.map(nome => nome.name);
+      return tipo;
+    }))
+    return objetoSaida;
+  } 
+  if (includeNames === true && sex !== '') {
+    zonas.forEach(zona => objetoSaida[zona] = animals.filter(local =>
+      local.location === zona).map(objeto => {
+        const tipo = {};
+      tipo [objeto.name] = objeto.residents.filter(resdent => resdent.sex === sex).map(nome => nome.name);
+      return tipo;
+    }))
+    return objetoSaida;
+  }
+  if (includeNames === false && sex !== '') {
+    zonas.forEach(zona => objetoSaida[zona] = animals.filter(local =>
+      local.location === zona).map(objeto => objeto.name))
+    return objetoSaida;
   }
 
-  return saida;
 }
 
 function schedule(dayName) {
