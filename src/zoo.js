@@ -10,7 +10,6 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
-const { employees } = require('./data');
 const { prices } = require('./data');
 
 function animalsByIds(...ids) {
@@ -78,35 +77,35 @@ function entryCalculator(entrants = {}) {
 }
 
 function animalMap(options) {
-  // seu código aqui
+  /*seu código aqui
   if (options === undefined) {
     const resultado = {};
     data.animals.forEach(animal => (resultado[animal.location] = []));
     data.animals.forEach(animal => (resultado[animal.location].push(animal.name)));
     return resultado;
-  }
+  }*/
 }
 
 // console.log(animalMap());
 
 function schedule(dayName) {
   // seu código aqui
-  if (dayName === undefined) {
+  //if (dayName === undefined) {
     // return Object.keys(data.hours).forEach(hour => console.log(hour));
-  }
+  //}
 }
 
 // console.log(schedule());
 
 function oldestFromFirstSpecies(id) {
-  // seu código aqui
+  /* seu código aqui
   let animalMaisVelho = 0;
   data.employees.find(ids => {
     if (ids === id) {
       const especieAnimal = ids.responsibleFor[0];
       return especieAnimal;
     }
-  });
+  });*/
 }
 
 // console.log(oldestFromFirstSpecies('c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1'));
@@ -122,12 +121,12 @@ function increasePrices(percentage) {
 // console.log(increasePrices(50));
 
 function employeeCoverage(idOrName) {
-  // seu código aqui
+  /* seu código aqui
   if (idOrName === undefined) {
     const resultado = {};
     data.employees.forEach(employee => (resultado[`${employee.firstName} ${employee.lastName}`] = []));
     return resultado;
-  }
+  }*/
 }
 
 // console.log(employeeCoverage());
