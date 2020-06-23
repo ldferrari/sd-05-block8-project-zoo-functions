@@ -15,8 +15,8 @@ const { employees, hours } = require('./data');
 function animalsByIds(...ids) {
   // seu código aqui
   const animais = [];
-  ids.forEach(item =>
-    animais.push(...data.animals.filter(animal => animal.id === item)),
+  ids.forEach((item) =>
+    animais.push(...data.animals.filter((animal) => animal.id === item)),
   );
   return animais;
 }
@@ -42,8 +42,8 @@ function createEmployee(personalInfo, associatedWith) {
 }
 function isManager(id) {
   // seu código aqui
-  const team = data.employees.filter(empregad =>
-    empregad.managers.some(item => item === id),
+  const team = data.employees.filter((empregad) =>
+    empregad.managers.some((item) => item === id),
   );
   return team.length > 0;
 }
@@ -74,15 +74,13 @@ function entryCalculator(entrants) {
   // seu código aqui
   if (!entrants || Object.entries(entrants).length === 0) return 0;
   const soma = Object.keys(data.prices).reduce(
-    (acc, precos) => acc + (data.prices[precos] * entrants[precos]),
+    (acc, precos) => acc + data.prices[precos] * entrants[precos],
     0,
   );
   return soma;
 }
 
-function animalMap(options) {
-
-}
+function animalMap(options) {}
 
 function definirDia(open, closed) {
   if (open === 0 && closed === 0) {
@@ -92,21 +90,19 @@ function definirDia(open, closed) {
 }
 
 function schedule(dayName) {
-    // seu código aqui
+  // seu código aqui
   const rotina = {};
 
   if (!dayName) {
     Object.keys(hours).forEach(
-      dia =>
-          (rotina[dia] = definirDia(
-            data.hours[dia].open,
-            data.hours[dia].close,
-          )));
+      (dia) =>
+        (rotina[dia] = definirDia(data.hours[dia].open, data.hours[dia].close)),
+    );
   } else {
     rotina[dayName] = definirDia(
       data.hours[dayName].open,
       data.hours[dayName].close,
-      );
+    );
   }
   return rotina;
 }
