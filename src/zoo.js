@@ -11,7 +11,7 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const { animals, employees, prices } = data;
+const { animals, employees, prices, hours } = data;
 
 function animalsByIds(...ids) {
   const testArray = [];
@@ -28,8 +28,7 @@ function employeeByName(employeeName) {
   const funcionario = employees.find(
     nomeFuncionario =>
       nomeFuncionario.firstName === employeeName ||
-      nomeFuncionario.lastName === employeeName
-  );
+      nomeFuncionario.lastName === employeeName);
   return funcionario || {};
 }
 
@@ -41,8 +40,7 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   const verficaGerente = employees.some(gerente =>
-    gerente.managers.find(idGerente => idGerente === id)
-  );
+    gerente.managers.find(idGerente => idGerente === id));
   return verficaGerente;
 }
 
@@ -51,14 +49,13 @@ function addEmployee(
   firstName,
   lastName,
   managers = [],
-  responsibleFor = []
-){
+  responsibleFor = []) {
   return employees.push({ id, firstName, lastName, managers, responsibleFor });
 }
 
 function animalCount(species) {
   const countSpecies = {};
-  animals.forEach(animal => {
+  animals.forEach((animal) => {
     countSpecies[animal.name] = animal.residents.length;
   });
 
@@ -67,9 +64,6 @@ function animalCount(species) {
     : countSpecies;
 }
 
-// Returna 0 se nenhum argumento for passado
-// Retorna 0 se um objeto vazio for passado
-// Retorna o preço total a ser cobrado dado o número de adultos, crianças e idosos
 function entryCalculator(entrants) {
   if (!entrants || Object.entries(entrants).length === 0) {
     return 0;
@@ -77,16 +71,31 @@ function entryCalculator(entrants) {
 
   const { Adult, Senior, Child } = entrants;
   const calculoEntradas =
-    prices.Adult * Adult + prices.Senior * Senior + prices.Child * Child;
+    (prices.Adult * Adult) + (prices.Senior * Senior) + (prices.Child * Child);
   return calculoEntradas;
 }
 
 function animalMap(options) {
   // seu código aqui
 }
+// 1. Sem parâmetros, retorna um cronograma legível para humanos
+// 2. Se um único dia for passado, retorna somente este dia em um
+// formato legível para humanos
+function setSchedule(open, close) {
+  if (open === 0 && close === 0) {
+    return 'CLOSED';
+  } return `Open from ${open}am until ${close - 12}pm`;
+}
 
 function schedule(dayName) {
-  // seu código aqui
+  const rotina = {};
+  if (dayName === undefined) {
+    Object.keys(hours).forEach(
+      day => (rotina[day] = setSchedule(hours[day].open, hours[day].close)));
+  } else {
+    rotina[dayName] = setSchedule(hours[dayName].open, hours[dayName].close);
+  }
+  return rotina;
 }
 
 function oldestFromFirstSpecies(id) {
