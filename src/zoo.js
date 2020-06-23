@@ -93,28 +93,23 @@ function animalMap(options) {
     return objetoSaida;
   }
   const { includeNames = false, sorted = false, sex = '' } = options;
-  if (includeNames === true && sex === '') {
-    zonas.forEach(function(zona) {
-      objetoSaida[zona] = animals.filter(local =>
+  if (includeNames === true) {
+    zonas.forEach(function(zona) {objetoSaida[zona] = animals.filter(local =>
       local.location === zona).map((objeto) => {
         const tipo = {};
-        if (includeNames === true && sorted === true) {
+        if (sex !== '') {
+          tipo [objeto.name] = objeto.residents.filter(animalSex=>
+            animalSex.sex===sex).map(nome => nome.name);
+            if(sorted==true) tipo[objeto.name].sort()
+          return tipo;
+        }
+        if (sex === '' && sorted === true) {
           tipo [objeto.name] = objeto.residents.map(nome => nome.name).sort();
           return tipo;
         }
+        
         tipo[objeto.name] = objeto.residents.map(nome => nome.name);
         return tipo;
-      })});
-    return objetoSaida;
-  }
-  if (includeNames === true && sex !== '') {
-    zonas.forEach(function(zona) {
-      objetoSaida[zona] = animals.filter(local =>
-      local.location === zona).map((objeto) => {
-        const tipo = {};
-        tipo[objeto.name] = objeto.residents.filter(resdent => 
-          resdent.sex === sex).map(nome => nome.name);
-      return tipo;
       })});
     return objetoSaida;
   }
