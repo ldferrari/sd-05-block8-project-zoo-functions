@@ -124,7 +124,26 @@ function increasePrices(percentage) {
 
 
 function employeeCoverage(idOrName) {
-  // seu código aqui
+// 1. retorno quando tiver param idOrName
+if (idOrName !== undefined) {
+  const findPerson = employees.find(person => idOrName === person.id || idOrName === person.firstName || idOrName === person.lastName);
+  const fullName = `${findPerson.firstName} ${findPerson.lastName}`;
+  const managedAnimalsIds = findPerson.responsibleFor;
+  const managedSpeciesArray = managedAnimalsIds.map(ids => animals.find(animal => animal.id === ids).name);
+  const returnWithParam = { [fullName] : managedSpeciesArray };
+  return returnWithParam;
+}
+// 2. retorno quando n tiver param idOrName
+else {
+  const all = {};
+  employees.forEach((pers) => {
+    const stringFullName = `${pers.firstName} ${pers.lastName}`
+    all[stringFullName] = pers.responsibleFor.map(
+      ids => animals.find(anim => anim.id === ids).name,
+    );
+  });
+  return all;
+}
 }
 
 module.exports = {
