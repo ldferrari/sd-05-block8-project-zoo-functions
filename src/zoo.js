@@ -107,7 +107,7 @@ function schedule(dayName) {
       data.hours[dayName].open,
       data.hours[dayName].close,
       );
-    }
+  }
   return rotina;
 }
 
