@@ -94,16 +94,17 @@ function oldestFromFirstSpecies(id) {
 }
 
 function increasePrices(percentage) {
-  Object.keys(prices).forEach(key => {
-    (prices[key] = Math.round((prices[key] * 100) * (1 + (percentage / 100))).toFixed(2) / 100);
-  });
+  Object.keys(prices).forEach(key =>
+    (prices[key] = Math.round((prices[key] * 100) * (1 + (percentage / 100))).toFixed(2) / 100)
+  );
   return prices;
 }
 
 function employeeCoverage(idOrName) {
   // if (idOrName === undefined) {
     // const resultado = {};
-    // data.employees.forEach(employee => (resultado[`${employee.firstName} ${employee.lastName}`] = []));
+    // data.employees.forEach(employee => (resultado[`${employee.firstName} 
+    // ${employee.lastName}`] = []));
     // return resultado;
   // }
 }
