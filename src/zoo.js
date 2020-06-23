@@ -97,7 +97,7 @@ function animalMap(
 
         if (options.sorted === true) {
           names.sort();
-        };
+        }
         obj[region].push({ [generalAnimal]: names });
       });
     }
@@ -159,12 +159,12 @@ function employeeCoverage(idOrName) {
 
   function finder(employee) {
     obj[`${employee.firstName} ${employee.lastName}`] = [];
-      const responsibles = employee.responsibleFor;
-      responsibles.forEach((responsible) => {
-        const group = animals.find(bicho => bicho.id === responsible).name;
-        obj[`${employee.firstName} ${employee.lastName}`].push(group);
-      });
-  }
+    const responsibles = employee.responsibleFor;
+    responsibles.forEach((responsible) => {
+      const group = animals.find(bicho => bicho.id === responsible).name;
+      obj[`${employee.firstName} ${employee.lastName}`].push(group);
+    });
+    }
   if (!idOrName) {
     employees.forEach((employee) => {
       finder(employee);
@@ -172,13 +172,13 @@ function employeeCoverage(idOrName) {
     });
     return obj;
   }
-  employees.find((employee) => {
-    if (employee.firstName === idOrName || employee.lastName === idOrName || employee.id === idOrName) {
-      finder(employee);
+  employees.find((el) => {
+    if (el.firstName === idOrName || el.lastName === idOrName || el.id === idOrName) {
+      finder(el);
       return obj;
-    };
+    }
   });
-    return obj;
+  return obj;
 }
 
 module.exports = {
