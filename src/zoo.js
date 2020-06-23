@@ -89,13 +89,13 @@ function definirDia(open, closed) {
     return 'CLOSED';
   }
   return `Open from ${open}am until ${closed - 12}pm`;
-    }
+}
 
 function schedule(dayName) {
     // seu código aqui
-    const rotina = {};
+  const rotina = {};
 
-    if (!dayName) {
+  if (!dayName) {
       Object.keys(hours).forEach(
       dia =>
           (rotina[dia] = definirDia(
@@ -106,9 +106,9 @@ function schedule(dayName) {
       rotina[dayName] = definirDia(
         data.hours[dayName].open,
         data.hours[dayName].close,
-    )}
-    return rotina;
-  }
+    ) };
+  return rotina;
+}
 
 function oldestFromFirstSpecies(id) {
   // seu código aqui
