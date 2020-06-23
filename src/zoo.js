@@ -104,13 +104,11 @@ function schedule(dayName) {
   // Cria um objeto auxiliar
   const auxObj = {};
   // Cria uma função percorrendo as chaves do objeto utilizando um forEach
-  
   Object.keys(hours).forEach((day) => {
     // Condição de parada caso o dia seja domingo
-    if (day === 'Monday'){ 
+    if (day === 'Monday') {
       auxObj[day] = 'CLOSED';
-    }
-    else {
+    } else {
       // Ajusta o horário de fechamento com o -12 para ficar no padrão am/pm
       auxObj[day] = `Open from ${hours[day].open}am until ${hours[day].close - 12}pm`;
     }
