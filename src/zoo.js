@@ -86,7 +86,7 @@ function employeeCoverage(idOrName) {
   // seu código aqui
 }*/
 module.exports = {
-  /*entryCalculator,
+/*entryCalculator,
 schedule,
  animalCount,
 animalMap,
