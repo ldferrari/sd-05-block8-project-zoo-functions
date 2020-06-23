@@ -57,7 +57,6 @@ function createEmployee(personalInfo, associatedWith) {
 }
 
 function isManager(id) {
-  // seu código aqui
   const managerCheck = employees.some(
     employee => id === employee.managers.find(item => item === id),
   );
@@ -96,16 +95,16 @@ function animalMap(options) {
   // seu código aqui
 }
 
+// 1. sem parâmetros, retorna um cronograma legível para humanos
+// 2. se um único dia for passado, retorna somente este dia em um
+// formato legível para humanos
+
 function setSchedule(open, close) {
   if (open === 0 && close === 0) {
     return 'CLOSED';
   }
   return `Open from ${open}am until ${close - 12}pm`;
 }
-
-// 1. Sem parâmetros, retorna um cronograma legível para humanos
-// 2. Se um único dia for passado, retorna somente este dia em um
-// formato legível para humanos
 
 function schedule(dayName) {
   const rotina = {};
@@ -118,8 +117,26 @@ function schedule(dayName) {
   return rotina;
 }
 
+// *REQUISITO: Passado o id de um funcionário, encontra a
+// primeira espécie de animal gerenciado pelo funcionário,
+// e retorna um array com nome, sexo e idade do animal
+// mais velho dessa espécie.
+
 function oldestFromFirstSpecies(id) {
-  // seu código aqui
+  // 1. encontrar o funcionário (find id) e armazenar numa const
+  const employeeId = employees.find(person => person.id === id);
+  // 2. encontrar o primeiro animal (responsibleFor[0]) e armazenar sua id numa const
+  const animalId = employeeId.responsibleFor[0];
+  // 3. usando a id do animal, encontrar todos da sua espécie (find + .residents)
+  const allAnimalsFromThisSpecies = animals.find(animal => animal.id === animalId).residents;
+  // 4. organizar esses animais por idade, colocando o mais velho primeiro (sort .age)
+  const oldestAnimal = allAnimalsFromThisSpecies.sort(function (a, b) {
+    return b.age - a.age;
+  });
+  // 5. criar um objeto que armazene os dados do animal mais velho
+  const { name, sex, age } = oldestAnimal[0];
+  // 6. retornar os valores do objeto em um array
+  return [name, sex, age];
 }
 
 function increasePrices(percentage) {
