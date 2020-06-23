@@ -106,7 +106,8 @@ function schedule(dayName) {
     rotina[dayName] = definirDia(
       data.hours[dayName].open,
       data.hours[dayName].close,
-    ) };
+      );
+    }
   return rotina;
 }
 
