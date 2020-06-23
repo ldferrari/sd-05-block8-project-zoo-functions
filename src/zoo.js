@@ -78,9 +78,7 @@ function entryCalculator(entrants) {
 function animalMap(options) {
   // seu código aqui
 }
-// 1. Sem parâmetros, retorna um cronograma legível para humanos
-// 2. Se um único dia for passado, retorna somente este dia em um
-// formato legível para humanos
+
 function setSchedule(open, close) {
   if (open === 0 && close === 0) {
     return 'CLOSED';
@@ -99,7 +97,13 @@ function schedule(dayName) {
 }
 
 function oldestFromFirstSpecies(id) {
-  // seu código aqui
+  const idFuncionario = employees.find(funcionario => funcionario.id === id).responsibleFor[0];
+  const idEspecie = animals.find(animal => animal.id === idFuncionario).residents;
+  const animalExperiente = idEspecie.sort((function(a , b) {
+    return b ? (b.age > a.age) : a;
+  })
+  const { name, sex, age } = animalExperiente[0];
+  return [name, sex, age];
 }
 
 function increasePrices(percentage) {
