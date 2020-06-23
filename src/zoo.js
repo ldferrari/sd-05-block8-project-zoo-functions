@@ -163,6 +163,7 @@ function employeeCoverage(idOrName) {
     responsibles.forEach((responsible) => {
       const group = animals.find(bicho => bicho.id === responsible).name;
       obj[`${employee.firstName} ${employee.lastName}`].push(group);
+      return obj;
     });
   }
   if (!idOrName) {
@@ -172,13 +173,13 @@ function employeeCoverage(idOrName) {
   }
   employees.find((el) => {
     if (el.firstName === idOrName || el.lastName === idOrName || el.id === idOrName) {
-      const newobj = finder(el);
-      return newobj;
+      finder(el);
+      return obj;
     }
+    return 0;
   });
   return obj;
 }
-
 
 module.exports = {
   entryCalculator,
