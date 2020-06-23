@@ -96,16 +96,16 @@ function schedule(dayName) {
   const rotina = {};
 
   if (!dayName) {
-      Object.keys(hours).forEach(
+    Object.keys(hours).forEach(
       dia =>
           (rotina[dia] = definirDia(
             data.hours[dia].open,
             data.hours[dia].close,
           )));
-    } else {
-      rotina[dayName] = definirDia(
-        data.hours[dayName].open,
-        data.hours[dayName].close,
+  } else {
+    rotina[dayName] = definirDia(
+      data.hours[dayName].open,
+      data.hours[dayName].close,
     ) };
   return rotina;
 }
