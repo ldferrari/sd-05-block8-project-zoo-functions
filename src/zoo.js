@@ -10,7 +10,7 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
-const { prices } = require('./data');
+const { prices, hours } = require('./data');
 
 function animalsByIds(...ids) {
   // seu código aqui
@@ -85,12 +85,35 @@ function animalMap(options) {
   // }
 }
 
+// console.log(animalMap());
+
 function schedule(dayName) {
-  // codigo aqui
+  const resultado = {};
+  Object.keys(hours).forEach((day) => {
+    if (day === 'Monday') resultado[day] = 'CLOSED';
+    else {
+      resultado[day] = `Open from ${data.hours[day].open}am until ${hours[day].close -12}pm`;
+    }
+  });
+  if (dayName === undefined) {
+    return resultado;
+  }
+  return ({ [dayName]: resultado[dayName] });
 }
 
 function oldestFromFirstSpecies(id) {
-
+  const animalId = data.employees.find(employee => employee.id === id).responsibleFor[0];
+  let resultado = ['teste', 'female', 0];
+  const listaAnimais = data.animals.find(animal => animal.id === animalId).residents;
+  listaAnimais.forEach((animal) => {
+    if (animal.age > resultado[2]) {
+      resultado = [];
+      resultado.push(animal.name);
+      resultado.push(animal.sex);
+      resultado.push(animal.age);
+    }
+  });
+  return resultado;
 }
 
 function increasePrices(percentage) {
@@ -100,13 +123,15 @@ function increasePrices(percentage) {
 }
 
 function employeeCoverage(idOrName) {
-  // if (idOrName === undefined) {
-    // const resultado = {};
-    // data.employees.forEach(employee => (resultado[`${employee.firstName}
-    // ${employee.lastName}`] = []));
-    // return resultado;
-  // }
+  if (idOrName === undefined) {
+    const resultado = {};
+    data.employees.forEach(employee => (resultado[`${employee.firstName} ${employee.lastName}`] = []));
+    data.employees.forEach(employee => (resultado[`${employee.firstName} ${employee.lastName}`].push(...employee.responsibleFor)));
+    return resultado;
+  }
 }
+
+// console.log(employeeCoverage());
 
 module.exports = {
   entryCalculator,
