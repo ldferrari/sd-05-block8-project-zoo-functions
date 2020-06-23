@@ -27,9 +27,7 @@ function animalsOlderThan(animalName, age) {
 function employeeByName(employeeName) {
   const funcionario = employees.find(
     nomeFuncionario =>
-      nomeFuncionario.firstName === employeeName ||
-      nomeFuncionario.lastName === employeeName
-  );
+      nomeFuncionario.firstName === employeeName || nomeFuncionario.lastName === employeeName);
   return funcionario || {};
 }
 
@@ -50,8 +48,9 @@ function addEmployee(
   firstName,
   lastName,
   managers = [],
-  responsibleFor = [])
-{return employees.push({ id, firstName, lastName, managers, responsibleFor })};
+  responsibleFor = []) {
+  return employees.push({ id, firstName, lastName, managers, responsibleFor });
+}
 
 function animalCount(species) {
   const countSpecies = {};
@@ -112,11 +111,12 @@ function oldestFromFirstSpecies(id) {
 function increasePrices(percentage) {
   const valorEntrada = Object.keys(prices);
   valorEntrada.forEach((valor) => {
-    prices[valor] = Math.round((prices[valor] * 100) * (1 + (percentage / 100))) / 100 })};
-
-function employeeCoverage(idOrName) {
-
+    prices[valor] = Math.round(prices[valor] * 100) * (((1 + (percentage / 100))) / 100)
 }
+
+/* function employeeCoverage(idOrName) {
+   const animalCuidador = {};
+}*/
 
 module.exports = {
   entryCalculator,
