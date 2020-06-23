@@ -94,11 +94,11 @@ NE: [
 
 function animalMap(options) {
   const regions = {};
-  animals.forEach(({ location }) => { return (regions[location] = []);});
+  animals.forEach(({ location }) => regions[location] = []);
   if (options !== undefined) {
     const { includeNames = false, sorted = false, sex } = options;
     Object.keys(regions).forEach((region) => {
-    animals.forEach(({ name, location, residents }) => {
+      animals.forEach(({ name, location, residents }) => {
         if (location === region) {
           if (includeNames && !sex) {
             regions[location].push({ [name]: residents.map(resident => resident.name) });
@@ -106,16 +106,16 @@ function animalMap(options) {
               regions[location].forEach((animal, index) => {
                 if (regions[location][index][name] !== undefined) {
                   regions[location][index][name].sort();
-              }
+                }
               });
             }
           }
           if (includeNames && (sex === 'male' || sex === 'female')) {
-            regions[location].push({ [name]: residents.filter(resident =>   resident.sex === sex).map(resident => resident.name) });
+            regions[location].push({ [name]: residents.filter(resident => resident.sex === sex).map(resident => resident.name) });
           }
           if (!includeNames && (sex === 'male' || sex === 'female')) {
             residents = residents.filter(resident => resident.sex === sex).map(resident => resident.name);
-            if (residents != []) regions[location].push(name);
+            if (residents !== []) regions[location].push(name);
           }
         }
       });
@@ -123,16 +123,14 @@ function animalMap(options) {
   } else {
     Object.keys(regions).forEach((region) => {
       animals.forEach(({ name, location }) => {
-        if (location === region) {
-          return regions[location].push(name);
-        }
+        if (location === region) return regions[location].push(name);
       });
     });
   }
   return regions;
 }
 
-console.log(animalMap({includeNames: true, sorted: false}))
+// console.log(animalMap({includeNames: true, sorted: false}))
 // console.log(animalMap({sex: 'female'}));
 
 function schedule(dayName) {
