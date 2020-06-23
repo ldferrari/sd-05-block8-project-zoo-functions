@@ -85,11 +85,11 @@ function entryCalculator(...entrants) {
 
 function animalMap(options) {
   // seu código aquiconst zonas = [
-  const zonas = ['NE', 'NW', 'SE', 'SW']
-   const objetoSaida = {};
-  if (options === undefined){
-    zonas.forEach(zona => objetoSaida[zona] = animals.filter(local =>
-      local.location === zona).map(objeto => objeto.name))
+  const zonas = ['NE', 'NW', 'SE', 'SW'];
+  const objetoSaida = {};
+  if (options === undefined) {
+    zonas.forEach(function (zona) { objetoSaida[zona] = animals.filter(local =>
+      local.location === zona).map(objeto => objeto.name)})
     return objetoSaida
   }
   const {includeNames = false, sorted = false, sex = ''} = options
