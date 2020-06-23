@@ -31,10 +31,9 @@ const employeeByName = (employeeName) => {
   if (typeof employeeName === 'undefined') {
     return {};
   }
-  const result = employees.find((nome) =>
-    employeeName === nome.firstName || employeeName === nome.lastName
-  );
-  return result;
+
+  return employees
+          .find((nome) => employeeName === nome.firstName || employeeName === nome.lastName);
 };
 
 const createEmployee = (personalInfo, associatedWith) => {
