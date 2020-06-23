@@ -150,9 +150,23 @@ console.log(animalCount())
 ------------------------------------------------------------------
 */
 function entryCalculator(entrants) {
-  // seu código aqui
+  const { prices } = data;
+// returna 0 se nenhum argumento for passado
+  if (entrants === undefined || Object.keys(entrants).length === 0) return 0;
+/*
+retorna o preço total a ser cobrado dado o número de adultos, crianças e idosos
+*/
+  const soma = Object.keys(prices).reduce(function (total, precoPorPessoa) {
+    total += prices[precoPorPessoa] * entrants[precoPorPessoa];
+    return total;
+  }, 0);
+  return soma;
 }
-//------------------------------------------------------------------
+
+/*
+console.log(entryCalculator({ 'Adult': 2, 'Child': 3, 'Senior': 1 }));
+------------------------------------------------------------------
+*/
 function animalMap(options) {
   // seu código aqui
 }
