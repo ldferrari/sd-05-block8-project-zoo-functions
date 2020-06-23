@@ -13,6 +13,8 @@ const data = require('./data');
 const { animals } = require('./data');
 const { employees } = require('./data');
 const { prices } = require('./data');
+const { hours } = require('./data');
+
 
 function animalsByIds(...ids) {
   // Tratamento caso seja vazio.
@@ -99,6 +101,21 @@ function animalMap(options) {
 }
 
 function schedule(dayName) {
+  // Cria um objeto auxiliar
+  const auxObj = {};
+  // Cria uma função percorrendo as chaves do objeto utilizando um forEach
+  
+  Object.keys(hours).forEach((day) => {
+    // Condição de parada caso o dia seja domingo
+    if (day === 'Monday'){ 
+      auxObj[day] = 'CLOSED';
+    }
+    else {
+      // Ajusta o horário de fechamento com o -12 para ficar no padrão am/pm
+      auxObj[day] = `Open from ${hours[day].open}am until ${hours[day].close - 12}pm`;
+    }
+  });
+  return dayName ? { [dayName]: auxObj[dayName] } : auxObj;
 }
 
 function oldestFromFirstSpecies(id) {
