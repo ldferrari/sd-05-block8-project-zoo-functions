@@ -9,7 +9,7 @@ eslint no-unused-vars: [
 ]
 */
 
-const data = require('./data');
+import data from './data';
 
 const { animals, employees, prices, hours } = data;
 
@@ -110,13 +110,22 @@ function oldestFromFirstSpecies(id) {
 
 function increasePrices(percentage) {
   const valorEntrada = Object.keys(prices);
-  valorEntrada.forEach((valor) => {
-    prices[valor] = Math.round(prices[valor] * 100) * (((1 + (percentage / 100))) / 100)
+  valorEntrada.forEach((valor) => 
+    prices[valor] = Math.round(prices[valor] * 100) * (((1 + (percentage / 100)) / 100)))
 }
 
 /* function employeeCoverage(idOrName) {
-   const animalCuidador = {};
-}*/
+  const animalCuidador = {};
+  if (idOrName === undefined) {
+    animalCuidador = employees.forEach((cuidador) => {animalCuidador[`${cuidador.firstName} ${cuidador.lastName}`];
+  } else if {
+    const nomeEmpregado = employess.filter(idWork => idOrName === idWork.id || idOrName === idWork.firstName || idOrName === idWork.lastName);
+   
+  }
+
+  return animalCuidador;
+  }
+*/
 
 module.exports = {
   entryCalculator,
@@ -132,4 +141,4 @@ module.exports = {
   oldestFromFirstSpecies,
   increasePrices,
   createEmployee,
-};
+}
