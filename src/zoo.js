@@ -86,17 +86,17 @@ function employeeCoverage(idOrName) {
   // seu código aqui
 }*/
 module.exports = {
-//entryCalculator,
-//schedule,
-// animalCount,
-//animalMap,
-//animalsByIds,
-//employeeByName,
-//employeeCoverage,
-//addEmployee,
-//isManager,
-//animalsOlderThan,
-//oldestFromFirstSpecies,
-//increasePrices,
+/*entryCalculator,
+schedule,
+ animalCount,
+animalMap,
+animalsByIds,
+employeeByName,
+employeeCoverage,
+addEmployee,
+isManager,
+animalsOlderThan,
+oldestFromFirstSpecies,
+increasePrices,*/
   createEmployee,
 };
