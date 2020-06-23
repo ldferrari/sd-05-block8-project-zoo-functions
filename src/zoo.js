@@ -113,12 +113,14 @@ function schedule(dayName) {
 
 function oldestFromFirstSpecies(Id) {
   // seu código aqui
-  const funcionario = data.employees.find(({ id }) => id === Id )
-  const animalResponsavel = funcionario.responsibleFor[0]
-  const objetoAnimal = data.animals.find(({ id }) => id === animalResponsavel)
-  let resultado = objetoAnimal.residents[0]
-  Object.entries(objetoAnimal).forEach(item => {if (resultado.age < item.age) (resultado = item)})
-  return resultado
+  const funcionario = data.employees.find(({ id }) => id === Id);
+  const animalResponsavel = funcionario.responsibleFor[0];
+  const objetoAnimal = data.animals.find(({ id }) => id === animalResponsavel);
+  let resultado = objetoAnimal.residents[0];
+  objetoAnimal.residents.forEach((item) => {
+    if (resultado.age < item.age) resultado = item;
+  });
+  return Object.values(resultado);
 }
 
 console.log(oldestFromFirstSpecies('9e7d4524-363c-416a-8759-8aa7e50c0992'))
