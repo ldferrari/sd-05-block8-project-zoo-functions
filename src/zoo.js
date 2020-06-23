@@ -28,7 +28,8 @@ function employeeByName(employeeName) {
   const funcionario = employees.find(
     nomeFuncionario =>
       nomeFuncionario.firstName === employeeName ||
-      nomeFuncionario.lastName === employeeName);
+      nomeFuncionario.lastName === employeeName
+  );
   return funcionario || {};
 }
 
@@ -49,7 +50,8 @@ function addEmployee(
   firstName,
   lastName,
   managers = [],
-  responsibleFor = []) {
+  responsibleFor = []);
+{
   return employees.push({ id, firstName, lastName, managers, responsibleFor });
 }
 
@@ -82,7 +84,8 @@ function animalMap(options) {
 function setSchedule(open, close) {
   if (open === 0 && close === 0) {
     return 'CLOSED';
-  } return `Open from ${open}am until ${close - 12}pm`;
+  }
+  return `Open from ${open}am until ${close - 12}pm`;
 }
 
 function schedule(dayName) {
@@ -97,17 +100,22 @@ function schedule(dayName) {
 }
 
 function oldestFromFirstSpecies(id) {
-  const idFuncionario = employees.find(funcionario => funcionario.id === id).responsibleFor[0];
-  const idEspecie = animals.find(animal => animal.id === idFuncionario).residents;
-  const animalExperiente = idEspecie.sort(function(a , b) {
-    return b ? (b.age > a.age) : a;
+  const idFuncionario = employees.find(funcionario => funcionario.id === id)
+    .responsibleFor[0];
+  const idEspecie = animals.find(animal => animal.id === idFuncionario)
+    .residents;
+  const animalExperiente = idEspecie.sort(function (a, b) {
+    return b ? b.age > a.age : a;
   });
   const { name, sex, age } = animalExperiente[0];
   return [name, sex, age];
 }
 // Ao passar uma porcentagem, incrementa todos os preços, arrendondados em duas casas decimais
 function increasePrices(percentage) {
-  const valorEntrada = Object.keys(prices).forEach((valor) => prices[valor] = Math.round((prices[valor] * 100) * (1 + percentage / 100).toFixed(2) / 100))};
+  const valorEntrada = Object.keys(prices);
+  valorEntrada.forEach((valor) => {
+    prices[valor] = Math.round((prices[valor] * 100) * (1 + (percentage / 100))) / 100 });
+}
 
 function employeeCoverage(idOrName) {
   // seu código aqui
