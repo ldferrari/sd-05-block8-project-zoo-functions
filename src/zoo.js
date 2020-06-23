@@ -111,7 +111,7 @@ function animalMap(options) {
             }
           }
           if (includeNames && (sex === 'male' || sex === 'female')) {
-            regions[location].push({ [name]: residents.filter(resident => resident.sex === sex).map(resident => resident.name) });
+            regions[location].push({ [name]: residents.filter(res => res.sex === sex).map(res => (res.sex === sex) ? res.name : false) });
           }
           if (!includeNames && (sex === 'male' || sex === 'female')) {
             residents = residents.filter(resident => resident.sex === sex).map(resident => resident.name);
