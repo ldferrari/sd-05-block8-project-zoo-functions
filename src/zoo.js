@@ -94,7 +94,7 @@ NE: [
 
 function animalMap(options) {
   const regions = {};
-  animals.forEach(({ location }) => regions[location] = []);
+  animals.forEach(({ location }) => (regions[location] = []));
   if (options !== undefined) {
     const { includeNames = false, sorted = false, sex } = options;
     Object.keys(regions).forEach((region) => {
