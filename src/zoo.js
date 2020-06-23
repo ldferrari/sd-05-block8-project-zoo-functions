@@ -89,36 +89,40 @@ function animalMap(options) {
   const objetoSaida = {};
   if (options === undefined) {
     zonas.forEach(function (zona) { objetoSaida[zona] = animals.filter(local =>
-      local.location === zona).map(objeto => objeto.name)})
-    return objetoSaida
+      local.location === zona).map(objeto => objeto.name)});
+    return objetoSaida;
   }
-  const {includeNames = false, sorted = false, sex = ''} = options
-  if (includeNames === true && sex === '' ) {
-    zonas.forEach(zona => objetoSaida[zona] = animals.filter(local =>
-      local.location === zona).map(objeto => {
+  const { includeNames = false, sorted = false, sex = '' } = options;
+  if (includeNames === true && sex === '') {
+    zonas.forEach(function(zona) {
+      objetoSaida[zona] = animals.filter(local =>
+      local.location === zona).map((objeto) => {
         const tipo = {};
-      if (includeNames === true, sorted === true){
-        tipo [objeto.name] = objeto.residents.map(nome => nome.name).sort();
+        if (includeNames === true && sorted === true) {
+          tipo [objeto.name] = objeto.residents.map(nome => nome.name).sort();
+          return tipo;
+        }
+        tipo[objeto.name] = objeto.residents.map(nome => nome.name);
         return tipo;
-      }
-      tipo [objeto.name] = objeto.residents.map(nome => nome.name);
-      return tipo;
-    }))
+      })});
     return objetoSaida;
   }
   if (includeNames === true && sex !== '') {
-    zonas.forEach(zona => objetoSaida[zona] = animals.filter(local =>
-      local.location === zona).map(objeto => {
+    zonas.forEach(function(zona) {
+      objetoSaida[zona] = animals.filter(local =>
+      local.location === zona).map((objeto) => {
         const tipo = {};
-        tipo [objeto.name] = objeto.residents.filter(resdent => resdent.sex === sex).map(nome => nome.name);
-        return tipo;
-    }))
+        tipo[objeto.name] = objeto.residents.filter(resdent => 
+          resdent.sex === sex).map(nome => nome.name);
+      return tipo;
+      })});
     return objetoSaida;
   }
   if (includeNames === false && sex !== '') {
-    zonas.forEach(zona => objetoSaida[zona] = animals.filter(local =>
-      local.location === zona).map(objeto => objeto.name))
-      return objetoSaida;
+    zonas.forEach(function(zona) {
+      objetoSaida[zona] = animals.filter(local =>
+      local.location === zona).map(objeto => objeto.name)});
+    return objetoSaida;
   }
 }
 
