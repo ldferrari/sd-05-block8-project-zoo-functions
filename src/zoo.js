@@ -11,7 +11,7 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const { animals } = data; // create animals from data.animals; object destructuring
+const { animals, employees /*hours, price*/ } = data; // create variables from data.animals; object destructuring
 
 function animalsByIds(...ids) {
   const output = [];
@@ -22,19 +22,32 @@ function animalsByIds(...ids) {
 }
 
 function animalsOlderThan(animal, age) {
-  // seu código aqui
+  const filteredAnimals = animals.find((findAnimal) => findAnimal.name == animal)
+  const res = filteredAnimals.residents.every((animal) => animal.age >= age)
+  return res;
 }
 
 function employeeByName(employeeName) {
-  // seu código aqui
+  if(employeeName == undefined) { return {} };
+  const filteredEmployee = employees.find(({ firstName, lastName }) => firstName == employeeName || lastName == employeeName);
+  return filteredEmployee;
 }
 
 function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
+  const { id, firstName, lastName } = personalInfo;
+  const { managers, responsibleFor } = associatedWith; 
+  const newEmployee = { id: id, 
+                        firstName: firstName,
+                        lastName: lastName,
+                        managers: managers,
+                        responsibleFor: responsibleFor,
+                      }
+  return newEmployee;
 }
 
 function isManager(id) {
-  // seu código aqui
+  const filteredEmployees = employees.filter((employee) => employee.managers.includes(id));
+  return filteredEmployees.length > 0;
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
