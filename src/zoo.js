@@ -93,18 +93,10 @@ NE: [
 */
 
 function animalMap(options) {
-
   const regions = {};
-  // create object with regions
-  animals.forEach(
-    ({ location }) =>
-    {
-      return (regions[location] = []);
-    }
-  );
+  animals.forEach(({ location }) => { return (regions[location] = []);});
   if (options !== undefined) {
     const { includeNames = false, sorted = false, sex } = options;
-    // add species to the object
   Object.keys(regions).forEach(region => {
     animals.forEach(({ name, location, residents }) => {
       if (location === region) {
@@ -124,8 +116,6 @@ function animalMap(options) {
         }
         if (!includeNames && (sex === 'male' || sex === 'female')) {
           residents = residents.filter(resident => resident.sex === sex).map(( {name} ) => name);
-          console.log(name);
-          console.log(residents);
           if (residents != []) {
             regions[location].push(name);
           }
@@ -134,8 +124,8 @@ function animalMap(options) {
     });
   });
   } else {
-    Object.keys(regions).forEach(region => {
-      animals.forEach(({ name, location, residents }) => {
+    Object.keys(regions).forEach((region) => {
+      animals.forEach(({ name, location }) => {
         if (location === region) {
           return regions[location].push(name);
         }
@@ -146,7 +136,7 @@ function animalMap(options) {
 }
 
 // animalMap({includeNames: true, sorted: true})
-console.log(animalMap({sex: 'female'}));
+// console.log(animalMap({sex: 'female'}));
 
 function schedule(dayName) {
   const readByHuman = {};
