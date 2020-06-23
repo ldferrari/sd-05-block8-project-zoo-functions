@@ -101,13 +101,14 @@ function oldestFromFirstSpecies(id) {
   const idEspecie = animals.find(animal => animal.id === idFuncionario).residents;
   const animalExperiente = idEspecie.sort((function(a , b) {
     return b ? (b.age > a.age) : a;
-  })
+  });
+  
   const { name, sex, age } = animalExperiente[0];
   return [name, sex, age];
 }
-
+// Ao passar uma porcentagem, incrementa todos os preços, arrendondados em duas casas decimais
 function increasePrices(percentage) {
-  // seu código aqui
+
 }
 
 function employeeCoverage(idOrName) {
