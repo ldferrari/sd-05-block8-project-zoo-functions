@@ -82,9 +82,10 @@ function entryCalculator(...entrants) {
   return (Adult * prices.Adult) + (Child * prices.Child) + (Senior * prices.Senior);
   //  seu código aqui
 }
+/* 
 function animalMap(options) {
   //  your code here
-  /* const zones = {};
+  const zones = {};
   const saida = {};
   animals.forEach((el) => (zones[el.location] = 1));
   const zoneArr = Object.keys(zones);
@@ -92,11 +93,11 @@ function animalMap(options) {
     return 0;
   } else {
     return 1;
-  }  */
+  } 
   return 0;
-}
+} */
 
-/*
+
 function animalMap(options) {
   // seu código aqui
   const zones = {};
@@ -143,7 +144,7 @@ function animalMap(options) {
 
   return saida;
 }
-*/
+
 function schedule(dayName) {
   // seu código aqui
 
