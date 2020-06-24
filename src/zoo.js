@@ -195,20 +195,27 @@ schedule();
 ------------------------------------------------------------------
 */
 function oldestFromFirstSpecies(id) {
-  // seu código aqui
+// passado o id de um funcionário, encontra a primeira espécie de animal
+// gerenciado pelo funcionário, e retorna um array com nome, sexo e idade do
+// animal mais velho dessa espécie
+  const { animals, employees } = data;
+  const idEmpregado = employees.find(employee => employee.id === id).responsibleFor[0];
+  const animalMaisVelho = animals.find(animal => animal.id === idEmpregado)
+  .residents.sort((a, b) => b.age - a.age);
+  return Object.values(animalMaisVelho[0]);
 }
+//oldestFromFirstSpecies('9e7d4524-363c-416a-8759-8aa7e50c0992');
 //------------------------------------------------------------------
 function increasePrices(percentage) {
   const { prices } = data;
-/*
+  Object.keys(prices).forEach(preco => (prices[preco] = Number(
+    (prices[preco] * ((percentage * 0.01) + 1.0001)).toFixed(2))));
+    /*
 data uma porcentagem, incrementa todos os preços, arrendondados em duas casas decimais
      for (i in data.prices){
        data.prices[i] = Number((data.prices[i] * (percentage *0.01 + 1.0001)).toFixed(2))
      }
 */
-  Object.keys(prices).forEach(preco => (prices[preco] = Number(
-    (prices[preco] * ((percentage * 0.01) + 1.0001)).toFixed(2))));
-// data.prices = precos;
 }
 /*
  increasePrices(50);
