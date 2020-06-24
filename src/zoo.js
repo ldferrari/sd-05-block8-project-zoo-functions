@@ -216,8 +216,37 @@ data uma porcentagem, incrementa todos os preços, arrendondados em duas casas d
 ------------------------------------------------------------------
 */
 function employeeCoverage(idOrName) {
-  // seu código aqui
+//
+  const { employees, animals } = data;
+  const funcionario = {};
+  /*
+  com o id de um funcionário, retorna os animais pelos quais o funcionário é
+  responsável
+  */
+  const checkPerson = employees.find(person => (
+  person.id === idOrName || person.firstName === idOrName || person.lastName === idOrName));
+  //
+  const checkAnimals = (employee) => {
+    const animalsTreated = employee.responsibleFor.map(idDosAnimais =>
+  animals.find(animal => animal.id === idDosAnimais).name);
+    return animalsTreated;
+  };
+  /*
+  com o primeiro nome de um funcionário, retorna os animais pelos quais o
+  funcionário é responsável
+  */
+  if (idOrName !== undefined) return { [`${checkPerson.firstName} ${checkPerson.lastName}`]: checkAnimals(checkPerson) };
+  /*
+  sem parâmetros, retorna uma lista de funcionários e os animais pelos quais
+  eles são responsáveis
+  */
+  employees.forEach((employee) => {
+    const animalEncontrado = checkAnimals(employee);
+    funcionario[`${employee.firstName} ${employee.lastName}`] = animalEncontrado;
+  });
+  return funcionario;
 }
+// console.log(employeeCoverage());
 //------------------------------------------------------------------
 module.exports = {
   entryCalculator,
