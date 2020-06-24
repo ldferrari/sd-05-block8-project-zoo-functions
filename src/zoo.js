@@ -204,7 +204,7 @@ function oldestFromFirstSpecies(id) {
   .residents.sort((a, b) => b.age - a.age);
   return Object.values(animalMaisVelho[0]);
 }
-//oldestFromFirstSpecies('9e7d4524-363c-416a-8759-8aa7e50c0992');
+// oldestFromFirstSpecies('9e7d4524-363c-416a-8759-8aa7e50c0992');
 //------------------------------------------------------------------
 function increasePrices(percentage) {
   const { prices } = data;
