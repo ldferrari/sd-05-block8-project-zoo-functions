@@ -62,11 +62,11 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
     return employees;
   }
   newObj = {
-    id: id,
-    firstName: firstName,
-    lastName: lastName,
-    managers: managers,
-    responsibleFor: responsibleFor,
+    id,
+    firstName,
+    lastName,
+    managers,
+    responsibleFor
   };
   employees.push(newObj);
   return newObj;
