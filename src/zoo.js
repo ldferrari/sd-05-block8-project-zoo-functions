@@ -10,7 +10,7 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
-/*
+
 const { animals, employees } = require('./data');
 
 function animalsByIds(...ids) {
@@ -38,30 +38,26 @@ function employeeByName(employeeName) {
   elemento.firstName === employeeName || elemento.lastName === employeeName);
 }
 
-*/
 function createEmployee(personalInfo, associatedWith) {
   const { id, firstName, lastName } = personalInfo;
   const { managers, responsibleFor } = associatedWith;
   return { id, firstName, lastName, managers, responsibleFor };
 }
-/*
+
 function isManager(id) {
   return employees.some(elemento => elemento.managers[0] === id);
 }
 console.log(isManager('c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1'));
-
+/*
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
 }
 
-//Sem parâmetros, retorna animais e suas quantidades
-//Com o nome de uma espécie de animal, retorna somente a quantidade
-
 function animalCount(species) {
 }
 
-console.log(animalCount());*/
-/*
+console.log(animalCount());
+
 function entryCalculator(entrants) {
   // seu código aqui
 }
@@ -85,18 +81,14 @@ function increasePrices(percentage) {
 function employeeCoverage(idOrName) {
   // seu código aqui
 }*/
-module.exports = { createEmployee,
+module.exports = { createEmployee,animalsByIds,animalsOlderThan,employeeByName,isManager,
 /*
 entryCalculator,
 schedule,
 animalCount,
 animalMap,
-animalsByIds,
-employeeByName,
 employeeCoverage,
 addEmployee,
-isManager,
-animalsOlderThan,
 oldestFromFirstSpecies,
 increasePrices,
 */
