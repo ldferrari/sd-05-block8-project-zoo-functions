@@ -47,12 +47,28 @@ function createEmployee(personalInfo, associatedWith) {
 function isManager(id) {
   return employees.some(elemento => elemento.managers[0] === id);
 }
-console.log(isManager('c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1'));
-/*
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-  // seu código aqui
-}
 
+
+function addEmployee(id, firstName, lastName, managers, responsibleFor) {
+  let newObj;
+ if(managers === undefined && responsibleFor === undefined){
+     newObj = {id:id, firstName:firstName, lastName:lastName, managers:[],responsibleFor:[]}
+     employees.push(newObj);
+     return employees;
+ 
+  }else
+   newObj = {id:id, firstName:firstName, lastName:lastName, managers:managers, responsibleFor:responsibleFor}
+  employees.push(newObj);
+  //return employees;
+  return newObj
+  }
+  
+
+  
+
+//console.log(addEmployee('39800c14-4b76-454a-858d-2f8d168146a7', 'John', 'Doe','546fe3d4-2d81-4bb4-83a7-92d5b7048d17','a67a36ee-3765-4c74-8e0f-13f881f6588a',));
+//console.log(addEmployee());
+/*
 function animalCount(species) {
 }
 
@@ -81,14 +97,13 @@ function increasePrices(percentage) {
 function employeeCoverage(idOrName) {
   // seu código aqui
 }*/
-module.exports = { createEmployee, animalsByIds, animalsOlderThan, employeeByName, isManager,
+module.exports = { createEmployee, animalsByIds, animalsOlderThan, employeeByName, isManager, addEmployee,
 /*
 entryCalculator,
 schedule,
 animalCount,
 animalMap,
 employeeCoverage,
-addEmployee,
 oldestFromFirstSpecies,
 increasePrices,
 */
