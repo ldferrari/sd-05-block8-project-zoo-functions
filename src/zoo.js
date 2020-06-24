@@ -52,9 +52,9 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   let newObj;
   if (managers === undefined && responsibleFor === undefined) {
     newObj = {
-      id: id,
-      firstName: firstName,
-      lastName: lastName,
+      id,
+      firstName,
+      lastName,
       managers: [],
       responsibleFor: [],
     };
@@ -66,7 +66,7 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
     firstName,
     lastName,
     managers,
-    responsibleFor
+    responsibleFor,
   };
   employees.push(newObj);
   return newObj;
