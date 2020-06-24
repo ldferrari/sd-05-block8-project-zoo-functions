@@ -49,7 +49,7 @@ function animalCount(species) {
   const names = animals.map(element => element.name);
   const counter = animals.map(element => element.residents.length);
   const obj = {};
-  names.forEach((name, i) => obj[`${name}`] += counter[i]);
+  names.forEach((name, i) => obj[`${name}`] = counter[i]);
   if (!species) return obj;
   return (animals.filter(element => element.name === species)
     .map(element => element.residents.length))[0];
@@ -58,7 +58,7 @@ function animalCount(species) {
 function entryCalculator(entrants) {
   if (!entrants) return 0;
   if (Object.entries(entrants).length === 0) return 0;
-  const pricesFunction = (base, age) => base + (entrants[age] * prices[age]);
+  const pricesFunction = (base, age) => {base + (entrants[age] * prices[age])};
   const output = Object.keys(prices);
   return output.reduce(pricesFunction, 0);
 }
@@ -78,7 +78,7 @@ function schedule(dayName) {
     }
   });
   if (!dayName) return verifyCronogram;
-  return { [dayName] : verifyCronogram[dayName] };
+  return { [dayName]: verifyCronogram[dayName] };
 }
 
 
