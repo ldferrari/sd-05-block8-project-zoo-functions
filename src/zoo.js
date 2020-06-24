@@ -8,6 +8,7 @@ eslint no-unused-vars: [
   }
 ]
 */
+
 const data = require('./data');
 
 const { animals, employees } = require('./data');
@@ -50,15 +51,27 @@ function isManager(id) {
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   let newObj;
   if (managers === undefined && responsibleFor === undefined) {
-    newObj = { id: id, firstName: firstName, lastName: lastName, managers: [],responsibleFor: [] };
+    newObj = {
+      id: id,
+      firstName: firstName,
+      lastName: lastName,
+      managers: [],
+      responsibleFor: [],
+    };
     employees.push(newObj);
     return employees;
-    } 
-   newObj = { id: id, firstName: firstName, lastName: lastName, managers: managers, responsibleFor: responsibleFor };
-    employees.push(newObj);
+  }
+  newObj = {
+    id: id,
+    firstName: firstName,
+    lastName: lastName,
+    managers: managers,
+    responsibleFor: responsibleFor,
+  };
+  employees.push(newObj);
   return newObj;
 }
-  /*
+/*
 function animalCount(species) {
 }
 
@@ -85,14 +98,14 @@ function increasePrices(percentage) {
 function employeeCoverage(idOrName) {
   // seu código aqui
 }*/
-module.exports = { 
+module.exports = {
   createEmployee,
-  animalsByIds, 
-  animalsOlderThan, 
-  employeeByName, 
-  isManager, 
+  animalsByIds,
+  animalsOlderThan,
+  employeeByName,
+  isManager,
   addEmployee,
-/*
+  /*
 entryCalculator,
 schedule,
 animalCount,
