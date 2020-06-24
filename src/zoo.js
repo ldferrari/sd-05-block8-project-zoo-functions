@@ -10,7 +10,7 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
-const { animals } = require('./data');
+const { animals, employees, prices, hours } = require('./data');
 
 function animalsByIds(...ids) {
   const list = [];
@@ -26,27 +26,39 @@ function animalsOlderThan(animal, age) {
 
 
 function employeeByName(employeeName) {
-  // seu código aqui
+  const output = {};
+  if (!employeeName) return output;
+  return employees.filter(element => element.firstName === employeeName || element.lastName === employeeName)[0]
 }
 
+
 function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
+  return Object.assign({}, personalInfo, associatedWith)
 }
 
 function isManager(id) {
-  // seu código aqui
+  return employees.some(element => element.managers.includes(id))
 }
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-  // seu código aqui
+function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
+  employees.push({ id, firstName, lastName, managers, responsibleFor })
 }
 
 function animalCount(species) {
-  // seu código aqui
+  const name = animals.map(element => element.name)
+  const counter = animals.map(element => element.residents.length)
+  const obj = {};
+  name.forEach((name, i) => obj[`${name}`] = counter[i])
+  if (!species) return obj;
+  return (animals.filter(element => element.name === species).map(element => element.residents.length))[0];
 }
 
 function entryCalculator(entrants) {
-  // seu código aqui
+  if (!entrants) return 0;
+  if (Object.entries(entrants).length === 0) return 0;
+  const pricesFunction = (base, age) => base + (entrants[age] * prices[age]);
+  const output = Object.keys(prices);
+  return output.reduce(pricesFunction, 0)
 }
 
 function animalMap(options) {
@@ -54,11 +66,21 @@ function animalMap(options) {
 }
 
 function schedule(dayName) {
-  // seu código aqui
+  const allDays = Object.keys(hours);
+  const verifyCronogram = {};
+  allDays.forEach(day => {
+    if (day !== 'Monday'){
+      verifyCronogram[day] = `Open from ${hours[day].open}am until ${hours[day].close - 12}pm`
+    } else {
+      verifyCronogram[day] = `CLOSED`
+    }
+  })
+  if (!dayName) return verifyCronogram
+  return {[dayName] : verifyCronogram[dayName]}
 }
 
+
 function oldestFromFirstSpecies(id) {
-  // seu código aqui
 }
 
 function increasePrices(percentage) {
