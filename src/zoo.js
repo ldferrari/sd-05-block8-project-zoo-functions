@@ -32,7 +32,7 @@ const employeeByName = (employeeName) => {
     return {};
   }
 
-  return employees.find((n) => employeeName === n.firstName || employeeName === n.lastName);
+  return employees.find(n => employeeName === n.firstName || employeeName === n.lastName);
 };
 
 const createEmployee = (personalInfo, associatedWith) => {
