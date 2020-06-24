@@ -28,29 +28,31 @@ function animalsOlderThan(animal, age) {
 function employeeByName(employeeName) {
   const output = {};
   if (!employeeName) return output;
-  return employees.filter(element => element.firstName === employeeName || element.lastName === employeeName)[0]
+  return employees.filter(element =>
+    element.firstName === employeeName ||
+    element.lastName === employeeName)[0];
 }
 
-
 function createEmployee(personalInfo, associatedWith) {
-  return Object.assign({}, personalInfo, associatedWith)
+  return Object.assign({}, personalInfo, associatedWith);
 }
 
 function isManager(id) {
-  return employees.some(element => element.managers.includes(id))
+  return employees.some(element => element.managers.includes(id));
 }
 
 function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
-  employees.push({ id, firstName, lastName, managers, responsibleFor })
+  employees.push({ id, firstName, lastName, managers, responsibleFor });
 }
 
 function animalCount(species) {
-  const name = animals.map(element => element.name)
-  const counter = animals.map(element => element.residents.length)
+  const names = animals.map(element => element.name);
+  const counter = animals.map(element => element.residents.length);
   const obj = {};
-  name.forEach((name, i) => obj[`${name}`] = counter[i])
+  names.forEach((name, i) => obj[`${name}`] += counter[i]);
   if (!species) return obj;
-  return (animals.filter(element => element.name === species).map(element => element.residents.length))[0];
+  return (animals.filter(element => element.name === species)
+    .map(element => element.residents.length))[0];
 }
 
 function entryCalculator(entrants) {
@@ -58,7 +60,7 @@ function entryCalculator(entrants) {
   if (Object.entries(entrants).length === 0) return 0;
   const pricesFunction = (base, age) => base + (entrants[age] * prices[age]);
   const output = Object.keys(prices);
-  return output.reduce(pricesFunction, 0)
+  return output.reduce(pricesFunction, 0);
 }
 
 function animalMap(options) {
@@ -68,15 +70,15 @@ function animalMap(options) {
 function schedule(dayName) {
   const allDays = Object.keys(hours);
   const verifyCronogram = {};
-  allDays.forEach(day => {
-    if (day !== 'Monday'){
-      verifyCronogram[day] = `Open from ${hours[day].open}am until ${hours[day].close - 12}pm`
+  allDays.forEach((day) => {
+    if (day !== 'Monday') {
+      verifyCronogram[day] = `Open from ${hours[day].open}am until ${hours[day].close - 12}pm`;
     } else {
-      verifyCronogram[day] = `CLOSED`
+      verifyCronogram[day] = 'CLOSED';
     }
-  })
-  if (!dayName) return verifyCronogram
-  return {[dayName] : verifyCronogram[dayName]}
+  });
+  if (!dayName) return verifyCronogram;
+  return { [dayName] : verifyCronogram[dayName] };
 }
 
 
