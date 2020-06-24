@@ -72,7 +72,7 @@ const animalMap = (options = {}) => {
 const schedule = (dayName) => {
   const humanReadableSchedule = {};
   Object.keys(hours).forEach((day) => {
-    if (day === 'Monday') humanReadableSchedule[day] = 'CLOSED';
+    if (hours[day].open === 0) humanReadableSchedule[day] = 'CLOSED';
     else humanReadableSchedule[day] = `Open from ${hours[day].open}am until ${hours[day].close - 12}pm`;
   });
   return dayName ? { [dayName]: humanReadableSchedule[dayName] } : humanReadableSchedule;
