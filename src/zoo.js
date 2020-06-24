@@ -49,14 +49,14 @@ function isManager(id) {
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   let newObj;
- if (managers === undefined && responsibleFor === undefined) {
-   newObj = { id: id, firstName: firstName, lastName: lastName, managers: [],responsibleFor: [] }
-   employees.push(newObj);
-  return employees;
- } else
-   newObj = { id:id, firstName:firstName, lastName:lastName, managers:managers, responsibleFor:responsibleFor }
-   employees.push(newObj);
-return newObj
+  if (managers === undefined && responsibleFor === undefined) {
+    newObj = { id: id, firstName: firstName, lastName: lastName, managers: [],responsibleFor: [] };
+    employees.push(newObj);
+    return employees;
+    } 
+   newObj = { id: id, firstName: firstName, lastName: lastName, managers: managers, responsibleFor: responsibleFor };
+    employees.push(newObj);
+  return newObj;
 }
   /*
 function animalCount(species) {
@@ -85,7 +85,13 @@ function increasePrices(percentage) {
 function employeeCoverage(idOrName) {
   // seu código aqui
 }*/
-module.exports = { createEmployee, animalsByIds, animalsOlderThan, employeeByName, isManager, addEmployee,
+module.exports = { 
+  createEmployee,
+  animalsByIds, 
+  animalsOlderThan, 
+  employeeByName, 
+  isManager, 
+  addEmployee,
 /*
 entryCalculator,
 schedule,
