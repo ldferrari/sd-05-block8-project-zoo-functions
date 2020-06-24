@@ -81,12 +81,7 @@ function increasePrices(percentage) {
 function employeeCoverage(idOrName) {
   // seu código aqui
 }*/
-module.exports = { 
-createEmployee,
-animalsByIds,
-animalsOlderThan,
-employeeByName,
-isManager,
+module.exports = { createEmployee, animalsByIds, animalsOlderThan, employeeByName, isManager,
 /*
 entryCalculator,
 schedule,
