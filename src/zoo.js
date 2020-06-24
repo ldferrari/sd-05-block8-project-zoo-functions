@@ -10,7 +10,7 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
-const { animals, employees, prices } = require('./data');
+const { animals, employees, prices, hours } = require('./data');
 
 function animalsByIds(id1, id2) {
   // seu código aqui
@@ -97,12 +97,59 @@ function entryCalculator(entrants) {
 }
 
 function animalMap(options) {
-  // seu código aqui
+  const zonas = ['NE', 'NW', 'SE', 'SW'];
+  const objetoSaida = {};
+  function nomeLocal() {
+    zonas.forEach(zona => objetoSaida[zona] = animals.filter(local =>
+      local.location === zona).map(objeto => objeto.name));
+    return objetoSaida;
+  }
+  if (options === undefined) return nomeLocal();
+  const { includeNames = false, sorted = false, sex = '' } = options;
+  if (includeNames === true && sex === '') {
+    zonas.forEach(zona => objetoSaida[zona] = animals.filter(local =>
+      local.location === zona).map((objeto) => {
+        const tipo = {};
+        if (includeNames === true && sorted === true) {
+          tipo[objeto.name] = objeto.residents.map(nome => nome.name).sort();
+          return tipo;
+        }
+        tipo[objeto.name] = objeto.residents.map(nome => nome.name);
+        return tipo;
+      }));
+    return objetoSaida;
+  }
+  if (includeNames === true && sex !== '') {
+    zonas.forEach(zona => objetoSaida[zona] = animals.filter(local =>
+      local.location === zona).map((objeto) => {
+        const tipo = {};
+        tipo[objeto.name] = objeto.residents.filter(resdent =>
+        resdent.sex === sex).map(nome => nome.name);
+        return tipo;
+      }));
+    return objetoSaida;
+  }
+  if (includeNames === false && sex !== '') return nomeLocal();
+  return animalMap;
 }
 
 function schedule(dayName) {
   // seu código aqui
+  const diaHorairo = {};
+  Object.keys(hours).forEach((dia) => {
+    if (dia === 'Monday') {
+      diaHorairo[dia] = 'CLOSED';
+    } else {
+      diaHorairo[dia] = `Open from ${hours[dia].open}am until ${hours[dia].close - 12}pm`;
+    }
+  });
+  if (dayName === undefined) return diaHorairo;
+  const umDia = {};
+  umDia[dayName] = diaHorairo[dayName];
+  return umDia;
 }
+console.log(schedule());
+console.log(schedule('Monday'));
 
 function oldestFromFirstSpecies(id) {
   // seu código aqui
