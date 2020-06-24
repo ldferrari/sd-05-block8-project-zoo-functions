@@ -121,9 +121,15 @@ function oldestFromFirstSpecies(Id) {
   });
   return Object.values(resultado);
 }
-
+//prettier-ignore
 function increasePrices(percentage) {
   // seu código aqui
+  Object.keys(data.prices).forEach(
+    idx =>
+      (data.prices[idx] =
+        Math.round(data.prices[idx] * 100 * (1 + percentage / 100)).toFixed(2) /
+        100),
+  );
 }
 
 function employeeCoverage(idOrName) {
