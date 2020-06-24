@@ -95,10 +95,9 @@ function animalMap(options) {
   // seu código aqui
 }
 
-// 1. sem parâmetros, retorna um cronograma legível para humanos
+// *REQUISITOS: 1. sem parâmetros, retorna um cronograma legível para humanos
 // 2. se um único dia for passado, retorna somente este dia em um
 // formato legível para humanos
-
 function setSchedule(open, close) {
   if (open === 0 && close === 0) {
     return 'CLOSED';
@@ -121,7 +120,6 @@ function schedule(dayName) {
 // primeira espécie de animal gerenciado pelo funcionário,
 // e retorna um array com nome, sexo e idade do animal
 // mais velho dessa espécie.
-
 function oldestFromFirstSpecies(id) {
   // 1. encontrar o funcionário (find id) e armazenar numa const
   const employeeId = employees.find(person => person.id === id);
@@ -139,12 +137,36 @@ function oldestFromFirstSpecies(id) {
   return [name, sex, age];
 }
 
+// *REQUISITO: Ao passar uma porcentagem, incrementa todos os preços,
+// arrendondados em duas casas decimais
 function increasePrices(percentage) {
   // seu código aqui
 }
 
+// *REQUISITOS: 1. Sem parâmetros, retorna uma lista de funcionários
+// e os animais pelos quais eles são responsáveis;
+// 2. Com o id de um funcionário, retorna os animais pelos quais
+// o funcionário é responsável
+// 3. Com o primeiro nome de um funcionário, retorna os animais
+// pelos quais o funcionário é responsável
+// 4. Com o último nome de um um funcionário, retorna os animais
+// pelos quais o funcionário é responsável
 function employeeCoverage(idOrName) {
-  // seu código aqui
+  const allEmployeesAndAnimals = {};
+  employees.forEach((employee) => {
+    allEmployeesAndAnimals[`${employee.firstName} ${employee.lastName}`] =
+      employee.responsibleFor.map(
+        idAnimal => animals.find(animal => idAnimal === animal.id).name);
+  });
+  if (idOrName === undefined) {
+    return allEmployeesAndAnimals;
+  }
+  const idOrNameInput = employees.find(idWork =>
+    idOrName === idWork.id || idOrName === idWork.firstName || idOrName === idWork.lastName,
+  );
+  const employeeList = `${idOrNameInput.firstName} ${idOrNameInput.lastName}`;
+
+  return { [employeeList]: allEmployeesAndAnimals[employeeList] };
 }
 
 module.exports = {
