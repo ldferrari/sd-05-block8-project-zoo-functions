@@ -48,31 +48,20 @@ function isManager(id) {
   return employees.some(elemento => elemento.managers[0] === id);
 }
 
-
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   let newObj;
- if(managers === undefined && responsibleFor === undefined){
-     newObj = {id:id, firstName:firstName, lastName:lastName, managers:[],responsibleFor:[]}
-     employees.push(newObj);
-     return employees;
- 
-  }else
-   newObj = {id:id, firstName:firstName, lastName:lastName, managers:managers, responsibleFor:responsibleFor}
+ if(managers === undefined && responsibleFor === undefined) {
+  newObj = {id:id, firstName:firstName, lastName:lastName, managers:[],responsibleFor:[]}
   employees.push(newObj);
-  //return employees;
-  return newObj
-  }
-  
-
-  
-
-//console.log(addEmployee('39800c14-4b76-454a-858d-2f8d168146a7', 'John', 'Doe','546fe3d4-2d81-4bb4-83a7-92d5b7048d17','a67a36ee-3765-4c74-8e0f-13f881f6588a',));
-//console.log(addEmployee());
-/*
+  return employees;
+ }else
+  newObj = {id:id, firstName:firstName, lastName:lastName, managers:managers, responsibleFor:responsibleFor}
+  employees.push(newObj);
+return newObj
+}
+  /*
 function animalCount(species) {
 }
-
-console.log(animalCount());
 
 function entryCalculator(entrants) {
   // seu código aqui
