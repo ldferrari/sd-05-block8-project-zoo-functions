@@ -104,9 +104,45 @@ function entryCalculator(entrants) {
   return saida;
 }
 
+function animalMapWithOptionsEnabled(options) {
+  const organizar = {};
+  animals.forEach((animal) => {
+    const entrada = {};
+    if (options.sorted) {
+      entrada[animal.name] = animal.residents.map(residente => residente.name).sort();
+    } else {
+      entrada[animal.name] = animal.residents.map(residente => residente.name);
+    }
+    if (options.sex) {
+      entrada[animal.name] = animal.residents.filter(
+        residente => residente.sex === options.sex).map(item => item.name);
+    }
+    if (!organizar[animal.location]) {
+      organizar[animal.location] = [];
+      organizar[animal.location].push(entrada);
+    } else {
+      organizar[animal.location].push(entrada);
+    }
+  });
+  return organizar;
+}
+
 function animalMap(options) {
   // seu código aqui
+  const saida = animals.reduce((prev, animal) => {
+    const regiao = animal.location;
+    if (prev[regiao]) {
+      prev[regiao].push(animal.name);
+    } else {
+      prev[regiao] = [animal.name];
+    }
+    return prev;
+  }, {});
 
+  if (options === undefined || options.includeNames === undefined) {
+    return saida;
+  }
+  return animalMapWithOptionsEnabled(options);
 }
 
 function schedule(dayName) {

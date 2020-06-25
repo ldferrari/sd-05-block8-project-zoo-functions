@@ -90,11 +90,11 @@ describe('animalMap', () => {
 
     assert.deepEqual(actual, expected);
 
- /*    // só retorna informações específicas de gênero se includeNames for setado
+    // só retorna informações específicas de gênero se includeNames for setado
     options = { sex: 'female' }
     actual = zoo.animalMap(options)['NE'][0];
     expected = 'lions';
 
-    assert.equal(actual, expected); */
+    assert.equal(actual, expected);
   });
 });
