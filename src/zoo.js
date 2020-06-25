@@ -56,7 +56,7 @@ function isManager(id) {
 }
 
 function addEmployee(id = '', firstName = '', lastName = '', managers = [], responsibleFor = []) {
-  // adding standard values for each parameter 
+  // adding standard values for each parameter
   const newEmployeeAdd = {
     id,
     firstName,
@@ -110,7 +110,8 @@ function schedule(dayName) {
   };
   if (dayName === undefined) { return scheduleObj; }
   const outputSchedule = {};
-  // creates a new property: key is the given parameter and value is taken from the above declared obj
+  // creates a new property: key is the given parameter
+  // and value is taken from the above declared obj
   outputSchedule[dayName] = scheduleObj[dayName];
   return outputSchedule;
 }
@@ -136,19 +137,18 @@ function oldestFromFirstSpecies(id) {
 
 function increasePrices(percentage) {
   const pct = percentage / 100;
-  for (property in prices) {
-    /* 
-    - for value = 2.21 and percentage = 50%:
-    - res = 2.21 + (2.21 * 0.5) => 3.105
-    - 3.105 * 100 => 310.5
-    - Math.round(310.5) => 311 
-    - it always rounds towards positive infinity; so 1.5 goes to 2, and -1.5 goes to -1
-    - 311 / 100 => 3.11 
-    */
-    prices[property] = (Math.round(((prices[property] + (prices[property] * pct))) * 100)) / 100
-  }
-
-  return Object.values(prices)
+  /*
+  - for initial value = 2.21 and percentage = 50%:
+  - res = 2.21 + (2.21 * 0.5) => 3.105
+  - 3.105 * 100 => 310.5
+  - Math.round(310.5) => 311
+  - it always rounds towards positive infinity; so 1.5 goes to 2, and -1.5 goes to -1
+  - 311 / 100 => 3.11
+  */
+  Object.keys(prices).forEach((property) => {
+    prices[property] = Math.round(((prices[property] + (prices[property] * pct))) * 100) / 100;
+  });
+  return Object.values(prices);
 }
 
 function employeeCoverage(idOrName) {
