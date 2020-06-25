@@ -27,7 +27,7 @@ function animalsOlderThan(animal, age) {
   // seu código aqui
   const parametro1 = animals.filter(parametroAnimal => parametroAnimal.name === animal);
   const parametro2 = parametro1[0].residents.filter(parametroAge => parametroAge.age >= age);
-  return parametro2
+  return parametro2;
 }
 console.log(animalsOlderThan('tigers', 20));
 
