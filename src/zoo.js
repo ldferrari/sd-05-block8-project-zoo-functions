@@ -73,17 +73,15 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
 }
 
 function animalCount(species) {
-  if (species  === undefined) {   
-    const nomesAnimal = animals.map(elemento => elemento.name);
-    const tamanho = animals.map(elemento => elemento.residents.length);
-    const novoObjeto = {};
-    nomesAnimal.forEach((chave,indice) => novoObjeto[chave] = tamanho[indice]); 
+  if (species === undefined) {   
+  const nomesAnimal = animals.map(elemento => elemento.name);
+  const tamanho = animals.map(elemento => elemento.residents.length);
+  const novoObjeto = {};
+  nomesAnimal.forEach((chave,indice) => novoObjeto[chave] = tamanho[indice]); 
     return novoObjeto;
-    }else {
-      return animals.find(elemento => elemento.name === species).residents.length;
     } 
+    return animals.find(elemento => elemento.name === species).residents.length;
 }
-
 //console.log(animalCount('lions'));
 /*
 function entryCalculator(entrants) {
