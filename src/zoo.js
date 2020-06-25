@@ -10,10 +10,11 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
-const {animals} = data;
+
+const { animals } = data;
 
 function animalsByIds(id1, id2) {
-  if (id1 === 0 && id2 ===0) {
+  if (id1 === 0 && id2 === 0) {
     return [];
   }
   const todosAnimais = (animals.filter(animal => (animal.id === id1) + (animal.id === id2)));
