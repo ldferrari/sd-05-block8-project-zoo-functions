@@ -26,19 +26,18 @@ function animalsByIds(...ids) {
     });
   });
   return armazenaDados;
-  console.log(armazenaDados);
+  //console.log(armazenaDados);
 }
 
 function animalsOlderThan(animal, age) {
   // seu código aqui
-return data.animals.find(index => index.name === animal).residents.every
-(retornoResidents => retornoResidents.age > age);
+  return data.animals.find(index => index.name === animal).residents.every(retornoResidents => retornoResidents.age > age);
 }
 
 function employeeByName(employeeName) {
   // seu código aqui
 
-return data.employees.some(armazenaDados => armazenaDados)
+  return data.employees.some(armazenaDados => armazenaDados)
 }
 
 function createEmployee(personalInfo, associatedWith) {
