@@ -36,15 +36,13 @@ function employeeByName(employeeName) {
   // seu código aqui
   const employeeFirstName = employees.find(nome => nome.firstName === employeeName);
   const employeeLastName = employees.find(sobrenome => sobrenome.lastName === employeeName);
-  if(employeeFirstName){
-    return employeeFirstName
+  if (employeeFirstName) {
+    return employeeFirstName;
   } else if (employeeLastName) {
-    return employeeLastName
-  } else {
-  return {};
-  }
+    return employeeLastName;
+  } return {};
 }
-console.log(employeeByName())
+console.log(employeeByName());
 
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
