@@ -11,7 +11,7 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const { animals, employees } = require('./data');
+const { animals, employees } = data
 
 function animalsByIds(...ids) {
   const result = ids;
@@ -71,13 +71,25 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   employees.push(newObj);
   return newObj;
 }
-/*
-function animalCount(species) {
+
+function  animalCount(species){
+      if(species  === undefined){   
+        const nomesAnimal = animals.map(elemento => elemento.name);
+        const tamanho = animals.map(elemento => elemento.residents.length);
+        const novoObjeto = {};
+        nomesAnimal.forEach((chave,indice) => novoObjeto[chave] = tamanho[indice]); 
+        return novoObjeto;
+      }else{
+          return animals.find(elemento => elemento.name === species).residents.length;
+      } 
 }
 
+//console.log(animalCount('lions'));
+/*
 function entryCalculator(entrants) {
-  // seu código aqui
+
 }
+//console.log(entryCalculator());
 
 function animalMap() {
   // seu código aquisnakes
@@ -99,16 +111,15 @@ function employeeCoverage(idOrName) {
   // seu código aqui
 }*/
 module.exports = {
+  animalCount,
   createEmployee,
   animalsByIds,
   animalsOlderThan,
   employeeByName,
   isManager,
   addEmployee,
-  /*
-entryCalculator,
+/*entryCalculator,
 schedule,
-animalCount,
 animalMap,
 employeeCoverage,
 oldestFromFirstSpecies,
