@@ -16,7 +16,7 @@ const { animals, employees, prices } = data; // object destructuring
 function animalsByIds(...ids) {
   const output = [];
   ids.forEach((id) => {
-    output.push(animals.filter(...animal => animal.id === id));
+    output.push(...animals.filter(animal => animal.id === id));
   });
   return output;
 }
