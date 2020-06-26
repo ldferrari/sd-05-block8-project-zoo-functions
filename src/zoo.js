@@ -10,6 +10,7 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
+const { hours } = require('./data');
 
 const { animals, employees } = data;
 
@@ -48,8 +49,15 @@ function isManager(id) {
   return gerente;
 }
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-  // seu código aqui
+function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
+  const novo = {
+    id,
+    firstName,
+    lastName, 
+    managers, 
+    responsibleFor
+  }
+  employees.push(novo);
 }
 
 function animalCount(species) {
@@ -64,11 +72,21 @@ function animalMap(options) {
 }
 
 function schedule(dayName) {
-  // seu código aqui
+ /* if (dayName === undefined){
+    return 
+  }
+  Object.keys(hours).forEach((dia) => {
+    if (dia === 'Monday') {
+      return 'CLOSED';
+    }
+    else {
+      return 'Open from ${dia'
+    }
+  }) */
 }
 
 function oldestFromFirstSpecies(id) {
-  // seu código aqui
+  // const funcionario = employees.some(quem => quem.id === id)
 }
 
 function increasePrices(percentage) {
