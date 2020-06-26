@@ -95,10 +95,7 @@ function entryCalculator(entrants) {
   }
   return 0;
 }
-/*
-function animalMap(options){  
-}
-*/
+
 function schedule(dayName) {
   const obj = {
     Tuesday: 'Open from 8am until 6pm',
@@ -131,7 +128,10 @@ function increasePrices(percentage) {
 
 function employeeCoverage(idOrName) {
   // seu código aqui
-}*/
+}
+function animalMap(options){  
+}
+*/
 module.exports = {
   animalsByIds,
   animalsOlderThan,
