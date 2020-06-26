@@ -170,6 +170,23 @@ function increasePrices(percentage) {
 }
 function employeeCoverage(idOrName) {
   // seu código aqui
+  const saida = {};
+  function igual(employee) {
+    saida[`${employee.firstName} ${employee.lastName}`] = employee.responsibleFor
+      .map(employeeAnimId => animals.find(animal => animal.id === employeeAnimId).name,
+      );
+  }
+  if (idOrName === undefined) {
+    employees.forEach((employee) => {
+      employee = igual(employee);
+    });
+    return saida;
+  }
+  const selectEmp = employees.find(empregado =>
+    (empregado.id === idOrName || empregado.firstName === idOrName ||
+        empregado.lastName === idOrName));
+  igual(selectEmp);
+  return saida;
 }
 
 module.exports = {
