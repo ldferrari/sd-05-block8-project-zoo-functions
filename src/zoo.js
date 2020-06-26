@@ -106,17 +106,15 @@ function schedule(dayName) {
     Sunday: 'Open from 8am until 8pm',
     Monday: 'CLOSED',
   };
-  if (dayName === undefined) {
-    return obj;
-  } else if (dayName === 'Monday') {
+   if (dayName === 'Monday') {
     const obj2 = { [dayName]: obj.Monday };
     return obj2;
   } else if (dayName === 'Tuesday') {
     const obj3 = { [dayName]: obj.Tuesday };
     return obj3;
   }
+    return obj;
 }
-
 /*
 function oldestFromFirstSpecies(id) {
   // seu código aqui
