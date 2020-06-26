@@ -96,16 +96,31 @@ function entryCalculator(entrants) {
   return 0;
 }
 
-/*
-function animalMap() {
-
+function animalMap(options){  
 }
-console.log(animalMap());
 
 function schedule(dayName) {
-  // seu código aqui
+  const obj = {
+    Tuesday: "Open from 8am until 6pm",
+    Wednesday: "Open from 8am until 6pm",
+    Thursday: "Open from 10am until 8pm",
+    Friday: "Open from 10am until 8pm",
+    Saturday: "Open from 8am until 10pm",
+    Sunday: "Open from 8am until 8pm",
+    Monday: "CLOSED",
+  };
+  if (dayName === undefined) {
+    return obj;
+  } else if (dayName === "Monday") {
+    let obj2 = { [dayName]: obj.Monday };
+    return obj2;
+  } else if (dayName === "Tuesday") {
+    obj2 = { [dayName]: obj.Tuesday };
+    return obj2;
+  }
 }
 
+/*
 function oldestFromFirstSpecies(id) {
   // seu código aqui
 }
@@ -126,9 +141,9 @@ module.exports = {
   addEmployee,
   animalCount,
   entryCalculator,
-  /*animalMap,
   schedule,
-  employeeCoverage,
+  animalMap,  
+  /* employeeCoverage,
   oldestFromFirstSpecies,
   increasePrices,
 */
