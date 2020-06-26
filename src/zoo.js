@@ -96,9 +96,9 @@ function animalMap(options) {
 
 function schedule(dayName) {
   const result = {};
-  Object.entries(hours).forEach(({0 : chaveH, 1 : valorH}) => {
-    const {open, close} = valorH;
-    if (dayName && dayName === chaveH || !dayName) {
+  Object.entries(hours).forEach(({ 0: chaveH, 1: valorH }) => {
+    const { open, close } = valorH;
+    if ((dayName && dayName === chaveH) || !dayName) {
       result[chaveH] = (open === 0 && close === 0) ? 'CLOSED' : `Open from ${open}am until ${close - 12}pm`;
     }
   });
