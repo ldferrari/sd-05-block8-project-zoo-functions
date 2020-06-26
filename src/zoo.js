@@ -83,10 +83,10 @@ function oldestFromFirstSpecies(id) {
   animal.id === whichEmployee.responsibleFor[0]).residents;
   const oldestAnimal = selectedAnimal.reduce((acc, older) => {
     if (acc.age > older.age) {
-    return acc;
-  } else {
+      return acc;
+    } 
     return older;
-  }});
+  });
   return Object.values(oldestAnimal);
 }
 
