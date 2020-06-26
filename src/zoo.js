@@ -129,8 +129,11 @@ function increasePrices(percentage) {
 function employeeCoverage(idOrName) {
   // seu código aqui
 }
-function animalMap(options){  
+
+function animalMap(options) {  
+  // seu código aqui
 }
+
 */
 module.exports = {
   animalsByIds,
@@ -142,7 +145,8 @@ module.exports = {
   animalCount,
   entryCalculator,
   schedule,
-/*animalMap,  
+/*
+  animalMap,  
   employeeCoverage,
   oldestFromFirstSpecies,
   increasePrices,
