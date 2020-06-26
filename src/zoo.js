@@ -95,28 +95,28 @@ function entryCalculator(entrants) {
   }
   return 0;
 }
-
+/*
 function animalMap(options){  
 }
-
+*/
 function schedule(dayName) {
   const obj = {
-    Tuesday: "Open from 8am until 6pm",
-    Wednesday: "Open from 8am until 6pm",
-    Thursday: "Open from 10am until 8pm",
-    Friday: "Open from 10am until 8pm",
-    Saturday: "Open from 8am until 10pm",
-    Sunday: "Open from 8am until 8pm",
-    Monday: "CLOSED",
+    Tuesday: 'Open from 8am until 6pm',
+    Wednesday: 'Open from 8am until 6pm',
+    Thursday: 'Open from 10am until 8pm',
+    Friday: 'Open from 10am until 8pm',
+    Saturday: 'Open from 8am until 10pm',
+    Sunday: 'Open from 8am until 8pm',
+    Monday: 'CLOSED',
   };
   if (dayName === undefined) {
     return obj;
-  } else if (dayName === "Monday") {
-    let obj2 = { [dayName]: obj.Monday };
+  } else if (dayName === 'Monday') {
+    const obj2 = { [dayName]: obj.Monday };
     return obj2;
-  } else if (dayName === "Tuesday") {
-    obj2 = { [dayName]: obj.Tuesday };
-    return obj2;
+  } else if (dayName === 'Tuesday') {
+    const obj3 = { [dayName]: obj.Tuesday };
+    return obj3;
   }
 }
 
@@ -142,8 +142,8 @@ module.exports = {
   animalCount,
   entryCalculator,
   schedule,
-  animalMap,  
-  /* employeeCoverage,
+/*animalMap,  
+  employeeCoverage,
   oldestFromFirstSpecies,
   increasePrices,
 */
