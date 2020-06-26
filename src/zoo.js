@@ -84,7 +84,7 @@ function oldestFromFirstSpecies(id) {
   const oldestAnimal = selectedAnimal.reduce((acc, older) => {
     if (acc.age > older.age) {
       return acc;
-    } 
+    }
     return older;
   });
   return Object.values(oldestAnimal);
