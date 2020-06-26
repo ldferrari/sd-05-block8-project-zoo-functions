@@ -15,7 +15,6 @@ const { animals } = data;
 const { employees } = data;
 const { prices } = data;
 const { hours } = data;
-// const { hours } = data;
 
 
 function animalsByIds(...ids) {
@@ -107,8 +106,22 @@ function schedule(dayName) {
 }
 
 function oldestFromFirstSpecies(id) {
+  const idAnim = employees.find(funcio => funcio.id === id).responsibleFor[0];
+  console.log(idAnim);
+  const animMaisVelho = animals.find(animale => animale.id === idAnim).residents
+  .reduce((velho, maisVelho) => {
+    if (velho.age > maisVelho.age) {
+      maisVelho = velho;
+    }
+    return maisVelho;
+  });
+  console.log(animMaisVelho);
+  console.log(Object.values(animMaisVelho));
+  return Object.values(animMaisVelho);
   // seu código aqui
 }
+// oldestFromFirstSpecies('9e7d4524-363c-416a-8759-8aa7e50c0992');
+// retorno esperado ['Vicky', 'female', 12]
 
 function increasePrices(percentage) {
   return Object.keys(prices).forEach((valor) => {
