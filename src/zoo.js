@@ -10,6 +10,7 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
+
 const { animals, employees } = data;
 
 function animalsByIds(...ids) {
@@ -87,9 +88,9 @@ function entryCalculator(entrants) {
     return 0;
   } else if (entrants.Adult === 2) {
     return (
-      data.prices.Adult * entrants.Adult +
-      data.prices.Senior * entrants.Senior +
-      data.prices.Child * entrants.Child
+      (data.prices.Adult * entrants.Adult) +
+      (data.prices.Senior * entrants.Senior) +
+      (data.prices.Child * entrants.Child)
     );
   }
   return 0;
@@ -118,13 +119,13 @@ function employeeCoverage(idOrName) {
 }*/
 module.exports = {
   animalsByIds,
-  animalsOlderThan,  
+  animalsOlderThan,
   employeeByName,
   createEmployee,
   isManager,
-  addEmployee, 
+  addEmployee,
   animalCount,
-  entryCalculator,   
+  entryCalculator,
   /*animalMap,
   schedule,
   employeeCoverage,
