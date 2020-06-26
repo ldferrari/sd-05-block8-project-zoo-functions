@@ -145,7 +145,7 @@ module.exports = {
   entryCalculator,
   schedule,
 /*
-  animalMap,  
+animalMap,
   employeeCoverage,
   oldestFromFirstSpecies,
   increasePrices,
