@@ -96,37 +96,35 @@ function entryCalculator(entrants) {
   return total;
 }
 
+function nomeLocal() {
+  const zonas = ['NE', 'NW', 'SE', 'SW'];
+  const objetoSaida = {};
+  zonas.forEach(zona => (objetoSaida[zona] = animals.filter(local => local.location === zona)
+    .map(objeto => objeto.name)));
+  return objetoSaida;
+}
+
 function animalMap(options) {
   const zonas = ['NE', 'NW', 'SE', 'SW'];
   const objetoSaida = {};
-  function nomeLocal() {
-    zonas.forEach(zona => objetoSaida[zona] = animals.filter(local =>
-      local.location === zona).map(objeto => objeto.name));
-    return objetoSaida;
-  }
+
   if (options === undefined) return nomeLocal();
   const { includeNames = false, sorted = false, sex = '' } = options;
-  if (includeNames === true && sex === '') {
-    zonas.forEach(zona => objetoSaida[zona] = animals.filter(local =>
+  if (includeNames === true) {
+    zonas.forEach(zona => (objetoSaida[zona] = animals.filter(local =>
       local.location === zona).map((objeto) => {
         const tipo = {};
-        if (includeNames === true && sorted === true) {
-          tipo[objeto.name] = objeto.residents.map(nome => nome.name).sort();
-          return tipo;
+        tipo[objeto.name] = objeto.residents;
+        if (sex !== '') {
+          tipo[objeto.name] = tipo[objeto.name].filter(resdent =>
+          resdent.sex === sex);
         }
-        tipo[objeto.name] = objeto.residents.map(nome => nome.name);
+        tipo[objeto.name] = tipo[objeto.name].map(nome => nome.name);
+        if (sorted === true) {
+          tipo[objeto.name] = tipo[objeto.name].sort();
+        }
         return tipo;
-      }));
-    return objetoSaida;
-  }
-  if (includeNames === true && sex !== '') {
-    zonas.forEach(zona => objetoSaida[zona] = animals.filter(local =>
-      local.location === zona).map((objeto) => {
-        const tipo = {};
-        tipo[objeto.name] = objeto.residents.filter(resdent =>
-        resdent.sex === sex).map(nome => nome.name);
-        return tipo;
-      }));
+      })));
     return objetoSaida;
   }
   if (includeNames === false && sex !== '') return nomeLocal();
@@ -148,12 +146,19 @@ function schedule(dayName) {
   umDia[dayName] = diaHorairo[dayName];
   return umDia;
 }
-console.log(schedule());
-console.log(schedule('Monday'));
 
 function oldestFromFirstSpecies(id) {
   // seu código aqui
+  const respon = (employees.find(empregado => empregado.id === id)).responsibleFor;
+  const animaisRes = animals.find(animal => animal.id === respon[0]).residents;
+  let oldestAnimal = { name: '', sex: '', age: 0 };
+  animaisRes.forEach((resident) => {
+    if (resident.age > oldestAnimal.age) oldestAnimal = resident;
+  });
+
+  return [oldestAnimal.name, oldestAnimal.sex, oldestAnimal.age];
 }
+console.log(oldestFromFirstSpecies('9e7d4524-363c-416a-8759-8aa7e50c0992'));
 
 function increasePrices(percentage) {
   // seu código aqui
