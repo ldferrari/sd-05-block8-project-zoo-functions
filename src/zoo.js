@@ -14,6 +14,7 @@ const data = require('./data');
 const { animals } = data;
 const { employees } = data;
 const { prices } = data;
+const { hours } = data;
 // const { hours } = data;
 
 
@@ -94,7 +95,15 @@ function animalMap(options) {
 }
 
 function schedule(dayName) {
-  // seu código aqui
+  const result = {};
+  Object.entries(hours).forEach(({0 : chaveH, 1 : valorH}) => {
+    const {open, close} = valorH;
+    if (dayName && dayName === chaveH || !dayName) {
+      result[chaveH] = (open === 0 && close === 0) ? 'CLOSED' : `Open from ${open}am until ${close - 12}pm`;
+    }
+  });
+  return result;
+  // seu código aqui testando if em uma linha (sintax reference) --> "var = () ? '' : '';"
 }
 
 function oldestFromFirstSpecies(id) {
