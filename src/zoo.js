@@ -31,8 +31,8 @@ function employeeByName(employeeName) {
   if (employeeName === undefined) {
     return {};
   }
-  const funcionario = employees.find(nome => (nome.firstName === employeeName) || 
-  (nome.lastName === employeeName));
+  const funcionario = employees.find(nome => (nome.firstName === employeeName) || (nome
+    .lastName === employeeName));
   return funcionario;
 }
 
