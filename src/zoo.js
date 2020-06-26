@@ -109,11 +109,11 @@ function schedule(dayName) {
   if (dayName === 'Monday') {
     const obj2 = { [dayName]: obj.Monday };
     return obj2;
-} else if (dayName === 'Tuesday') {
-     const obj3 = { [dayName]: obj.Tuesday };
-     return obj3;
+  } else if (dayName === 'Tuesday') {
+    const obj3 = { [dayName]: obj.Tuesday };
+    return obj3;
   }
-  return obj;
+    return obj;
 }
 /*
 function oldestFromFirstSpecies(id) {
