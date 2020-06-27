@@ -9,11 +9,7 @@ eslint no-unused-vars: [
 ]
 */
 
-const data = require('./data');
-const { animals } = require('./data');
-const { employees } = require('./data');
-const { hours } = require('./data');
-const { prices } = require('./data');
+const { animals, employees, hours, prices } = require('./data');
 
 /*
 - Implemente a função animalsByIds:
@@ -75,7 +71,6 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 
 function animalCount(species) {
   // seu código aqui
-
   if (species === undefined) {
     const saida = animals.reduce((valorAcumulado, item) => {
       valorAcumulado[item.name] = item.residents.length;
@@ -89,9 +84,7 @@ function animalCount(species) {
 
 function entryCalculator(entrants) {
   // seu código aqui
-  if (!entrants) {
-    return 0;
-  }
+  if (!entrants) return 0;
   const arrayEntrants = Object.entries(entrants);
   const arrayPrices = Object.entries(prices);
   arrayPrices.sort();
@@ -139,9 +132,7 @@ function animalMap(options) {
     return prev;
   }, {});
 
-  if (options === undefined || options.includeNames === undefined) {
-    return saida;
-  }
+  if (options === undefined || options.includeNames === undefined) return saida;
   return animalMapWithOptionsEnabled(options);
 }
 
@@ -158,9 +149,7 @@ function schedule(dayName) {
     atual[item] = `Open from ${arrayHoras[index].open}am until ${until - 12}pm`;
     return atual;
   }, {});
-  if (dayName === undefined) {
-    return saida;
-  }
+  if (dayName === undefined) return saida;
   const objetoSaida = {};
   objetoSaida[dayName] = saida[dayName];
   return objetoSaida;
@@ -171,9 +160,7 @@ function oldestFromFirstSpecies(id) {
   const codigoPrimeiroAnimal = employees.find(item => item.id === id).responsibleFor[0];
   const selecionaAnimalbyId = animals.find(item => item.id === codigoPrimeiroAnimal).residents;
   const selecionaMaisVelho = selecionaAnimalbyId.reduce((bigger, iterando) => {
-    if (bigger.age > iterando.age) {
-      iterando = bigger;
-    }
+    if (bigger.age > iterando.age) iterando = bigger;
     return iterando;
   }, selecionaAnimalbyId[0]);
   const saida = Object.values(selecionaMaisVelho);
