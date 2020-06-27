@@ -77,6 +77,7 @@ function animalCount(species) {
     .residents.length;
   return tamanhoDaEspecie;
 }
+
 function entryCalculator(entrants) {
   if (!entrants || Object.entries(entrants).length === 0) {
     return 0;
