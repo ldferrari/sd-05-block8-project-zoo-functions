@@ -115,24 +115,24 @@ function schedule(dayName) {
   }
   return obj;
 }
-
+/*
 function oldestFromFirstSpecies(id) {
   const chaveTrampo = employees.find(elemento => elemento.id === id).responsibleFor[0];
-  const animalCuidado = animals.find(elemento => elemento.id === chaveTrampo)
+  const animalCuidado = animals.find(elemento => elemento.id === chaveTrampo);
   const dados = animalCuidado.residents.find(ele => (ele.name === 'Vicky'));
   const novoArray = [dados.name, dados.sex, dados.age];
   return novoArray;
 }
-
+*/
 function roundNum(num, comprimento) {
   const numero = Math.round(num * 10 ** comprimento) / 10 ** comprimento;
   return numero;
 }
 
 function increasePrices(percentage) {
-  const Adulto = (prices.Adult * percentage) / 100 + prices.Adult;
-  const Seniorr = (prices.Senior * percentage) / 100 + prices.Senior;
-  const Childd = (prices.Child * percentage) / 100 + prices.Child;
+  const Adulto = ((prices.Adult * percentage) / 100) + prices.Adult;
+  const Seniorr = ((prices.Senior * percentage) / 100) + prices.Senior;
+  const Childd = ((prices.Child * percentage) / 100) + prices.Child;
 
   const obj = {
     Adult: roundNum(Adulto, 2),
@@ -168,7 +168,7 @@ module.exports = {
   entryCalculator,
   schedule,
   increasePrices,
-  /*oldestFromFirstSpecies, 
+/*oldestFromFirstSpecies, 
 animalMap,
 employeeCoverage,
 */
