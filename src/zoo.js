@@ -16,11 +16,12 @@ function animalsByIds(...ids) {
   if (ids.length === 0) {
     return [];
   }
-  /*animals.find(animal =>  {
+  /*
+  animals.find(animal =>  {
   return animal.id === ids[0];
-  })*/
-  const animals = ids.map(variavelTemp => animals.find(animal => animal.id === variavelTemp));
-  return animals;
+  })
+  */
+  return ids.map(variavelTemp => animals.find(animal => animal.id === variavelTemp));
 }
 
 function animalsOlderThan(animal, age) {
@@ -47,7 +48,7 @@ function animalCount(species) {
   // seu código aqui
 }
 
-function entryCalculator (){
+function entryCalculator() {
   // seu código aqui
 }
 
