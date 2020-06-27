@@ -83,14 +83,11 @@ function schedule(dayName) {
 function oldestFromFirstSpecies(id) {
   const idResponsibleFor = employees.find(element =>
     element.id === id).responsibleFor[0];
-  const findAnimals = animals.find(element => element.id === idResponsibleFor).residents
+  const findAnimals = animals.find(element => element.id === idResponsibleFor).residents;
   const ageSort = Object.values(findAnimals).map(element => element.age).sort((a, b) => b - a)[0];
-  const output = findAnimals.filter(element => element.age === ageSort)
-  return Object.values(output[0])
+  const output = findAnimals.filter(element => element.age === ageSort);
+  return Object.values(output[0]);
 }
-
-
-console.log(oldestFromFirstSpecies('c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1'))
 
 function increasePrices(percentage) {
   // seu código aqui
