@@ -95,3 +95,4 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
       increasePrices,
       createEmployee,
     }
+  }
