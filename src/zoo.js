@@ -1,11 +1,11 @@
 /*
 eslint no-unused-vars: [
-  "error",
-  {
-    "args": "none",
-    "vars": "local",
-    "varsIgnorePattern": "data"
-  }
+"error",
+{
+"args": "none",
+"vars": "local",
+"varsIgnorePattern": "data"
+}
 ]
 */
 
@@ -14,14 +14,12 @@ const { animals } = require('./data');
 
 function animalsByIds(...ids) {
   if (ids.length === 0) {
-  return [];
- }
-
+    return [];
+  }
   /*animals.find(animal =>  {
-    return animal.id === ids[0];
+  return animal.id === ids[0];
   })*/
-
-const animals = ids.map(variavelTemp => animals.find(animal => animal.id === variavelTemp));
+  const animals = ids.map(variavelTemp => animals.find(animal => animal.id === variavelTemp));
   return animals;
 }
 
@@ -56,8 +54,8 @@ const { animals } = require('./data');
 function animalsByIds(...ids) {
   if (ids.length === 0) {
     return [];
- }
-   return animals
+  }
+  return animals
 }
 
 function animalsOlderThan(animal, age) {
