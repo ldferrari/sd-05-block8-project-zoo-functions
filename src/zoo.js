@@ -109,9 +109,30 @@ function increasePrices(percentage) {
   });
 }
 
+function testIdOrName(idOrName, item) {
+  if (item.id === idOrName) return true; 
+  if (item.firstName === idOrName) return true;
+  if (item.lastName === idOrName) return true;
+  return false;
+}
+
+function employeeCoveragePerson(idOrName) {
+  const person = employees.find(item => testIdOrName(idOrName, item));
+  const personAnimals = person.responsibleFor.map(animalId => animals.find(animal => animal.id === animalId).name);
+  const objectToReturn = {};
+  objectToReturn[`${person.firstName} ${person.lastName}`] = personAnimals;
+  return objectToReturn;
+}
+
 function employeeCoverage(idOrName) {
   // seu código aqui
+  if (idOrName !== undefined) return employeeCoveragePerson(idOrName);
+  const objectToReturn = {};
+  employees.forEach(person => Object.assign(objectToReturn, employeeCoveragePerson(person.id)));
+  return objectToReturn;
 }
+// employeeCoverage('b0dc644a-5335-489b-8a2c-4e086c7819a2');
+console.log(employeeCoverage());
 
 module.exports = {
   entryCalculator,
