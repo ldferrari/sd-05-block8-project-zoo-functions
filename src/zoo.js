@@ -102,7 +102,7 @@ function schedule(dayName) {
     }
   });
   return result;
-  // seu código aqui testando if em uma linha (sintax reference) --> "var = () ? '' : '';"
+  // seu código aqui testando if em uma  linha (sintax reference) --> "var = () ? '' : '';"
 }
 
 function oldestFromFirstSpecies(id) {
