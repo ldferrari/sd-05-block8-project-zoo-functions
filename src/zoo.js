@@ -110,7 +110,7 @@ function increasePrices(percentage) {
 }
 
 function testIdOrName(idOrName, item) {
-  if (item.id === idOrName) return true; 
+  if (item.id === idOrName) return true;
   if (item.firstName === idOrName) return true;
   if (item.lastName === idOrName) return true;
   return false;
@@ -118,9 +118,9 @@ function testIdOrName(idOrName, item) {
 
 function employeeCoveragePerson(idOrName) {
   const person = employees.find(item => testIdOrName(idOrName, item));
-  const personAnimals = person.responsibleFor.map(animalId => animals.find(animal => animal.id === animalId).name);
+  const personAn = person.responsibleFor.map(iD => animals.find(animal => animal.id === iD).name);
   const objectToReturn = {};
-  objectToReturn[`${person.firstName} ${person.lastName}`] = personAnimals;
+  objectToReturn[`${person.firstName} ${person.lastName}`] = personAn;
   return objectToReturn;
 }
 
