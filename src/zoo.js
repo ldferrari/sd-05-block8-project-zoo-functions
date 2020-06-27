@@ -92,8 +92,15 @@ function animalMap(options) {
   // seu código aqui
 }
 
+const weekDays = data.hours;
+Object.keys(weekDays).forEach((day) => {
+  weekDays[day] = `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`;
+});
+weekDays.Monday = 'CLOSED';
+
 function schedule(dayName) {
-  // seu código aqui
+  if (dayName) return { [dayName]: weekDays[dayName] };
+  return weekDays;
 }
 
 function oldestFromFirstSpecies(id) {
