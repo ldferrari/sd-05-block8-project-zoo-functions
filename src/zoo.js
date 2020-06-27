@@ -125,7 +125,7 @@ function oldestFromFirstSpecies(id) {
 }
 */
 function roundNum(num, comprimento) {
-  const numero = Math.round(num * 10 ** comprimento) / 10 ** comprimento;
+  const numero = Math.round(num * 10 ** comprimento) / (10 ** comprimento);
   return numero;
 }
 
