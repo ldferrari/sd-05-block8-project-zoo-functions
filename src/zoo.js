@@ -71,28 +71,28 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
       });
       return employeeFound;
     }
+  }
 
-    function increasePrices(percentage) {
-      // seu código aqui
-    }
+  function increasePrices(percentage) {
+    // seu código aqui
+  }
 
-    function employeeCoverage(idOrName) {
-      // seu código aqui
-    }
+  function employeeCoverage(idOrName) {
+    // seu código aqui
+  }
 
-    module.exports = {
-      entryCalculator,
-      schedule,
-      animalCount,
-      animalMap,
-      animalsByIds,
-      employeeByName,
-      employeeCoverage,
-      addEmployee,
-      isManager,
-      animalsOlderThan,
-      oldestFromFirstSpecies,
-      increasePrices,
-      createEmployee,
-    }
+  module.exports = {
+    entryCalculator,
+    schedule,
+    animalCount,
+    animalMap,
+    animalsByIds,
+    employeeByName,
+    employeeCoverage,
+    addEmployee,
+    isManager,
+    animalsOlderThan,
+    oldestFromFirstSpecies,
+    increasePrices,
+    createEmployee,
   }
