@@ -20,13 +20,15 @@ function animalsByIds(...ids) {
 
 function animalsOlderThan(animal, age) {
   return animals
-  .find(animais => animais.name === animal).residents
-  .every(residents => residents.age > age);
+    .find(animais => animais.name === animal)
+    .residents.every(residents => residents.age > age);
 }
 
 function employeeByName(employeeName) {
-  const nameVerify = employees.find(({ firstName, lastName }) =>
-    firstName === employeeName || lastName === employeeName);
+  const nameVerify = employees.find(
+    ({ firstName, lastName }) =>
+      firstName === employeeName || lastName === employeeName,
+  );
   return nameVerify || {};
 }
 
@@ -48,7 +50,13 @@ function isManager(id) {
   return verifyRole;
 }
 
-function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
+function addEmployee(
+  id,
+  firstName,
+  lastName,
+  managers = [],
+  responsibleFor = [],
+) {
   const newEmployee = {
     id,
     firstName,
@@ -65,7 +73,8 @@ function animalCount(species) {
     animals.forEach(animal => (name[animal.name] = animal.residents.length));
     return name;
   }
-  const tamanhoDaEspecie = animals.find(animal => animal.name === species).residents.length;
+  const tamanhoDaEspecie = animals.find(animal => animal.name === species)
+    .residents.length;
   return tamanhoDaEspecie;
 }
 function entryCalculator(entrants) {
@@ -74,7 +83,8 @@ function entryCalculator(entrants) {
   }
 
   const { Adult, Child, Senior } = entrants;
-  const entradas = (prices.Adult * Adult) + (prices.Child * Child) + (prices.Senior * Senior);
+  const entradas =
+    (prices.Adult * Adult) + (prices.Child * Child) + (prices.Senior * Senior);
   return entradas;
 }
 
@@ -88,16 +98,33 @@ function schedule(dayName) {
 
 function oldestFromFirstSpecies(id) {
   // passado o id de um funcionário, encontra a primeira espécie de animal
-  const funcionario = employees.find(empregado => empregado.id === id).responsibleFor[0];
+  const funcionario = employees.find(empregado => empregado.id === id)
+    .responsibleFor[0];
   // e retorna um array com nome, sexo e idade do animal mais velho dessa espécie
-  const newOlderAnimal = animals.find(animal => animal.id === funcionario).residents
-  .reduce((acc, cur) => (acc.age > cur.age ? acc : cur));
+  const newOlderAnimal = animals
+    .find(animal => animal.id === funcionario)
+    .residents.reduce((acc, cur) => (acc.age > cur.age ? acc : cur));
   const newArr = [newOlderAnimal.name, newOlderAnimal.sex, newOlderAnimal.age];
   return newArr;
 }
 
+let secondRound = {};
+
 function increasePrices(percentage) {
-  // seu código aqui
+  const newPrices =
+    Object.values(secondRound).length < 1 ? prices : secondRound;
+  const { Adult, Senior, Child } = newPrices;
+  const calc = percentage / 100;
+  const newValuesAdult = Math.round(Adult * (calc + 1) * 100) / 100;
+  const newValuesSenior = Math.round(Senior * (calc + 1) * 100) / 100;
+  const newValuesChild = Math.round(Child * (calc + 1) * 100) / 100;
+  const withPercentage = {
+    Adult: newValuesAdult,
+    Child: newValuesChild,
+    Senior: newValuesSenior,
+  };
+  secondRound = withPercentage;
+  return withPercentage;
 }
 
 function employeeCoverage(idOrName) {
