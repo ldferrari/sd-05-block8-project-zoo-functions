@@ -168,7 +168,7 @@ module.exports = {
   entryCalculator,
   schedule,
   increasePrices,
-/*oldestFromFirstSpecies, 
+/*oldestFromFirstSpecies,
 animalMap,
 employeeCoverage,
 */
