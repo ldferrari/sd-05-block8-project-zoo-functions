@@ -94,4 +94,4 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
       oldestFromFirstSpecies,
       increasePrices,
       createEmployee,
-    };
+    }
