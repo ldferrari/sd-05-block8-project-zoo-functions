@@ -108,23 +108,13 @@ function oldestFromFirstSpecies(id) {
   return newArr;
 }
 
-let secondRound = {};
-
 function increasePrices(percentage) {
-  const newPrices =
-    Object.values(secondRound).length < 1 ? prices : secondRound;
-  const { Adult, Senior, Child } = newPrices;
+  const { Adult, Senior, Child } = prices;
   const calc = percentage / 100;
-  const newValuesAdult = Math.round(Adult * (calc + 1) * 100) / 100;
-  const newValuesSenior = Math.round(Senior * (calc + 1) * 100) / 100;
-  const newValuesChild = Math.round(Child * (calc + 1) * 100) / 100;
-  const withPercentage = {
-    Adult: newValuesAdult,
-    Child: newValuesChild,
-    Senior: newValuesSenior,
-  };
-  secondRound = withPercentage;
-  return withPercentage;
+  prices.Adult = Math.round(Adult * (calc + 1) * 100) / 100;
+  prices.Senior = Math.round(Senior * (calc + 1) * 100) / 100;
+  prices.Child = Math.round(Child * (calc + 1) * 100) / 100;
+  return prices;
 }
 
 function employeeCoverage(idOrName) {
