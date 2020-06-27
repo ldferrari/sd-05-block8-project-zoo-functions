@@ -11,7 +11,7 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const { animals, employees } = data;
+const { animals, employees, prices } = data;
 
 function animalsByIds(...ids) {
   const result = ids;
@@ -118,17 +118,37 @@ function schedule(dayName) {
 
 function oldestFromFirstSpecies(id) {
   const chaveTrampo = employees.find(elemento => elemento.id === id).responsibleFor[0];
-  const animalCuidado = animals.find(elemento => elemento.id === chaveTrampo).residents.find(ele => ele.name === 'Vicky');
-  const nome = animalCuidado.name;
-  const novoArray = [nome, animalCuidado.sex, animalCuidado.age];
+  const animalCuidado = animals.find(elemento => elemento.id === chaveTrampo)
+  const dados = animalCuidado.residents.find(ele => (ele.name === 'Vicky'));
+  const novoArray = [dados.name, dados.sex, dados.age];
   return novoArray;
 }
-console.log(oldestFromFirstSpecies('9e7d4524-363c-416a-8759-8aa7e50c0992'));
-/*
-function increasePrices(percentage) {
-  // seu código aqui
+
+function roundNum(num, comprimento) {
+  const numero = Math.round(num * 10 ** comprimento) / 10 ** comprimento;
+  return numero;
 }
 
+function increasePrices(percentage) {
+  const Adulto = (prices.Adult * percentage) / 100 + prices.Adult;
+  const Seniorr = (prices.Senior * percentage) / 100 + prices.Senior;
+  const Childd = (prices.Child * percentage) / 100 + prices.Child;
+
+  const obj = {
+    Adult: roundNum(Adulto, 2),
+    Senior: roundNum(Seniorr, 2),
+    Child: roundNum(Childd, 2),
+  };
+
+  const obj2 = {
+    Adult: (data.prices.Adult = obj.Adult),
+    Senior: (data.prices.Senior = obj.Senior),
+    Child: (data.prices.Child = obj.Child),
+  };
+
+  return (data.prices = obj2);
+}
+/*
 function employeeCoverage(idOrName) {
   // seu código aqui
 }
@@ -147,10 +167,9 @@ module.exports = {
   animalCount,
   entryCalculator,
   schedule,
-  oldestFromFirstSpecies,
-  /*
+  increasePrices,
+  /*oldestFromFirstSpecies, 
 animalMap,
 employeeCoverage,
-increasePrices,
 */
 };
