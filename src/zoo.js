@@ -115,15 +115,22 @@ function schedule(dayName) {
   }
   return obj;
 }
-/*
+
 function oldestFromFirstSpecies(id) {
-  const chaveTrampo = employees.find(elemento => elemento.id === id).responsibleFor[0];
-  const animalCuidado = animals.find(elemento => elemento.id === chaveTrampo);
-  const dados = animalCuidado.residents.find(ele => (ele.name === 'Vicky'));
+  const chaveTrampo = employees.find((elemento) => elemento.id === id)
+    .responsibleFor[0];
+  const animalCuidado = animals.find((elemento) => elemento.id === chaveTrampo);
+  const dados = animalCuidado.residents.reduce((ele, elemento) => {
+    if (ele.age > elemento.age) {
+      return ele;
+    } else {
+      return elemento;
+    }
+  });
   const novoArray = [dados.name, dados.sex, dados.age];
   return novoArray;
 }
-*/
+
 function roundNum(num, comprimento) {
   const numero = Math.round(num * (10 ** comprimento)) / (10 ** comprimento);
   return numero;
@@ -168,8 +175,8 @@ module.exports = {
   entryCalculator,
   schedule,
   increasePrices,
-/*oldestFromFirstSpecies,
-animalMap,
+  oldestFromFirstSpecies,
+/*animalMap,
 employeeCoverage,
 */
 };
