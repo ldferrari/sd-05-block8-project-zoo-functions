@@ -62,7 +62,7 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 function animalCount(species) {
   const especies = {};
   if (species === undefined) {
-    for (let n = 1; n < animals.length; n += 1) {
+    for (let n = 0; n < animals.length; n += 1) {
       especies[animals[n].name] = animals[n].residents.length;
     }
     return especies;
