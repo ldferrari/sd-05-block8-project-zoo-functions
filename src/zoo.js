@@ -31,9 +31,9 @@ function animalsOlderThan(animal, age) {
 
 function employeeByName(employeeName) {
   if (employeeName === undefined) {
-    return {};
+  return {};
   }
-  return employees.find(funcionario => funcionario.firstName 
+  return employees.find(funcionario => funcionario.firstName
 === employeeName || funcionario.lastName === employeeName);
 }
 
@@ -47,7 +47,7 @@ function isManager(id) {
 }
 
 function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
-  const funcionario = Object.assign({ }, { id }, { firstName }, { lastName }, 
+  const funcionario = Object.assign({ }, { id }, { firstName }, { lastName },
 { managers }, { responsibleFor });
   employees.push(funcionario);
 }
