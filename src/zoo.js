@@ -33,7 +33,8 @@ function employeeByName(employeeName) {
   if (employeeName === undefined) {
     return {};
   }
-  return employees.find(funcionario => funcionario.firstName === employeeName || funcionario.lastName === employeeName);
+  return employees.find(funcionario => funcionario.firstName 
+=== employeeName || funcionario.lastName === employeeName);
 }
 
 function createEmployee(personalInfo, associatedWith) {
@@ -53,17 +54,24 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 
 
 function animalCount(species) {
-  if (species === undefined) {}
+  /*
+  if (species === undefined) {
+    return animals.forEach((animal) => {
+      [animal.name] = animal.residents.length;
+    });
+  }
+  */
 }
 
-function entryCalculator(...entrants) {
+function entryCalculator(entrants) {
   if (entrants === undefined) {
     return 0;
   }
   if (Object.entries(entrants).length === 0) {
     return 0;
   }
-  const ingresso = ((prices.Adult * Adult) + (prices.Senior * Senior) + (prices.Child * Children))
+  const { Adult, Senior, Child } = entrants;
+  const ingresso = ((prices.Adult * Adult) + (prices.Senior * Senior) + (prices.Child * Child));
   return ingresso;
 }
 
