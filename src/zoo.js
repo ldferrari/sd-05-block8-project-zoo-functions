@@ -123,9 +123,18 @@ function schedule(dayName) {
   } return { [dayName]: scheduleHumans[dayName] };
 }
 
-
 function oldestFromFirstSpecies(id) {
+  // Passado o id de um funcionário, encontra a primeira espécie de animal 
+  // gerenciado pelo funcionário, e retorna um array com nome, sexo e idade do
+  // animal mais velho dessa espécie
   // seu código aqui
+  const getEmployee = employees.find(employee => employee.id === id).responsibleFor[0];
+  const getAnimalsSpec = animals.find(animal => animal.id === getEmployee).residents;
+  const oldestAnimal = getAnimalsSpec.sort(function (a, b) {
+    return b.age - a.age;
+  });
+  const { name, sex, age } = oldestAnimal[0];
+  return [name, sex, age];
 }
 
 function increasePrices(percentage) {
