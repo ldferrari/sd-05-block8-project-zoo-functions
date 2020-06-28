@@ -90,11 +90,15 @@ function schedule(dayName) {
 }
 
 function oldestFromFirstSpecies(id) {
-  // const funcionario = employees.some(quem => quem.id === id)
 }
 
 function increasePrices(percentage) {
-  // seu código aqui
+  const valor = prices;
+  const { Adult, Senior, Child } = valor;
+  valor.Adult = Math.round(Adult * (1 + (percentage / 100)));
+  valor.Senior = Math.round(Senior * (1 + (percentage / 100)));
+  valor.Child = Math.round(Child * (1 + (percentage / 100)));
+  return valor;
 }
 
 function employeeCoverage(idOrName) {
