@@ -34,30 +34,44 @@ function employeeByName(employeeName) {
     return {};
   }
   return employees.find(funcionario => funcionario.firstName === employeeName || funcionario.lastName === employeeName);
-  }
+}
 
 function createEmployee(personalInfo, associatedWith) {
   // employee.assign
   return Object.assign({}, personalInfo, associatedWith);
-  }
+}
 
 function isManager(id) {
-  return employees.some((valor) => valor.managers.find(manager => manager === id));
+  return employees.some(valor => valor.managers.find(manager => manager === id));
 }
 
 function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
-  const funcionario = Object.assign({}, {id}, {firstName}, {lastName}, {managers}, {responsibleFor});
+  const funcionario = Object.assign({ }, { id }, { firstName }, { lastName }, 
+  { managers }, { responsibleFor });
   employees.push(funcionario);
 }
 
 
 function animalCount(species) {
-  // seu código aqui
+  if (species === undefined) {
+    const resposta = {};
+    animals.forEach(animais => {
+    
+    })
+  }
+}
+    
+function entryCalculator(entrants) {
+  if (entrants === undefined) {
+    return 0;
+  }
+  if (Object.entries(entrants).length === 0) {
+    return 0;
+  }
+  let 
 }
 
-function entryCalculator() {
-  // seu código aqui
-}
+entryCalculator({});
 
 function animalMap(options) {
   // seu código aqui
