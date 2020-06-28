@@ -124,7 +124,7 @@ function schedule(dayName) {
 }
 
 function oldestFromFirstSpecies(id) {
-  // Passado o id de um funcionário, encontra a primeira espécie de animal 
+  // Passado o id de um funcionário, encontra a primeira espécie de animal
   // gerenciado pelo funcionário, e retorna um array com nome, sexo e idade do
   // animal mais velho dessa espécie
   // seu código aqui
