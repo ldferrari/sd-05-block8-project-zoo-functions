@@ -104,11 +104,11 @@ function schedule(dayName) {
     } else {
       programacao[day] = `Open from ${hours[day].open}am until ${hours[day].close - 12}pm`;
     }
-    return programacao;
   });
   if (dayName === undefined) {
     return programacao;
   }
+  return ({ [dayName]: programacao[dayName] });
 }
 
 function oldestFromFirstSpecies(id) {
