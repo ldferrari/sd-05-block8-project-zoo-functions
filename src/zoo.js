@@ -138,7 +138,13 @@ function oldestFromFirstSpecies(id) {
 }
 
 function increasePrices(percentage) {
+  // Ao passar uma porcentagem, incrementa todos os preços,
+  // arrendondados em duas casas decimais
   // seu código aqui
+  const convert = (1 + (percentage / 100));
+  Object.keys(prices).forEach((key => {
+    prices[key] = Math.round((prices[key] * 100) * convert).toFixed(2) / 100;
+  }));
 }
 
 function employeeCoverage(idOrName) {
