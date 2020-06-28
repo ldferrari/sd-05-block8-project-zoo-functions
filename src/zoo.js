@@ -97,7 +97,7 @@ function oldestFromFirstSpecies(id) {
     if (resident.age > velho.age) {
       velho = resident;
     }
-  })
+  });
   return [velho.name, velho.sex, velho.age];
 }
 
