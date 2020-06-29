@@ -18,9 +18,7 @@ function animalsByIds(...ids) {
     return [];
   }
   /*
-  animals.find(animal =>  {
-  return animal.id === ids[0];
-  })
+  return = animals.filter(animalAtual => animalAtual.id === ids);
   */
   return ids.map(variavelTemp => animals.find(animal => animal.id === variavelTemp));
 }
@@ -54,13 +52,12 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 
 
 function animalCount(species) {
-  /*
+  const retornaObjeto = {};
+  animals.forEach(animal => retornaObjeto[animal.name] = animal.residents.length);
   if (species === undefined) {
-    return animals.forEach((animal) => {
-      [animal.name] = animal.residents.length;
-    });
-  }
-  */
+    return retornaObjeto;
+  };
+  return retornaObjeto[species];
 }
 
 function entryCalculator(entrants) {
