@@ -11,7 +11,7 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const { animals, employees } = data;
+const { animals, employees, prices } = data;
 
 function animalsByIds(...parametro) {
   if (parametro.length === 0) return [];
@@ -70,6 +70,12 @@ function animalCount(species) {
 
 function entryCalculator(entrants) {
   // seu código aqui
+  if (entrants.length === 0) return 0;
+
+  if (Object.keys(entrants[0]).length === 0) return 0;
+
+  const { Adult = 0, Child = 0, Senior = 0 } = entrants[0];
+  return (Adult * prices.Adult) + (Child * prices.Child) + (Senior * prices.Senior);
 }
 
 function animalMap(options) {
@@ -78,6 +84,19 @@ function animalMap(options) {
 
 function schedule(dayName) {
   // seu código aqui
+  const allDays = Object.keys(hours);
+  const thisDay = {};
+  allDays.forEach((day) => {
+    if (day !== 'Monday') {
+      thisDay[day] = `Open from ${hours[day].open}am until ${hours[day].close - 12}pm`;
+    } else {
+      thisDay[day] = 'CLOSED';
+    }
+  });
+  if (dayName === undefined) {
+    return thisDay;
+  }
+  return ({ [dayName]: thisDay[dayName] });
 }
 
 function oldestFromFirstSpecies(id) {
