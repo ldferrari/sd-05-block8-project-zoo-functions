@@ -30,7 +30,7 @@ function employeeByName(employeeName) {
     return {};
   }
   return employees.find(e => employeeName === e.firstName || employeeName === e.lastName);
-};
+}
 
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
@@ -44,6 +44,15 @@ function isManager(id) {
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
+  const employee = {
+    id,
+    firstName,
+    lastName,
+    managers,
+    responsibleFor,
+  };
+  employees.push(employee);
+  return employee;
 }
 
 function animalCount(species) {
