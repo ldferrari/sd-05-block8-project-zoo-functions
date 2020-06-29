@@ -46,14 +46,27 @@ console.log(employeeByName());
 
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
+  const newEmployee = Object.assign({}, personalInfo, associatedWith)
+  return newEmployee
 }
+
 
 function isManager(id) {
   // seu código aqui
+  const idEmployee = employees.some(searchForId => searchForId.managers.find(idManager => idManager === id));
+  // const idEmployee = employees.find(searchForId => searchForId.managers.find(idManager => idManager === id));
+  // if(idEmployee === undefined) {
+  //  return false;
+  // } else {
+  //  return true; 
+  // }
+  return idEmployee
 }
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
+function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
   // seu código aqui
+  const newEmployee = createEmployee({ id, firstName, lastName }, { managers, responsibleFor });
+  employees.push(newEmployee);
 }
 
 function animalCount(species) {
