@@ -10,19 +10,18 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
-const { prices } = require('./data');
+const { prices, animals } = data;
 
 function animalsByIds(...ids) {
   // seu código aqui
   if (ids.length === 0) {
     return [];
   }
-  const recebeAnimais = data.animals;
   const armazenaDados = [];
-  recebeAnimais.forEach((animals) => {
+  animals.forEach((animal) => {
     ids.forEach((id) => {
-      if (animals.id === id) {
-        armazenaDados.push(animals);
+      if (animal.id === id) {
+        armazenaDados.push(animal);
       }
     });
   });
@@ -52,12 +51,12 @@ function isManager(id) {
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
-  const newEmployee = { id, firstName, lastName, managers, responsibleFor,};
-  return newEmployees.push(addEmployee);
+
 }
 
 function animalCount(species) {
   // seu código aqui
+
 }
 
 function entryCalculator(entrants) {
@@ -70,6 +69,8 @@ function animalMap(options) {
 
 function schedule(dayName) {
   // seu código aqui
+  if (dayName) return { [dayName]: weekDays[dayName] };
+  return weekDays;
 }
 
 function oldestFromFirstSpecies(id) {
