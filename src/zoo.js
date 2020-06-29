@@ -62,7 +62,14 @@ function entryCalculator(entrants) {
 }
 
 function animalMap(options) {
-
+  animals.reduce((acc, obj) => {
+    const key = obj.location;
+    if (!acc[key]) {
+      acc[key] = [];
+    }
+    acc[key].push(obj.name);
+    return acc;
+  }, {});
 }
 
 function schedule(dayName) {
