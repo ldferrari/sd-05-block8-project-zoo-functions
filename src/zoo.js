@@ -26,12 +26,15 @@ function animalsByIds(...ids) {
   // seu código aqui
 }
 
-const animalsOlderThan = (animal, age) => animals.find(animal => animal.name === animal).residents.every(animal => animal.age > age);
-  // seu código aqui
-
+function animalsOlderThan(animal, age) {
+  return animals.find(x => x.name === animal).residents.every(y => y.age >= age);
+}
 
 function employeeByName(employeeName) {
-  // seu código aqui
+  if (employeeName === undefined) return {};
+  const firstEmployee = data.employees.find(element => element.firstName === employeeName);
+  const secondEmployee = data.employees.find(element => element.lastName === employeeName);
+  return (firstEmployee || secondEmployee);
 }
 
 function createEmployee(personalInfo, associatedWith) {
