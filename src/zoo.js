@@ -24,7 +24,7 @@ function animalsOlderThan(animal, age) {
   return findSpecies.residents.every(el => el.age >= age);
 }
 
-const employeeByName = (employeeName) => {
+function employeeByName(employeeName) {
   // seu código aqui
   if (employeeName === 'undefined') {
     return {};
@@ -39,6 +39,7 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   // seu código aqui
+  return employees.some(e => e.managers.find(ids => ids === id));
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
