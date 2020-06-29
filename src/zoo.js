@@ -64,15 +64,24 @@ function isManager(id) {
   return buscaId;
 }
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
+function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
   // seu código aqui
-
+const outroFuncionario = {id, firstName, lastName, managers, responsibleFor}
+const outroFuncionario2 = Object.assign({}, {id}, {firstName}, {lastName}, {managers}, {responsibleFor})
+const outroFuncionario3 = createEmployee({id, firstName, lastName}, {managers, responsibleFor})
+employees.push(outroFuncionario2);
 }
 
 function animalCount(species) {
   // seu código aqui
-
+  const retornaObjeto = {};
+  animals.forEach(animal => (retornaObjeto[animal.name] = animal.residents.length));
+  if(species === undefined) {
+    return retornaObjeto;
+  }
+  return retornaObjeto[species];
 }
+animalCount('lions')
 
 function entryCalculator(entrants) {
   // seu código aqui
