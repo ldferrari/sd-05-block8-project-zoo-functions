@@ -85,6 +85,14 @@ animalCount('lions')
 
 function entryCalculator(entrants) {
   // seu código aqui
+  if(entrants === undefined || Object.keys(entrants).length === 0) {
+    return 0;
+  }
+  const {Adult = 0, Child = 0, Senior = 0} = entrants;
+let total = Adult * prices.Adult
+total += Child * prices.Child
+total += Senior * prices.Senior
+return total;
 }
 
 function animalMap(options) {
