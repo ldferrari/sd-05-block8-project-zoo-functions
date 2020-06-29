@@ -62,10 +62,7 @@ function entryCalculator(entrants) {
 }
 
 function animalMap(options) {
-  if (!options || !options.includeNames) return noParameter();
-  console.log(options.includeNames, options.sorted, options.sex);
-  if (options.sex) return especifySex(options.sex);
-  return especifyOptions(options.sorted);
+
 }
 
 function schedule(dayName) {
@@ -94,15 +91,15 @@ function oldestFromFirstSpecies(id) {
 }
 
 function increasePrices(percentage) {
-
+  const chavesPrices = Object.keys(prices);
+  chavesPrices.forEach((key) => {
+    prices[key] = Math.round((prices[key] * 100) * (1 + (percentage / 100))).toFixed(2) / 100;
+  });
+  return prices;
 }
 
 function employeeCoverage(idOrName) {
-  const person = employees.find(item => testIdOrName(idOrName, item));
-  const personAn = person.responsibleFor.map(iD => animals.find(animal => animal.id === iD).name);
-  const objectToReturn = {};
-  objectToReturn[`${person.firstName} ${person.lastName}`] = personAn;
-  return objectToReturn;
+
 }
 
 module.exports = {
