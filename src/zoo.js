@@ -79,10 +79,11 @@ function animalMap(options) {
 function schedule(dayName) {
   const crono = Object.assign({}, hours);
   const dias = Object.keys(crono);
-  dias.forEach((dia) => { crono[dia] = `Open from ${ crono[dia].open}am until ${ crono[dia].close - 12 }pm`;
-    if (dia === 'Monday') crono[dia] = 'CLOSED'});
+  dias.forEach((dia) => {crono[dia] = `Open from ${crono[dia].open}am until ${crono[dia].close - 12}pm`;
+  if (dia === 'Monday') crono[dia] = 'CLOSED';
+  });
     if (dayName === undefined) {
-    return crono;
+      return crono;
   }
   const saida = {};
   saida[dayName] = crono[dayName];
@@ -90,11 +91,11 @@ function schedule(dayName) {
 }
 
 function oldestFromFirstSpecies(idProcurado) {
+  /*
   const idAnimal = employees.find(pessoa => pessoa.id === idProcurado).responsibleFor[0];
   const animalSenior = animals.find(animal => animal.id === idAnimal).residents.sort[0]
-  console.log(animalSenior)
+  */
 }
-oldestFromFirstSpecies('9e7d4524-363c-416a-8759-8aa7e50c0992');
 
 function increasePrices(percentage) {
   // seu código aqui
