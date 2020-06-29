@@ -104,10 +104,10 @@ function schedule(dayName) {
   // seu código aqui
   const crono = Object.assign({}, hours);
   const dias = Object.keys(crono);
-  dias.forEach(dia => {
-    crono[dia] = `Open from ${crono[dia].open}am until ${crono[dia].close - 12}pm`
+  dias.forEach((dia) => {
+    crono[dia] = `Open from ${crono[dia].open}am until ${crono[dia].close - 12}pm`;
     if (dia === 'Monday') crono[dia] = 'CLOSED';
-  })
+  });
   if (dayName === undefined) {
     return crono;
   }
