@@ -68,7 +68,7 @@ function animalCount(species) {
   return resultado;
 }
 
-function entryCalculator(entrants) {
+function entryCalculator(...entrants) {
   // seu código aqui
   if (entrants.length === 0) return 0;
 
