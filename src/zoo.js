@@ -85,12 +85,25 @@ function animalMap(options) {
 }
 
 function schedule(dayName) {
-  // seu código aqui
+  const horarios = {};
+  function getTime(key) {
+    if (hours[key].open === 0 && hours[key].close === 0) {
+      return 'CLOSED';
+    } else {
+      return `Open from ${hours[key].open}am until ${hours[key].close - 12}pm`;
+    };
+  }
+  if (dayName === undefined) {
+    Object.keys(hours).forEach((key) => {
+      horarios[key] = getTime(key);
+    })
+  }
+  return horarios
 }
 
 const oldestFromFirstSpecies = (id) => {
-  const func = employees.find(elemento => elemento.id === id);
-  const animal = animals.find(elemento => elemento.id === func.responsibleFor[0]);
+  const func = employees.find((elemento) => elemento.id === id);
+  const animal = animals.find((elemento) => elemento.id === func.responsibleFor[0]);
   const idade = animal.residents.sort((a, b) => {
     if (a.age < b.age) return 1;
     if (a.age > b.age) return -1;
