@@ -17,35 +17,36 @@ const animals = data.animals;
 function animalsByIds(...ids) {
   if (ids.length === 0) return [];
   return animals.filter(animal => ids.find(id => animal.id === id));
-  // seu código aqui
-}
+};
 
 function animalsOlderThan(animal, age) {
   return animals.find(x => x.name === animal).residents.every(y => y.age >= age);
-}
+};
 
 function employeeByName(employeeName) {
   if (employeeName === undefined) return {};
   const firstEmployee = data.employees.find(element => element.firstName === employeeName);
   const secondEmployee = data.employees.find(element => element.lastName === employeeName);
   return (firstEmployee || secondEmployee);
-}
+};
 
 function createEmployee(personalInfo, associatedWith) {
   return { ...personalInfo, ...associatedWith };
-}
+};
 
 function isManager(id) {
   return employees.some(employ => id === employ.managers.find(item => item === id));
-}
+};
 
 function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
   return employees.push({ id, firstName, lastName, managers, responsibleFor });
-}
+};
 
 function animalCount(species) {
-  // seu código aqui
-}
+  const Obj = {};
+  animals.forEach(animal => (Obj[animal.name] = animal.residents.length));
+  return species ? animals.find(animal => animal.name === species).residents.length : Obj;
+};
 
 function entryCalculator(entrants) {
   // seu código aqui
