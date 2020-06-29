@@ -70,12 +70,16 @@ function schedule(dayName) {
 
 function oldestFromFirstSpecies(id) {
   const animId = employees.filter(({ id: identity }) => identity === id)[0].responsibleFor[0];
-  const result = animals.filter(({ id: identity }) => identity === animId)[0].residents.sort((a, b) => b.age - a.age)[0];
+  const result = animals.filter(({ id: identity }) => identity === animId)[0]
+  .residents.sort((a, b) => b.age - a.age)[0];
   return Object.values(result);
 }
 
 function increasePrices(percentage) {
-  // seu código aqui
+  Object.keys(prices).forEach((key) => {
+    prices[key] *= (percentage / 100) + 1;
+    prices[key] = (Math.floor(Number((prices[key]) * 100) + 1) / 100).toFixed(2);
+  });
 }
 
 function employeeCoverage(idOrName) {
