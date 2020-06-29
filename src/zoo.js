@@ -93,7 +93,7 @@ const getTime = (key) => {
 };
 
 const schedule = (dayName) => {
-  let horarios = {};
+  const horarios = {};
 
   if (dayName === undefined) {
     Object.keys(hours).forEach((key) => {
@@ -105,7 +105,7 @@ const schedule = (dayName) => {
 
   return horarios;
 };
-console.log(schedule());
+console.log(schedule('Monday'));
 
 const oldestFromFirstSpecies = (id) => {
   const func = employees.find(elemento => elemento.id === id);
