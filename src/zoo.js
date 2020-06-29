@@ -38,7 +38,7 @@ function animalsOlderThan(animal, age) {
 
 function employeeByName(employeeName) {
   // seu código aqui
-  if(employeeName === undefined) {
+  if (employeeName === undefined) {
     return {};
   }
   const employeeEncontrado = employees.find( buscaFuncionario => buscaFuncionario.firstName === employeeName );
@@ -58,7 +58,10 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   // seu código aqui
-  
+  const buscaId = employees.find(buscaGerente => buscaGerente.managers.find(gerenteId => gerenteId === id));
+  if (buscaId !== undefined)
+    return true;
+  return buscaId;
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
