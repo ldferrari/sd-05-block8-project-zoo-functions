@@ -11,17 +11,18 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 const { employees } = require('./data');
-const animals = data.animals  
+
+const animals = data.animals
 
 function animalsByIds(...ids) {
   if (ids.length === 0) return [];
-    else if (ids.length >= 1) {
+  else if (ids.length >= 1) {
     return animals.filter(animal => {
       for (let index = 0; index < ids.length; index += 1) {
-        if (animal.id === ids[index]) return true; 
+        if (animal.id === ids[index]) return true;
       }
-      return false; 
-    }) 
+      return false;
+    });
   }
 
   // seu código aqui
@@ -39,7 +40,7 @@ function employeeByName(employeeName) {
 }
 
 function createEmployee(personalInfo, associatedWith) {
-  return { ...personalInfo, ...associatedWith};
+  return { ...personalInfo, ...associatedWith };
 }
 
 function isManager(id) {
