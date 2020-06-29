@@ -13,8 +13,8 @@ const data = require('./data');
 
 const { animals } = data;
 const { employees } = data;
-const { prices } = data; 
- 
+const { prices } = data;
+
 function animalsByIds(...ids) {
   // seu código aqui
   const animalsArray = [];
@@ -92,7 +92,7 @@ function entryCalculator(entrants) {
   total = Adult * prices.Adult;
   total += Senior * prices.Senior;
   total += Child * prices.Child;
-  return total
+  return total;
 }
 
 function animalMap(options) {
