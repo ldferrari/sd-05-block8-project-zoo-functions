@@ -133,7 +133,7 @@ function schedule(dayName) {
   // seu código aqui
   const crono = Object.assign({}, hours);
   const dias = Object.keys(crono);
-  dias.forEach(dia => {
+  dias.forEach((dia) => {
     crono[dia] = `Open from ${crono[dia].open}am until ${crono[dia].close - 12}pm`
   if (dia === 'Monday') crono[dia] = 'CLOSED'
 })
@@ -147,6 +147,9 @@ function schedule(dayName) {
 
   function oldestFromFirstSpecies(id) {
     // seu código aqui
+    const idAnimal = employees.find(pessoa => pessoa.id === id).responsibleFor[0];
+    const {age, name, sex} = animals.find(animal => animal.id === idAnimal).residents.sort((a,b) => b.age -a.age)[0];
+    return [name, sex, age];
   }
 
   function increasePrices(percentage) {
