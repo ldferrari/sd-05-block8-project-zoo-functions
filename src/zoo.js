@@ -53,7 +53,7 @@ function employeeByName(employeeName) {
   if (employeeEncontrado !== undefined) {
     return employeeEncontrado;
   }
-    return employeeEncontrado2;
+  return employeeEncontrado2;
 }
 
 
@@ -119,7 +119,7 @@ function entryCalculator(entrants) {
   if (entrants === undefined || Object.keys(entrants).length === 0) {
     return 0;
   }
-  const {Adult = 0, Child = 0, Senior = 0} = entrants;
+  const { Adult = 0, Child = 0, Senior = 0 } = entrants;
   let total = Adult * prices.Adult;
   total += Child * prices.Child;
   total += Senior * prices.Senior;
@@ -135,8 +135,8 @@ function schedule(dayName) {
   const crono = Object.assign({}, hours);
   const dias = Object.keys(crono);
   dias.forEach((dia) => {
-    crono[dia] = `Open from ${crono[dia].open}am until ${crono[dia].close - 12}pm`
-    if (dia === 'Monday') crono[dia] = 'CLOSED'
+    crono[dia] = `Open from ${crono[dia].open}am until ${crono[dia].close - 12}pm`;
+    if (dia === 'Monday') crono[dia] = 'CLOSED';
   });
   if (dayName === undefined) {
     return crono;
@@ -149,7 +149,7 @@ function schedule(dayName) {
 function oldestFromFirstSpecies(id) {
   // seu código aqui
   const idAnimal = employees.find(pessoa => pessoa.id === id).responsibleFor[0];
-  const {age, name, sex} = animals.find(animal => animal.id === idAnimal).residents.sort((a,b) => b.age -a.age)[0];
+  const { age, name, sex } = animals.find(animal => animal.id === idAnimal).residents.sort((a , b) => b.age - a.age)[0];
   return [name, sex, age];
 }
 
@@ -176,6 +176,11 @@ function increasePrices(percentage) {
 
 function employeeCoverage(idOrName) {
   // seu código aqui
+  if (idOrName === undefined) {
+    return employees.forEach((pessoa) => {
+      const nomeCompleto = `${pessoa.firstName} ${pessoa,lastName}`
+    })
+  }
 }
 module.exports = {
   entryCalculator,
