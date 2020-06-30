@@ -92,7 +92,7 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
     managers,
   }, {
     responsibleFor,
-  })
+  });
   /* const outroFuncionario3 = createEmployee({
     id,
     firstName,
@@ -119,12 +119,10 @@ function entryCalculator(entrants) {
   if (entrants === undefined || Object.keys(entrants).length === 0) {
     return 0;
   }
-  const {
-    Adult = 0, Child = 0, Senior = 0
-  } = entrants;
-  let total = Adult * prices.Adult
-  total += Child * prices.Child
-  total += Senior * prices.Senior
+  const {Adult = 0, Child = 0, Senior = 0} = entrants;
+  let total = Adult * prices.Adult;
+  total += Child * prices.Child;
+  total += Senior * prices.Senior;
   return total;
 }
 
@@ -139,7 +137,7 @@ function schedule(dayName) {
   dias.forEach((dia) => {
     crono[dia] = `Open from ${crono[dia].open}am until ${crono[dia].close - 12}pm`
     if (dia === 'Monday') crono[dia] = 'CLOSED'
-  })
+  });
   if (dayName === undefined) {
     return crono;
   }
