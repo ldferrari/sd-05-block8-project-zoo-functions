@@ -129,10 +129,10 @@ function oldestFromFirstSpecies(id) {
 
 function increasePrices(percentage) {
   // seu código aqui
-  const porcentagem = percentage / 100 + 1;
+  const porcentagem = (percentage / 100) + 1;
   // const preco = prices.Adult * porcentagem;
   // prices.Adult = preco
-  prices.Adult = (Math.round(prices.Adult * porcentagem * 100)/100);
+  prices.Adult = (Math.round(prices.Adult * porcentagem * 100) / 100);
   /*
   9,999 => 999,9 -> 1000 -> toFixed = "10,00"
   9,999 -> 999,9 -> 1000 -> 10
