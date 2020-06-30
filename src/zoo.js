@@ -124,7 +124,7 @@ function oldestFromFirstSpecies(id) {
   const { name, sex, age } = animals.find(animal =>
     animal.id === idAnimal).residents.sort((a, b) =>
     b.age - a.age)[0];
- return [name, sex, age]
+  return [name, sex, age];
 }
 
 function increasePrices(percentage) {
