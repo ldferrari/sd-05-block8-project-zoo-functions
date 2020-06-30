@@ -71,13 +71,13 @@ function isManager(id) {
 
 function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
   // seu código aqui
-  const outroFuncionario = {
+  /* const outroFuncionario = {
     id,
     firstName,
     lastName,
     managers,
     responsibleFor
-  }
+  } */
   const outroFuncionario2 = Object.assign({}, {
     id
   }, {
@@ -89,7 +89,7 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
   }, {
     responsibleFor
   })
-  const outroFuncionario3 = createEmployee({
+  /* const outroFuncionario3 = createEmployee({
     id,
     firstName,
     lastName
@@ -98,7 +98,7 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
     responsibleFor
   })
   employees.push(outroFuncionario2);
-}
+} */
 
 function animalCount(species) {
   // seu código aqui
@@ -154,7 +154,10 @@ function schedule(dayName) {
 
   function increasePrices(percentage) {
     // seu código aqui
-    const divisor = percentage / 100;
+    const porcentagem = percentage / 100+1;
+    const preço = prices.Adult * porcentagem;
+
+    /* const divisor = percentage / 100;
     const {
       Adult,
       Senior,
@@ -164,7 +167,7 @@ function schedule(dayName) {
     prices.Senior = Math.round(Senior * (divisor + 1) * 100) / 100;
     prices.Child = Math.round(Child * (divisor + 1) * 100) / 100;
     return prices;
-  }
+  } */
 
   function employeeCoverage(idOrName) {
     // seu código aqui
