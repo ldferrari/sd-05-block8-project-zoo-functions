@@ -65,8 +65,8 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   // seu código aqui
-  const buscaId = employees.find(buscaGerente => buscaGerente.managers.find
-    (gerenteId => gerenteId === id));
+  const buscaId = employees.find(buscaGerente => buscaGerente.managers.find(gerenteId => gerenteId === id)
+  );
   if (buscaId !== undefined) {
     return true;
   }
@@ -83,15 +83,15 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
     responsibleFor
   } */
   const outroFuncionario2 = Object.assign({}, {
-    id
+    id,
   }, {
-    firstName
+    firstName,
   }, {
-    lastName
+    lastName,
   }, {
-    managers
+    managers,
   }, {
-    responsibleFor
+    responsibleFor,
   })
   /* const outroFuncionario3 = createEmployee({
     id,
