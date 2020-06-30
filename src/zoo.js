@@ -178,10 +178,12 @@ function employeeCoverage(idOrName) {
   // seu código aqui
   if (idOrName === undefined) {
     return employees.forEach((pessoa) => {
-      const nomeCompleto = `${pessoa.firstName} ${pessoa,lastName}`
+      const nomeCompleto = `${pessoa.firstName} ${pessoa.lastName}`;
+      const arrAnimal = animalsByIds(...pessoa.responsibleFor);
     })
   }
 }
+employeeCoverage();
 module.exports = {
   entryCalculator,
   schedule,
