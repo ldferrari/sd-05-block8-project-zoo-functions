@@ -52,10 +52,10 @@ function employeeByName(employeeName) {
     buscaFuncionario.lastName === employeeName);
   if (employeeEncontrado !== undefined) {
     return employeeEncontrado;
-  } else {
-    return employeeEncontrado2;
   }
+    return employeeEncontrado2;
 }
+
 
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
