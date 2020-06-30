@@ -144,51 +144,49 @@ function schedule(dayName) {
   return saida;
 }
 
-  function oldestFromFirstSpecies(id) {
-    // seu código aqui
-    const idAnimal = employees.find(pessoa => pessoa.id === id).responsibleFor[0];
-    const {age, name, sex} = animals.find(animal => animal.id === idAnimal).residents.sort((a,b) => b.age -a.age)[0];
-    return [name, sex, age];
-  }
+function oldestFromFirstSpecies(id) {
+  // seu código aqui
+  const idAnimal = employees.find(pessoa => pessoa.id === id).responsibleFor[0];
+  const {age, name, sex} = animals.find(animal => animal.id === idAnimal).residents.sort((a,b) => b.age -a.age)[0];
+  return [name, sex, age];
+}
 
-  function increasePrices(percentage) {
-    // seu código aqui
-    const porcentagem = percentage / 100+1;
-    /* const preço = prices.Adult * porcentagem;
-    prices.Adult = preco
-    prices.Adult = prices.Adult * porcentagem */
-    prices.Adult = (Math.round(prices.Adult * porcentagem * 100) / 100);
-    prices.Senior = (Math.round(prices.Senior * porcentagem * 100) / 100);
-    prices.Child = (Math.round(prices.Child * porcentagem * 100) / 100);
+function increasePrices(percentage) {
+  // seu código aqui
+  const porcentagem = (percentage / 100) + 1;
+  /* const preço = prices.Adult * porcentagem;
+  prices.Adult = preco
+  prices.Adult = prices.Adult * porcentagem */
+  prices.Adult = (Math.round(prices.Adult * porcentagem * 100) / 100);
+  prices.Senior = (Math.round(prices.Senior * porcentagem * 100) / 100);
+  prices.Child = (Math.round(prices.Child * porcentagem * 100) / 100);
+  /* const divisor = percentage / 100;
+  const {
+    Adult,
+    Senior,
+    Child
+  } = prices;
+  prices.Adult = Math.round(Adult * (divisor + 1) * 100) / 100;
+  prices.Senior = Math.round(Senior * (divisor + 1) * 100) / 100;
+  prices.Child = Math.round(Child * (divisor + 1) * 100) / 100;
+  return prices; */
+}
 
-    /* const divisor = percentage / 100;
-    const {
-      Adult,
-      Senior,
-      Child
-    } = prices;
-    prices.Adult = Math.round(Adult * (divisor + 1) * 100) / 100;
-    prices.Senior = Math.round(Senior * (divisor + 1) * 100) / 100;
-    prices.Child = Math.round(Child * (divisor + 1) * 100) / 100;
-    return prices; */
-  }
-
-  function employeeCoverage(idOrName) {
-    // seu código aqui
-  }
-
-  module.exports = {
-    entryCalculator,
-    schedule,
-    animalCount,
-    animalMap,
-    animalsByIds,
-    employeeByName,
-    employeeCoverage,
-    addEmployee,
-    isManager,
-    animalsOlderThan,
-    oldestFromFirstSpecies,
-    increasePrices,
-    createEmployee,
-  };
+function employeeCoverage(idOrName) {
+  // seu código aqui
+}
+module.exports = {
+  entryCalculator,
+  schedule,
+  animalCount,
+  animalMap,
+  animalsByIds,
+  employeeByName,
+  employeeCoverage,
+  addEmployee,
+  isManager,
+  animalsOlderThan,
+  oldestFromFirstSpecies,
+  increasePrices,
+  createEmployee,
+};
