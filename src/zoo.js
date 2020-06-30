@@ -155,7 +155,12 @@ function schedule(dayName) {
   function increasePrices(percentage) {
     // seu código aqui
     const porcentagem = percentage / 100+1;
-    const preço = prices.Adult * porcentagem;
+    /* const preço = prices.Adult * porcentagem;
+    prices.Adult = preco
+    prices.Adult = prices.Adult * porcentagem */
+    prices.Adult *= (Math.round(prices.Adult * porcentagem * 100) / 100);
+    prices.Senior *= (Math.round(prices.Senior * porcentagem * 100) / 100);
+    prices.Child *= (Math.round(prices.Child * porcentagem * 100) / 100);
 
     /* const divisor = percentage / 100;
     const {
