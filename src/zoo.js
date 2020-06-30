@@ -97,8 +97,8 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
     managers,
     responsibleFor
   })
-  employees.push(outroFuncionario2);
-} */
+  employees.push(outroFuncionario2); */
+}
 
 function animalCount(species) {
   // seu código aqui
@@ -109,7 +109,6 @@ function animalCount(species) {
   }
   return retornaObjeto[species];
 }
-animalCount('lions')
 
 function entryCalculator(entrants) {
   // seu código aqui
@@ -135,14 +134,14 @@ function schedule(dayName) {
   const dias = Object.keys(crono);
   dias.forEach((dia) => {
     crono[dia] = `Open from ${crono[dia].open}am until ${crono[dia].close - 12}pm`
-  if (dia === 'Monday') crono[dia] = 'CLOSED'
-})
+    if (dia === 'Monday') crono[dia] = 'CLOSED'
+  })
   if (dayName === undefined) {
     return crono;
   }
   const saida = {};
-    saida[dayName] = crono[dayName];
-    return saida;
+  saida[dayName] = crono[dayName];
+  return saida;
 }
 
   function oldestFromFirstSpecies(id) {
@@ -158,9 +157,9 @@ function schedule(dayName) {
     /* const preço = prices.Adult * porcentagem;
     prices.Adult = preco
     prices.Adult = prices.Adult * porcentagem */
-    prices.Adult *= (Math.round(prices.Adult * porcentagem * 100) / 100);
-    prices.Senior *= (Math.round(prices.Senior * porcentagem * 100) / 100);
-    prices.Child *= (Math.round(prices.Child * porcentagem * 100) / 100);
+    prices.Adult = (Math.round(prices.Adult * porcentagem * 100) / 100);
+    prices.Senior = (Math.round(prices.Senior * porcentagem * 100) / 100);
+    prices.Child = (Math.round(prices.Child * porcentagem * 100) / 100);
 
     /* const divisor = percentage / 100;
     const {
@@ -171,8 +170,8 @@ function schedule(dayName) {
     prices.Adult = Math.round(Adult * (divisor + 1) * 100) / 100;
     prices.Senior = Math.round(Senior * (divisor + 1) * 100) / 100;
     prices.Child = Math.round(Child * (divisor + 1) * 100) / 100;
-    return prices;
-  } */
+    return prices; */
+  }
 
   function employeeCoverage(idOrName) {
     // seu código aqui
