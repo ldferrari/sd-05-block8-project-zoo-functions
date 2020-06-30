@@ -46,8 +46,10 @@ function employeeByName(employeeName) {
   if (employeeName === undefined) {
     return {};
   }
-  const employeeEncontrado = employees.find(buscaFuncionario => buscaFuncionario.firstName === employeeName);
-  const employeeEncontrado2 = employees.find(buscaFuncionario => buscaFuncionario.lastName === employeeName);
+  const employeeEncontrado = employees.find(buscaFuncionario =>
+    buscaFuncionario.firstName === employeeName);
+  const employeeEncontrado2 = employees.find(buscaFuncionario =>
+    buscaFuncionario.lastName === employeeName);
   if (employeeEncontrado !== undefined) {
     return employeeEncontrado;
   } else {
@@ -63,9 +65,11 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   // seu código aqui
-  const buscaId = employees.find(buscaGerente => buscaGerente.managers.find(gerenteId => gerenteId === id));
-  if (buscaId !== undefined)
+  const buscaId = employees.find(buscaGerente => buscaGerente.managers.find
+    (gerenteId => gerenteId === id));
+  if (buscaId !== undefined) {
     return true;
+  }
   return buscaId;
 }
 
@@ -96,8 +100,8 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
   }, {
     managers,
     responsibleFor
-  })
-  employees.push(outroFuncionario2); */
+  }) */
+  employees.push(outroFuncionario2);
 }
 
 function animalCount(species) {
