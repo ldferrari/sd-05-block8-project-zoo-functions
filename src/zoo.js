@@ -15,7 +15,7 @@ const {
   prices,
   animals,
   employees,
-  hours
+  hours,
 } = data;
 
 function animalsByIds(...ids) {
@@ -50,7 +50,7 @@ function employeeByName(employeeName) {
   const employeeEncontrado2 = employees.find(buscaFuncionario => buscaFuncionario.lastName === employeeName);
   if (employeeEncontrado !== undefined) {
     return employeeEncontrado;
-  } else if (employeeEncontrado2 !== undefined) {
+  } else {
     return employeeEncontrado2;
   }
 }
