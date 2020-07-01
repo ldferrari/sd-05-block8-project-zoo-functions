@@ -20,7 +20,8 @@ function animalsByIds(...ids) {
   /*
   return = animals.filter(animalAtual => animalAtual.id === ids);
   */
-  return ids.map(variavelTemp => animals.find(animal => animal.id === variavelTemp));
+  return ids.map(idAtual => animals.find(animal => animal.id === idAtual))
+  // ids [1, 2] -> map -->(idAtual=1)-> objAnimalEncontrado
 }
 
 function animalsOlderThan(animal, age) {
@@ -61,7 +62,8 @@ function animalCount(species) {
 }
 
 function entryCalculator(entrants) {
-  if (entrants === undefined) {
+  if (entrants === undefined) {  // seu código aqui
+
     return 0;
   }
   if (Object.entries(entrants).length === 0) {
@@ -79,7 +81,9 @@ function animalMap(options) {
 function schedule(dayName) {
   const crono = Object.assign({}, hours);
   const dias = Object.keys(crono);
-  dias.forEach((dia) => {crono[dia] = `Open from ${crono[dia].open}am until ${crono[dia].close - 12}pm`;
+  dias.forEach((dia) => {
+    crono[dia] =
+    `Open from ${crono[dia].open}am until ${crono[dia].close - 12}pm`;
   if (dia === 'Monday') crono[dia] = 'CLOSED';
   });
     if (dayName === undefined) {
@@ -91,22 +95,44 @@ function schedule(dayName) {
 }
 
 function oldestFromFirstSpecies(idProcurado) {
-  /*
-  const idAnimal = employees.find(pessoa => pessoa.id === idProcurado).responsibleFor[0];
-  const animalSenior = animals.find(animal => animal.id === idAnimal).residents.sort[0]
-  */
+  const idAnimal = employees.find(pessoa =>
+    pessoa.id === idProcurado).responsibleFor[0];
+  const animalSenior = animals.find(animal =>
+    animal.id === idAnimal).residents.sort((a,b) => b.age - a.age)[0];
+  return [animalSenior.name, animalSenior.sex, animalSenior.age];
 }
 
 function increasePrices(percentage) {
-const porcentagem = (percentage / 100) +1;
-  prices.Adult = (Math.round(prices.Adult * porcentagem * 100) / 100);
+  const porcentagem = (percentage / 100) +1;
+  //prices.Adult = (Math.round(prices.Adult * porcentagem * 100) / 100);
+  prices.Adult = arredonda(prices.Adult, porcentagem);
   prices.Senior = (Math.round(prices.Senior * porcentagem * 100) / 100);
   prices.Child = (Math.round(prices.Child * porcentagem * 100) / 100);
 }
+function arredonda(valor, porcentagem) {
+  return (Math.round(valor * porcentagem * 100) / 100);  
+}
 
 function employeeCoverage(idOrName) {
-  // seu código aqui
+  const saida = {};
+  if (idOrName === undefined) {
+    employees.forEach((pessoa) => {
+    const nomeCompleto = `${pessoa.firstName} ${pessoa.lastName}`;
+    const arrAnimal = animalsByIds(...pessoa.responsibleFor)
+    .map(animal => animal.name);
+    saida[nomeCompleto] = arrAnimal;
+    });
+    return saida;
+  }
+  const pessoa = employees.find(funcionario => funcionario.id === idOrName ||
+    funcionario.lastName === idOrName || funcionario.firstName === idOrName);
+  const nomeCompleto = `${pessoa.firstName} ${pessoa.lastName}`;
+  const arrAnimal = animalsByIds(...pessoa.responsibleFor).map(animal => animal.name);
+  saida[nomeCompleto] = arrAnimal;
+  return saida;
 }
+
+employeeCoverage();
 
 module.exports = {
   entryCalculator,
