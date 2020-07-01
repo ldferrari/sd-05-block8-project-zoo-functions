@@ -23,7 +23,7 @@ function animalsByIds(...ids) {
   if (ids.length === 0) {
     return [];
   }
-  const armazenaDados = [];
+  /* const armazenaDados = [];
   animals.forEach((animal) => {
     ids.forEach((id) => {
       if (animal.id === id) {
@@ -31,8 +31,9 @@ function animalsByIds(...ids) {
       }
     });
   });
-  return armazenaDados;
+  return armazenaDados; */
   //  console.log(armazenaDados);
+  return ids.map( id => animals.find(animal=> animal.id === id ));
 }
 
 function animalsOlderThan(animal, age) {
@@ -56,7 +57,6 @@ function employeeByName(employeeName) {
   return employeeEncontrado2;
 }
 
-
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
   const newEmployee = Object.assign({}, personalInfo, associatedWith);
@@ -65,11 +65,8 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   // seu código aqui
-  const buscaId = employees.find(buscaGerente => buscaGerente.managers.find(gerenteId => gerenteId === id)
+  const buscaId = employees.some(employee => employee.managers.find(gerenteId => gerenteId === id)
   );
-  if (buscaId !== undefined) {
-    return true;
-  }
   return buscaId;
 }
 
@@ -176,14 +173,25 @@ function increasePrices(percentage) {
 
 function employeeCoverage(idOrName) {
   // seu código aqui
+  const saida = {};
   if (idOrName === undefined) {
-    return employees.forEach((pessoa) => {
-      const nomeCompleto = `${pessoa.firstName} ${pessoa.lastName}`;
-      const arrAnimal = animalsByIds(...pessoa.responsibleFor);
-    })
+    employees.forEach((employee) => {
+      const nomeCompleto = `${ employee.firstName } ${ employee.lastName }`;
+      const arrAnimal = animalsByIds(...employee.responsibleFor);
+      arrAnimal.forEach((animal, index, arr) => (arr[index] = animal.name));
+      saida[nomeCompleto] = arrAnimal;
+    });
+    return saida;
   }
+  const pessoa = employees.find(employee => employee.id === idOrName ||
+    employee.firstName === idOrName|| employee.lastName === idOrName);
+  const nomeCompleto = `${ pessoa.firstName } ${ pessoa.lastName }`;
+  const arrAnimal = animalsByIds(...pessoa.responsibleFor);
+  arrAnimal.forEach((animal, index, arr) => (arr[index] = animal.name));
+  saida[nomeCompleto] = arrAnimal;
+  return saida;
 }
-employeeCoverage();
+employeeCoverage('4b40a139-d4dc-4f09-822d-ec25e819a5ad')
 module.exports = {
   entryCalculator,
   schedule,
