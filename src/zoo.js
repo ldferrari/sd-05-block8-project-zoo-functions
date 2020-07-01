@@ -74,7 +74,7 @@ function entryCalculator(entrants) {
 }
 
 function animalMap(options) {
-  
+  // digite sua função aqui.
 }
 
 function schedule(dayName) {
@@ -104,14 +104,14 @@ function oldestFromFirstSpecies(idProcurado) {
 
 function increasePrices(percentage) {
   const porcentagem = (percentage / 100) + 1;
-  //prices.Adult = (Math.round(prices.Adult * porcentagem * 100) / 100);
-  prices.Adult = /*arredonda*/(Math.round(prices.Adult, porcentagem * 100) / 100);
+  // prices.Adult = (Math.round(prices.Adult * porcentagem * 100) / 100);
+  prices.Adult = /* arredonda */(Math.round(prices.Adult, porcentagem * 100) / 100);
   prices.Senior = (Math.round(prices.Senior * porcentagem * 100) / 100);
   prices.Child = (Math.round(prices.Child * porcentagem * 100) / 100);
 }
-/*function arredonda(valor, porcentagem) {
+/* function arredonda(valor, porcentagem) {
   return (Math.round(valor * porcentagem * 100) / 100);
-}*/
+} */
 
 function employeeCoverage(idOrName) {
   const saida = {};
