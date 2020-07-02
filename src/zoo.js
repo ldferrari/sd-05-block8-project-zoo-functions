@@ -135,32 +135,33 @@ function objZonas() {
 }
 function animalMap(options) {
   // seu código aqui
-  if(options===undefined) options={sex: '', includeNames : false, sorted : false}
- const {sex = '', includeNames = false, sorted = false}=options;
+  if ( options === undefined ) options = { sex: '', includeNames : false, sorted : false };
+  const { sex = '', includeNames = false, sorted = false } = options;
   const zonas = arrZonas();// recebe array
   const zonasObjeto = objZonas();// recebe objto
-  const arrAnimaisPorZona = zonas.map(zona => animals.filter(animal => animal.location === zona).map(animal => animal.name));
-  if(!includeNames && !sorted) {
-    arrAnimaisPorZona.forEach((valor,index) =>
-    zonasObjeto[zonas[index]] = arrAnimaisPorZona[index])
-    return zonasObjeto
+  const arrAnimaisPorZona = zonas.map(zona => animals.filter(animal =>
+    animal.location === zona).map(animal => animal.name));
+  if (!includeNames && !sorted) {
+    arrAnimaisPorZona.forEach((valor , index) =>
+    zonasObjeto[zonas[index]] = arrAnimaisPorZona[index]);
+    return zonasObjeto;
   }
-  if(includeNames) {
-    arrAnimaisPorZona.forEach((especies,index) => {
-      const saidaPorIndex = especies.map(especie => {
+  if (includeNames) {
+    arrAnimaisPorZona.forEach((especies , index) => {
+      const saidaPorIndex = (especies.map(especie)) => {
         const objEspecie = {};
         let arrResidentes = animals.find(animal => animal.name === especie).residents;
-        if(sex !== '') arrResidentes=arrResidentes.filter(individuo => individuo.sex === sex);
-        if(sorted===true) {
-          arrResidentes= arrResidentes.map(resident => resident.name).sort();
-          objEspecie[especie]=arrResidentes;
+        if (sex !== '') arrResidentes = arrResidentes.filter(individuo => individuo.sex === sex);
+        if (sorted === true) {
+          arrResidentes = arrResidentes.map(resident => resident.name).sort();
+          objEspecie[especie] = arrResidentes;
           return objEspecie;
-          }
-        objEspecie[especie] =arrResidentes.map(resident => resident.name)
+        }
+        objEspecie[especie] =arrResidentes.map(resident => resident.name);
         return objEspecie;
-      })
+      });
       zonasObjeto[zonas[index]] = saidaPorIndex;
-    })
+    });
     return zonasObjeto;
   }
 }
