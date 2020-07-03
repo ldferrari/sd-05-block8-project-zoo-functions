@@ -147,7 +147,7 @@ function employeeCoverage(idOrName) {
 
   // combo de todos:
   const combo = {};
-  employees.forEach( (funcionario) => {
+  employees.forEach((funcionario) => {
     const nome = `${funcionario.firstName} ${funcionario.lastName}`;
     combo[nome] = funcionario.responsibleFor
     .map(id => animals.find(bich => bich.id === id).name);
