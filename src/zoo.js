@@ -136,12 +136,11 @@ function employeeCoverage(idOrName) {
   // seu código aqui
   // achar com id e nome
   if(idOrName != undefined) {
-    const trabalhador = employees.find(colaborador => 
-      colaborador.id === idOrName || colaborador.firstName === idOrName || colaborador.lastName === idOrName);
+    const trabalhador = employees.find(colaborador => colaborador.id === idOrName || colaborador.firstName === idOrName || colaborador.lastName === idOrName);
     const naming = `${trabalhador.firstName} ${trabalhador.lastName}`;
-    const colabrespon = trabalhador.responsibleFor;  
+    const colabrespon = trabalhador.responsibleFor;
     const responsavelpor = colabrespon.map(id => id === animals.find(bicho => bicho.id === id).name);
-    const resultado = {}
+    const resultado = {};
     resultado[naming] = responsavelpor;
   return resultado;
   }
@@ -159,8 +158,7 @@ function employeeCoverage(idOrName) {
   // const trabalhador = employees.find(trabalhador => trabalhador.firstName === idOrName ||trabalhador.lastName === idOrName).responsibleFor;
   // const bichosdotrabalhador = trabalhador.forEach(id => id === animals
   //   .find(bicho => bicho.id === id).name);
-
-  //idOrName !== undefined ? responsavelpor : combo;
+  // idOrName !== undefined ? responsavelpor : combo;
 
   // if(typeof idOrName === Number){return responsavelpor}
   // else if (typeof idOrName === String){return bichosdotrabalhador}
