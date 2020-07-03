@@ -79,35 +79,36 @@ function entryCalculator(entrants) {
   return arrayPrices.reduce(accPrice, 0);
 }
 
-function animalMap(options) {
+const animalMap = options => {
   // seu código aqui
   // primeiro test sem param
   const arrayCities = ['NE', 'NW', 'SE', 'SW'];
   const animalsPerCity = {};
   arrayCities.forEach((city) => {
-    animalsPerCity[city] = animals.filter(animal => animal.location === city)
-  .map(obj => obj.name);
-});
-if (!options) return animalsPerCity;
-// segundo test com options = {(includeNames: true)}
-const { includeNames= false, sorted= false, sex= undefined} = options;
-const animalsEachCity = {};
-if (includeNames === true){
-  arrayCities.forEach((city) => {
-    animalsEachCity[city] = animals.filter(animal => animal.location === city)
-  .map(obj => {
-    let allResidents = obj.residents;
-    // quarto e quinto test com param sex
-    if (sex) allResidents = allResidents.filter(res => res.sex === sex);
-    if (sorted) return ({ [obj.name] : allResidents.map(res => res.name).sort() });
-    // terceiro test com options = {(includeNames: true; sorted: true)}
-    return ({ [obj.name] : allResidents.map(res => res.name) });
+    animalsPerCity[city] = animals.filter(animal => animal.location === city).map(obj => obj.name);
   });
-});
-return animalsEachCity;
-}
-return animalsPerCity;
-}
+  if (!options) return animalsPerCity;
+  // segundo test com options = {(includeNames: true)}
+  const { includeNames = false, sorted = false, sex = undefined } = options;
+  const animalsEachCity = {};
+  if (includeNames === true) {
+    arrayCities.forEach((city) => {
+      animalsEachCity[city] = animals
+        .filter(animal => animal.location === city)
+        .map((obj) => {
+          let allResidents = obj.residents;
+          // quarto e quinto test com param sex
+          if (sex) {
+            allResidents = allResidents.filter(res => res.sex === sex);
+          }
+          if (sorted) return { [obj.name]: allResidents.map(res => res.name).sort() };
+          return { [obj.name]: allResidents.map(res => res.name) };
+        });
+    });
+    return animalsEachCity;
+  }
+  return animalsPerCity;
+};
 
 function schedule(dayName) {
   // 1. preparar retorno para cada dia com forEach e template string, inclusive monday closed
