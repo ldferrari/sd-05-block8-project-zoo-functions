@@ -79,7 +79,7 @@ function entryCalculator(entrants) {
   return arrayPrices.reduce(accPrice, 0);
 }
 
-const animalMap = options => {
+function animalMap(options) {
   // seu código aqui
   // primeiro test sem param
   const arrayCities = ['NE', 'NW', 'SE', 'SW'];
