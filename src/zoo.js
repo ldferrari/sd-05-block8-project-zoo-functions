@@ -96,9 +96,47 @@ function entryCalculator(entrants) {
   return total;
 }
 
+// function arrZonas() {
+//   const zonas = {};
+//   animals.forEach(animal => (zonas[animal.location]) = 0);
+//   return Object.keys(zonas); // interface Object.keys retorna um array
+// }
+
+// function objZonas() {
+//   const zonas = {};
+//   animals.forEach(animal => (zonas[animal.location]) = 0);
+//   return zonas; // retorna um objeto
+// }
+
 function animalMap(options) {
   // seu código aqui
+  const zonas = ['NE', 'NW', 'SE', 'SW'];
+  const objetoSaida = {};
+  const { includeNames = false, sorted = false, sex = '' } =
+  options === undefined ? { includeNames: false, sorted: false, sex: '' } : options;
+  if (includeNames === true) {
+    zonas.forEach(function (zona) {
+      objetoSaida[zona] = animals.filter(local => local.location === zona).map((objeto) => {
+        const tipo = {};
+        tipo[objeto.name] = objeto.residents;
+        if (sex !== '') {
+          tipo[objeto.name] = tipo[objeto.name].filter(animalSex =>
+          animalSex.sex === sex);
+        }
+        tipo[objeto.name] = tipo[objeto.name].map(nome => nome.name);
+        if (sorted === true) tipo[objeto.name].sort();
+        return tipo;
+      });
+    });
+    return objetoSaida;
+  }
+  zonas.forEach(function (zona) {
+    objetoSaida[zona] = animals.filter(local =>
+    local.location === zona).map(objeto => objeto.name);
+  });
+  return objetoSaida;
 }
+animalMap();
 
 function schedule(dayName) {
   // seu código aqui
