@@ -74,7 +74,34 @@ function entryCalculator(entrants) {
 }
 
 function animalMap(options) {
-  // seu código aqui
+  // primeiro test sem param
+  const arrayLocations = ['NE', 'NW', 'SE', 'SW'];
+  const animalsPerLocation = {};
+  arrayLocations.forEach((city) => {
+    animalsPerLocation[city] = animals.filter(animal => animal.location === city)
+                                      .map(obj => obj.name);
+  });
+  if (!options) return animalsPerLocation;
+  // segundo test com options = {(includeNames: true)}
+  const { includeNames = false, sorted = false, sex = undefined } = options;
+  const animalsEachLocation = {};
+  if (includeNames === true) {
+    arrayLocations.forEach((city) => {
+      animalsEachLocation[city] = animals
+        .filter(animal => animal.location === city)
+        .map((obj) => {
+          let allResidents = obj.residents;
+          // quarto e quinto test com param sex
+          if (sex) {
+            allResidents = allResidents.filter(res => res.sex === sex);
+          }
+          if (sorted) return { [obj.name]: allResidents.map(res => res.name).sort() };
+          return { [obj.name]: allResidents.map(res => res.name) };
+        });
+    });
+    return animalsEachLocation;
+  }
+  return animalsPerLocation;
 }
 
 function schedule(dayName) {
@@ -111,16 +138,20 @@ function oldestFromFirstSpecies(id) {
 }
 
 function increasePrices(percentage) {
-  const { Adult: adultTicket, Senior: seniorTicket, Child: childTicket } = prices;
-
-  const priceIncrease = {
-    Adult: Math.round((adultTicket * 100) * (1 + (percentage / 100))).toFixed(2) / 100,
-    Senior: Math.round((seniorTicket * 100) * (1 + (percentage / 100))).toFixed(2) / 100,
-    Child: Math.round((childTicket * 100) * (1 + (percentage / 100))).toFixed(2) / 100,
-  };
-
-  return Object.assign(prices, priceIncrease);
+  Object.keys(prices).forEach(function (ticket) {
+    prices[ticket] =
+    Math.round((prices[ticket] * 100) * (1 + (percentage / 100))).toFixed(2) / 100;
+  });
 }
+  // const { Adult: adultTicket, Senior: seniorTicket, Child: childTicket } = prices;
+
+  // const priceIncrease = {
+  //   Adult: Math.round((adultTicket * 100) * (1 + (percentage / 100))).toFixed(2) / 100,
+  //   Senior: Math.round((seniorTicket * 100) * (1 + (percentage / 100))).toFixed(2) / 100,
+  //   Child: Math.round((childTicket * 100) * (1 + (percentage / 100))).toFixed(2) / 100,
+  // };
+
+  // return Object.assign(prices, priceIncrease);
 
 function employeeCoverage(idOrName) {
   if (!idOrName) {
