@@ -139,7 +139,7 @@ function employeeCoverage(idOrName) {
       .find(c => c.id === idOrName || c.firstName === idOrName || c.lastName === idOrName);
     const naming = `${trabalhador.firstName} ${trabalhador.lastName}`;
     const colabrespon = trabalhador.responsibleFor;
-    const respor = colabrespon.map(id => id === animals.find(bicho => bicho.id === id).name);
+    const respor = colabrespon.map(id => animals.find(bicho => bicho.id === id).name);
     const resultado = {};
     resultado[naming] = respor;
     return resultado;
