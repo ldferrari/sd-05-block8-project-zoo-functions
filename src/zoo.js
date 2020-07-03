@@ -108,7 +108,7 @@ function animalMap(options) {
     return animalsEachCity;
   }
   return animalsPerCity;
-};
+}
 
 function schedule(dayName) {
   // 1. preparar retorno para cada dia com forEach e template string, inclusive monday closed
