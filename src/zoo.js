@@ -129,32 +129,34 @@ function increasePrices(percentage) {
 //     combo[nome] = funcionario.responsibleFor
 //     .map(id => animals.find(bich => bich.id === id).name);
 //   });
-  
 // console.log(combo)
 
 function employeeCoverage(idOrName) {
   // seu código aqui
   // achar com id e nome
-  if(idOrName != undefined) {
-    const trabalhador = employees.find(colaborador => colaborador.id === idOrName || colaborador.firstName === idOrName || colaborador.lastName === idOrName);
+  if (idOrName !== undefined) {
+    const trabalhador = employees
+      .find(c => c.id === idOrName || c.firstName === idOrName || c.lastName === idOrName);
     const naming = `${trabalhador.firstName} ${trabalhador.lastName}`;
     const colabrespon = trabalhador.responsibleFor;
-    const responsavelpor = colabrespon.map(id => id === animals.find(bicho => bicho.id === id).name);
+    const respor = colabrespon.map(id => id === animals.find(bicho => bicho.id === id).name);
     const resultado = {};
-    resultado[naming] = responsavelpor;
-  return resultado;
+    resultado[naming] = respor;
+    return resultado;
   }
 
   // combo de todos:
   const combo = {};
-  employees.forEach(funcionario => {
+  employees.forEach( (funcionario) => {
     const nome = `${funcionario.firstName} ${funcionario.lastName}`;
     combo[nome] = funcionario.responsibleFor
     .map(id => animals.find(bich => bich.id === id).name);
   });
   return combo;
   // // achar com primeiro nome ou com sobrenome
-  // const trabalhador = employees.find(trabalhador => trabalhador.firstName === idOrName ||trabalhador.lastName === idOrName).responsibleFor;
+  // const trabalhador = employees
+  // .find(trabalhador => trabalhador.firstName === idOrName ||trabalhador.lastName === idOrName)
+  // .responsibleFor;
   // const bichosdotrabalhador = trabalhador.forEach(id => id === animals
   //   .find(bicho => bicho.id === id).name);
   // idOrName !== undefined ? responsavelpor : combo;
