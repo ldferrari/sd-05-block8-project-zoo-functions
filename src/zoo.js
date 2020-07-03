@@ -122,48 +122,33 @@ function entryCalculator(entrants) {
   return total;
 }
 
-function arrZonas() {
-  const zonas = {};
-  animals.forEach(animal => zonas[animal.location] = 0);
-  return Object.keys(zonas);
-}
-
-function objZonas() {
-  const zonas = {};
-  animals.forEach(animal => zonas[animal.location] = 0);
-  return zonas;
-}
 function animalMap(options) {
   // seu código aqui
-  if ( options === undefined ) options = { sex: '', includeNames : false, sorted : false };
-  const { sex = '', includeNames = false, sorted = false } = options;
-  const zonas = arrZonas();// recebe array
-  const zonasObjeto = objZonas();// recebe objto
-  const arrAnimaisPorZona = zonas.map(zona => animals.filter(animal =>
-    animal.location === zona).map(animal => animal.name));
-  if (!includeNames && !sorted) {
-    arrAnimaisPorZona.forEach((valor , index) =>
-    zonasObjeto[zonas[index]] = arrAnimaisPorZona[index]);
-    return zonasObjeto;
-  }
-  if (includeNames) {
-    arrAnimaisPorZona.forEach((especies , index) => {
-      const saidaPorIndex = (especies.map(especie)) => {
-        const objEspecie = {};
-        let arrResidentes = animals.find(animal => animal.name === especie).residents;
-        if (sex !== '') arrResidentes = arrResidentes.filter(individuo => individuo.sex === sex);
-        if (sorted === true) {
-          arrResidentes = arrResidentes.map(resident => resident.name).sort();
-          objEspecie[especie] = arrResidentes;
-          return objEspecie;
+  const zonas = ['NE', 'NW', 'SE', 'SW'];
+  const objetoSaida = {};
+  const { includeNames = false, sorted = false, sex = '' } =
+  options === undefined ? { includeNames: false, sorted: false, sex: '' } : options;
+  if (includeNames === true) {
+    zonas.forEach(function (zona) {
+      objetoSaida[zona] = animals.filter(local => local.location === zona).map((objeto) => {
+        const tipo = {};
+        tipo[objeto.name] = objeto.residents;
+        if (sex !== '') {
+          tipo[objeto.name] = tipo[objeto.name].filter(animalSex =>
+          animalSex.sex === sex);
         }
-        objEspecie[especie] =arrResidentes.map(resident => resident.name);
-        return objEspecie;
+        tipo[objeto.name] = tipo[objeto.name].map(nome => nome.name);
+        if (sorted === true) tipo[objeto.name].sort();
+        return tipo;
       });
-      zonasObjeto[zonas[index]] = saidaPorIndex;
     });
-    return zonasObjeto;
+    return objetoSaida;
   }
+  zonas.forEach(function (zona) {
+    objetoSaida[zona] = animals.filter(local =>
+    local.location === zona).map(objeto => objeto.name);
+  });
+  return objetoSaida;
 }
 
 function schedule(dayName) {
