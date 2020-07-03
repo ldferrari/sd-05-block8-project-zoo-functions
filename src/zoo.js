@@ -153,13 +153,11 @@ function employeeCoverage(idOrName) {
     .map(id => animals.find(bich => bich.id === id).name);
   });
   return combo;
-
   // // achar com primeiro nome ou com sobrenome
   // const trabalhador = employees.find(trabalhador => trabalhador.firstName === idOrName ||trabalhador.lastName === idOrName).responsibleFor;
   // const bichosdotrabalhador = trabalhador.forEach(id => id === animals
   //   .find(bicho => bicho.id === id).name);
   // idOrName !== undefined ? responsavelpor : combo;
-
   // if(typeof idOrName === Number){return responsavelpor}
   // else if (typeof idOrName === String){return bichosdotrabalhador}
   // return combo;
