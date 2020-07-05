@@ -27,7 +27,7 @@ console.log(animalsByIds('01422318-ca2d-46b8-b66c-3e9e188244ed'))
 */
 function animalsOlderThan(animal, age) {
 /*
-passados o nome de uma espécie e uma idade, testa se todos os animais desta
+passados o nome de uma espécie e uma idade, testa se residentes os animais desta
 espécie possuem a idade mínima especificada
 */
   const relatorio = [];
@@ -90,6 +90,7 @@ testa se o id passado é de um gerente
   funcionario.managers.find(managers => managers === id));
   return empregado;
 }
+console.log(isManager('c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1'))
 /*
 console.log(isManager('c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1'))
 ------------------------------------------------------------------
@@ -145,6 +146,7 @@ sem parâmetros, retorna animais e suas quantidades
   .reduce((valorAcumulador, animais) => (valorAcumulador = animais.residents), 0);
   return especie.length;
 }
+console.log(animalCount())
 /*
 console.log(animalCount())
 ------------------------------------------------------------------
@@ -162,14 +164,54 @@ retorna o preço total a ser cobrado dado o número de adultos, crianças e idos
   }, 0);
   return soma;
 }
+console.log(entryCalculator({ 'Adult': 3, 'Child': 3, 'Senior': 1 }));
 
 /*
 console.log(entryCalculator({ 'Adult': 2, 'Child': 3, 'Senior': 1 }));
 ------------------------------------------------------------------
 */
+const localiza = () => {
+    // populando um objeto com as chaves de localizacao
+  const porLocalizacao = {};
+  data.animals.forEach((especie) => {
+    if (!porLocalizacao[especie.location]) porLocalizacao[especie.location] = [];
+    if (porLocalizacao[especie.location]) porLocalizacao[especie.location].push(especie.name);
+  });
+  return porLocalizacao;
+};
+//------------------------------------------------
 function animalMap(options) {
-  // seu código aqui
+  const { animals } = data;
+  // funcao chamada sem parâmetros, retorna animais categorizados por localização
+  if (!options) localiza;
+  // funcao chamada com parâmetros, retorna animais categorizados por localização
+  // de forma personalizada com os nomes de seus respectivos residentes
+  if (options) {
+    const { includeNames = false, sex = undefined, sorted = false } = options;
+    if (includeNames === true) {
+      const porLocal = {};
+      const location = Object.keys(localiza());
+      location.forEach((local) => {
+      // console.log(porLocal[local] = local)
+      // console.log(porLocal)
+        porLocal[local] = animals.filter(animal => animal.location === local).map((animal) => {
+          let residentes = animal.residents;
+  // com opções especificadas, retorna somente nomes de animais macho/fêmea
+          if (sex) residentes = residentes.filter(animalzinho => animalzinho.sex === sex);
+  // com opções 'sorted' especificadas, retorna nomes de animais ordenados
+          if (sorted) return { [animal.name]: residentes.map(individuo => individuo.name).sort() };
+          return { [animal.name]: residentes.map(individuo => individuo.name) };
+        });
+      });
+      return porLocal;
+    }
+  }
+  return localiza();
 }
+// options = { includeNames: true, sex: 'female' }
+// options = { sex: 'female' }
+// console.log(animalMap());
+console.log(animalMap());
 //------------------------------------------------------------------
 function schedule(dayName) {
 // funcao pra verifica dia da semana
@@ -190,8 +232,10 @@ sem parâmetros, retorna um cronograma legível para humanos
   Object.keys(hours).forEach(dias => (weekDays[dias] = checkWeekday(dias)));
   return weekDays;
 }
+console.log(schedule('Saturday'));
+
 /*
-schedule();
+console.log(schedule());
 ------------------------------------------------------------------
 */
 function oldestFromFirstSpecies(id) {
@@ -211,7 +255,7 @@ function increasePrices(percentage) {
   Object.keys(prices).forEach(preco => (prices[preco] = Number(
     (prices[preco] * ((percentage * 0.01) + 1.0001)).toFixed(2))));
     /*
-data uma porcentagem, incrementa todos os preços, arrendondados em duas casas decimais
+data uma porcentagem, incrementa residentes os preços, arrendondados em duas casas decimais
      for (i in data.prices){
        data.prices[i] = Number((data.prices[i] * (percentage *0.01 + 1.0001)).toFixed(2))
      }
@@ -253,7 +297,7 @@ function employeeCoverage(idOrName) {
   });
   return funcionario;
 }
-// console.log(employeeCoverage());
+ console.log(employeeCoverage());
 //------------------------------------------------------------------
 module.exports = {
   entryCalculator,
