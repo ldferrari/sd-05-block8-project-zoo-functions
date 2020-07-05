@@ -76,7 +76,8 @@ function animalMap(options) {
   options === undefined ? { includeNames: false, sorted: false, sex: '' } : options;
   if (includeNames === true) {
     zones.forEach(function (zone) {
-      animalMapReturn[zone] = animals.filter(animal => animal.location === zone).map((animalObj) => {
+      animalMapReturn[zone] = animals.filter(animal => animal.location === zone)
+      .map((animalObj) => {
         const type = {};
         type[animalObj.name] = animalObj.residents;
         if (sex !== '') {
