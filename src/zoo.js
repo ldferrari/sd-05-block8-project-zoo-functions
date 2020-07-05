@@ -70,6 +70,31 @@ function entryCalculator(entrants) {
 
 function animalMap(options) {
   // seu código aqui
+  const zones = ['NE', 'NW', 'SE', 'SW'];
+  const animalMapReturn = {};
+  const { includeNames = false, sorted = false, sex = '' } =
+  options === undefined ? { includeNames: false, sorted: false, sex: '' } : options;
+  if (includeNames === true) {
+    zones.forEach(function (zone) {
+      animalMapReturn[zone] = animals.filter(animal => animal.location === zone).map((animalObj) => {
+        const type = {};
+        type[animalObj.name] = animalObj.residents;
+        if (sex !== '') {
+          type[animalObj.name] = type[animalObj.name].filter(animalSex =>
+          animalSex.sex === sex);
+        }
+        type[animalObj.name] = type[animalObj.name].map(nome => nome.name);
+        if (sorted === true) type[animalObj.name].sort();
+        return type;
+      });
+    });
+    return animalMapReturn;
+  }
+  zones.forEach(function (zone) {
+    animalMapReturn[zone] = animals.filter(animal =>
+    animal.location === zone).map(animalObj => animalObj.name);
+  });
+  return animalMapReturn;
 }
 
 function schedule(dayName) {
@@ -131,8 +156,6 @@ function employeeCoverage(idOrName) {
   employees.forEach(person => Object.assign(objectToReturn, employeeCoveragePerson(person.id)));
   return objectToReturn;
 }
-// employeeCoverage('b0dc644a-5335-489b-8a2c-4e086c7819a2');
-console.log(employeeCoverage());
 
 module.exports = {
   entryCalculator,
