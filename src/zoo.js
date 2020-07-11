@@ -10,6 +10,7 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
+
 const { animals } = data;
 const { employees } = data;
 const { managers } = data;
@@ -17,8 +18,8 @@ const { managers } = data;
 function animalsByIds(...ids) {
   if (ids === undefined) return ([]);
   const animaisF = [];
-  ids.forEach(element => {
-    animaisF.push(animals.find(animal => animal.id === element));
+  ids.forEach((id) => {
+    animaisF.push(animals.find(animal => animal.id === id));
   });
   return animaisF;
 }
@@ -29,8 +30,9 @@ function animalsOlderThan(animal, age) {
 }
 
 function employeeByName(employeeName) {
-  if(employeeName === undefined) return {};
-  return employees.find((empregado) => empregado.firstName === employeeName || empregado.lastName === employeeName);
+  if (employeeName === undefined) return {};
+  return employees.find(empregado => 
+  empregado.firstName === employeeName || empregado.lastName === employeeName);
 }
 
 function createEmployee(personalInfo, associatedWith) {
@@ -39,9 +41,7 @@ function createEmployee(personalInfo, associatedWith) {
 }
 
 function isManager(id) {
-  const serOuNaoSer = managers.find(gerente => gerente.id === id);
-  if (serOuNaoSer === undefined) {return false}
-  else if (serOuNaoSer !== undefined) {return true};
+  
 }
 
 function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
@@ -61,7 +61,7 @@ function animalCount(species) {
       const nome = animal.name;
       const total = animal.residents.length;
       retorno[nome] = total;
-    })
+    });
     return retorno;
   }
   const recinto = animals.find(especie => especie.name === species);
@@ -69,7 +69,7 @@ function animalCount(species) {
 }
 
 function entryCalculator(entrants) {
-  // seu código aqui
+
 }
 
 function animalMap(options) {
