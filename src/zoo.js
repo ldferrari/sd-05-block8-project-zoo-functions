@@ -13,7 +13,6 @@ const data = require('./data');
 
 const { animals } = data;
 const { employees } = data;
-const { managers } = data;
 
 function animalsByIds(...ids) {
   if (ids === undefined) return ([]);
@@ -31,7 +30,7 @@ function animalsOlderThan(animal, age) {
 
 function employeeByName(employeeName) {
   if (employeeName === undefined) return {};
-  return employees.find(empregado => 
+  return employees.find(empregado =>
   empregado.firstName === employeeName || empregado.lastName === employeeName);
 }
 
@@ -41,7 +40,7 @@ function createEmployee(personalInfo, associatedWith) {
 }
 
 function isManager(id) {
-  
+
 }
 
 function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
