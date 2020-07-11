@@ -69,7 +69,9 @@ function animalCount(species) {
 function entryCalculator(entrants) {
   if (entrants === undefined || Object.entries(entrants).length === 0) return 0;
   const ingressos = Object.values(entrants);
-  const conta = prices.Adult * ingressos[0] + prices.Child * ingressos[1] + prices.Senior * ingressos[2];
+  const conta = (prices.Adult * ingressos[0]) + 
+  (prices.Child * ingressos[1]) + 
+  (prices.Senior * ingressos[2]);
   return conta;
 }
 
