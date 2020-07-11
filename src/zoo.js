@@ -10,33 +10,62 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
+const { animals } = data;
+const { employees } = data;
+const { managers } = data;
 
-function animalsByIds(ids) {
-  // seu código aqui
+function animalsByIds(...ids) {
+  if (ids === undefined) return ([]);
+  const animaisF = [];
+  ids.forEach(element => {
+    animaisF.push(animals.find(animal => animal.id === element));
+  });
+  return animaisF;
 }
 
 function animalsOlderThan(animal, age) {
-  // seu código aqui
+  const bicho = animals.find(({ name }) => name === animal);
+  return bicho.residents.every(individuo => individuo.age > age);
 }
 
 function employeeByName(employeeName) {
-  // seu código aqui
+  if(employeeName === undefined) return {};
+  return employees.find((empregado) => empregado.firstName === employeeName || empregado.lastName === employeeName);
 }
 
 function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
+  const novoEmpregado = Object.assign(personalInfo, associatedWith);
+  return novoEmpregado;
 }
 
 function isManager(id) {
-  // seu código aqui
+  const serOuNaoSer = managers.find(gerente => gerente.id === id);
+  if (serOuNaoSer === undefined) {return false}
+  else if (serOuNaoSer !== undefined) {return true};
 }
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-  // seu código aqui
+function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
+  const novoEmpregado = {};
+  novoEmpregado.id = id;
+  novoEmpregado.firstName = firstName;
+  novoEmpregado.lastName = lastName;
+  novoEmpregado.managers = managers;
+  novoEmpregado.responsibleFor = responsibleFor;
+  employees.push(novoEmpregado);
 }
 
 function animalCount(species) {
-  // seu código aqui
+  if (species === undefined) {
+    const retorno = {};
+    animals.forEach((animal) => {
+      const nome = animal.name;
+      const total = animal.residents.length;
+      retorno[nome] = total;
+    })
+    return retorno;
+  }
+  const recinto = animals.find(especie => especie.name === species);
+  return recinto.residents.length;
 }
 
 function entryCalculator(entrants) {
