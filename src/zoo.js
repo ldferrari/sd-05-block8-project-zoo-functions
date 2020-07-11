@@ -90,7 +90,7 @@ function oldestFromFirstSpecies(id) {
   const bicho = animals.find(animal => animal.id === responsibleFor[0]).residents;
   let idoso = { age: 0 };
   bicho.forEach((animal) => {
-    if (animal.age > idoso.age) idoso = animal
+    if (animal.age > idoso.age) idoso = animal;
   });
   return [idoso.name, idoso.sex, idoso.age];
 }
