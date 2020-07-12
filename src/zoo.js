@@ -82,18 +82,18 @@ function animalMap(options) {
 
 function schedule(dayName) {
   let parametro = ['Tuesday', 'Wednesday', 'Thursday',
-  'Friday', 'Saturday', 'Sunday', 'Monday'];
+    'Friday', 'Saturday', 'Sunday', 'Monday'];
   if (dayName !== undefined) parametro = [dayName];
   const toPMFormat = (hora) => {
     let horario = hora;
     if (horario > 12) {
-      horario = `${horario-12}pm`;
+      horario = `${horario - 12}pm`;
       return horario;
     }
     horario = `${horario}am`;
     return horario;
-  }
-  const scheduleFetcher = (horarios) => hours[horarios];
+  };
+  const scheduleFetcher = horarios => hours[horarios];
   const retorno = {};
   parametro.forEach((dia) => {
     if (dia === 'Monday') {
@@ -101,10 +101,10 @@ function schedule(dayName) {
     } else {
       const abertura = toPMFormat(scheduleFetcher(dia).open);
       const fechamento = toPMFormat(scheduleFetcher(dia).close);
-      const value = `Open from ${abertura} until ${fechamento}`
+      const value = `Open from ${abertura} until ${fechamento}`;
       retorno[dia] = value;
     }
-  })
+  });
   return retorno;
 }
 
