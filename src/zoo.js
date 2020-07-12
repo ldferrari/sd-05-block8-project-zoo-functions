@@ -103,14 +103,13 @@ function increasePrices(percentage) {
 
 function employeeCoverage(idOrName) {
   let parametro = ['Nigel', 'Burl', 'Ola', 'Wilburn',
-  'Stephanie', 'Sharonda', 'Ardith', 'Emery'];
+    'Stephanie', 'Sharonda', 'Ardith', 'Emery'];
 
-  if (typeof(idOrName) === "string") parametro = [idOrName];
+  if (typeof (idOrName) === 'string') parametro = [idOrName];
 
-  const employeeFinder = (IdOuNome) => {
-    return employees.find(empregado => empregado.id === IdOuNome ||
+  const employeeFinder = IdOuNome => 
+    employees.find(empregado => empregado.id === IdOuNome ||
       empregado.firstName === IdOuNome || empregado.lastName === IdOuNome);
-  };
 
   const conversorIdToName = (ids) => {
     const nomes = [];
@@ -127,9 +126,9 @@ function employeeCoverage(idOrName) {
     const { responsibleFor } = empregado;
     const responsabilidades = conversorIdToName(responsibleFor);
     retorno[nomeCompleto] = responsabilidades;
-  })
+  });
   return retorno;
-}
+};
 
 module.exports = {
   entryCalculator,
