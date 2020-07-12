@@ -102,7 +102,33 @@ function increasePrices(percentage) {
 }
 
 function employeeCoverage(idOrName) {
-  // seu código aqui
+  let parametro = ['Nigel', 'Burl', 'Ola', 'Wilburn',
+  'Stephanie', 'Sharonda', 'Ardith', 'Emery'];
+
+  if (typeof(idOrName) === "string") parametro = [idOrName];
+
+  const employeeFinder = (IdOuNome) => {
+    return employees.find(empregado => empregado.id === IdOuNome ||
+      empregado.firstName === IdOuNome || empregado.lastName === IdOuNome);
+  };
+
+  const conversorIdToName = (ids) => {
+    const nomes = [];
+    ids.forEach((id) => {
+      nomes.push(animals.find(animal => animal.id === id).name);
+    });
+    return nomes;
+  };
+
+  const retorno = {};
+  parametro.forEach((funcionario) => {
+    const empregado = employeeFinder(funcionario);
+    const nomeCompleto = `${empregado.firstName} ${empregado.lastName}`;
+    const { responsibleFor } = empregado;
+    const responsabilidades = conversorIdToName(responsibleFor);
+    retorno[nomeCompleto] = responsabilidades;
+  })
+  return retorno;
 }
 
 module.exports = {
