@@ -107,7 +107,7 @@ function employeeCoverage(idOrName) {
 
   if (typeof (idOrName) === 'string') parametro = [idOrName];
 
-  const employeeFinder = IdOuNome => 
+  const employeeFinder = IdOuNome =>
     employees.find(empregado => empregado.id === IdOuNome ||
       empregado.firstName === IdOuNome || empregado.lastName === IdOuNome);
 
@@ -128,7 +128,7 @@ function employeeCoverage(idOrName) {
     retorno[nomeCompleto] = responsabilidades;
   });
   return retorno;
-};
+}
 
 module.exports = {
   entryCalculator,
