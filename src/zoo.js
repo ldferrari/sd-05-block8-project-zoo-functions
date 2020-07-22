@@ -18,8 +18,7 @@ function animalsByIds(...ids) {
   // Ao receber como parâmetro um único id, retorna os animais com este id
   // Ao receber mais de um id, retorna os animais que têm um desses ids
   return ids.map(paramId =>
-    data.animals.find(animal => animal.id === paramId)
-  );
+    data.animals.find(animal => animal.id === paramId));
 }
 
 function animalsOlderThan(animal, age) {
