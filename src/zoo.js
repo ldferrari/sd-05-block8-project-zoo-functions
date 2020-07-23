@@ -9,7 +9,7 @@ eslint no-unused-vars: [
 ]
 */
 
-const data = require('./data');
+const data = require("./data");
 
 function animalsByIds(...ids) {
   // seu código aqui
@@ -17,28 +17,32 @@ function animalsByIds(...ids) {
   if (!ids) return [];
   // Ao receber como parâmetro um único id, retorna os animais com este id
   // Ao receber mais de um id, retorna os animais que têm um desses ids
-  return ids.map(paramId =>
-    data.animals.find(animal => animal.id === paramId));
+  return ids.map((paramId) =>
+    data.animals.find((animal) => animal.id === paramId)
+  );
 }
 
 function animalsOlderThan(animal, age) {
   // seu código aqui
   return data.animals
-    .find(especie => especie.name === animal)
-    .residents.every(idade => idade.age > age);
+    .find((especie) => especie.name === animal)
+    .residents.every((idade) => idade.age > age);
 }
 
 function employeeByName(employeeName) {
   // seu código aqui
   if (!employeeName) return {};
-  return data.employees
-    .find(primeiro => primeiro.firstName === employeeName || primeiro.lastName === employeeName);
+  return data.employees.find(
+    (primeiro) =>
+      primeiro.firstName === employeeName || primeiro.lastName === employeeName
+  );
 }
 
-function createEmployee(personalInfo, associatedWith) {
+const createEmployee = (personalInfo, associatedWith) => ({
   // seu código aqui
-
-}
+  ...personalInfo,
+  ...associatedWith,
+});
 
 function isManager(id) {
   // seu código aqui
