@@ -18,8 +18,7 @@ function animalsByIds(...ids) {
   // Ao receber como parâmetro um único id, retorna os animais com este id
   // Ao receber mais de um id, retorna os animais que têm um desses ids
   return ids.map(paramId =>
-    data.animals.find(animal => animal.id === paramId)
-  );
+    data.animals.find(animal => animal.id === paramId));
 }
 
 function animalsOlderThan(animal, age) {
@@ -32,10 +31,8 @@ function animalsOlderThan(animal, age) {
 function employeeByName(employeeName) {
   // seu código aqui
   if (!employeeName) return {};
-  return data.employees.find(
-    (primeiro) =>
-      primeiro.firstName === employeeName || primeiro.lastName === employeeName
-  );
+  return data.employees.find(primeiro =>
+    primeiro.firstName === employeeName || primeiro.lastName === employeeName);
 }
 
 const createEmployee = (personalInfo, associatedWith) => ({
@@ -46,7 +43,7 @@ const createEmployee = (personalInfo, associatedWith) => ({
 
 function isManager(id) {
   // seu código aqui
-  return data.employees.some((g) => g.managers.some(xablau => xablau === id));
+  return data.employees.some(g => g.managers.some(xablau => xablau === id));
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
