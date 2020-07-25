@@ -87,19 +87,19 @@ function animalMap(options) {
 
 function schedule(dayName) {
   // seu código aqui
-  let array = ['Tuesday','Monday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  let array = ['Tuesday', 'Monday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   if (dayName !== undefined) array = [dayName];
   const convert = (hours2) => {
   let horaR = hours2;
-  if ( horaR > 12 ) {
-    horaR = `${horaR - 12}pm`;
-    return horaR;
+    if (horaR > 12) {
+      horaR = `${horaR - 12}pm`;
+      return horaR;
   }
-  return `${horaR}am`;
-  }
+    return `${horaR}am`;
+  };
   const horadia = nomeDia => hours[nomeDia];
   const obj = {};
-  array.forEach(day => {
+  array.forEach((day) => {
     if (day === 'Monday') {
       obj[day] = 'CLOSED';
     } else {
