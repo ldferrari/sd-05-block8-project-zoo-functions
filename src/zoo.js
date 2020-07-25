@@ -66,12 +66,12 @@ function animalCount(species) {
     return quantidades;
   }
   const animalsbusca = animals.find(especie => especie.name === species);
-    return animalsbusca.residents.length;
+  return animalsbusca.residents.length;
 }
 
 function entryCalculator(entrants) {
   // seu código aqui
-  if (entrants === undefined || Object.entries(entrants).length === 0){
+  if (entrants === undefined || Object.entries(entrants).length === 0) {
     return 0;
   }
   let total = 0;
