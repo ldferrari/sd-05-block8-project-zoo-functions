@@ -10,13 +10,9 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
-
+const {employees} = data;
 function animalsByIds(...ids) {
-  // seu código aqui
-  // Caso receba nenhum parâmetro, necessário retornar um array vazio
   if (!ids) return [];
-  // Ao receber como parâmetro um único id, retorna os animais com este id
-  // Ao receber mais de um id, retorna os animais que têm um desses ids
   return ids.map(paramId =>
     data.animals.find(animal => animal.id === paramId));
 }
@@ -46,10 +42,19 @@ function isManager(id) {
   return data.employees.some(g => g.managers.some(xablau => xablau === id));
 }
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
+function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
   // seu código aqui
-}
-
+  const novoEmployee = {
+    
+  }
+   novoEmployee.id = id;
+   novoEmployee.firstName = firstName;
+   novoEmployee.lastName = lastName;
+   novoEmployee.managers = managers;
+   novoEmployee.responsibleFor = responsibleFor;
+   employees.push(novoEmployee);
+   
+};
 function animalCount(species) {
   // seu código aqui
 }
