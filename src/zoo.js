@@ -11,7 +11,7 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const { employees, animals, prices } = data;
+const { employees, animals, prices, hours } = data;
 
 function animalsByIds(...ids) {
   if (!ids) return [];
@@ -87,8 +87,31 @@ function animalMap(options) {
 
 function schedule(dayName) {
   // seu código aqui
+  let array = ['Tuesday','Monday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ];
+  if ( dayName !== undefined) array = [dayName];
+  const convert = (hours) => {
+  let horaR = hours;
+  if ( horaR > 12 ) {
+    horaR = `${horaR - 12}pm`;
+    return horaR;
+  }
+  return `${horaR}am`;
+  }
+  const horadia = nomeDia => hours[nomeDia];
+  const obj = {};
+  array.forEach(day => {
+    if (day === 'Monday') 
+    { obj[day] = 'CLOSED'; }
+     else {
+      const abertura = convert(horadia(day).open);
+      const fechamento = convert(horadia(day).close);
+      const value = `Open from ${abertura} until ${fechamento}`;
+      obj[day] = value;
+    }
+  });
+  return obj;
 }
-
+console.log(schedule())
 function oldestFromFirstSpecies(id) {
   // seu código aqui
   const empregadoCerto = employees.find(primeiro => primeiro.id === id);
