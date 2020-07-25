@@ -87,10 +87,10 @@ function animalMap(options) {
 
 function schedule(dayName) {
   // seu código aqui
-  let array = ['Tuesday','Monday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ];
-  if ( dayName !== undefined) array = [dayName];
-  const convert = (hours) => {
-  let horaR = hours;
+  let array = ['Tuesday','Monday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  if (dayName !== undefined) array = [dayName];
+  const convert = (hours2) => {
+  let horaR = hours2;
   if ( horaR > 12 ) {
     horaR = `${horaR - 12}pm`;
     return horaR;
@@ -100,9 +100,9 @@ function schedule(dayName) {
   const horadia = nomeDia => hours[nomeDia];
   const obj = {};
   array.forEach(day => {
-    if (day === 'Monday') 
-    { obj[day] = 'CLOSED'; }
-     else {
+    if (day === 'Monday') {
+      obj[day] = 'CLOSED';
+    } else {
       const abertura = convert(horadia(day).open);
       const fechamento = convert(horadia(day).close);
       const value = `Open from ${abertura} until ${fechamento}`;
@@ -111,7 +111,7 @@ function schedule(dayName) {
   });
   return obj;
 }
-console.log(schedule())
+
 function oldestFromFirstSpecies(id) {
   // seu código aqui
   const empregadoCerto = employees.find(primeiro => primeiro.id === id);
