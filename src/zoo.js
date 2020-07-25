@@ -11,7 +11,7 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const { employees, animals, prices } = data;
+const { employees, animals } = data;
 
 function animalsByIds(...ids) {
   if (!ids) return [];
@@ -56,7 +56,7 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 }
 function animalCount(species) {
   // seu código aqui
-  if(species === undefined) {
+  if (species === undefined) {
     const quantidades = {};
     animals.forEach((xablau) => {
       const names = xablau.name;
@@ -66,12 +66,12 @@ function animalCount(species) {
     return quantidades;
   }
   const animalsbusca = animals.find(especie => especie.name === species);
-    return animalsbusca.residents.length
+    return animalsbusca.residents.length;
 }
 
 function entryCalculator(entrants) {
   // seu código aqui
-  if(entrants === undefined || Object.entries(entrants).length === 0){
+  if (entrants === undefined || Object.entries(entrants).length === 0){
     return 0;
   }
   let total = 0;
@@ -91,7 +91,6 @@ function schedule(dayName) {
 
 function oldestFromFirstSpecies(id) {
   // seu código aqui
-  
 }
 
 function increasePrices(percentage) {
