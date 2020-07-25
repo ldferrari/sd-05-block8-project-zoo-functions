@@ -62,7 +62,7 @@ function animalCount(species) {
       const names = xablau.name;
       const contagem = xablau.residents.length;
       quantidades[names] = contagem;
-    })
+    });
     return quantidades;
   }
   const animalsbusca = animals.find(especie => especie.name === species);
