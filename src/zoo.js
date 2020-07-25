@@ -90,11 +90,11 @@ function schedule(dayName) {
   let array = ['Tuesday', 'Monday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   if (dayName !== undefined) array = [dayName];
   const convert = (hours2) => {
-  let horaR = hours2;
+    let horaR = hours2;
     if (horaR > 12) {
       horaR = `${horaR - 12}pm`;
       return horaR;
-  }
+    }
     return `${horaR}am`;
   };
   const horadia = nomeDia => hours[nomeDia];
