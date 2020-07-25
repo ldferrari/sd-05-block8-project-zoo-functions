@@ -137,17 +137,17 @@ function employeeCoverage(idOrName) {
   // seu código aqui
   let nomeFuncionarios = ['Nigel', 'Burl', 'Ola', 'Wilburn', 'Stephanie', 'Sharonda', 'Ardith', 'Emery'];
   if (idOrName !== undefined) nomeFuncionarios = [idOrName];
-  const acharFuncionario = idName => 
-  employees.find(selecionado => 
-  selecionado.id === idName || 
+  const acharFuncionario = idName =>
+  employees.find(selecionado =>
+  selecionado.id === idName ||
   selecionado.firstName === idName ||
-  selecionado.lastName === idName
+  selecionado.lastName === idName,
 );
   const nameAnimals = (arrayanimal) => {
     const retornoAn = [];
-    arrayanimal.forEach(id => retornoAn.push(animals.find(animal => animal.id === id ).name));
+    arrayanimal.forEach(id => retornoAn.push(animals.find(animal => animal.id === id).name));
     return retornoAn;
-  }
+  };
   const obj = {};
   nomeFuncionarios.forEach((employ) => {
     const guardarFun = acharFuncionario(employ);
@@ -158,7 +158,7 @@ function employeeCoverage(idOrName) {
   });
   return obj;
 }
-employeeCoverage()
+
 module.exports = {
   entryCalculator,
   schedule,
