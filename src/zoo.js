@@ -10,7 +10,9 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
+
 const { employees } = data;
+
 function animalsByIds(...ids) {
   if (!ids) return [];
   return ids.map(paramId =>
