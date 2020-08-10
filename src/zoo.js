@@ -25,28 +25,28 @@ function animalsByIds(...ids) {
   });
   return array;
 }
-console.log(animalsByIds('0938aa23-f153-4937-9f88-4858b24d6bce')); 
-// testando ID do test.js
 
 function animalsOlderThan(animal, age) {
   // seu código aqui
   /* testar idade especifica de certa especie */
   animals
-    .find(param => param.name === animal)
-    .residents.every(animal => animal.age > age);
+  .find(param => param.name === animal)
+  .residents.every(param => param.age > age);
 }
 console.log(animalsOlderThan('otters', 7));
 
 function employeeByName(employeeName) {
-  // seu código aqui
-  /* retornar vazio, primeiro nome gera objeto do func, ultimo nome tambem */
-  (!employeeName)
-    ? {}
-    : (employees.find(
-        (employee) =>
-          employee.firstName === employeeName ||
-          employee.lastName === employeeName
-      ));
+  const { employees } = data
+    // seu código aqui
+    /* retornar vazio, primeiro nome gera objeto do func, ultimo nome tambem */
+    (!employeeName
+      ? {}
+      : employees.find(
+          (employee) =>
+            employee.firstName === employeeName ||
+            employee.lastName === employeeName
+        )
+  );
 }
 console.log(employeeByName('Emery'));
 
