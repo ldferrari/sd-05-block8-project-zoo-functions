@@ -29,9 +29,9 @@ function animalsByIds(...ids) {
 function animalsOlderThan(animal, age) {
   // seu código aqui
   /* testar idade especifica de certa especie */
-  animals
-  .find(param => param.name === animal)
-  .residents.every(param => param.age > age);
+  return animals.filter(({ name }) => name === animal)[0]
+  .residents
+  .every(({ age }) => age >= age);
 }
 console.log(animalsOlderThan('otters', 7));
 
