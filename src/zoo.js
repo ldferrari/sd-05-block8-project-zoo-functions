@@ -38,7 +38,7 @@ console.log(animalsOlderThan('otters', 7));
 function employeeByName(employeeName) {
     // seu código aqui
     /* retornar vazio, primeiro nome gera objeto do func, ultimo nome tambem */
-    const employeeFirstName = employees.find(name => name.firstName === employeeName);
+  const employeeFirstName = employees.find(name => name.firstName === employeeName);
   const employeeLastName = employees.find(lastname => lastname.lastName === employeeName);
   if (employeeFirstName) {
     return employeeFirstName;
