@@ -26,12 +26,12 @@ function animalsByIds(...ids) {
   return array;
 }
 
-function animalsOlderThan(animal, age) {
+function animalsOlderThan(animalName, age) {
   // seu código aqui
   /* testar idade especifica de certa especie */
-  return animals.filter(({ name }) => name === animal)[0]
-  .residents
-  .every(({ age }) => age >= age);
+  animals
+    .find(animal => animal.name === animalName)
+    .residents.every(animal => animal.age > age);
 }
 console.log(animalsOlderThan('otters', 7));
 
