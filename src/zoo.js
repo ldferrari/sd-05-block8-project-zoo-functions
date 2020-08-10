@@ -9,12 +9,13 @@ eslint no-unused-vars: [
 ]
 */
 
-const data = require("./data");
+const data = require('./data');
+
 const { animals } = data;
 
 function animalsByIds(...ids) {
   // seu código aqui
-  /* function retornar 0, retornar animais de id,retornar animais de multiplos id */
+  /*  function retornar 0, retornar animais de id,retornar animais de multiplos id */
   const array = [];
   if (ids.length === 0) return array;
   animals.forEach((animal) => {
@@ -24,29 +25,30 @@ function animalsByIds(...ids) {
   });
   return array;
 }
-console.log(animalsByIds("0938aa23-f153-4937-9f88-4858b24d6bce")); //testando ID do test.js
+console.log(animalsByIds('0938aa23-f153-4937-9f88-4858b24d6bce')); 
+// testando ID do test.js
 
 function animalsOlderThan(animal, age) {
   // seu código aqui
   /* testar idade especifica de certa especie */
   animals
-    .find((param) => param.name === animal)
-    .residents.every((animal) => animal.age > age);
+    .find(param => param.name === animal)
+    .residents.every(animal => animal.age > age);
 }
-console.log(animalsOlderThan("otters", 7));
+console.log(animalsOlderThan('otters', 7));
 
 function employeeByName(employeeName) {
   // seu código aqui
   /* retornar vazio, primeiro nome gera objeto do func, ultimo nome tambem */
-  !employeeName
+  (!employeeName)
     ? {}
-    : employees.find(
+    : (employees.find(
         (employee) =>
           employee.firstName === employeeName ||
           employee.lastName === employeeName
-      );
+      ));
 }
-console.log(employeeByName("Emery"));
+console.log(employeeByName('Emery'));
 
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
