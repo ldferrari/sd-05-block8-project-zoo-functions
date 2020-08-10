@@ -46,18 +46,22 @@ function employeeByName(employeeName) {
     return employeeLastName;
   } return {};
 }
-console.log(employeeByName('Emery'));
 
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
-}
+  return { ...personalInfo, ...associatedWith };
+} // abençõe o redux por me obrigar a decorar spread
 
 function isManager(id) {
   // seu código aqui
+  const manager = employees.some(staff => staff.managers.includes(id) === true);
+
+  return manager;
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
+  employees.push({ id, firstName, lastName, managers, responsibleFor })
 }
 
 function animalCount(species) {
