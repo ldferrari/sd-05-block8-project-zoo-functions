@@ -38,7 +38,15 @@ console.log(animalsOlderThan("otters", 7));
 function employeeByName(employeeName) {
   // seu código aqui
   /* retornar vazio, primeiro nome gera objeto do func, ultimo nome tambem */
+  !employeeName
+    ? {}
+    : employees.find(
+        (employee) =>
+          employee.firstName === employeeName ||
+          employee.lastName === employeeName
+      );
 }
+console.log(employeeByName("Emery"));
 
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
