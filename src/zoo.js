@@ -11,7 +11,7 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const { animals, employees } = data;
+const { animals, employees, prices, hours } = data;
 
 function animalsByIds(...ids) {
   // seu código aqui
@@ -75,6 +75,13 @@ function animalCount(species) {
 
 function entryCalculator(entrants) {
   // seu código aqui
+  if (!entrants || Object.entries(entrants).length === 0) return 0;
+
+  const pricing = Object.keys(prices);
+  const earinings = (price, ticket) => price + (prices[ticket] * entrants[ticket]);
+
+  return pricing.reduce(earinings, 0);
+  // reduce dobra os valores em cima do outro, valor inicial é o accumulador e o segundo o valor inicial. Redux Nightmares
 }
 
 function animalMap(options) {
@@ -83,10 +90,30 @@ function animalMap(options) {
 
 function schedule(dayName) {
   // seu código aqui
+  const workHours = {};
+  const week = Object.keys(data.hours);
+  week.forEach((day) => {
+    if (day === 'Monday') {
+      workHours[day] = 'CLOSED';
+    } else {
+      workHours[day] = `Open from ${data.hours[day].open}am until ${
+        data.hours[day].close - 12
+      }pm`;
+    }
+  });
+
+  if (dayName !== undefined) return { [dayName]: workHours[dayName] };
+  return workHours;
 }
 
 function oldestFromFirstSpecies(id) {
   // seu código aqui
+  const animalID = employees.find(employee => 
+    employee.id === id).responsibleFor[0];
+  const {name,sex,age} = aniamls.find(animal =>
+    animal.id === animalID).residents.sort((y,o)=> 
+    o.age-y.age)[0];
+  return [name, sex, age];
 }
 
 function increasePrices(percentage) {
