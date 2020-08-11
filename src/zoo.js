@@ -11,7 +11,7 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const { animals, employees, prices, hours } = data;
+const { animals, employees, prices } = data;
 
 function animalsByIds(...ids) {
   // seu código aqui
@@ -81,7 +81,8 @@ function entryCalculator(entrants) {
   const earinings = (price, ticket) => price + (prices[ticket] * entrants[ticket]);
 
   return pricing.reduce(earinings, 0);
-  // reduce dobra os valores em cima do outro, valor inicial é o accumulador e o segundo o valor inicial. Redux Nightmares
+  /* reduce dobra os valores em cima do outro, valor inicial é 
+ o accumulador e o segundo o valor inicial. Redux Nightmares */
 }
 
 function animalMap(options) {
@@ -108,11 +109,8 @@ function schedule(dayName) {
 
 function oldestFromFirstSpecies(id) {
   // seu código aqui
-  const animalID = employees.find(employee => 
-    employee.id === id).responsibleFor[0];
-  const {name,sex,age} = aniamls.find(animal =>
-    animal.id === animalID).residents.sort((y,o)=> 
-    o.age-y.age)[0];
+  const animalID = employees.find(employee => employee.id === id).responsibleFor[0];
+  const { name, sex, age } = animals.find(animal => animal.id === animalID).residents.sort((y, o) => o.age - y.age)[0];
   return [name, sex, age];
 }
 
