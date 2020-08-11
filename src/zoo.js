@@ -67,11 +67,11 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
 function animalCount(species) {
   // seu código aqui
   const animalAmount = {};
-  animals.forEach(animals => (animalAmount[animal.name] = animal.residents.length));
+  animals.forEach(animal => (animalAmount[animal.name] = animal.residents.length));
   return species
     ? animals.find(animal => animal.name === species).residents.length
-    : animalamount;
-  }
+    : animalAmount;
+}
 
 function entryCalculator(entrants) {
   // seu código aqui
