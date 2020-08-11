@@ -18,7 +18,7 @@ function animalsByIds(...ids) {
   /*  function retornar 0, retornar animais de id,retornar animais de multiplos id */
   const array = [];
   if (ids.length === 0) return array;
-  animals.forEach(animal => {
+  animals.forEach((animal) => {
     ids.forEach((id) => {
       if (id === animal.id) array.push(animal);
     });
@@ -29,27 +29,22 @@ function animalsByIds(...ids) {
 function animalsOlderThan(animal, age) {
   // seu código aqui
   /* testar idade especifica de certa especie */
-  const speciesNames = animals.find( specie => specie.name === animal);
+  const speciesNames = animals.find(specie => specie.name === animal);
   const animalAge = speciesNames.residents.every(specie => specie.age > age);
 
   return animalAge;
 }
 
 function employeeByName(employeeName) {
-  // seu código aqui
-  /* retornar vazio, primeiro nome gera objeto do func, ultimo nome tambem */
-  const employeeFirstName = employees.find(
-    name => name.firstName === employeeName
-  );
-  const employeeLastName = employees.find(
-    lastname => lastname.lastName === employeeName
-  );
+    // seu código aqui
+    /* retornar vazio, primeiro nome gera objeto do func, ultimo nome tambem */
+  const employeeFirstName = employees.find(name => name.firstName === employeeName);
+  const employeeLastName = employees.find(lastname => lastname.lastName === employeeName);
   if (employeeFirstName) {
     return employeeFirstName;
   } else if (employeeLastName) {
     return employeeLastName;
-  }
-  return {};
+  } return {};
 }
 
 function createEmployee(personalInfo, associatedWith) {
@@ -59,9 +54,7 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   // seu código aqui
-  const manager = employees.some(
-    staff => staff.managers.includes(id) === true
-  );
+  const manager = employees.some(staff => staff.managers.includes(id) === true);
 
   return manager;
 }
@@ -74,11 +67,9 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
 function animalCount(species) {
   // seu código aqui
   const animalAmount = {};
-  animals.forEach(
-    animal => (animalAmount[animal.name] = animal.residents.length)
-  );
+  animals.forEach(animal => (animalAmount[animal.name] = animal.residents.length));
   return species
-    ? animals.find( animal => animal.name === species).residents.length
+    ? animals.find(animal => animal.name === species).residents.length
     : animalAmount;
 }
 
@@ -87,12 +78,9 @@ function entryCalculator(entrants) {
   if (!entrants || Object.entries(entrants).length === 0) return 0;
 
   const pricing = Object.keys(prices);
-  const earinings = (price, ticket) =>
-    price + prices[ticket] * entrants[ticket];
+  const earinings = (price, ticket) => price + (prices[ticket] * entrants[ticket]);
 
   return pricing.reduce(earinings, 0);
-/* reduce dobra os valores em cima do outro, valor inicial é 
-o accumulador e o segundo o valor inicial. Redux Nightmares */
 }
 
 function animalMap(options) {
@@ -103,7 +91,7 @@ function schedule(dayName) {
   // seu código aqui
   const workHours = {};
   const week = Object.keys(data.hours);
-  week.forEach( day => {
+  week.forEach((day) => {
     if (day === 'Monday') {
       workHours[day] = 'CLOSED';
     } else {
@@ -119,11 +107,8 @@ function schedule(dayName) {
 
 function oldestFromFirstSpecies(id) {
   // seu código aqui
-  const animalID = employees.find((employee) => employee.id === id)
-    .responsibleFor[0];
-  const { name, sex, age } = animals
-    .find( animal => animal.id === animalID)
-    .residents.sort((y, o) => o.age - y.age)[0];
+  const animalID = employees.find(employee => employee.id === id).responsibleFor[0];
+  const {name,sex,age} = aniamls.find(animal => animal.id === animalID).residents.sort((y,o)=> o.age-y.age)[0];
   return [name, sex, age];
 }
 
