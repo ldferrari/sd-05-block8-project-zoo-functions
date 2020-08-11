@@ -1,10 +1,10 @@
 /*
 eslint no-unused-vars: [
-  'error',
+  "error",
   {
-    'args': 'none',
-    'vars': 'local',
-    'varsIgnorePattern': 'data'
+    "args": "none",
+    "vars": "local",
+    "varsIgnorePattern": "data"
   }
 ]
 */
@@ -18,7 +18,7 @@ function animalsByIds(...ids) {
   /*  function retornar 0, retornar animais de id,retornar animais de multiplos id */
   const array = [];
   if (ids.length === 0) return array;
-  animals.forEach((animal) => {
+  animals.forEach(animal => {
     ids.forEach((id) => {
       if (id === animal.id) array.push(animal);
     });
@@ -29,8 +29,8 @@ function animalsByIds(...ids) {
 function animalsOlderThan(animal, age) {
   // seu código aqui
   /* testar idade especifica de certa especie */
-  const speciesNames = animals.find((specie) => specie.name === animal);
-  const animalAge = speciesNames.residents.every((specie) => specie.age > age);
+  const speciesNames = animals.find( specie => specie.name === animal);
+  const animalAge = speciesNames.residents.every(specie => specie.age > age);
 
   return animalAge;
 }
@@ -39,10 +39,10 @@ function employeeByName(employeeName) {
   // seu código aqui
   /* retornar vazio, primeiro nome gera objeto do func, ultimo nome tambem */
   const employeeFirstName = employees.find(
-    (name) => name.firstName === employeeName
+    name => name.firstName === employeeName
   );
   const employeeLastName = employees.find(
-    (lastname) => lastname.lastName === employeeName
+    lastname => lastname.lastName === employeeName
   );
   if (employeeFirstName) {
     return employeeFirstName;
@@ -60,7 +60,7 @@ function createEmployee(personalInfo, associatedWith) {
 function isManager(id) {
   // seu código aqui
   const manager = employees.some(
-    (staff) => staff.managers.includes(id) === true
+    staff => staff.managers.includes(id) === true
   );
 
   return manager;
@@ -75,10 +75,10 @@ function animalCount(species) {
   // seu código aqui
   const animalAmount = {};
   animals.forEach(
-    (animal) => (animalAmount[animal.name] = animal.residents.length)
+    animal => (animalAmount[animal.name] = animal.residents.length)
   );
   return species
-    ? animals.find((animal) => animal.name === species).residents.length
+    ? animals.find( animal => animal.name === species).residents.length
     : animalAmount;
 }
 
@@ -91,7 +91,7 @@ function entryCalculator(entrants) {
     price + prices[ticket] * entrants[ticket];
 
   return pricing.reduce(earinings, 0);
-  /* reduce dobra os valores em cima do outro, valor inicial é 
+/* reduce dobra os valores em cima do outro, valor inicial é 
 o accumulador e o segundo o valor inicial. Redux Nightmares */
 }
 
@@ -103,7 +103,7 @@ function schedule(dayName) {
   // seu código aqui
   const workHours = {};
   const week = Object.keys(data.hours);
-  week.forEach((day) => {
+  week.forEach( day => {
     if (day === 'Monday') {
       workHours[day] = 'CLOSED';
     } else {
@@ -122,7 +122,7 @@ function oldestFromFirstSpecies(id) {
   const animalID = employees.find((employee) => employee.id === id)
     .responsibleFor[0];
   const { name, sex, age } = animals
-    .find((animal) => animal.id === animalID)
+    .find( animal => animal.id === animalID)
     .residents.sort((y, o) => o.age - y.age)[0];
   return [name, sex, age];
 }
