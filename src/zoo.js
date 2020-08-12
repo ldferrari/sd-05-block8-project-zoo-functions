@@ -118,7 +118,7 @@ function increasePrices(percentage) {
   // seu código aqui
   const ticketPrices = Object.keys(prices);
   ticketPrices.forEach((priceTag) => {
-    prices[key] =
+    prices[priceTag] =
       Math.round((prices[priceTag] * 100) * (1 + (percentage / 100))).toFixed(2) / 100;
   });
 }
