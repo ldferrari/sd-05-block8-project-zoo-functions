@@ -128,7 +128,7 @@ function employeeCoverage(idOrName) {
   if (!idOrName) {
     const employeeDuties = employees.reduce((coverage, employee) => {
       const animalsList = employee.responsibleFor.map(
-        animalID => animals.find(animal => animalID === animal.id).name
+        animalID => animals.find(animal => animalID === animal.id).name,
       ); // reciclando o animalID de oldestSpecies
       coverage[`${employee.firstName} ${employee.lastName}`] = animalsList;
 
@@ -142,11 +142,11 @@ function employeeCoverage(idOrName) {
     employee =>
       idOrName === employee.id ||
       idOrName === employee.firstName ||
-      idOrName === employee.lastName
+      idOrName === employee.lastName,
   );
   const employeeResponsibility = employeeName.responsibleFor;
   const animalsList = employeeResponsibility.map(
-    animalID => animals.find(animal => animalID === animal.id).name
+    animalID => animals.find(animal => animalID === animal.id).name,
   );
 
   return {
